@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 // import firebase from '../firebase';
 import {Grid, Sidebar, Menu} from 'semantic-ui-react';
+import HomeMenu from './HomeMenu/HomeMenu';
 // import {connect} from 'react-redux';
 
 class App extends React.Component {
@@ -19,13 +20,13 @@ class App extends React.Component {
           vertical
           visible
         />
-        {/* <HomeMenuPanel user={user} /> */}
+        <HomeMenu />
         <Grid.Column style={{marginLeft: 320}}>
           <React.Fragment></React.Fragment>
         </Grid.Column>
-        <Grid.Column width={2}>
-          <React.Fragment></React.Fragment>
-        </Grid.Column>
+        {/* <Grid.Column width={2}>
+          <React.Fragment>t</React.Fragment>
+        </Grid.Column> */}
       </Grid>
     );
   }
