@@ -2,6 +2,7 @@ import React from 'react';
 import firebase from '../../firebase';
 import {Grid, Sidebar, Menu} from 'semantic-ui-react';
 import {connect} from 'react-redux';
+import ChatMenu from './ChatMenu';
 
 class Chatroom extends React.Component {
   state = {
@@ -21,6 +22,8 @@ class Chatroom extends React.Component {
           vertical
           visible
         />
+
+        <ChatMenu />
 
         <Grid.Column style={{marginLeft: 320, padding: '0px'}} >
           <React.Fragment>
