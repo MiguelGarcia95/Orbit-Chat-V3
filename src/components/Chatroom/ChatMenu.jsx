@@ -20,7 +20,8 @@ class ChatMenu extends React.Component {
           name={chatroom && chatroom.chatroom.name}
         /> */}
 
-        <Modal >
+        {/* Modal for New Category */}
+        {/* <Modal >
           <Modal.Header>Create A New Category</Modal.Header>
           <Modal.Content>
             <Segment>
@@ -33,12 +34,13 @@ class ChatMenu extends React.Component {
               <Button positive >Create</Button>
             </Button.Group>
           </Modal.Content>
-        </Modal>
+        </Modal> */}
 
         {/* Display Chatroom categories + channels */}
         {/* {this.displayCategories(categories)} */}
 
-        <Modal size='small' basic centered={false} >
+        {/* Modal for Settings Modal */}
+        {/* <Modal size='small' basic centered={false} >
           <Modal.Header>Settings</Modal.Header>
           <Modal.Content>
             <Segment>
@@ -51,7 +53,7 @@ class ChatMenu extends React.Component {
               <Button positive >Save</Button>
             </Button.Group>
           </Modal.Content>
-        </Modal>
+        </Modal> */}
 
       </Menu> 
     )
