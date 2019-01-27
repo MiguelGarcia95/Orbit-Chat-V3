@@ -20,11 +20,11 @@ class Root extends React.Component {
     return (
       <React.Fragment>
         <Switch>
+          <Route path='/' component={App} />
           <Route exact path='/signup' component={SignUp} />
           <Route exact path='/signin' component={SignIn} />
-          <Route path='/app' component={RoomNavbar} />
-          <Route path='/' component={App} />
         </Switch>
+        <Route path='/' component={RoomNavbar} />
       </React.Fragment>
     )
   }
