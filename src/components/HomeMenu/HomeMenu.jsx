@@ -5,7 +5,6 @@ import {Menu, Modal, Segment, Label, Input, Button} from 'semantic-ui-react';
 class HomeMenu extends React.Component {
   state = {
     settingsModal: false,
-    // user: null
   }
 
   // UNSAFE_componentWillReceiveProps(nextProps) {
@@ -30,7 +29,6 @@ class HomeMenu extends React.Component {
       >        
         <Modal size='small' basic centered={false} open={settingsModal} onClose={this.closeSettingsModal} >
           <Modal.Header>Settings</Modal.Header>
-          {/* <Modal.Content style={{background: '#232323'}} > */}
           <Modal.Content>
             <Segment>
               <Label attached='top' >Name</Label>

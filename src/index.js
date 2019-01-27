@@ -11,6 +11,7 @@ import App from './components/App';
 import SignUp from './components/Auth/SignUp';
 import SignIn from './components/Auth/SignIn';
 import RoomNavbar from './components/RoomNavbar/RoomNavbar';
+import Chatroom from './components/Chatroom/Chatroom';
 
 class Root extends React.Component {
   state = {
@@ -20,6 +21,7 @@ class Root extends React.Component {
     return (
       <React.Fragment>
         <Switch>
+          <Route path='/app/:roomId' component={Chatroom} />
           <Route path='/' component={App} />
           <Route exact path='/signup' component={SignUp} />
           <Route exact path='/signin' component={SignIn} />
