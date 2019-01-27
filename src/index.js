@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter, Switch, Route, withRouter, Redirect} from 'react-router-dom';
 import {Provider, connect} from 'react-redux';
 import * as serviceWorker from './serviceWorker';
+import 'semantic-ui-css/semantic.min.css'
 
 // import firebase from './firebase';
 import store from './store';
