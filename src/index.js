@@ -8,6 +8,8 @@ import 'semantic-ui-css/semantic.min.css'
 // import firebase from './firebase';
 import store from './store';
 import App from './components/App';
+import SignUp from './components/Auth/SignUp';
+import SignIn from './components/Auth/SignIn';
 
 class Root extends React.Component {
   state = {
@@ -17,6 +19,8 @@ class Root extends React.Component {
     return (
       <React.Fragment>
         <Switch>
+          <Route exact path='/signup' component={SignUp} />
+          <Route exact path='/signin' component={SignIn} />
           <Route path='/' component={App} />
         </Switch>
       </React.Fragment>
