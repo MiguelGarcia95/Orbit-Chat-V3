@@ -9,7 +9,7 @@ class RoomNavbar extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.getChatrooms();
+    
   }
 
   onChange = e => this.setState({[e.target.name]: e.target.value});
