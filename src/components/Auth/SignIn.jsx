@@ -51,5 +51,4 @@ class SignIn extends React.Component {
   }
 }
   
-  // <p>Sign In</p>
 export default SignIn;

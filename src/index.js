@@ -10,6 +10,7 @@ import store from './store';
 import App from './components/App';
 import SignUp from './components/Auth/SignUp';
 import SignIn from './components/Auth/SignIn';
+import RoomNavbar from './components/RoomNavbar/RoomNavbar';
 
 class Root extends React.Component {
   state = {
@@ -21,6 +22,7 @@ class Root extends React.Component {
         <Switch>
           <Route exact path='/signup' component={SignUp} />
           <Route exact path='/signin' component={SignIn} />
+          <Route path='/app' component={RoomNavbar} />
           <Route path='/' component={App} />
         </Switch>
       </React.Fragment>
