@@ -1,10 +1,18 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import { Grid, Form, Segment, Button, Header, Message, Image} from 'semantic-ui-react';
-// import {connect} from 'react-redux';
+import {connect} from 'react-redux';
+import {signUp} from '../../actions/authActions'
 import firebase from '../../firebase';
 
 class SignUp extends React.Component {
+  state = {
+    username: '',
+    email: '',
+    password: '',
+    confirmed_password: ''
+  }
+
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
@@ -13,6 +21,8 @@ class SignUp extends React.Component {
       }
     })
   }
+
+  onChange = e => this.setState({[e.target.name]: e.target.value});
 
   render() {
     return (
@@ -34,6 +44,7 @@ class SignUp extends React.Component {
                   name='username' 
                   type='username'
                   placeholder='Username'
+                  onChange={this.onChange}
                 />
               </Form.Field>
               <Form.Field>
@@ -44,6 +55,7 @@ class SignUp extends React.Component {
                   name='email' 
                   type='email'
                   placeholder='Email'
+                  onChange={this.onChange}
                 />
               </Form.Field>
               <Form.Field>
@@ -54,6 +66,7 @@ class SignUp extends React.Component {
                   name='password' 
                   type='password'
                   placeholder='Password'
+                  onChange={this.onChange}
                 />
               </Form.Field>
               <Form.Field>
@@ -64,6 +77,7 @@ class SignUp extends React.Component {
                   name='confirmed_password' 
                   type='password'
                   placeholder='Confirm Password'
+                  onChange={this.onChange}
                 />
               </Form.Field>
               <Button color='violet' fluid size='large'>Submit</Button>
@@ -76,4 +90,10 @@ class SignUp extends React.Component {
   }
 }
 
-export default SignUp;
+const mapDispatchToProps = dispatch => {
+  return {
+    signUp: credentials => dispatch(signUp(credentials))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(SignUp);

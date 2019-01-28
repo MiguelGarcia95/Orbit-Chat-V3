@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import { Grid, Form, Segment, Button, Header, Message, Image} from 'semantic-ui-react';
-// import {connect} from 'react-redux';
+import {connect} from 'react-redux';
+import {signIn} from '../../actions/authActions';
 import firebase from '../../firebase';
 
 class SignIn extends React.Component {
@@ -16,6 +17,12 @@ class SignIn extends React.Component {
       }
     })
   }
+
+  handleSubmit = () => {
+    this.props.signIn(this.state);
+  }
+
+  onChange = e => this.setState({[e.target.name]: e.target.value});
 
   render() {
     return (
@@ -37,6 +44,7 @@ class SignIn extends React.Component {
                 name='email' 
                 type='email'
                 placeholder='Email'
+                onChange={this.onChange}
                 />
               </Form.Field>
               <Form.Field>
@@ -47,9 +55,10 @@ class SignIn extends React.Component {
                 name='password' 
                 type='password'
                 placeholder='Password'
+                onChange={this.onChange}
                 />
               </Form.Field>
-              <Button color='violet' fluid size='large'>Submit</Button>
+              <Button color='violet' fluid size='large' onClick={this.handleSubmit}>Submit</Button>
             </Segment>
           </Form>
           <Message>Not a user? <Link to='/signup'>Sign Up</Link></Message> 
@@ -58,5 +67,11 @@ class SignIn extends React.Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    signIn: credentials => dispatch(signIn(credentials))
+  }
+}
   
-export default SignIn;
+export default connect(null, mapDispatchToProps)(SignIn);

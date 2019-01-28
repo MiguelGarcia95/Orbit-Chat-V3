@@ -3,7 +3,7 @@ import './App.css';
 import firebase from '../firebase';
 import {Grid, Sidebar, Menu} from 'semantic-ui-react';
 import HomeMenu from './HomeMenu/HomeMenu';
-// import {connect} from 'react-redux';
+import {connect} from 'react-redux';
 
 class App extends React.Component {
   state = {
@@ -33,12 +33,9 @@ class App extends React.Component {
         <Grid.Column style={{marginLeft: 320}}>
           <React.Fragment></React.Fragment>
         </Grid.Column>
-        {/* <Grid.Column width={2}>
-          <React.Fragment>t</React.Fragment>
-        </Grid.Column> */}
       </Grid>
     );
   }
 }
 
-export default App;
+export default connect()(App);
