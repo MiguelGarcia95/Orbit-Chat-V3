@@ -1,5 +1,5 @@
 import React from 'react';
-import firebase from '../../firebase';
+// import firebase from '../../firebase';
 import {Grid, Sidebar, Menu} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import ChatMenu from './ChatMenu';

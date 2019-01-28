@@ -82,4 +82,4 @@ class RoomNavbar extends React.Component {
   }
 }
 
-export default RoomNavbar;
+export default connect()(RoomNavbar);
