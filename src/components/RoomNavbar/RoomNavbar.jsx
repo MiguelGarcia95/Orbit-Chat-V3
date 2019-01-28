@@ -39,19 +39,20 @@ class RoomNavbar extends React.Component {
 
   render() {
     const {modal} = this.state;
-    // UserPanel
     return (
       <Grid columns='equal' >
         <Sidebar 
           width='very thin'
           icon='labeled'
+          className='room_navbar'
           as={Menu}
           inverted
           vertical
           visible
         >
           <Divider hidden/>
-          <Link to='/app'><Image src='/img/ChatLogo.png' size='mini' rounded centered /></Link>
+          <UserPanel />
+          {/* <Link to='/app'><Image src='/img/ChatLogo.png' size='mini' rounded centered /></Link> */}
           <Divider hidden />
           <Button icon='add' size='small' color='grey' inverted onClick={this.openModal} />
           
@@ -76,15 +77,6 @@ class RoomNavbar extends React.Component {
             </Modal.Content>
           </Modal>
         </Sidebar>
-        <Menu
-          size='large' 
-          fixed='left'
-          vertical
-          style={{paddingTop: '70px', background: 'transparent'}}
-        >
-          <UserPanel />
-        </Menu>
-        {/* <UserPanel /> */}
       </Grid>
     )
   }

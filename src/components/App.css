@@ -19,3 +19,13 @@ html, body, .app {
 .Chatroom_Header {
   padding: 15px 0px;
 }
+
+.sidebar_user {
+  bottom: 0;
+  /* height: 40px; */
+  /* width: 40px; */
+}
+
+.room_navbar {
+  
+}
