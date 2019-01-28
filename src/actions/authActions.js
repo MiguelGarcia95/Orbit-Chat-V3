@@ -51,3 +51,21 @@ export const signUp = credentials => {
       })
   }
 }
+
+export const setUser = user => {
+  return (dispatch) => {
+    dispatch({
+      type: actionTypes.SET_USER,
+      payload: {authError: null, currentUser: user}
+    })
+  }
+}
+
+export const unsetUser = () => {
+  return (dispatch) => {
+    dispatch({
+      type: actionTypes.UNSET_USER,
+      payload: {authError: null, currentUser: null}
+    })
+  }
+}
