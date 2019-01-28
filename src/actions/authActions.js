@@ -1,4 +1,5 @@
 import * as actionTypes from './types';
+import md5 from 'md5';
 
 export const signIn = credentials => {
   return (dispatch, getState, {getFirebase}) => {
@@ -22,7 +23,7 @@ export const signUp = credentials => {
   return (dispatch, getState, {getFirestore, getFirebase}) => {
     const firebase = getFirebase();
     const firestore = getFirestore();
-    firebase.auth().createUserWithEmailAndPassword(credentials.email, user.password)
+    firebase.auth().createUserWithEmailAndPassword(credentials.email, credentials.password)
       .then(createdUser => {
         //update user
         createdUser.user.updateProfile({
