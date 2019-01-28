@@ -1,5 +1,5 @@
 import React from 'react';
-import {Menu, Grid, Header, Container, Icon, Image, Modal, Segment, Label, Input, Button} from 'semantic-ui-react';
+import {Menu, Grid, Header, Container, Icon, Image, Modal, Segment, Label, Input, Button, Dropdown} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 
 class ChatMenu extends React.Component {
@@ -12,7 +12,8 @@ class ChatMenu extends React.Component {
         size='large' 
         fixed='left'
         vertical
-        style={{paddingTop: '70px'}}
+        // style={{paddingTop: '30px'}}
+        className='Chatroom_Header'
       >
         <Menu.Header as='div' 
         content={
@@ -20,10 +21,10 @@ class ChatMenu extends React.Component {
             <Grid.Row columns='2'>
               <Grid.Column verticalAlign='middle' width={12}>
                 <Container style={{width: '100%', overflow: 'hidden'}} >
-                  'Name'
+                  {'Chatroom Name'}
                 </Container>
               </Grid.Column>
-              {/* <Grid.Column verticalAlign='middle' width={2}>
+              <Grid.Column verticalAlign='middle' width={2}>
                 <Container fluid>
                   <Dropdown icon='plus'>
                     <Dropdown.Menu direction='left' >
@@ -31,7 +32,7 @@ class ChatMenu extends React.Component {
                     </Dropdown.Menu>
                   </Dropdown>
                 </Container>
-              </Grid.Column> */}
+              </Grid.Column>
             </Grid.Row>
           </Grid>
          } 

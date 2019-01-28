@@ -15,3 +15,7 @@ html, body, .app {
   bottom: 0; left: 0;
   width: 100%; 
 }
+
+.Chatroom_Header {
+  padding: 15px 0px;
+}

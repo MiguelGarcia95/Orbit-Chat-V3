@@ -2,7 +2,6 @@ import React from 'react';
 import {Menu, Grid, Container, Dropdown} from 'semantic-ui-react';
 
 const UserPanel = () => {
-  // <p>User Panel</p>
   return(
     <Menu.Header 
       as='div'
