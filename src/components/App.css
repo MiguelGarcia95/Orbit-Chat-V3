@@ -21,11 +21,5 @@ html, body, .app {
 }
 
 .sidebar_user {
-  bottom: 0;
-  /* height: 40px; */
-  /* width: 40px; */
-}
-
-.room_navbar {
-  
+  padding: 10px 0;
 }
