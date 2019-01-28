@@ -8,6 +8,7 @@ class SignUp extends React.Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
+        //if logged in, set up the user
         this.props.history.push('/app');
       }
     })
