@@ -22,6 +22,10 @@ class SignUp extends React.Component {
     })
   }
 
+  handleSubmit = () => {
+    this.props.signUp(this.state);
+  }
+
   onChange = e => this.setState({[e.target.name]: e.target.value});
 
   render() {
@@ -80,7 +84,7 @@ class SignUp extends React.Component {
                   onChange={this.onChange}
                 />
               </Form.Field>
-              <Button color='violet' fluid size='large'>Submit</Button>
+              <Button color='violet' fluid size='large' onClick={this.handleSubmit}>Submit</Button>
             </Segment>
           </Form>
           <Message>Already a user? <Link to='/signin'>Sign In</Link></Message> 
