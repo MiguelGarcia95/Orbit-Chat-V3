@@ -12,6 +12,7 @@ import SignUp from './components/Auth/SignUp';
 import SignIn from './components/Auth/SignIn';
 import RoomNavbar from './components/RoomNavbar/RoomNavbar';
 import Chatroom from './components/Chatroom/Chatroom';
+// import UserPanel from './components/UserPanel/UserPanel';
 
 class Root extends React.Component {
   state = {

@@ -2,6 +2,7 @@ import React from 'react';
 import {Grid, Sidebar, Menu, Button, Divider, Image, Modal, Input, Label, Segment} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import UserPanel from '../UserPanel/UserPanel';
 
 class RoomNavbar extends React.Component {
   state = {
@@ -9,7 +10,7 @@ class RoomNavbar extends React.Component {
   }
 
   componentDidMount() {
-    
+
   }
 
   onChange = e => this.setState({[e.target.name]: e.target.value});
@@ -38,6 +39,7 @@ class RoomNavbar extends React.Component {
 
   render() {
     const {modal} = this.state;
+    // UserPanel
     return (
       <Grid columns='equal' >
         <Sidebar 
@@ -74,6 +76,15 @@ class RoomNavbar extends React.Component {
             </Modal.Content>
           </Modal>
         </Sidebar>
+        <Menu
+          size='large' 
+          fixed='left'
+          vertical
+          style={{paddingTop: '70px', background: 'transparent'}}
+        >
+          <UserPanel />
+        </Menu>
+        {/* <UserPanel /> */}
       </Grid>
     )
   }
