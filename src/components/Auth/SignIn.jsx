@@ -2,11 +2,18 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { Grid, Form, Segment, Button, Header, Message, Image} from 'semantic-ui-react';
 // import {connect} from 'react-redux';
-// import firebase from '../../firebase';
+import firebase from '../../firebase';
 
 class SignIn extends React.Component {
   state = {
+  }
 
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.props.history.push('/app');
+      }
+    })
   }
 
   render() {

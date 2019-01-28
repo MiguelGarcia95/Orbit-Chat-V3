@@ -14,11 +14,10 @@ class UserPanel extends React.Component {
     return(
       <React.Fragment>
         <Grid className='sidebar_user' >
-        <Container fluid>
-          {/* Avatar */}
-          <Image src='/img/ChatLogo.png' rounded centered onClick={this.openModal} />
-        </Container>
-      </Grid>
+          <Container fluid>
+            <Image title={'Username Settings'} src='/img/ChatLogo.png' rounded centered onClick={this.openModal} />
+          </Container>
+        </Grid>
       {/* Modal for Settings Modal */}
       <Modal size='small' basic centered={false} open={modal} >
         <Modal.Header>Settings</Modal.Header>

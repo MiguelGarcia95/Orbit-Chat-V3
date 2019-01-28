@@ -1,14 +1,22 @@
 import React from 'react';
 import './App.css';
-// import firebase from '../firebase';
+import firebase from '../firebase';
 import {Grid, Sidebar, Menu} from 'semantic-ui-react';
 import HomeMenu from './HomeMenu/HomeMenu';
 // import {connect} from 'react-redux';
 
 class App extends React.Component {
   state = {
-
   }
+
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (!user) {
+        this.props.history.push('/signin');
+      }
+    })
+  }
+
   render() {
     return (
       <Grid columns='equal'>

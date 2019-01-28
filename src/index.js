@@ -23,11 +23,12 @@ class Root extends React.Component {
       <React.Fragment>
         <Switch>
           <Route path='/app/:roomId' component={Chatroom} />
-          <Route path='/' component={App} />
           <Route exact path='/signup' component={SignUp} />
           <Route exact path='/signin' component={SignIn} />
+          <Route path='/app' component={App} />
+          <Route exact path="/" render={() => (<Redirect to="/app" />)} /> 
         </Switch>
-        <Route path='/' component={RoomNavbar} />
+        <Route path='/app' component={RoomNavbar} />
       </React.Fragment>
     )
   }

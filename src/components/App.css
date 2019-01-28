@@ -23,3 +23,5 @@ html, body, .app {
 .sidebar_user {
   padding: 10px 0;
 }
+
+.sidebar_user img {cursor: pointer;}
