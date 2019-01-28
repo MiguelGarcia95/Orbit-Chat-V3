@@ -69,3 +69,15 @@ export const unsetUser = () => {
     })
   }
 }
+
+export const signOut = () => {
+  return (dispatch, getState, {getFirebase}) => {
+    const firebase = getFirebase();
+    firebase.auth().signOut().then(() => {
+      dispatch({
+        type: actionTypes.SIGN_OUT,
+        payload: {authError: null, currentUser: null}
+      })
+    })
+  }
+}
