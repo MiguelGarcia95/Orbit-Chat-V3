@@ -8,12 +8,12 @@ export const createChatroom = chatroom => {
       description:  chatroom.description,
       avatar: chatroom.user.photoURL,
       uid: chatroom.user.uid
-    }).then(() => {
+    }).then((docRef) => {
       dispatch({
         type: actionTypes.CREATE_CHATROOM,
         payload: {
           chatroomError: null,
-          newChatroomId: ''
+          newChatroomId: docRef._key.path.segments[1],
         }
       })
     }).catch(err => {
@@ -21,7 +21,7 @@ export const createChatroom = chatroom => {
         type: actionTypes.CREATE_CHATROOM,
         payload: {
           chatroomError: err.message,
-          newChatroomId: ''
+          newChatroomId: null
         }
       })
     })
