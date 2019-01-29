@@ -2,6 +2,7 @@ import React from 'react';
 import {Grid, Sidebar, Menu, Button, Divider, Image, Modal, Input, Label, Segment} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import {createChatroom} from '../../actions/chatroomActions';
 import UserPanel from '../UserPanel/UserPanel';
 import RoomMenu from './RoomMenu';
 
@@ -36,6 +37,7 @@ class RoomNavbar extends React.Component {
   // }
 
   onSubmit = () => {
+    this.props.createChatroom(this.state);
   }
 
   render() {
@@ -78,7 +80,7 @@ class RoomNavbar extends React.Component {
               <Button.Group attached='bottom'>
                 <Button negative onClick={this.closeModal} > Cancel</Button>
                 <Button.Or />
-                <Button positive > Create</Button>
+                <Button positive onClick={this.onSubmit} > Create</Button>
               </Button.Group>
             </Modal.Content>
           </Modal>
@@ -96,4 +98,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(RoomNavbar);
+const mapDispatchToProps = dispatch => {
+  return {
+    createChatroom: (chatroom) => dispatch(createChatroom(chatroom))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RoomNavbar);
