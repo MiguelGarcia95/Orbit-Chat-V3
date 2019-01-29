@@ -30,7 +30,14 @@ export const createChatroom = chatroom => {
 
 export const getChatroom = chatroomId => {
   return (dispatch, getState, {getFirestore}) => {
-    console.log(chatroomId)
+    const firestore = getFirestore();
+    firestore.collection('chatrooms').doc(chatroomId).get().then(chatroom => {
+      if (chatroom.exists) {
+        console.log({id: chatroom.id, chatroom: chatroom.data()})
+      } else {
+        console.log('does not exist')
+      }
+    })
   }
 }
 
