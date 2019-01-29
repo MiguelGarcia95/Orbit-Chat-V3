@@ -31,20 +31,20 @@ class RoomNavbar extends React.Component {
 
   closeModal = () => this.setState({modal: false});
 
-  // displayChatRooms = (chatrooms) => {
-  //   return (
-  //     chatrooms.map(chatroom => {
-  //       return (
-  //         <React.Fragment key={chatroom.id}>
-  //           <Divider  />
-  //           <Link to={`/app/${chatroom.id}`}>
-  //             <Image title={chatroom.chatroom.name} src={chatroom.chatroom.logo} circular />
-  //           </Link>
-  //         </React.Fragment>
-  //       )
-  //     })
-  //   )
-  // }
+  displayChatRooms = (chatrooms) => {
+    return (
+      chatrooms.map(chatroom => {
+        return (
+          <React.Fragment key={chatroom.id}>
+            <Divider  />
+            <Link to={`/app/${chatroom.id}`}>
+              <Image title={chatroom.chatroom.name} src={chatroom.chatroom.avatar} circular />
+            </Link>
+          </React.Fragment>
+        )
+      })
+    )
+  }
 
   onSubmit = () => {
     this.props.createChatroom(this.state);
@@ -73,7 +73,7 @@ class RoomNavbar extends React.Component {
           <Divider hidden />
           <Button icon='add' size='small' color='grey' inverted onClick={this.openModal} />
           
-          {/* {this.displayChatRooms(chatrooms)} */}
+          {this.displayChatRooms(chatrooms)}
 
           <Modal open={modal} onClose={this.closeModal} >
             <Modal.Header>Create A New Chatroom</Modal.Header>
