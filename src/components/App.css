@@ -39,3 +39,5 @@ html, body, .app {
   width: 100%;
   height: 70px;
 }
+
+.grid-icon {cursor: pointer;}

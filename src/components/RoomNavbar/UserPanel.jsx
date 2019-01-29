@@ -1,6 +1,5 @@
 import React from 'react';
-import {Grid, Image, Container, Icon} from 'semantic-ui-react';
-// import {Grid, Image, Container, Modal, Segment, Button, Label, Input, Dropdown, Icon} from 'semantic-ui-react';
+import {Grid, Image, Container, Modal, Segment, Button, Label, Input, Icon} from 'semantic-ui-react';
 
 class UserPanel extends React.Component {
   state = {
@@ -8,14 +7,21 @@ class UserPanel extends React.Component {
     user: this.props.user
   }
 
+  onChange = e => this.setState({[e.target.name]: e.target.value})
+
   openModal = () => this.setState({modal: true});
+
   closeModal = () => this.setState({modal: false});
+
+  onSubmit = () => {
+
+  }
 
   render() {
     const {modal, user} = this.state;
-    console.log(user);
     return(
-      <Grid className='footer_menu'>
+      <React.Fragment>
+        <Grid className='footer_menu'>
           <Grid.Row columns='2'>
             <Grid.Column verticalAlign='middle' width={12}>
               <Container fluid>
@@ -25,11 +31,31 @@ class UserPanel extends React.Component {
             </Grid.Column>
             <Grid.Column verticalAlign='middle' width={2}>
               <Container fluid>
-                <Icon name='cog' onClick={this.openModal} />
+                <Icon name='cog' className='grid-icon' onClick={this.openModal} />
               </Container>
             </Grid.Column>
           </Grid.Row>
         </Grid>
+
+        <Modal open={modal} onClose={this.closeModal} >
+          <Modal.Header>Create A New Chatroom</Modal.Header>
+          <Modal.Content>
+            <Segment>
+              <Label attached='top' color='black' >Name</Label>
+              <Input fluid placeholder='Chatroom Name' name='name' onChange={this.onChange} />
+            </Segment>
+            <Segment>
+              <Label attached='top' color='black' >Description</Label>
+              <Input fluid placeholder='Chatroom Description' name='description' onChange={this.onChange} />
+            </Segment>
+            <Button.Group attached='bottom'>
+              <Button negative onClick={this.closeModal} > Cancel</Button>
+              <Button.Or />
+              <Button positive onClick={this.onSubmit} > Create</Button>
+            </Button.Group>
+          </Modal.Content>
+        </Modal>
+      </React.Fragment>
     )
   }
 }
