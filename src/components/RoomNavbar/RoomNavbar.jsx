@@ -40,7 +40,7 @@ class RoomNavbar extends React.Component {
   render() {
     const {modal} = this.state;
     const {user} = this.props;
-    return (
+    return !user ? null : (
       <Grid columns='equal' >
         <Sidebar 
           width='very thin'

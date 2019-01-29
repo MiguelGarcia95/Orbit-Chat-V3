@@ -4,6 +4,7 @@ import firebase from '../firebase';
 import {Grid, Sidebar, Menu} from 'semantic-ui-react';
 import HomeMenu from './HomeMenu/HomeMenu';
 import {connect} from 'react-redux';
+import Spinner from './Layout/Spinner';
 
 class App extends React.Component {
   state = {
@@ -20,8 +21,7 @@ class App extends React.Component {
 
   render() {
     const {user} = this.props;
-    // if user not set, load
-    return (
+    return !user ? <Spinner /> : (
       <Grid columns='equal'>
         <Sidebar 
           width='very thin'
