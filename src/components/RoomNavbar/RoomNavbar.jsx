@@ -46,6 +46,7 @@ class RoomNavbar extends React.Component {
 
   onSubmit = () => {
     this.props.createChatroom(this.state);
+    this.closeModal();
   }
 
   render() {

@@ -25,7 +25,6 @@ export const createChatroom = chatroom => {
         }
       })
     })
-    // console.log(chatroom)
   }
 }
 
