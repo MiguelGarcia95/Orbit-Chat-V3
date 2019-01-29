@@ -31,7 +31,7 @@ class App extends React.Component {
           vertical
           visible
         />
-        <HomeMenu />
+        {/* <HomeMenu /> */}
         <Grid.Column style={{marginLeft: 320}}>
           <React.Fragment></React.Fragment>
         </Grid.Column>

@@ -3,21 +3,21 @@ import {Grid, Image, Container, Modal, Segment, Button, Label, Input} from 'sema
 
 class UserPanel extends React.Component {
   state = {
-    modal: false
+    modal: false,
+    user: this.props.user
   }
 
   openModal = () => this.setState({modal: true});
   closeModal = () => this.setState({modal: false});
 
   render() {
-    const {modal} = this.state;
-    const {user} = this.props;
+    const {modal, user} = this.state;
     console.log(user);
     return(
       <React.Fragment>
         <Grid className='sidebar_user' >
           <Container fluid>
-            <Image title={'Username Settings'} src='/img/ChatLogo.png' rounded centered onClick={this.openModal} />
+            <Image title={`${user.displayName} setting's`} src={user.photoURL} rounded centered onClick={this.openModal} />
           </Container>
         </Grid>
       {/* Modal for Settings Modal */}

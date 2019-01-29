@@ -25,7 +25,7 @@ class Chatroom extends React.Component {
           visible
         />
 
-        <ChatMenu />
+        {/* <ChatMenu /> */}
 
         <Grid.Column style={{marginLeft: 320, padding: '0px'}} >
           <React.Fragment>

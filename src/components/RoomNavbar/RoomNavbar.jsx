@@ -52,7 +52,9 @@ class RoomNavbar extends React.Component {
           visible
         >
           <Divider hidden/>
-          <UserPanel user={user} />
+          {/* BS */}
+          {/* <UserPanel user={user} /> */}
+
           {/* <Link to='/app'><Image src='/img/ChatLogo.png' size='mini' rounded centered /></Link> */}
           <Divider hidden />
           <Button icon='add' size='small' color='grey' inverted onClick={this.openModal} />
@@ -78,6 +80,8 @@ class RoomNavbar extends React.Component {
             </Modal.Content>
           </Modal>
         </Sidebar>
+        {/* Add New Menu here  */}
+        {/* <Menu /> */}
       </Grid>
     )
   }
