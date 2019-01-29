@@ -11,6 +11,7 @@ class UserPanel extends React.Component {
 
   render() {
     const {modal} = this.state;
+    console.log(this.props.user);
     return(
       <React.Fragment>
         <Grid className='sidebar_user' >

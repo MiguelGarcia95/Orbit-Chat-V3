@@ -40,7 +40,6 @@ class RoomNavbar extends React.Component {
   render() {
     const {modal} = this.state;
     const {user} = this.props;
-    console.log(user);
     return (
       <Grid columns='equal' >
         <Sidebar 
@@ -53,7 +52,7 @@ class RoomNavbar extends React.Component {
           visible
         >
           <Divider hidden/>
-          <UserPanel />
+          <UserPanel user={user} />
           {/* <Link to='/app'><Image src='/img/ChatLogo.png' size='mini' rounded centered /></Link> */}
           <Divider hidden />
           <Button icon='add' size='small' color='grey' inverted onClick={this.openModal} />
