@@ -4,15 +4,15 @@ import {Grid, Menu, Container, Modal, Segment, Button, Label, Input, Dropdown} f
 class MenuHeader extends React.Component {
   state = {
     modal: false,
-    user: this.props.user
+    user: this.props.user,
+    chatroom: this.props.chatroom,
   }
 
   openModal = () => this.setState({modal: true});
   closeModal = () => this.setState({modal: false});
 
   render() {
-    const {modal, user} = this.state;
-    console.log(user);
+    const {modal} = this.state;
     return(
       <React.Fragment>
         <Menu.Header 
@@ -29,7 +29,7 @@ class MenuHeader extends React.Component {
                   <Container fluid>
                     <Dropdown icon='plus'>
                       <Dropdown.Menu direction='left' >
-                        <Dropdown.Item text='New Category' />
+                        <Dropdown.Item text='New Category' onClick={this.openModal} />
                       </Dropdown.Menu>
                     </Dropdown>
                   </Container>
@@ -39,7 +39,7 @@ class MenuHeader extends React.Component {
           } 
         />
         {/* Modal for New Category */}
-        <Modal >
+        <Modal open={modal} onClose={this.closeModal} >
           <Modal.Header>Create A New Category</Modal.Header>
           <Modal.Content>
             <Segment>
@@ -47,7 +47,7 @@ class MenuHeader extends React.Component {
               <Input fluid placeholder='Category Name' name='categoryName' />
             </Segment>
             <Button.Group attached='bottom'>
-              <Button negative >Cancel</Button>
+              <Button negative onClick={this.closeModal} >Cancel</Button>
               <Button.Or />
               <Button positive >Create</Button>
             </Button.Group>

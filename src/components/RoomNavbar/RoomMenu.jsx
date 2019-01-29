@@ -6,9 +6,9 @@ import MenuHeader from './MenuHeader';
 
 class RoomMenu extends React.Component {
   state = {
-    user: this.props.user
+    user: this.props.user,
   }
-
+  
   render() {
     // get chatroom, if chatroom null, show homemenu, if chatroom, show chatmenu
     const {user} = this.state;
@@ -20,7 +20,7 @@ class RoomMenu extends React.Component {
         // style={{paddingTop: '30px'}}
         className='Chatroom_Header'
       >
-        <MenuHeader />
+        <MenuHeader user={user} />
         <UserPanel user={user} /> 
 
         {/* Display Chatroom categories + channels */}
