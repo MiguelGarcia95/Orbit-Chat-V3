@@ -5,7 +5,8 @@ import {Provider, connect} from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import 'semantic-ui-css/semantic.min.css'
 
-// import firebase from './firebase';
+import firebase from './firebase';
+import {setUser} from './actions/authActions';
 import store from './store';
 import App from './components/App';
 import SignUp from './components/Auth/SignUp';
@@ -16,6 +17,14 @@ import Chatroom from './components/Chatroom/Chatroom';
 
 class Root extends React.Component {
   state = {
+  }
+
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.props.setUser(user);
+      }
+    })
   }
 
   render() {
@@ -34,7 +43,13 @@ class Root extends React.Component {
   }
 }
 
-const RootWithAuth = withRouter(connect()(Root));
+const mapDispatchToState = dispatch => {
+  return {
+    setUser: user => dispatch(setUser(user))
+  }
+}
+
+const RootWithAuth = withRouter(connect(null, mapDispatchToState)(Root));
 
 const RootWithRouter = () => {
   return (
