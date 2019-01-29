@@ -8,11 +8,19 @@ import RoomMenu from './RoomMenu';
 
 class RoomNavbar extends React.Component {
   state = {
-    modal: false
+    modal: false,
+    name: '',
+    description: ''
   }
 
   componentDidMount() {
+  }
 
+  static getDerivedStateFromProps(props, state) {
+    return {
+      ...state,
+      user: props.user
+    }
   }
 
   onChange = e => this.setState({[e.target.name]: e.target.value});
@@ -71,11 +79,11 @@ class RoomNavbar extends React.Component {
             <Modal.Content>
               <Segment>
                 <Label attached='top' color='black' >Name</Label>
-                <Input fluid placeholder='Chatroom Name' name='name' />
+                <Input fluid placeholder='Chatroom Name' name='name' onChange={this.onChange} />
               </Segment>
               <Segment>
                 <Label attached='top' color='black' >Description</Label>
-                <Input fluid placeholder='Chatroom Description' name='description' />
+                <Input fluid placeholder='Chatroom Description' name='description' onChange={this.onChange} />
               </Segment>
               <Button.Group attached='bottom'>
                 <Button negative onClick={this.closeModal} > Cancel</Button>
