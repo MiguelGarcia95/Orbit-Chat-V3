@@ -17,7 +17,6 @@ class RoomMenu extends React.Component {
         size='large' 
         fixed='left'
         vertical
-        // style={{paddingTop: '30px'}}
         className='Chatroom_Header'
       >
         <MenuHeader user={user} />
@@ -25,7 +24,6 @@ class RoomMenu extends React.Component {
 
         {/* Display Chatroom categories + channels */}
         {/* {this.displayCategories(categories)} */}
-
 
       </Menu> 
     )

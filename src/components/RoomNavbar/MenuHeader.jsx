@@ -1,5 +1,6 @@
 import React from 'react';
 import {Grid, Menu, Container, Modal, Segment, Button, Label, Input, Dropdown} from 'semantic-ui-react';
+import {connect} from 'react-redux';
 
 class MenuHeader extends React.Component {
   state = {
@@ -38,6 +39,7 @@ class MenuHeader extends React.Component {
             </Grid>
           } 
         />
+
         {/* Modal for New Category */}
         <Modal open={modal} onClose={this.closeModal} >
           <Modal.Header>Create A New Category</Modal.Header>
