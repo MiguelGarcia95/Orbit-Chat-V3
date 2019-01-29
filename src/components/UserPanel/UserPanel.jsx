@@ -3,8 +3,6 @@ import {Grid, Image, Container, Modal, Segment, Button, Label, Input} from 'sema
 
 class UserPanel extends React.Component {
   state = {
-    modal: false,
-    user: this.props.user
   }
 
   openModal = () => this.setState({modal: true});
