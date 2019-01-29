@@ -1,5 +1,6 @@
 import React from 'react';
 import {Grid, Image, Container, Modal, Segment, Button, Label, Input, Icon} from 'semantic-ui-react';
+import {connect} from 'react-redux';
 
 class UserPanel extends React.Component {
   state = {
@@ -60,4 +61,4 @@ class UserPanel extends React.Component {
   }
 }
 
-export default UserPanel;
+export default connect()(UserPanel);

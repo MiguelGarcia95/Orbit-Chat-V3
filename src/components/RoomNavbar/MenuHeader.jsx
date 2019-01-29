@@ -60,4 +60,4 @@ class MenuHeader extends React.Component {
   }
 }
 
-export default MenuHeader;
+export default connect()(MenuHeader);
