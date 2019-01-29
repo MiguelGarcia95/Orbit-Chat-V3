@@ -1,5 +1,6 @@
 import React from 'react';
-import {Menu, Grid, Header, Container, Icon, Image, Modal, Segment, Label, Input, Button, Dropdown} from 'semantic-ui-react';
+import {Menu} from 'semantic-ui-react';
+// import {Menu, Grid, Header, Container, Icon, Image, Modal, Segment, Label, Input, Button, Dropdown} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import UserPanel from './UserPanel';
 import MenuHeader from './MenuHeader';

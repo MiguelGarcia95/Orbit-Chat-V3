@@ -3,7 +3,6 @@ import {Grid, Sidebar, Menu, Button, Divider, Image, Modal, Input, Label, Segmen
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {createChatroom, getChatrooms} from '../../actions/chatroomActions';
-import UserPanel from '../UserPanel/UserPanel';
 import RoomMenu from './RoomMenu';
 
 class RoomNavbar extends React.Component {
