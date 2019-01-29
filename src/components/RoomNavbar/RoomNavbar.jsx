@@ -39,6 +39,8 @@ class RoomNavbar extends React.Component {
 
   render() {
     const {modal} = this.state;
+    const {user} = this.props;
+    console.log(user);
     return (
       <Grid columns='equal' >
         <Sidebar 
@@ -82,4 +84,10 @@ class RoomNavbar extends React.Component {
   }
 }
 
-export default connect()(RoomNavbar);
+const mapStateToProps = state => {
+  return {
+    user: state.auth.currentUser
+  }
+}
+
+export default connect(mapStateToProps)(RoomNavbar);
