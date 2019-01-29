@@ -38,4 +38,10 @@ class App extends React.Component {
   }
 }
 
-export default connect()(App);
+const mapStateToProps = state => {
+  return {
+    user: state.auth.currentUser
+  }
+}
+
+export default connect(mapStateToProps)(App);

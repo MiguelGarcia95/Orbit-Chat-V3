@@ -38,4 +38,10 @@ class Chatroom extends React.Component {
   }
 }
 
-export default connect()(Chatroom);
+const mapStateToProps = state => {
+  return {
+    user: state.auth.currentUser
+  }
+}
+
+export default connect(mapStateToProps)(Chatroom);
