@@ -1,13 +1,16 @@
 import React from 'react';
 import {Menu, Grid, Header, Container, Icon, Image, Modal, Segment, Label, Input, Button, Dropdown} from 'semantic-ui-react';
 import {connect} from 'react-redux';
+import UserPanel from './UserPanel';
 
 class RoomMenu extends React.Component {
   state = {
+    user: this.props.user
   }
 
   render() {
     // get chatroom, if chatroom null, show homemenu, if chatroom, show chatmenu
+    const {user} = this.state;
     return (
       <Menu
         size='large' 
@@ -40,6 +43,8 @@ class RoomMenu extends React.Component {
           } 
         />
 
+        <UserPanel user={user} /> 
+
         {/* <HeaderFooter 
           chatroom={chatroom} 
           openModal={this.openCategoryModal}
@@ -65,21 +70,6 @@ class RoomMenu extends React.Component {
         {/* Display Chatroom categories + channels */}
         {/* {this.displayCategories(categories)} */}
 
-        {/* Modal for Settings Modal */}
-        {/* <Modal size='small' basic centered={false} >
-          <Modal.Header>Settings</Modal.Header>
-          <Modal.Content>
-            <Segment>
-              <Label attached='top' >Name</Label>
-              <Input fluid placeholder='Category Name' name='name' />
-            </Segment>
-            <Button.Group attached='bottom'>
-              <Button negative >Cancel</Button>
-              <Button.Or />
-              <Button positive >Save</Button>
-            </Button.Group>
-          </Modal.Content>
-        </Modal> */}
 
       </Menu> 
     )
