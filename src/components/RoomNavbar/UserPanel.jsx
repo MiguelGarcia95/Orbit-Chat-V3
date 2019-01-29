@@ -1,5 +1,6 @@
 import React from 'react';
-import {Grid, Image, Container, Modal, Segment, Button, Label, Input, Dropdown} from 'semantic-ui-react';
+import {Grid, Image, Container, Icon} from 'semantic-ui-react';
+// import {Grid, Image, Container, Modal, Segment, Button, Label, Input, Dropdown, Icon} from 'semantic-ui-react';
 
 class UserPanel extends React.Component {
   state = {
@@ -24,11 +25,7 @@ class UserPanel extends React.Component {
             </Grid.Column>
             <Grid.Column verticalAlign='middle' width={2}>
               <Container fluid>
-                <Dropdown icon='cog'>
-                  <Dropdown.Menu direction='left' >
-                    <Dropdown.Item text='New Category' onClick={this.openModal} />
-                  </Dropdown.Menu>
-                </Dropdown>
+                <Icon name='cog' onClick={this.openModal} />
               </Container>
             </Grid.Column>
           </Grid.Row>
