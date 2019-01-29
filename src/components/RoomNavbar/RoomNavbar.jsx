@@ -3,6 +3,7 @@ import {Grid, Sidebar, Menu, Button, Divider, Image, Modal, Input, Label, Segmen
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import UserPanel from '../UserPanel/UserPanel';
+import RoomMenu from './RoomMenu';
 
 class RoomNavbar extends React.Component {
   state = {
@@ -55,7 +56,8 @@ class RoomNavbar extends React.Component {
           {/* BS */}
           {/* <UserPanel user={user} /> */}
 
-          {/* <Link to='/app'><Image src='/img/ChatLogo.png' size='mini' rounded centered /></Link> */}
+          <Link to='/app'><Image src='/img/ChatLogo.png' size='mini' rounded centered /></Link>
+
           <Divider hidden />
           <Button icon='add' size='small' color='grey' inverted onClick={this.openModal} />
           
@@ -81,7 +83,7 @@ class RoomNavbar extends React.Component {
           </Modal>
         </Sidebar>
         {/* Add New Menu here  */}
-        {/* <Menu /> */}
+        <RoomMenu />
       </Grid>
     )
   }
