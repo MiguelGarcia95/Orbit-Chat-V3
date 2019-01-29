@@ -20,7 +20,8 @@ class RoomNavbar extends React.Component {
   static getDerivedStateFromProps(props, state) {
     return {
       ...state,
-      user: props.user
+      user: props.user,
+      chatrooms: props.chatrooms
     }
   }
 
@@ -51,9 +52,7 @@ class RoomNavbar extends React.Component {
   }
 
   render() {
-    const {modal} = this.state;
-    const {user} = this.props;
-    console.log(this.props.chatrooms)
+    const {modal, user, chatrooms} = this.state;
     return !user ? null : (
       <Grid columns='equal' >
         <Sidebar 
