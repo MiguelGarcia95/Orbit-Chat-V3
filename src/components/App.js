@@ -22,15 +22,6 @@ class App extends React.Component {
     const {user} = this.props;
     return !user ? <Spinner /> : (
       <Grid columns='equal'>
-        {/* <Sidebar 
-          width='very thin'
-          icon='labeled'
-          as={Menu}
-          inverted
-          vertical
-          visible
-        /> */}
-
         <Grid.Column style={{marginLeft: 320}}>
           <React.Fragment></React.Fragment>
         </Grid.Column>

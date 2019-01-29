@@ -15,16 +15,6 @@ class Chatroom extends React.Component {
     const {user} = this.props;
     return !user ? <Spinner /> : (
       <Grid columns='equal' className='app'>
-        {/* <Sidebar 
-          width='very thin'
-          icon='labeled'
-          as={Menu}
-          inverted
-          vertical
-          visible
-        /> */}
-
-
         <Grid.Column style={{marginLeft: 320}} >
           <React.Fragment>
             {/* <ChatCommentPanel  channels={channels} user={user} chatroom={chatroom} getChannelComments={this.props.getChannelComments} /> */}
