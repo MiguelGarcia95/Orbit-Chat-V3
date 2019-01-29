@@ -20,6 +20,7 @@ class App extends React.Component {
 
   render() {
     const {user} = this.props;
+    // if user not set, load
     return (
       <Grid columns='equal'>
         <Sidebar 
