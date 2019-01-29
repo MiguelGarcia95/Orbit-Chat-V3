@@ -33,3 +33,17 @@ export const getChatroom = chatroomId => {
     console.log(chatroomId)
   }
 }
+
+export const getChatrooms = () => {
+  return (dispatch, getState, {getFirestore}) => {
+    // get only get chatrooms that you belong too, later 
+    const firestore = getFirestore();
+    firestore.collection('chatrooms').get().then(data => {
+      let chatrooms = [];
+      data.forEach(doc => {
+        chatrooms.push({id: doc.id, chatroom: doc.data()})
+      })
+      console.log(chatrooms)
+    })
+  }
+}
