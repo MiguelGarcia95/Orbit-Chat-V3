@@ -7,6 +7,7 @@ class RoomMenu extends React.Component {
   }
 
   render() {
+    // get chatroom, if chatroom null, show homemenu, if chatroom, show chatmenu
     return (
       <Menu
         size='large' 
