@@ -1,6 +1,7 @@
 import React from 'react';
-// import firebase from '../../firebase';
-import {Grid, Sidebar, Menu} from 'semantic-ui-react';
+import firebase from '../../firebase';
+import {Grid} from 'semantic-ui-react';
+// import {Grid, Sidebar, Menu} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import Spinner from '../Layout/Spinner';
 
@@ -9,6 +10,11 @@ class Chatroom extends React.Component {
   }
 
   componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (!user) {
+        this.props.history.push('/signin');
+      }
+    })
   }
 
   render() {
