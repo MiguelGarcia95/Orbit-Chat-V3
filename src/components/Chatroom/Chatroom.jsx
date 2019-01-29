@@ -3,6 +3,7 @@ import React from 'react';
 import {Grid, Sidebar, Menu} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import ChatMenu from './ChatMenu';
+import Spinner from '../Layout/Spinner';
 
 class Chatroom extends React.Component {
   state = {
@@ -12,7 +13,8 @@ class Chatroom extends React.Component {
   }
 
   render() {
-    return (
+    const {user} = this.props;
+    return !user ? <Spinner /> : (
       <Grid columns='equal' className='app'>
         <Sidebar 
           width='very thin'
