@@ -19,6 +19,8 @@ class App extends React.Component {
   }
 
   render() {
+    const {user} = this.props;
+    console.log(user);
     return (
       <Grid columns='equal'>
         <Sidebar 
