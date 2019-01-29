@@ -2,7 +2,7 @@ import React from 'react';
 import {Grid, Sidebar, Menu, Button, Divider, Image, Modal, Input, Label, Segment} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {createChatroom} from '../../actions/chatroomActions';
+import {createChatroom, getChatrooms} from '../../actions/chatroomActions';
 import UserPanel from '../UserPanel/UserPanel';
 import RoomMenu from './RoomMenu';
 
@@ -14,6 +14,7 @@ class RoomNavbar extends React.Component {
   }
 
   componentDidMount() {
+    this.props.getChatrooms()
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -52,7 +53,7 @@ class RoomNavbar extends React.Component {
   render() {
     const {modal} = this.state;
     const {user} = this.props;
-    // console.log()
+    console.log(this.props.chatrooms)
     return !user ? null : (
       <Grid columns='equal' >
         <Sidebar 
@@ -103,13 +104,15 @@ class RoomNavbar extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.auth.currentUser
+    user: state.auth.currentUser,
+    chatrooms: state.chat.chatrooms
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    createChatroom: (chatroom) => dispatch(createChatroom(chatroom))
+    createChatroom: (chatroom) => dispatch(createChatroom(chatroom)),
+    getChatrooms: () => dispatch(getChatrooms())
   }
 }
 
