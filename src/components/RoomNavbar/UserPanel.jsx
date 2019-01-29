@@ -18,7 +18,8 @@ class UserPanel extends React.Component {
           <Grid.Row columns='2'>
             <Grid.Column verticalAlign='middle' width={12}>
               <Container fluid>
-                {user.displayName}
+              <Image src={user.photoURL} avatar title={`${user.displayName}'s settings`} />
+              {user.displayName}
               </Container>
             </Grid.Column>
             <Grid.Column verticalAlign='middle' width={2}>
