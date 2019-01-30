@@ -8,11 +8,13 @@ import MenuHeader from './MenuHeader';
 class RoomMenu extends React.Component {
   state = {
     user: this.props.user,
+    currentChatroom: this.props.currentChatroom
   }
   
   render() {
     // get chatroom, if chatroom null, show homemenu, if chatroom, show chatmenu
-    const {user} = this.state;
+    const {user, currentChatroom} = this.state;
+    console.log(this.props.currentChatroom)
     return (
       <Menu
         size='large' 
