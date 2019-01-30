@@ -34,6 +34,7 @@ class RoomMenu extends React.Component {
         <UserPanel user={user} /> 
 
         {/* Display Chatroom categories + channels */}
+        {/* {this.displayFriends(categories)} */}
         {/* {this.displayCategories(categories)} */}
 
       </Menu> 
