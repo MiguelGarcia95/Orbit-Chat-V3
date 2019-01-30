@@ -61,6 +61,16 @@ export const getChatroom = chatroomId => {
   }
 }
 
+export const clearChatroom = () => {
+  return (dispatch) => {
+    dispatch({
+      type: actionTypes.CLEAR_CHATROOM,
+      chatroomError: null,
+      currentChatroom: null
+    })
+  }
+}
+
 export const getChatrooms = () => {
   return (dispatch, getState, {getFirestore}) => {
     // get only get chatrooms that you belong too, later 
