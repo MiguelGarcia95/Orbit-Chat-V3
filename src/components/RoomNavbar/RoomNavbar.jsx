@@ -22,7 +22,8 @@ class RoomNavbar extends React.Component {
       user: props.user,
       chatrooms: props.chatrooms,
       currentChatroom: props.currentChatroom,
-      inChatroom: props.inChatroom
+      inChatroom: props.inChatroom,
+      chatroomRedirect: props.chatroomRedirect
     }
   }
 
@@ -53,7 +54,8 @@ class RoomNavbar extends React.Component {
   }
 
   render() {
-    const {modal, user, chatrooms, currentChatroom, inChatroom} = this.state;
+    const {modal, user, chatrooms, currentChatroom, inChatroom, chatroomRedirect} = this.state;
+    console.log('redirect ? ', chatroomRedirect)
     return !user ? null : (
       <Grid columns='equal' >
         <Sidebar 
@@ -106,7 +108,8 @@ const mapStateToProps = state => {
     user: state.auth.currentUser,
     chatrooms: state.chat.chatrooms,
     currentChatroom: state.chat.currentChatroom,
-    inChatroom: state.chat.inChatroom
+    inChatroom: state.chat.inChatroom,
+    chatroomRedirect: state.chat.chatroomRedirect
   }
 }
 

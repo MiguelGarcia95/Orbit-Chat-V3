@@ -19,6 +19,12 @@ class Chatroom extends React.Component {
     })
   }
 
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    this.props.getChatroom(nextProps.match.params.roomId);
+  }
+
+  
+
   render() {
     const {user} = this.props;
     return !user ? <Spinner /> : (

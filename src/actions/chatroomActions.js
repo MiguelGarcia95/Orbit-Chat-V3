@@ -38,7 +38,8 @@ export const getChatroom = chatroomId => {
           payload: {
             currentChatroom: {id: chatroom.id, chatroom: chatroom.data()},
             chatroomError: null,
-            inChatroom: true
+            inChatroom: true,
+            chatroomRedirect: false
           }
         })
       } else {
@@ -47,7 +48,8 @@ export const getChatroom = chatroomId => {
           payload: {
             currentChatroom: null,
             chatroomError: 'Chatroom does not exist.',
-            inChatroom: true
+            inChatroom: true,
+            chatroomRedirect: true
           }
         })
       }
@@ -57,7 +59,8 @@ export const getChatroom = chatroomId => {
         payload: {
           currentChatroom: null,
           chatroomError: err.message,
-          inChatroom: true
+          inChatroom: true,
+          chatroomRedirect: true
         }
       })
     })
@@ -71,7 +74,8 @@ export const clearChatroom = () => {
       payload: {
         chatroomError: null,
         currentChatroom: null,
-        inChatroom: false
+        inChatroom: false,
+        chatroomRedirect: false
       }
     })
   }
