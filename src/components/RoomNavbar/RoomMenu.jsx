@@ -12,8 +12,8 @@ class RoomMenu extends React.Component {
   
   render() {
     // get chatroom, if chatroom null, show homemenu, if chatroom, show chatmenu
-    const {user, currentChatroom} = this.state;
-    console.log(this.props.currentChatroom)
+    const {user} = this.state;
+    const {inChatroom, currentChatroom} = this.props;
     return (
       <Menu
         size='large' 
@@ -21,7 +21,8 @@ class RoomMenu extends React.Component {
         vertical
         className='Chatroom_Header'
       >
-        <MenuHeader user={user} />
+        {!inChatroom && !currentChatroom ? null : <MenuHeader user={user} /> }
+        
         <UserPanel user={user} /> 
 
         {/* Display Chatroom categories + channels */}

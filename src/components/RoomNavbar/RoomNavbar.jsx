@@ -53,7 +53,7 @@ class RoomNavbar extends React.Component {
   }
 
   render() {
-    const {modal, user, chatrooms, currentChatroom} = this.state;
+    const {modal, user, chatrooms, currentChatroom, inChatroom} = this.state;
     return !user ? null : (
       <Grid columns='equal' >
         <Sidebar 
@@ -95,7 +95,7 @@ class RoomNavbar extends React.Component {
         </Sidebar>
 
         {/* Menu here  */}
-        <RoomMenu user={user} currentChatroom={currentChatroom}/>
+        <RoomMenu user={user} currentChatroom={currentChatroom} inChatroom={inChatroom} />
       </Grid>
     )
   }
