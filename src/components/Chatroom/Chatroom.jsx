@@ -23,6 +23,15 @@ class Chatroom extends React.Component {
     this.props.getChatroom(nextProps.match.params.roomId);
   }
 
+  // if (state.roomId !== props.match.params.roomId) {
+  //   console.log('redirect ? ', props.chatroomRedirect)
+  // }
+
+  // if (state.firstLoad === true) {
+  //   console.log('redirect ? ', props.chatroomRedirect)
+  // }
+  
+
   
 
   render() {
