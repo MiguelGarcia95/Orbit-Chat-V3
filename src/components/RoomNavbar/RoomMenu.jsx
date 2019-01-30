@@ -1,6 +1,5 @@
 import React from 'react';
 import {Menu} from 'semantic-ui-react';
-// import {connect} from 'react-redux';
 import UserPanel from './UserPanel';
 import MenuHeader from './MenuHeader';
 
@@ -43,6 +42,7 @@ class RoomMenu extends React.Component {
 
         {/* Display Chatroom categories + channels */}
         {/* {this.displayFriends(categories)} */}
+
         {/* {this.displayCategories(categories)} */}
         {/* for categories set active category for parent of active channel. Active category can't collapse */}
 
