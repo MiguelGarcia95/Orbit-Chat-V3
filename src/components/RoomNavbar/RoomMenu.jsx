@@ -9,6 +9,14 @@ class RoomMenu extends React.Component {
     user: this.props.user,
     currentChatroom: this.props.currentChatroom
   }
+
+  displayMenuHeader = (inChatroom, currentChatroom, user) => {
+    if (inChatroom && currentChatroom) {
+      return <MenuHeader user={user} />
+    } else {
+      return null
+    }
+  }
   
   render() {
     const {user} = this.state;
@@ -21,7 +29,7 @@ class RoomMenu extends React.Component {
         className='Chatroom_Header'
       >
         {/* If it passes, we are in a chatroom and display */}
-        {!inChatroom && !currentChatroom ? null : <MenuHeader user={user} /> }
+        {this.displayMenuHeader(inChatroom, currentChatroom, user)}
 
         <UserPanel user={user} /> 
 

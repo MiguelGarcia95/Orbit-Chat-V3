@@ -24,16 +24,8 @@ class RoomNavbar extends React.Component {
       chatrooms: props.chatrooms,
       currentChatroom: props.currentChatroom,
       inChatroom: props.inChatroom
-      // chatroomRedirect: props.chatroomRedirect
     }
   }
-
-  // UNSAFE_componentWillReceiveProps(nextProps) {
-  //   if (nextProps.match.params.roomId !== nextProps.match.params.roomId) {
-  //     console.log('redirect ? ', nextProps.chatroomRedirect)
-  //   }
-  //   // this.props.getChatroom(nextProps.match.params.roomId);
-  // }
 
   onChange = e => this.setState({[e.target.name]: e.target.value});
 
@@ -62,7 +54,7 @@ class RoomNavbar extends React.Component {
   }
 
   render() {
-    const {modal, user, chatrooms, currentChatroom, inChatroom, chatroomRedirect} = this.state;
+    const {modal, user, chatrooms, currentChatroom, inChatroom} = this.state;
     return !user ? null : (
       <Grid columns='equal' >
         <Sidebar 
@@ -116,7 +108,6 @@ const mapStateToProps = state => {
     chatrooms: state.chat.chatrooms,
     currentChatroom: state.chat.currentChatroom,
     inChatroom: state.chat.inChatroom,
-    chatroomRedirect: state.chat.chatroomRedirect
   }
 }
 
