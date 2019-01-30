@@ -17,6 +17,14 @@ class RoomMenu extends React.Component {
       return null
     }
   }
+
+  displayMenuContent = (value) => {
+    if (value) {
+      console.log('chatmenu menu')
+    } else {
+      console.log('home menu')
+    }
+  }
   
   render() {
     const {user} = this.state;
