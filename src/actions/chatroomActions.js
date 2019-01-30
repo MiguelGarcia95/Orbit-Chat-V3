@@ -33,10 +33,30 @@ export const getChatroom = chatroomId => {
     const firestore = getFirestore();
     firestore.collection('chatrooms').doc(chatroomId).get().then(chatroom => {
       if (chatroom.exists) {
-        console.log({id: chatroom.id, chatroom: chatroom.data()})
+        dispatch({
+          type: actionTypes.GET_CHATROOM,
+          payload: {
+            currentChatroom: {id: chatroom.id, chatroom: chatroom.data()},
+            chatroomError: null
+          }
+        })
       } else {
-        console.log('does not exist')
+        dispatch({
+          type: actionTypes.GET_CHATROOM,
+          payload: {
+            currentChatroom: null,
+            chatroomError: 'Chatroom does not exist.'
+          }
+        })
       }
+    }).catch(err => {
+      dispatch({
+        type: actionTypes.GET_CHATROOM,
+        payload: {
+          currentChatroom: null,
+          chatroomError: err.message
+        }
+      })
     })
   }
 }
