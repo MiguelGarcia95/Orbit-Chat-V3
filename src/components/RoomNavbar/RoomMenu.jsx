@@ -44,6 +44,7 @@ class RoomMenu extends React.Component {
         {/* Display Chatroom categories + channels */}
         {/* {this.displayFriends(categories)} */}
         {/* {this.displayCategories(categories)} */}
+        {/* for categories set active category for parent of active channel. Active category can't collapse */}
 
       </Menu> 
     )
