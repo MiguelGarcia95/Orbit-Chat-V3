@@ -54,6 +54,13 @@ export const createCategory = category => {
   }
 }
 
+export const getChatroomCategories = chatroomId => ({
+  return (dispatch, getState, {getFirestore}) => {
+    const firestore = getFirestore();
+    console.log(chatroomId)
+  }
+})
+
 export const getChatroom = chatroomId => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
