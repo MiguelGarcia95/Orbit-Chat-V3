@@ -28,6 +28,29 @@ export const createChatroom = chatroom => {
   }
 }
 
+export const createCategory = category => {
+  return (dispatch, getState, {getFirestore}) => {
+    const firestore = getFirestore();
+    firestore.add(`categories/${category.chatroomId}`, {
+
+    }).then(() => {
+      dispatch({
+        type: actionTypes.CREATE_CATEGORY,
+        payload: {
+          chatroomError: null
+        }
+      })
+    }).catch(err => {
+      dispatch({
+        type: actionTypes.CREATE_CATEGORY,
+        payload: {
+          chatroomError: err.message
+        }
+      })
+    })
+  }
+}
+
 export const getChatroom = chatroomId => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();

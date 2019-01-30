@@ -10,3 +10,6 @@ export const CREATE_CHATROOM = 'CREATE_CHATROOM';
 export const GET_CHATROOM = 'GET_CHATROOM';
 export const CLEAR_CHATROOM = 'CLEAR_CHATROOM';
 export const GET_CHATROOMS = 'GET_CHATROOMS';
+
+// Category
+export const CREATE_CATEGORY = 'CREATE_CATEGORY';
