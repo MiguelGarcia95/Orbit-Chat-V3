@@ -1,16 +1,25 @@
 import React from 'react';
 import {Grid, Menu, Container, Modal, Segment, Button, Label, Input, Dropdown} from 'semantic-ui-react';
 import {connect} from 'react-redux';
+import {createCategory} from '../../actions/chatroomActions';
 
 class MenuHeader extends React.Component {
   state = {
     modal: false,
     user: this.props.user,
     chatroom: this.props.chatroom,
+    name: ''
   }
 
   openModal = () => this.setState({modal: true});
   closeModal = () => this.setState({modal: false});
+
+  onChange = e => this.setState({[e.target.name]: e.target.value});
+
+  onSubmit = () => {
+    this.props.createCategory(this.state);
+    this.closeModal();
+  }
 
   render() {
     const {modal} = this.state;
@@ -46,12 +55,12 @@ class MenuHeader extends React.Component {
           <Modal.Content>
             <Segment>
               <Label attached='top' color='black' >Name</Label>
-              <Input fluid placeholder='Category Name' name='categoryName' />
+              <Input fluid placeholder='Category Name' name='name' onChange={this.onChange} />
             </Segment>
             <Button.Group attached='bottom'>
               <Button negative onClick={this.closeModal} >Cancel</Button>
               <Button.Or />
-              <Button positive >Create</Button>
+              <Button positive onClick={this.onSubmit} >Create</Button>
             </Button.Group>
           </Modal.Content>
         </Modal>
@@ -60,4 +69,10 @@ class MenuHeader extends React.Component {
   }
 }
 
-export default connect()(MenuHeader);
+const mapDispatchToProps = dispatch => {
+  return {
+    createCategory: category => dispatch(createCategory(category))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(MenuHeader);

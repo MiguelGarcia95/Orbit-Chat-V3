@@ -12,7 +12,7 @@ class RoomMenu extends React.Component {
 
   displayMenuHeader = (inChatroom, currentChatroom, user) => {
     if (inChatroom && currentChatroom) {
-      return <MenuHeader user={user} />
+      return <MenuHeader user={user} chatroom={currentChatroom} />
     } else {
       return null
     }
