@@ -57,7 +57,13 @@ export const createCategory = category => {
 export const getChatroomCategories = chatroomId => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
-    console.log(chatroomId)
+    firestore.collection(`categories/${chatroomId}/categories`).get().then(data => {
+      let categories = [];
+      data.forEach(doc => {
+        categories.push({id: doc.id, category: doc.data()})
+      })
+      console.log(categories)
+    })
   }
 }
 
