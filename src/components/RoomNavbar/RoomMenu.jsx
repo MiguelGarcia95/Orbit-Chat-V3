@@ -2,6 +2,8 @@ import React from 'react';
 import {Menu} from 'semantic-ui-react';
 import UserPanel from './UserPanel';
 import MenuHeader from './MenuHeader';
+import MenuCategories from './MenuCategories';
+import MenuHome from './MenuHome';
 
 class RoomMenu extends React.Component {
   state = {
@@ -20,8 +22,10 @@ class RoomMenu extends React.Component {
   displayMenuContent = (value) => {
     if (value) {
       console.log('chatmenu menu')
+      // return <MenuCategories />
     } else {
       console.log('home menu')
+      // return <MenuHome />
     }
   }
   
