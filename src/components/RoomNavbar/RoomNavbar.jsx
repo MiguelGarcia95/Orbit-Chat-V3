@@ -21,7 +21,8 @@ class RoomNavbar extends React.Component {
       ...state,
       user: props.user,
       chatrooms: props.chatrooms,
-      currentChatroom: props.currentChatroom
+      currentChatroom: props.currentChatroom,
+      inChatroom: props.inChatroom
     }
   }
 
@@ -92,7 +93,7 @@ class RoomNavbar extends React.Component {
             </Modal.Content>
           </Modal>
         </Sidebar>
-        
+
         {/* Menu here  */}
         <RoomMenu user={user} currentChatroom={currentChatroom}/>
       </Grid>
@@ -104,7 +105,8 @@ const mapStateToProps = state => {
   return {
     user: state.auth.currentUser,
     chatrooms: state.chat.chatrooms,
-    currentChatroom: state.chat.currentChatroom
+    currentChatroom: state.chat.currentChatroom,
+    inChatroom: state.chat.inChatroom
   }
 }
 
