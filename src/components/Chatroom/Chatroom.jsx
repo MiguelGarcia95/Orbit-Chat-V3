@@ -24,23 +24,10 @@ class Chatroom extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     this.props.getChatroom(nextProps.match.params.roomId);
     if (!this.state.firstLoad && nextProps.chatroomRedirect) {
-      console.log('once')
       this.props.history.push('/app');
     }
     this.setState({firstLoad: false});
   }  
-
-  // static getDerivedStateFromProps(props, state) {
-  //   props.getChatroom(props.match.params.roomId);
-
-  //   if (!state.firstLoad) {
-  //     console.log(props.chatroomRedirect)
-  //   }
-  //   return {
-  //     ...state,
-  //     firstLoad: false
-  //   }
-  // }
 
   render() {
     const {user} = this.props;
