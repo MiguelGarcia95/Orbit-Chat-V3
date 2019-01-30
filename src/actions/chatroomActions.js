@@ -65,8 +65,10 @@ export const clearChatroom = () => {
   return (dispatch) => {
     dispatch({
       type: actionTypes.CLEAR_CHATROOM,
-      chatroomError: null,
-      currentChatroom: null
+      payload: {
+        chatroomError: null,
+        currentChatroom: null
+      }
     })
   }
 }
