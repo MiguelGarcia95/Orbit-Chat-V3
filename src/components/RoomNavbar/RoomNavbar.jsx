@@ -14,7 +14,6 @@ class RoomNavbar extends React.Component {
 
   componentDidMount() {
     this.props.getChatrooms()
-    // console.log('redirect ? ', this.props.chatroomRedirect)
   }
 
   static getDerivedStateFromProps(props, state) {
