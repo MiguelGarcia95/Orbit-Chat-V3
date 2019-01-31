@@ -26,8 +26,8 @@ class ChannelCategory extends React.Component {
     return (
       <React.Fragment>
         <Grid  >
-          <Container fluid textAlign='right' className='category__container'>
-            <Header as='h2' className='category__header' floated='left' >{this.props.category.category.name}</Header>
+          <Container fluid textAlign='right' className='category_container'>
+            <Header as='h3' className='category_header' floated='left' >{this.props.category.category.name}</Header>
             <Icon name='plus' style={{cursor: 'pointer'}}  onClick={this.openModal} />
           </Container>
           <Container fluid textAlign='right'>

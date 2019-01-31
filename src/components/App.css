@@ -41,3 +41,15 @@ html, body, .app {
 }
 
 .grid-icon {cursor: pointer;}
+
+.category_container {
+  /* margin-top: 20px; */
+  height: 100%;
+  background-color: red;
+  position: absolute;
+  top: 0;
+}
+
+.category_header {
+  margin: 0px 0px 5px 0px !important;
+}
