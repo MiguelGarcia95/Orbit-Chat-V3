@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Menu, Container, Modal, Segment, Button, Label, Input, Dropdown} from 'semantic-ui-react';
+import {Grid, Container, Modal, Segment, Button, Label, Input, Dropdown} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {createCategory} from '../../actions/chatroomActions';
 

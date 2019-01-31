@@ -25,10 +25,13 @@ class ChannelCategory extends React.Component {
   closeModal = () => this.setState({modal: false});
 
   displayChannels = (channels, category) => {
+
   }
 
   render() {
-    const {modal} = this.state;
+    const {modal, user, chatroom, category} = this.state;
+    const {channels} = this.props;
+    console.log(channels)
     return (
       <React.Fragment>
         <Grid className='category_container' >
