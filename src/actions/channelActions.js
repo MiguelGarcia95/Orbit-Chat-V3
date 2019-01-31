@@ -35,8 +35,21 @@ export const getChannels = (chatroomId) => {
       data.forEach(doc => {
         channels.push({id: doc.id, channel: doc.data()})
       })
-      console.log(channels)
+      dispatch({
+        type: actionTypes.GET_CHATROOM_CHANNELS,
+        payload: {
+          channelError: null,
+          channels: channels
+        }
+      })
+    }).catch(err => {
+      dispatch({
+        type: actionTypes.GET_CHATROOM_CHANNELS,
+        payload: {
+          channelError: err.message,
+          channels: []
+        }
+      })
     })
-    // console.log(chatroomId)
   }
 }
