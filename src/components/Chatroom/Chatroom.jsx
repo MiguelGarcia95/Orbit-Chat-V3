@@ -8,7 +8,8 @@ import Spinner from '../Layout/Spinner';
 class Chatroom extends React.Component {
   state = {
     redirect: false,
-    firstLoad: true
+    firstLoad: true,
+    fetchedChatroom: false
   }
 
   componentDidMount() {
@@ -22,16 +23,19 @@ class Chatroom extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    this.props.getChatroom(nextProps.match.params.roomId);
     if (!this.state.firstLoad && nextProps.chatroomRedirect) {
       this.props.history.push('/app');
+    } else if (!this.state.firstLoad && !this.state.fetchedChatroom) {
+      this.props.getChatroom(nextProps.match.params.roomId);
+      this.setState({fetchedChatroom: true});
     }
     this.setState({firstLoad: false});
   }  
 
   render() {
-    const {user} = this.props;
-    return !user ? <Spinner /> : (
+    const {user, currentChatroom} = this.props;
+    // console.log(currentChatroom)
+    return !user || !currentChatroom ? <Spinner /> : (
       <Grid columns='equal' className='app'>
         <Grid.Column style={{marginLeft: 320}} >
           <React.Fragment>
@@ -49,7 +53,8 @@ class Chatroom extends React.Component {
 const mapStateToProps = state => {
   return {
     user: state.auth.currentUser,
-    chatroomRedirect: state.chat.chatroomRedirect
+    chatroomRedirect: state.chat.chatroomRedirect,
+    currentChatroom: state.chat.currentChatroom
   }
 }
 

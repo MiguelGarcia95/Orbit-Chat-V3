@@ -20,14 +20,15 @@ class RoomMenu extends React.Component {
   displayCategories = (inChatroom, currentChatroom, user) => {
     if (inChatroom && currentChatroom) {
       return <MenuCategories user={user} chatroom={currentChatroom}  />
-    }
-  }
-
-  displayHomeOptions = (inChatroom, currentChatroom, user) => {
-    if (!inChatroom && !currentChatroom) {
+    } else {
       return <MenuHome user={user} chatroom={currentChatroom} />
     }
   }
+
+  // displayHomeOptions = (inChatroom, currentChatroom, user) => {
+  //   if (!inChatroom && !currentChatroom) {
+  //   }
+  // }
   
   render() {
     const {user} = this.state;
@@ -42,13 +43,14 @@ class RoomMenu extends React.Component {
         {/* If it passes, we are in a chatroom and display */}
         {this.displayMenuHeader(inChatroom, currentChatroom, user)}
 
-        <UserPanel user={user} /> 
-
+        {/* for categories set active category for parent of active channel. Active category can't collapse */}
         {/* Display Chatroom categories + channels */}
         {this.displayCategories(inChatroom, currentChatroom, user)}
 
-        {/* for categories set active category for parent of active channel. Active category can't collapse */}
+        {/* Display Home MEnu and options */}
+        {/* {this.displayHomeOptions(inChatroom, currentChatroom, user)} */}
 
+        <UserPanel user={user} /> 
       </Menu> 
     )
   }

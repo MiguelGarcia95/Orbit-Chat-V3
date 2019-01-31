@@ -9,6 +9,7 @@ class MenuHome extends React.Component {
   render() {
     return (
       <Menu>
+        <p>Home settings & nakama</p>
       </Menu> 
     )
   }
