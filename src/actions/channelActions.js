@@ -3,8 +3,7 @@ import * as actionTypes from './types';
 export const createChannel = channel => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
-    // channels / chatroomId-categoryId / channels
-    firestore.add(`channels/${channel.chatroom.id}-${channel.category.id}/channels`, {
+    firestore.add(`channels/${channel.chatroom.id}/channels`, {
       name: channel.name,
       description: channel.description,
       uid: channel.user.uid,

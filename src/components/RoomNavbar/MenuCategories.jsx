@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {getChatroomCategories, getChannels} from '../../actions/chatroomActions';
+import {getChatroomCategories} from '../../actions/chatroomActions';
+import {getChannels} from '../../actions/channelActions';
 import ChannelCategory from '../Layout/ChannelCategory';
 
 class MenuCategories extends React.Component {
