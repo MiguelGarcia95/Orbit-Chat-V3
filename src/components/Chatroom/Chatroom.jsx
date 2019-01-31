@@ -34,7 +34,6 @@ class Chatroom extends React.Component {
 
   render() {
     const {user, currentChatroom} = this.props;
-    // console.log(currentChatroom)
     return !user || !currentChatroom ? <Spinner /> : (
       <Grid columns='equal' className='app'>
         <Grid.Column style={{marginLeft: 320}} >
