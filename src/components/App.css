@@ -51,13 +51,12 @@ html, body, .app {
   box-sizing: border-box;
   height: 100%;
   width: 100%;
-  /* background-color: red; */
   position: absolute;
-  /* top: 50px; */
-  padding-top: 50px !important;
+  padding-top: 70px !important;
   padding-bottom: 70px !important;
 }
 
 .category_header {
   margin: 0px 0px 5px 0px !important;
+  font-weight: 400 !important;
 }

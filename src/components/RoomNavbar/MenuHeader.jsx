@@ -25,30 +25,6 @@ class MenuHeader extends React.Component {
     const {modal} = this.state;
     return(
       <React.Fragment>
-        {/* <Menu.Header 
-          as='div'
-          className='header_menu'
-          content={
-            <Grid>
-              <Grid.Row columns='2'>
-                <Grid.Column verticalAlign='middle' width={12}>
-                  <Container style={{width: '100%', overflow: 'hidden'}} >
-                    {'Chatroom Name'}
-                  </Container>
-                </Grid.Column>
-                <Grid.Column verticalAlign='middle' width={2}>
-                  <Container fluid>
-                    <Dropdown icon='plus'>
-                      <Dropdown.Menu direction='left' >
-                        <Dropdown.Item text='New Category' onClick={this.openModal} />
-                      </Dropdown.Menu>
-                    </Dropdown>
-                  </Container>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          } 
-        /> */}
         <Grid className='header_menu'>
           <Grid.Row columns='2' style={{paddingBottom: 0}}>
             <Grid.Column verticalAlign='middle' width={12}>
@@ -58,7 +34,6 @@ class MenuHeader extends React.Component {
             </Grid.Column>
             <Grid.Column verticalAlign='middle' width={2}>
               <Container fluid>
-                {/* <Icon name='cog' className='grid-icon' onClick={this.openModal} /> */}
                 <Dropdown icon='plus'>
                   <Dropdown.Menu direction='left' >
                     <Dropdown.Item text='New Category' onClick={this.openModal} />

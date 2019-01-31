@@ -1,6 +1,7 @@
 import React from 'react';
 import {Grid, Header, Container, Icon, Modal, Segment, Label, Input, Button} from 'semantic-ui-react';
 import {connect} from 'react-redux';
+import {createChannel} from '../../actions/channelActions';
 
 class ChannelCategory extends React.Component {
   state = {
@@ -27,7 +28,7 @@ class ChannelCategory extends React.Component {
       <React.Fragment>
         <Grid className='category_container' >
           <Container fluid textAlign='right'>
-            <Header as='h3' className='category_header' floated='left' >{this.props.category.category.name}</Header>
+            <Header as='h4' className='category_header' floated='left' >{this.props.category.category.name}</Header>
             <Icon name='plus' style={{cursor: 'pointer'}}  onClick={this.openModal} />
           </Container>
           <Container fluid textAlign='right'>
@@ -59,5 +60,11 @@ class ChannelCategory extends React.Component {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    createChannel: channel => dispatch(createChannel(channel))
+  }
+}
 
-export default connect()(ChannelCategory);
+const mapDispatchToProps = dispatch => {
+  export default connect(null, )(ChannelCategory);
