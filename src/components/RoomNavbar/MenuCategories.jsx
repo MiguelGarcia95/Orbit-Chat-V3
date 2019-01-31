@@ -13,7 +13,7 @@ class MenuCategories extends React.Component {
     this.props.getChannels(this.props.chatroom.id);
   }
 
-  displayCategories = (categories) => {
+  displayCategories = (categories, channels) => {
     return categories.map(category => {
       return (
         <ChannelCategory  
@@ -21,6 +21,7 @@ class MenuCategories extends React.Component {
           category={category} 
           user={this.props.user} 
           chatroom={this.props.chatroom}
+          channels={channels}
         />
       )
     })
@@ -30,7 +31,7 @@ class MenuCategories extends React.Component {
     const {categories, channels} = this.props;
     return (
       <React.Fragment>
-        {this.displayCategories(categories)}
+        {this.displayCategories(categories, channels)}
       </React.Fragment>
     )
   }
