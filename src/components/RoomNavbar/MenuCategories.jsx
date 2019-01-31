@@ -1,7 +1,7 @@
 import React from 'react';
-import {Menu} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {getChatroomCategories} from '../../actions/chatroomActions';
+import ChannelCategory from '../Layout/ChannelCategory';
 
 class MenuCategories extends React.Component {
   state = {
@@ -10,13 +10,29 @@ class MenuCategories extends React.Component {
   componentDidMount() {
     this.props.getChatroomCategories(this.props.chatroom.id);
   }
+
+  displayCategories = (categories) => {
+    return categories.map(category => {
+      return (
+        <ChannelCategory  
+          key={category.id}
+          channels={this.state.channels}
+          category={category} 
+          user={this.state.user} 
+          chatroom={this.state.chatroom}
+          getChannel={this.props.getChannel}
+          getChannelComments={this.props.getChannelComments}
+        />
+      )
+    })
+  }
   
   render() {
     console.log(this.props.categories)
     return (
-      <Menu>
-        <p>Categories here</p>
-      </Menu> 
+      <React.Fragment>
+
+      </React.Fragment>
     )
   }
 }
