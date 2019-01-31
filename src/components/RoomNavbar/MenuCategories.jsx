@@ -6,13 +6,24 @@ import {getChatroomCategories} from '../../actions/chatroomActions';
 class MenuCategories extends React.Component {
   state = {
   }
+
+  componentDidMount() {
+    this.props.getChatroomCategories(this.props.chatroom.id);
+  }
   
   render() {
+    console.log(this.props.categories)
     return (
       <Menu>
         <p>Categories here</p>
       </Menu> 
     )
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    categories: state.chat.categories
   }
 }
 
@@ -22,4 +33,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(MenuCategories);
+export default connect(mapStateToProps, mapDispatchToProps)(MenuCategories);

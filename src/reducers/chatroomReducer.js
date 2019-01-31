@@ -6,7 +6,8 @@ const initialState = {
   newChatroomId: null,
   inChatroom: false,
   chatroomRedirect: false,
-  chatrooms: []
+  chatrooms: [],
+  categories: []
 }
 
 const chatroomReducer = (state = initialState, action) => {
