@@ -50,7 +50,7 @@ class MenuHeader extends React.Component {
           } 
         /> */}
         <Grid className='header_menu'>
-          <Grid.Row columns='2'>
+          <Grid.Row columns='2' style={{paddingBottom: 0}}>
             <Grid.Column verticalAlign='middle' width={12}>
               <Container fluid>
               {'Chatroom Name'}
