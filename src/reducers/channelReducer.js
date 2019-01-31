@@ -7,6 +7,11 @@ const initialState = {
 
 const chatroomReducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.CREATE_CHANNEL: 
+      return {
+        ...state,
+        channelError: action.payload.channelError
+      }
     default:
       return state;
   }
