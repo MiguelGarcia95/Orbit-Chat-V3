@@ -10,6 +10,7 @@ class MenuCategories extends React.Component {
 
   componentDidMount() {
     this.props.getChatroomCategories(this.props.chatroom.id);
+    this.props.getChannels(this.props.chatroom.id);
   }
 
   displayCategories = (categories) => {
@@ -37,14 +38,15 @@ class MenuCategories extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    categories: state.chat.categories
+    categories: state.chat.categories,
+    channels: state.chat.channels
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     getChatroomCategories: chatroomId => dispatch(getChatroomCategories(chatroomId)),
-    getChannels: (chatroomId, categoryId) => dispatch(getChannels(chatroomId, categoryId))
+    getChannels: (chatroomId) => dispatch(getChannels(chatroomId))
   }
 }
 

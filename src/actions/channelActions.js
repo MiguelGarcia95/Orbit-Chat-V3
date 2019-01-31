@@ -27,9 +27,8 @@ export const createChannel = channel => {
   }
 }
 
-export const getChannels = (chatroomId, categoryId) => {
+export const getChannels = (chatroomId) => {
   return (dispatch, getState, {getFirestore}) => {
     console.log(chatroomId)
-    console.log(categoryId)
   }
 }
