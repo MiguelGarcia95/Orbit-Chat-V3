@@ -28,10 +28,10 @@ class MenuCategories extends React.Component {
   }
   
   render() {
-    console.log(this.props.categories)
+    const {categories} = this.props;
     return (
       <React.Fragment>
-
+        {this.displayCategories(categories)}
       </React.Fragment>
     )
   }
