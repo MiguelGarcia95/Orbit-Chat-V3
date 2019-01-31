@@ -16,12 +16,9 @@ class MenuCategories extends React.Component {
       return (
         <ChannelCategory  
           key={category.id}
-          channels={this.state.channels}
           category={category} 
-          user={this.state.user} 
-          chatroom={this.state.chatroom}
-          getChannel={this.props.getChannel}
-          getChannelComments={this.props.getChannelComments}
+          user={this.props.user} 
+          chatroom={this.props.chatroom}
         />
       )
     })
