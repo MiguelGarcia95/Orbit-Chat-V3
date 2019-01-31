@@ -29,6 +29,14 @@ export const createChannel = channel => {
 
 export const getChannels = (chatroomId) => {
   return (dispatch, getState, {getFirestore}) => {
-    console.log(chatroomId)
+    const firestore = getFirestore();
+    firestore.collection(`channels/${chatroomId}/channels`).get().then(data => {
+      let channels = [];
+      data.forEach(doc => {
+        channels.push({id: doc.id, channel: doc.data()})
+      })
+      console.log(channels)
+    })
+    // console.log(chatroomId)
   }
 }
