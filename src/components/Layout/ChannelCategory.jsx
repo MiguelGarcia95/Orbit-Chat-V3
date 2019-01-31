@@ -7,10 +7,14 @@ class ChannelCategory extends React.Component {
   state = {
     modal: false,
     name: '',
-    description: ''
+    description: '',
+    user: this.props.user,
+    chatroom: this.props.chatroom,
+    category: this.props.category
   }
 
   onSubmit = () => {
+    this.props.createChannel(this.state)
   }
 
   onChange = e => this.setState({[e.target.name]: e.target.value});
