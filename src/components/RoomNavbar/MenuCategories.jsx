@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {getChatroomCategories} from '../../actions/chatroomActions';
+import {getChatroomCategories, getChannels} from '../../actions/chatroomActions';
 import ChannelCategory from '../Layout/ChannelCategory';
 
 class MenuCategories extends React.Component {
@@ -42,7 +42,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getChatroomCategories: chatroomId => dispatch(getChatroomCategories(chatroomId)) 
+    getChatroomCategories: chatroomId => dispatch(getChatroomCategories(chatroomId)),
+    getChannels: (chatroomId, categoryId) => dispatch(getChannels(chatroomId, categoryId))
   }
 }
 
