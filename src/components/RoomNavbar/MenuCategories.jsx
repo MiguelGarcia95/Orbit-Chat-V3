@@ -28,7 +28,6 @@ class MenuCategories extends React.Component {
   
   render() {
     const {categories, channels} = this.props;
-    console.log(channels)
     return (
       <React.Fragment>
         {this.displayCategories(categories)}
@@ -40,7 +39,7 @@ class MenuCategories extends React.Component {
 const mapStateToProps = state => {
   return {
     categories: state.chat.categories,
-    channels: state.chat.channels
+    channels: state.channel.channels
   }
 }
 
