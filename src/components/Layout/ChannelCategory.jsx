@@ -43,7 +43,7 @@ class ChannelCategory extends React.Component {
           textAlign='left'  
           key={channel.id}
           // onClick={this.onChannelClick.bind(null, channel)}
-          className='category__channel' 
+          className='category_channel' 
         >
           {channel.channel.name}
         </Header>
