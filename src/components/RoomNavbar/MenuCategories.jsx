@@ -27,7 +27,8 @@ class MenuCategories extends React.Component {
   }
   
   render() {
-    const {categories} = this.props;
+    const {categories, channels} = this.props;
+    console.log(channels)
     return (
       <React.Fragment>
         {this.displayCategories(categories)}
