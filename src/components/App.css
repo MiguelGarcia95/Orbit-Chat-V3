@@ -60,3 +60,14 @@ html, body, .app {
   margin: 0px 0px 5px 0px !important;
   font-weight: 400 !important;
 }
+
+.category_channel {
+  margin: 0px !important;
+  padding: 5px !important;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.category_channel:hover {
+  background-color: rgba(0,0,0,0.1);
+}

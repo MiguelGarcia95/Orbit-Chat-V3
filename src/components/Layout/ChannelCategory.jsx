@@ -24,14 +24,36 @@ class ChannelCategory extends React.Component {
 
   closeModal = () => this.setState({modal: false});
 
-  displayChannels = (channels, category) => {
+  
+  sortChannels = (channels, category) => {
+    return channels.reduce(function (filteredChannels, channel) {
+      if (channel.channel.categoryId === category.id) {
+        filteredChannels.push(channel)
+      }
+      return filteredChannels
+    }, [])
+  }
 
+  displayChannels = (channels, category) => {
+    let matchingChannels = this.sortChannels(channels, category);
+    return matchingChannels.map(channel => {
+      return (
+        <Header 
+          as='h5' 
+          textAlign='left'  
+          key={channel.id}
+          // onClick={this.onChannelClick.bind(null, channel)}
+          className='category__channel' 
+        >
+          {channel.channel.name}
+        </Header>
+      )
+    })
   }
 
   render() {
     const {modal, user, chatroom, category} = this.state;
     const {channels} = this.props;
-    console.log(channels)
     return (
       <React.Fragment>
         <Grid className='category_container' >
@@ -40,7 +62,7 @@ class ChannelCategory extends React.Component {
             <Icon name='plus' style={{cursor: 'pointer'}}  onClick={this.openModal} />
           </Container>
           <Container fluid textAlign='right'>
-            {/* {this.displayChannels(channels, category)} */}
+            {this.displayChannels(channels, category)}
           </Container>
         </Grid>
 
