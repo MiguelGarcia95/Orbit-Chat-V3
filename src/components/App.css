@@ -45,9 +45,10 @@ html, body, .app {
 .category_container {
   /* margin-top: 20px; */
   height: 100%;
+  width: 100%;
   background-color: red;
   position: absolute;
-  top: 0;
+  /* top: 50px; */
 }
 
 .category_header {

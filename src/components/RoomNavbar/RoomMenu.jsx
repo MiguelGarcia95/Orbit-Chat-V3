@@ -29,12 +29,7 @@ class RoomMenu extends React.Component {
     const {user} = this.state;
     const {inChatroom, currentChatroom} = this.props;
     return (
-      <Menu
-        size='large' 
-        fixed='left'
-        vertical
-        className='Chatroom_Header'
-      >
+      <Menu size='large' fixed='left' vertical >
         {/* If it passes, we are in a chatroom and display */}
         {this.displayMenuHeader(inChatroom, currentChatroom, user)}
 
