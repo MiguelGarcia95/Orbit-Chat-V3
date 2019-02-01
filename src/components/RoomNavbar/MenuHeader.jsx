@@ -34,7 +34,7 @@ class MenuHeader extends React.Component {
             </Grid.Column>
             <Grid.Column verticalAlign='middle' width={2}>
               <Container fluid>
-                <Dropdown icon='plus'>
+                <Dropdown icon='caret down'>
                   <Dropdown.Menu direction='left' >
                     <Dropdown.Item text='New Category' onClick={this.openModal} />
                   </Dropdown.Menu>
