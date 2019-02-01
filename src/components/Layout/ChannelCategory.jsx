@@ -24,7 +24,6 @@ class ChannelCategory extends React.Component {
 
   closeModal = () => this.setState({modal: false});
 
-  
   sortChannels = (channels, category) => {
     return channels.reduce(function (filteredChannels, channel) {
       if (channel.channel.categoryId === category.id) {
@@ -32,6 +31,10 @@ class ChannelCategory extends React.Component {
       }
       return filteredChannels
     }, [])
+  }
+
+  onChannelClick = channel => {
+    console.log(channel)
   }
 
   displayChannels = (channels, category) => {
@@ -42,7 +45,7 @@ class ChannelCategory extends React.Component {
           as='h5' 
           textAlign='left'  
           key={channel.id}
-          // onClick={this.onChannelClick.bind(null, channel)}
+          onClick={this.onChannelClick.bind(null, channel)}
           className='category_channel' 
         >
           {channel.channel.name}
@@ -52,7 +55,7 @@ class ChannelCategory extends React.Component {
   }
 
   render() {
-    const {modal, user, chatroom, category} = this.state;
+    const {modal, category} = this.state;
     const {channels} = this.props;
     return (
       <React.Fragment>
