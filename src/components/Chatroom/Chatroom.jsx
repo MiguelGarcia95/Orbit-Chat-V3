@@ -36,8 +36,10 @@ class Chatroom extends React.Component {
   }  
 
   render() {
-    const {user, currentChatroom, currentChannel} = this.props;
-    console.log(currentChannel)
+    const {user, currentChatroom, currentChannel, channels} = this.props;
+    if (!currentChannel && channels.length > 0) {
+      console.log('currentChannel no set up and channels + 1')
+    }
     return !user || !currentChatroom ? <Spinner /> : (
       <Grid columns='equal' className='app'>
         <Grid.Column style={{marginLeft: 320}} >
@@ -58,7 +60,8 @@ const mapStateToProps = state => {
     user: state.auth.currentUser,
     chatroomRedirect: state.chat.chatroomRedirect,
     currentChatroom: state.chat.currentChatroom,
-    currentChannel: state.channel.currentChannel
+    currentChannel: state.channel.currentChannel,
+    channels: state.channel.channels
   }
 }
 
