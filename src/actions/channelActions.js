@@ -54,7 +54,7 @@ export const getChannels = (chatroomId) => {
   }
 }
 
-const setChannel = channel => {
+export const setChannel = channel => {
   return (dispatch) => {
     dispatch({
       type:actionTypes.SET_CHANNEL,
@@ -63,7 +63,7 @@ const setChannel = channel => {
   }
 }
 
-const unsetChannel = () => {
+export const unsetChannel = () => {
   return (dispatch) => {
     dispatch({
       type:actionTypes.UNSET_CHANNEL,

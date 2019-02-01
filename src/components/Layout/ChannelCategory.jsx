@@ -1,7 +1,7 @@
 import React from 'react';
 import {Grid, Header, Container, Icon, Modal, Segment, Label, Input, Button} from 'semantic-ui-react';
 import {connect} from 'react-redux';
-import {createChannel} from '../../actions/channelActions';
+import {createChannel, setChannel} from '../../actions/channelActions';
 
 class ChannelCategory extends React.Component {
   state = {
@@ -34,7 +34,7 @@ class ChannelCategory extends React.Component {
   }
 
   onChannelClick = channel => {
-    console.log(channel)
+    this.props.setChannel(channel)
   }
 
   displayChannels = (channels, category) => {
@@ -95,7 +95,8 @@ class ChannelCategory extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createChannel: channel => dispatch(createChannel(channel))
+    createChannel: channel => dispatch(createChannel(channel)),
+    setChannel: channel => dispatch(setChannel(channel))
   }
 }
 
