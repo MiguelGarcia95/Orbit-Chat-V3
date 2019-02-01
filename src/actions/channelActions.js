@@ -53,3 +53,21 @@ export const getChannels = (chatroomId) => {
     })
   }
 }
+
+const setChannel = channel => {
+  return (dispatch) => {
+    dispatch({
+      type:actionTypes.SET_CHANNEL,
+      payload: {currentChannel: channel}
+    })
+  }
+}
+
+const unsetChannel = () => {
+  return (dispatch) => {
+    dispatch({
+      type:actionTypes.UNSET_CHANNEL,
+      payload: {currentChannel: null}
+    })
+  }
+}

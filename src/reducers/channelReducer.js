@@ -19,6 +19,16 @@ const chatroomReducer = (state = initialState, action) => {
         channelError: action.payload.channelError,
         channels: action.payload.channels
       }
+    case actionTypes.SET_CHANNEL:
+      return {
+        ...state,
+        currentChannel: action.payload.currentChannel
+      }
+    case actionTypes.UNSET_CHANNEL:
+      return {
+        ...state,
+        currentChannel: action.payload.currentChannel
+      }
     default:
       return state;
   }
