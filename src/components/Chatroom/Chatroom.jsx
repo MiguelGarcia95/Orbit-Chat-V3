@@ -33,7 +33,8 @@ class Chatroom extends React.Component {
   }  
 
   render() {
-    const {user, currentChatroom} = this.props;
+    const {user, currentChatroom, currentChannel} = this.props;
+    console.log(currentChannel)
     return !user || !currentChatroom ? <Spinner /> : (
       <Grid columns='equal' className='app'>
         <Grid.Column style={{marginLeft: 320}} >
@@ -53,13 +54,14 @@ const mapStateToProps = state => {
   return {
     user: state.auth.currentUser,
     chatroomRedirect: state.chat.chatroomRedirect,
-    currentChatroom: state.chat.currentChatroom
+    currentChatroom: state.chat.currentChatroom,
+    currentChannel: state.channel.currentChannel
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getChatroom: roomId => dispatch(getChatroom(roomId))
+    getChatroom: roomId => dispatch(getChatroom(roomId)),
   }
 }
 
