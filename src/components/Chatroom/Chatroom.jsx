@@ -2,6 +2,7 @@ import React from 'react';
 import firebase from '../../firebase';
 import {Grid} from 'semantic-ui-react';
 import {getChatroom} from '../../actions/chatroomActions';
+import {unsetChannel} from '../../actions/channelActions';
 import {connect} from 'react-redux';
 import Spinner from '../Layout/Spinner';
 
@@ -17,6 +18,7 @@ class Chatroom extends React.Component {
       if (!user) {
         this.props.history.push('/signin');
       } else {
+        this.props.unsetChannel();
         this.props.getChatroom(this.props.match.params.roomId)
       }
     })
@@ -26,6 +28,7 @@ class Chatroom extends React.Component {
     if (!this.state.firstLoad && nextProps.chatroomRedirect) {
       this.props.history.push('/app');
     } else if (!this.state.firstLoad && !this.state.fetchedChatroom) {
+      this.props.unsetChannel();
       this.props.getChatroom(nextProps.match.params.roomId);
       this.setState({fetchedChatroom: true});
     }
@@ -62,6 +65,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getChatroom: roomId => dispatch(getChatroom(roomId)),
+    unsetChannel: () => dispatch(unsetChannel())
   }
 }
 
