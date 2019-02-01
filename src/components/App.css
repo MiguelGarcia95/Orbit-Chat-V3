@@ -51,7 +51,7 @@ html, body, .app {
   box-sizing: border-box;
   height: 100%;
   width: 100%;
-  position: absolute;
+  position: relative;
   padding-top: 70px !important;
   padding-bottom: 70px !important;
 }
