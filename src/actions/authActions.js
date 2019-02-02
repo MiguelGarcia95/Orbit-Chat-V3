@@ -36,7 +36,8 @@ export const signUp = credentials => {
           username: credentials.username,
           avatar: `http://gravatar.com/avatar/${md5(credentials.email)}?d=identicon`,
           uid: createdUser.user.uid,
-          email: credentials.email
+          email: credentials.email,
+          createdAt: firestore.FieldValue.serverTimestamp()
         });
       }).then(() => {
         dispatch({

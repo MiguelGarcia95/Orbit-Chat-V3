@@ -8,7 +8,8 @@ export const createChannel = channel => {
       description: channel.description,
       uid: channel.user.uid,
       categoryId: channel.category.id,
-      chatroomId: channel.chatroom.id
+      chatroomId: channel.chatroom.id,
+      createdAt: firestore.FieldValue.serverTimestamp()
     }).then(() => {
       dispatch({
         type: actionTypes.CREATE_CHANNEL,

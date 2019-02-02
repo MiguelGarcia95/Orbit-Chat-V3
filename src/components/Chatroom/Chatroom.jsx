@@ -39,6 +39,7 @@ class Chatroom extends React.Component {
     const {user, currentChatroom, currentChannel, channels} = this.props;
     if (!currentChannel && channels.length > 0) {
       console.log('currentChannel no set up and channels + 1')
+      console.log(channels)
     }
     return !user || !currentChatroom ? <Spinner /> : (
       <Grid columns='equal' className='app'>

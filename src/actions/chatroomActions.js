@@ -7,7 +7,8 @@ export const createChatroom = chatroom => {
       name:  chatroom.name,
       description:  chatroom.description,
       avatar: chatroom.user.photoURL,
-      uid: chatroom.user.uid
+      uid: chatroom.user.uid,
+      createdAt: firestore.FieldValue.serverTimestamp()
     }).then((docRef) => {
       dispatch({
         type: actionTypes.CREATE_CHATROOM,
@@ -35,7 +36,8 @@ export const createCategory = category => {
     firestore.add(`categories/${category.chatroom.id}/categories`, {
       name: category.name,
       chatroomId: category.chatroom.id,
-      uid: category.user.uid
+      uid: category.user.uid,
+      createdAt: firestore.FieldValue.serverTimestamp()
     }).then(() => {
       dispatch({
         type: actionTypes.CREATE_CATEGORY,
