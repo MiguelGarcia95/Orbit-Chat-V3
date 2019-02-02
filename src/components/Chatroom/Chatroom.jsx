@@ -5,6 +5,7 @@ import {getChatroom} from '../../actions/chatroomActions';
 import {unsetChannel, setChannel} from '../../actions/channelActions';
 import {connect} from 'react-redux';
 import Spinner from '../Layout/Spinner';
+import ChatCommentPanel from '../ChatCommentPanel/ChatCommentPanel';
 
 class Chatroom extends React.Component {
   state = {
@@ -52,12 +53,12 @@ class Chatroom extends React.Component {
   }
 
   render() {
-    const {user, currentChatroom} = this.props;
+    const {user, currentChatroom, currentChannel} = this.props;
     return !user || !currentChatroom ? <Spinner /> : (
       <Grid columns='equal' className='app'>
         <Grid.Column style={{marginLeft: 320}} >
           <React.Fragment>
-            {/* <ChatCommentPanel  channels={channels} user={user} chatroom={chatroom} getChannelComments={this.props.getChannelComments} /> */}
+            <ChatCommentPanel  channel={currentChannel} user={user} chatroom={currentChatroom} />
           </React.Fragment>
         </Grid.Column>
         <Grid.Column width={2}>
