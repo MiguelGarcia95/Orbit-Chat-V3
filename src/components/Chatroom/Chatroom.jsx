@@ -39,7 +39,14 @@ class Chatroom extends React.Component {
     const {user, currentChatroom, currentChannel, channels} = this.props;
     if (!currentChannel && channels.length > 0) {
       console.log('currentChannel no set up and channels + 1')
-      console.log(channels)
+      // console.log(channels)
+      // channels.forEach(channel => {
+      //   console.log(channel.channel.createdAt.toDate())
+      // })
+      let sortedChannels = channels.sort(function(a, b) {
+        return new Date(a.channel.createdAt.toDate()) - new Date(b.channel.createdAt.toDate());
+      });
+      console.log(sortedChannels)
     }
     return !user || !currentChatroom ? <Spinner /> : (
       <Grid columns='equal' className='app'>
