@@ -12,8 +12,12 @@ class ChatCommentPanel extends React.Component {
   }
 
   render() {
+    const {channel, user, chatroom} = this.props;
     return (
-      <h1>ChatCommentPanel</h1>
+      <React.Fragment>
+        <ChatCommentHeader channel={channel} />
+        {/* <h1>ChatCommentPanel</h1> */}
+      </React.Fragment>
     )
   }
 }

@@ -58,7 +58,7 @@ class Chatroom extends React.Component {
       <Grid columns='equal' className='app'>
         <Grid.Column style={{marginLeft: 320}} >
           <React.Fragment>
-            <ChatCommentPanel  channel={currentChannel} user={user} chatroom={currentChatroom} />
+            {currentChannel && <ChatCommentPanel  channel={currentChannel} user={user} chatroom={currentChatroom} />}
           </React.Fragment>
         </Grid.Column>
         <Grid.Column width={2}>

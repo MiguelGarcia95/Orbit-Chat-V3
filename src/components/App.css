@@ -71,3 +71,18 @@ html, body, .app {
 .category_channel:hover {
   background-color: rgba(0,0,0,0.1);
 }
+
+.chat_comment_header {
+  text-align: left; 
+  background: #232323; 
+  color: white; 
+  width: 100%; 
+}
+
+.chat_comment_header p {
+  /* padding: 10px;  */
+  /* line-height: 49.2px;
+  box-sizing: border-box;
+  color: #232323; */
+}
+
