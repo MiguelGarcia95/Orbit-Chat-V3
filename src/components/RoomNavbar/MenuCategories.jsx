@@ -29,7 +29,6 @@ class MenuCategories extends React.Component {
   
   render() {
     const {categories} = this.props;
-    console.log(categories)
     return (
       <React.Fragment>
         {/* <Grid className='category_container' > */}
