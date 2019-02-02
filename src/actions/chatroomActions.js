@@ -64,11 +64,14 @@ export const getChatroomCategories = chatroomId => {
       data.forEach(doc => {
         categories.push({id: doc.id, category: doc.data()})
       })
+      let sortedcategories = categories.sort(function(a, b) {
+        return new Date(a.categories.createdAt.toDate()) - new Date(b.categories.createdAt.toDate());
+      });
       dispatch({
         type: actionTypes.GET_CHATROOM_CATEGORIES,
         payload: {
           chatroomError: null,
-          categories: categories
+          categories: sortedcategories
         }
       })
     }).catch(err => {
