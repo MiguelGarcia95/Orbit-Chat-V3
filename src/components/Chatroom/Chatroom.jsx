@@ -2,7 +2,7 @@ import React from 'react';
 import firebase from '../../firebase';
 import {Grid} from 'semantic-ui-react';
 import {getChatroom} from '../../actions/chatroomActions';
-import {unsetChannel} from '../../actions/channelActions';
+import {unsetChannel, setChannel} from '../../actions/channelActions';
 import {connect} from 'react-redux';
 import Spinner from '../Layout/Spinner';
 
@@ -33,14 +33,28 @@ class Chatroom extends React.Component {
       this.setState({fetchedChatroom: true});
     }
     this.setState({firstLoad: false});
-  }  
+  }
+  
+  getMatchingChannels = (category, channels) => {
+    return channels.reduce((filteredChannels, channel) => {
+      if (channel.channel.categoryId === category.id && Object.keys(filteredChannels).length === 0) {
+        filteredChannels = channel
+      }
+      return filteredChannels
+    }, {}) 
+  }
+
+  setCurrentChannel = (currentChannel, channels, categories) => {
+    if (!currentChannel && channels.length > 0 && categories.length > 0) {
+      console.log('currentChannel no set up and channels + 1');
+      // console.log(this.getMatchingChannels(categories[0], channels));
+      this.props.setChannel(this.getMatchingChannels(categories[0], channels));
+    }
+  }
 
   render() {
     const {user, currentChatroom, currentChannel, channels, categories} = this.props;
-    if (!currentChannel && channels.length > 0 && categories.length > 0) {
-      console.log('currentChannel no set up and channels + 1')
-      console.log(categories[0])
-    }
+    this.setCurrentChannel(currentChannel, channels, categories);
     return !user || !currentChatroom ? <Spinner /> : (
       <Grid columns='equal' className='app'>
         <Grid.Column style={{marginLeft: 320}} >
@@ -70,7 +84,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getChatroom: roomId => dispatch(getChatroom(roomId)),
-    unsetChannel: () => dispatch(unsetChannel())
+    unsetChannel: () => dispatch(unsetChannel()),
+    setChannel: (channel) => dispatch(setChannel(channel))
   }
 }
 
