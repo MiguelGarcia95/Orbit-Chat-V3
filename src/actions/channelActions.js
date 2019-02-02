@@ -36,11 +36,14 @@ export const getChannels = (chatroomId) => {
       data.forEach(doc => {
         channels.push({id: doc.id, channel: doc.data()})
       })
+      let sortedChannels = channels.sort(function(a, b) {
+        return new Date(a.channel.createdAt.toDate()) - new Date(b.channel.createdAt.toDate());
+      });
       dispatch({
         type: actionTypes.GET_CHATROOM_CHANNELS,
         payload: {
           channelError: null,
-          channels: channels
+          channels: sortedChannels
         }
       })
     }).catch(err => {
