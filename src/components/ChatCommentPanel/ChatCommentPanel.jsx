@@ -1,4 +1,10 @@
 import React from 'react';
+import {connect} from 'react-redux';
+
+import ChatCommentHeader from './ChatCommentHeader';
+import Messages from './Messages';
+import Message from './Message';
+import MessageForm from './MessageForm';
 
 class ChatCommentPanel extends React.Component {
   state = {
@@ -12,4 +18,4 @@ class ChatCommentPanel extends React.Component {
   }
 }
 
-export default ChatCommentPanel;
+export default connect()(ChatCommentPanel);
