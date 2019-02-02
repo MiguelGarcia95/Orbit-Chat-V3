@@ -29,7 +29,7 @@ class MenuHeader extends React.Component {
           <Grid.Row columns='2' style={{paddingBottom: 0}}>
             <Grid.Column verticalAlign='middle' width={12}>
               <Container fluid>
-              {'Chatroom Name'}
+              {this.props.chatroom.chatroom.name}
               </Container>
             </Grid.Column>
             <Grid.Column verticalAlign='middle' width={2}>
