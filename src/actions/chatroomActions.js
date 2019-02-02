@@ -65,7 +65,7 @@ export const getChatroomCategories = chatroomId => {
         categories.push({id: doc.id, category: doc.data()})
       })
       let sortedcategories = categories.sort(function(a, b) {
-        return new Date(a.categories.createdAt.toDate()) - new Date(b.categories.createdAt.toDate());
+        return new Date(a.category.createdAt.toDate()) - new Date(b.category.createdAt.toDate());
       });
       dispatch({
         type: actionTypes.GET_CHATROOM_CATEGORIES,
