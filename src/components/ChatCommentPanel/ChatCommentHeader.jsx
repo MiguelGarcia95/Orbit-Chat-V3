@@ -1,11 +1,15 @@
 import React from 'react';
-import {Segment} from 'semantic-ui-react';
+import {Grid} from 'semantic-ui-react';
 
 const ChatCommentHeader = ({channel}) => {
   return (
-    <Segment className='chat_comment_header'>
-      <p><strong>{channel.channel.name}</strong> <small>{channel.channel.description}</small></p>
-    </Segment>
+    <Grid className='chat_comment_header'>
+      <Grid.Row columns='1' >
+        <Grid.Column verticalAlign='middle'>
+          <p><strong>{channel.channel.name} - </strong> {channel.channel.description}</p>
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
   )
 }
 
