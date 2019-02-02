@@ -2,7 +2,7 @@ import React from 'react';
 
 const Message = () => {
   return (
-    <h1>MEssage Form</h1>
+    <h1>MEssage</h1>
   )
 }
 

@@ -7,7 +7,7 @@ class Messages extends React.Component {
 
   render() {
     return (
-      <h1>MEssage Form</h1>
+      <h1>MEssages</h1>
     )
   }
 }
