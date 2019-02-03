@@ -5,14 +5,15 @@ import ChatCommentHeader from './ChatCommentHeader';
 import Messages from './Messages';
 import Message from './Message';
 import MessageForm from './MessageForm';
+import {getChannelComments} from '../../actions/channelActions';
 
 class ChatCommentPanel extends React.Component {
   state = {
-
   }
 
   render() {
-    const {channel, user, chatroom} = this.props;
+    const {channel, user, chatroom, comments} = this.props;
+    console.log(comments)
     return (
       <React.Fragment>
         <ChatCommentHeader channel={channel} />
@@ -23,4 +24,10 @@ class ChatCommentPanel extends React.Component {
   }
 }
 
-export default connect()(ChatCommentPanel);
+const mapStateToProps = state => {
+  return {
+    comments: state.channel.comments
+  }
+}
+
+export default connect(mapStateToProps)(ChatCommentPanel);
