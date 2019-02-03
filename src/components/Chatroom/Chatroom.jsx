@@ -49,6 +49,8 @@ class Chatroom extends React.Component {
   setCurrentChannel = (currentChannel, channels, categories) => {
     if (!currentChannel && channels.length > 0 && categories.length > 0) {
       this.props.setChannel(this.getMatchingChannels(categories[0], channels));
+    } else if (currentChannel) {
+      this.props.getChannelComments(currentChannel.channel.chatroomId, currentChannel.id);
     }
   }
 

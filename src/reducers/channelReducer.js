@@ -3,7 +3,8 @@ import * as actionTypes from '../actions/types';
 const initialState = {
   currentChannel: null,
   channelError: null,
-  channels: []
+  channels: [],
+  comments: []
 }
 
 const chatroomReducer = (state = initialState, action) => {
@@ -33,6 +34,12 @@ const chatroomReducer = (state = initialState, action) => {
       return {
         ...state,
         currentChannel: action.payload.currentChannel
+      }
+    case actionTypes.GET_CHANNEL_COMMENTS:
+      return {
+        ...state,
+        channelError: action.payload.channelError,
+        comments: action.payload.comments
       }
     default:
       return state;
