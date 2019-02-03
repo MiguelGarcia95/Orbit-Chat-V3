@@ -58,6 +58,12 @@ export const getChannels = (chatroomId) => {
   }
 }
 
+export const createChannelComments = comment => {
+  return (dispatch, getState, {getFirestore}) => {
+    console.log(comment);
+  }
+}
+
 export const setChannel = channel => {
   return (dispatch) => {
     dispatch({

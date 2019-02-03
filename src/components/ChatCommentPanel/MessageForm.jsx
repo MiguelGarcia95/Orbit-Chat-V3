@@ -3,7 +3,7 @@ import {Segment, Input, Button} from 'semantic-ui-react';
 
 class MessageForm extends React.Component {
   state = {
-
+    comment: ''
   }
 
   onChange = e => this.setState({[e.target.name]: e.target.value});
@@ -17,7 +17,7 @@ class MessageForm extends React.Component {
       <Segment className='message_form'>
         <Input
           fluid
-          name='message'
+          name='comment'
           onChange={this.onChange}
           style={{marginBottom: '0.7em'}}
           labelPosition='left'
