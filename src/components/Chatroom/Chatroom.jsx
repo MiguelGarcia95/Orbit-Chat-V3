@@ -2,7 +2,7 @@ import React from 'react';
 import firebase from '../../firebase';
 import {Grid} from 'semantic-ui-react';
 import {getChatroom} from '../../actions/chatroomActions';
-import {unsetChannel, setChannel} from '../../actions/channelActions';
+import {unsetChannel, setChannel, getChannelComments} from '../../actions/channelActions';
 import {connect} from 'react-redux';
 import Spinner from '../Layout/Spinner';
 import ChatCommentPanel from '../ChatCommentPanel/ChatCommentPanel';
@@ -84,7 +84,8 @@ const mapDispatchToProps = dispatch => {
   return {
     getChatroom: roomId => dispatch(getChatroom(roomId)),
     unsetChannel: () => dispatch(unsetChannel()),
-    setChannel: (channel) => dispatch(setChannel(channel))
+    setChannel: (channel) => dispatch(setChannel(channel)),
+    getChannelComments: (chatroomId, channelId) => dispatch(getChannelComments(chatroomId, channelId))
   }
 }
 
