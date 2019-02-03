@@ -17,6 +17,7 @@ class ChatCommentPanel extends React.Component {
       <React.Fragment>
         <ChatCommentHeader channel={channel} />
         {/* <h1>ChatCommentPanel</h1> */}
+        <MessageForm />
       </React.Fragment>
     )
   }
