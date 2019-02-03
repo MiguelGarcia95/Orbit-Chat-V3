@@ -1,15 +1,19 @@
 import React from 'react';
 import {Segment, Input, Button} from 'semantic-ui-react';
+import {connect} from 'react-redux';
+import {createChannelComments} from '../../actions/channelActions';
 
 class MessageForm extends React.Component {
   state = {
-    comment: ''
+    comment: '',
+    channel: this.props.channel,
+    user: this.props.user
   }
 
   onChange = e => this.setState({[e.target.name]: e.target.value});
   
   onSubmit = () => {
-    console.log(this.state);
+    this.props.createChannelComments(this.state);
   }
 
   render() {
@@ -44,4 +48,10 @@ class MessageForm extends React.Component {
   }
 }
 
-export default MessageForm;
+const mapDispatchToProps = dispatch => {
+  return {
+    createChannelComments: comment => dispatch(createChannelComments(comment))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(MessageForm);

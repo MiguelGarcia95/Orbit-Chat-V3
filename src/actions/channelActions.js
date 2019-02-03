@@ -60,7 +60,27 @@ export const getChannels = (chatroomId) => {
 
 export const createChannelComments = comment => {
   return (dispatch, getState, {getFirestore}) => {
-    console.log(comment);
+    const firestore = getFirestore();
+    // comments/ chatroomId-channelId / comments
+    firestore.add(`comments/${comment.channel.channel.chatroomId}-${comment.channel.id}/comments`, {
+      comment: comment.comment,
+      uid: comment.user.uid,
+      avatar: comment.user.photoURL,
+      channelId: comment.channel.id,
+      chatroomId: comment.channel.channel.chatroomId,     
+      categoryId: comment.channel.channel.categoryId,
+      createdAt: firestore.FieldValue.serverTimestamp()
+    }).then(() => {
+      dispatch({
+        type: actionTypes.CREATE_CHANNEL_COMMENT,
+        payload: {channelError: null}
+      })
+    }).catch(err => {
+      dispatch({
+        type: actionTypes.CREATE_CHANNEL_COMMENT,
+        payload: {channelError: err.message}
+      })
+    })
   }
 }
 
