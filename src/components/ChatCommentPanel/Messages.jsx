@@ -1,23 +1,24 @@
 import React from 'react';
 import Message from './Message';
+import {Comment} from 'semantic-ui-react';
 
 class Messages extends React.Component {
   state = {
 
   }
 
-  displayMessages = (messages) => {
+  displayMessages = (messages, user) => {
     return messages.map(message => {
-      return <Message key={message.id} message={message} />
+      return <Message key={message.id} message={message.comment} user={user} />
     })
   }
 
   render() {
-    const {messages} = this.props;
+    const {messages, user} = this.props;
     return (
-      <React.Fragment>
-        {this.displayMessages(messages)}
-      </React.Fragment>
+      <Comment.Group>
+        {this.displayMessages(messages, user)}
+      </Comment.Group>
     )
   }
 }

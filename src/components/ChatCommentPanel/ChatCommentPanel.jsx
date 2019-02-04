@@ -14,7 +14,7 @@ class ChatCommentPanel extends React.Component {
     return (
       <React.Fragment>
         <ChatCommentHeader channel={channel} />
-        {comments && <Messages messages={comments} />}
+        {comments && <Messages messages={comments} user={user} />}
         <MessageForm channel={channel} user={user} />
       </React.Fragment>
     )

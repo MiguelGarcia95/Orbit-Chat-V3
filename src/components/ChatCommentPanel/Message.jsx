@@ -4,14 +4,18 @@ import moment from 'moment';
 
 const timeFromNow = timestamp => moment(timestamp).fromNow();
 
-const Message = ({message}) => {
+const isOwnMessage = (message, user) => {
+  return message.uid === user.uid ? 'message_self' : ''
+}
+
+const Message = ({message, user}) => {
   return (
     <Comment>
-      <Comment.Avatar src={message.avatar} />
-      <Comment.Content>
+      <Comment.Avatar src={message.avatar}  />
+      <Comment.Content className={isOwnMessage(message, user)} >
         <Comment.Author as='a'>{message.username}</Comment.Author>
-        <Comment.Metadata >{timeFromNow(message.createdDate.toDate())}</Comment.Metadata>
-        <Comment.Text>{message.message}</Comment.Text>
+        <Comment.Metadata >{timeFromNow(message.createdAt.toDate())}</Comment.Metadata>
+        <Comment.Text>{message.comment}</Comment.Text>
       </Comment.Content>
     </Comment>
   )
