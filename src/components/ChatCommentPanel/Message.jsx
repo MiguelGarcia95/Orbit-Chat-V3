@@ -10,7 +10,7 @@ const isOwnMessage = (message, user) => {
 
 const Message = ({message, user}) => {
   return (
-    <Comment>
+    <Comment className="chat_comment">
       <Comment.Avatar src={message.avatar}  />
       <Comment.Content className={isOwnMessage(message, user)} >
         <Comment.Author as='a'>{message.username}</Comment.Author>
