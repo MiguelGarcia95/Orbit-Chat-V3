@@ -58,10 +58,8 @@ class Chatroom extends React.Component {
     const {user, currentChatroom, currentChannel} = this.props;
     return !user || !currentChatroom ? <Spinner /> : (
       <Grid columns='equal' className='app'>
-        <Grid.Column style={{marginLeft: 320}} >
-          <React.Fragment>
+        <Grid.Column style={{marginLeft: 320, height: '100%'}} >
             {currentChannel && <ChatCommentPanel  channel={currentChannel} user={user} />}
-          </React.Fragment>
         </Grid.Column>
         <Grid.Column width={2}>
           <React.Fragment> </React.Fragment>

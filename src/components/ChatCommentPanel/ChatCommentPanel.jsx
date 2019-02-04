@@ -12,11 +12,11 @@ class ChatCommentPanel extends React.Component {
   render() {
     const {channel, user, comments} = this.props;
     return (
-      <React.Fragment>
+      <section className='chat_comment_panel'>
         <ChatCommentHeader channel={channel} />
         {comments && <Messages messages={comments} user={user} />}
         <MessageForm channel={channel} user={user} />
-      </React.Fragment>
+      </section>
     )
   }
 }
