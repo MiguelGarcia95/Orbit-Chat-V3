@@ -6,6 +6,7 @@ import {unsetChannel, setChannel, getChannelComments} from '../../actions/channe
 import {connect} from 'react-redux';
 import Spinner from '../Layout/Spinner';
 import ChatCommentPanel from '../ChatCommentPanel/ChatCommentPanel';
+import {getFirestore} from 'redux-firestore';
 
 class Chatroom extends React.Component {
   state = {
@@ -51,7 +52,17 @@ class Chatroom extends React.Component {
       this.props.setChannel(this.getMatchingChannels(categories[0], channels));
     } else if (currentChannel) {
       this.props.getChannelComments(currentChannel.channel.chatroomId, currentChannel.id);
+      this.getChannelComemntrsRT(currentChannel.channel.chatroomId, currentChannel.id);
     }
+  }
+
+  //real-time listener
+  getChannelComemntrsRT = (chatroomId, channelId) => {
+    const firestore = getFirestore();
+    firestore.collection(`comments/${chatroomId}-${channelId}/comments`).onSnapshot(snapshot => {
+      let changes = snapshot.docChanges();
+      console.log(changes)
+    })
   }
 
   render() {
