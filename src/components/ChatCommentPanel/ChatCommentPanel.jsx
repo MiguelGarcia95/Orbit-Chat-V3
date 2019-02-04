@@ -4,14 +4,13 @@ import {connect} from 'react-redux';
 import ChatCommentHeader from './ChatCommentHeader';
 import Messages from './Messages';
 import MessageForm from './MessageForm';
-import {getChannelComments} from '../../actions/channelActions';
 
 class ChatCommentPanel extends React.Component {
   state = {
   }
 
   render() {
-    const {channel, user, chatroom, comments} = this.props;
+    const {channel, user, comments} = this.props;
     return (
       <React.Fragment>
         <ChatCommentHeader channel={channel} />
