@@ -4,7 +4,6 @@ import {Comment} from 'semantic-ui-react';
 
 class Messages extends React.Component {
   state = {
-
   }
 
   displayMessages = (messages, user) => {
