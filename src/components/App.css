@@ -74,8 +74,6 @@ html, body, .app {
 
 .chat_comment_header {
   text-align: left; 
-  /* background: #232323;  */
-  /* color: white;  */
   background: white; 
   color: #232323; 
   width: 100%; 
@@ -83,7 +81,8 @@ html, body, .app {
   box-sizing: border-box;
 }
 
-.chat_comment_header p {
+.chat_comment_container {
+
 }
 
 .message_form {

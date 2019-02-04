@@ -15,7 +15,7 @@ class Messages extends React.Component {
   render() {
     const {messages, user} = this.props;
     return (
-      <Comment.Group>
+      <Comment.Group className='chat_comment_container'>
         {this.displayMessages(messages, user)}
       </Comment.Group>
     )
