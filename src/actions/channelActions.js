@@ -97,6 +97,7 @@ export const createChannelComments = comment => {
     firestore.add(`comments/${comment.channel.channel.chatroomId}-${comment.channel.id}/comments`, {
       comment: comment.comment,
       uid: comment.user.uid,
+      username: comment.user.displayName,
       avatar: comment.user.photoURL,
       channelId: comment.channel.id,
       chatroomId: comment.channel.channel.chatroomId,     

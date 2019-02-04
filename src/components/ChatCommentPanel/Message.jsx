@@ -1,8 +1,19 @@
 import React from 'react';
+import {Comment} from 'semantic-ui-react';
+import moment from 'moment';
 
-const Message = () => {
+const timeFromNow = timestamp => moment(timestamp).fromNow();
+
+const Message = ({message}) => {
   return (
-    <h1>MEssage</h1>
+    <Comment>
+      <Comment.Avatar src={message.avatar} />
+      <Comment.Content>
+        <Comment.Author as='a'>{message.username}</Comment.Author>
+        <Comment.Metadata >{timeFromNow(message.createdDate.toDate())}</Comment.Metadata>
+        <Comment.Text>{message.message}</Comment.Text>
+      </Comment.Content>
+    </Comment>
   )
 }
 
