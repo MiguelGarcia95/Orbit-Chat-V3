@@ -99,9 +99,10 @@ export const setComments = (docComments) => {
         comments.push({id: docComment.doc.id, comment: docComment.doc.data()})
       } else if (docComment.type === 'modified') {
         comments.push({id: docComment.doc.id, comment: docComment.doc.data()})
-      } else if (docComment.type === 'removed') {
-      }
+      } 
+      // else if (docComment.type === 'removed') {}
     })
+    // let allComments = [...comments, ...oldComments]
 
     let sortedComments = comments.sort(function(a, b) {
       return new Date(a.comment.createdAt.toDate()) - new Date(b.comment.createdAt.toDate());

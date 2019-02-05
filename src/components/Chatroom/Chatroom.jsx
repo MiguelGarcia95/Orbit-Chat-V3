@@ -34,7 +34,9 @@ class Chatroom extends React.Component {
       this.props.getChatroom(nextProps.match.params.roomId);
       this.setState({fetchedChatroom: true});
     }
+
     this.setCurrentChannel(nextProps.currentChannel, nextProps.channels, nextProps.categories);
+
     this.setState({firstLoad: false});
   }
   
