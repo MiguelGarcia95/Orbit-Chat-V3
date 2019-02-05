@@ -93,13 +93,13 @@ export const getChannelComments = (chatroomId, channelId) => {
 export const setComments = (docComments) => {
   return (dispatch) => {
     let comments = [];
+    console.log(docComments)
     docComments.forEach(docComment => {
       if (docComment.type === 'added') {
         comments.push({id: docComment.doc.id, comment: docComment.doc.data()})
-      } else if (docComment.type === 'removed') {
-
-      } else {
+      } else if (docComment.type === 'modified') {
         comments.push({id: docComment.doc.id, comment: docComment.doc.data()})
+      } else if (docComment.type === 'removed') {
       }
     })
 
