@@ -51,7 +51,7 @@ class Chatroom extends React.Component {
     if (!currentChannel && channels.length > 0 && categories.length > 0) {
       this.props.setChannel(this.getMatchingChannels(categories[0], channels));
     } else if (currentChannel) {
-      this.props.getChannelComments(currentChannel.channel.chatroomId, currentChannel.id);
+      // this.props.getChannelComments(currentChannel.channel.chatroomId, currentChannel.id);
 
       this.getChannelComemntrsRT(currentChannel.channel.chatroomId, currentChannel.id);
     }
@@ -62,8 +62,8 @@ class Chatroom extends React.Component {
     const firestore = getFirestore();
     firestore.collection(`comments/${chatroomId}-${channelId}/comments`).onSnapshot(snapshot => {
       let changes = snapshot.docChanges();
-      console.log(changes[0])
-      // this.props.setComments(changes)
+      // console.log(changes[0])
+      this.props.setComments(changes)
       // can have a setComments actions and pass them from here
     })
   }

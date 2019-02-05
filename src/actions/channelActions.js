@@ -90,12 +90,21 @@ export const getChannelComments = (chatroomId, channelId) => {
   }
 }
 
-export const setComments = comments => {
+export const setComments = docComments => {
   return (dispatch) => {
+    let comments = [];
+    docComments.forEach(docComment => {
+      comments.push({id: docComment.doc.id, comment: docComment.doc.data()})
+    })
+
+    let sortedComments = comments.sort(function(a, b) {
+      return new Date(a.comment.createdAt.toDate()) - new Date(b.comment.createdAt.toDate());
+    });
+
     dispatch({
       type: actionTypes.SET_COMMENTS,
       payload: {
-        comments: comments,
+        comments: sortedComments,
         channelError: null,
       }
     })
