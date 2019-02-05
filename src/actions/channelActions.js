@@ -90,11 +90,15 @@ export const getChannelComments = (chatroomId, channelId) => {
   }
 }
 
-export const setComments = docComments => {
+export const setComments = (docComments) => {
   return (dispatch) => {
     let comments = [];
     docComments.forEach(docComment => {
       if (docComment.type === 'added') {
+        comments.push({id: docComment.doc.id, comment: docComment.doc.data()})
+      } else if (docComment.type === 'removed') {
+
+      } else {
         comments.push({id: docComment.doc.id, comment: docComment.doc.data()})
       }
     })
