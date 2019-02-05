@@ -44,6 +44,8 @@ const chatroomReducer = (state = initialState, action) => {
     case actionTypes.SET_COMMENTS:
     console.log('Old Comments', state.comments);
     console.log('Incoming Comments', action.payload.comments);
+    let newComments = [...state.comments, ...action.payload.comments];
+    console.log('New Comment Array', newComments);
       return {
         ...state,
         channelError: action.payload.channelError,
