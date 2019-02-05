@@ -93,7 +93,7 @@ export const getChannelComments = (chatroomId, channelId) => {
 export const setComments = (docComments) => {
   return (dispatch) => {
     let comments = [];
-    console.log(docComments)
+    // console.log(docComments)
     docComments.forEach(docComment => {
       if (docComment.type === 'added') {
         comments.push({id: docComment.doc.id, comment: docComment.doc.data()})
