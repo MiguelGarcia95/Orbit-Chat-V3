@@ -90,6 +90,18 @@ export const getChannelComments = (chatroomId, channelId) => {
   }
 }
 
+export const setComments = comments => {
+  return (dispatch) => {
+    dispatch({
+      type: actionTypes.SET_COMMENTS,
+      payload: {
+        comments: comments,
+        channelError: null,
+      }
+    })
+  }
+}
+
 export const createChannelComments = comment => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();

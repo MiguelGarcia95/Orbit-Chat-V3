@@ -62,6 +62,7 @@ class Chatroom extends React.Component {
     firestore.collection(`comments/${chatroomId}-${channelId}/comments`).onSnapshot(snapshot => {
       let changes = snapshot.docChanges();
       console.log(changes)
+      // can have a setComments actions and pass them from here
     })
   }
 

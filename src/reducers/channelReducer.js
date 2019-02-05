@@ -41,6 +41,12 @@ const chatroomReducer = (state = initialState, action) => {
         channelError: action.payload.channelError,
         comments: action.payload.comments
       }
+    case actionTypes.SET_COMMENTS:
+      return {
+        ...state,
+        channelError: action.payload.channelError,
+        comments: action.payload.comments
+      }
     default:
       return state;
   }
