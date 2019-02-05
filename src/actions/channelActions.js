@@ -94,7 +94,9 @@ export const setComments = docComments => {
   return (dispatch) => {
     let comments = [];
     docComments.forEach(docComment => {
-      comments.push({id: docComment.doc.id, comment: docComment.doc.data()})
+      if (docComment.type === 'added') {
+        comments.push({id: docComment.doc.id, comment: docComment.doc.data()})
+      }
     })
 
     let sortedComments = comments.sort(function(a, b) {
