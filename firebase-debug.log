@@ -1,0 +1,217 @@
+[debug] [2019-02-05T20:22:02.011Z] ----------------------------------------------------------------------
+[debug] [2019-02-05T20:22:02.014Z] Command:       /usr/local/bin/node /usr/bin/firebase deploy --only functions
+[debug] [2019-02-05T20:22:02.014Z] CLI Version:   6.1.1
+[debug] [2019-02-05T20:22:02.015Z] Platform:      linux
+[debug] [2019-02-05T20:22:02.015Z] Node Version:  v10.14.2
+[debug] [2019-02-05T20:22:02.424Z] Time:          Tue Feb 05 2019 14:22:02 GMT-0600 (GMT-06:00)
+[debug] [2019-02-05T20:22:02.429Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-02-05T20:22:02.442Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-02-05T20:22:02.443Z] > authorizing via signed-in user
+[debug] [2019-02-05T20:22:02.443Z] [iam] checking project orbit-chat-v2 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2019-02-05T20:22:02.445Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/orbit-chat-v2:testIamPermissions  
+
+[debug] [2019-02-05T20:22:02.693Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'orbit-chat-v2'...
+[info] 
+[info] i  deploying functions
+[debug] [2019-02-05T20:22:06.254Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase serve --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "firebase-admin": "~6.0.0",
+    "firebase-functions": "^2.1.0"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2019-02-05T20:22:06.257Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/orbit-chat-v2?view=CONSUMER_VIEW  
+ 
+[debug] [2019-02-05T20:22:06.258Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/orbit-chat-v2?view=CONSUMER_VIEW  
+ 
+[debug] [2019-02-05T20:22:06.900Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:06.929Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] [2019-02-05T20:22:06.930Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/orbit-chat-v2  
+ 
+[debug] [2019-02-05T20:22:07.094Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:07.094Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/68202492210:getServerAppConfig  
+ 
+[debug] [2019-02-05T20:22:07.280Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2019-02-05T20:22:07.283Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/orbit-chat-v2/configs  
+ 
+[debug] [2019-02-05T20:22:07.495Z] <<< HTTP RESPONSE 200
+[info] i  functions: packaged functions (42.27 KB) for uploading
+[debug] [2019-02-05T20:22:07.847Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/orbit-chat-v2/locations/us-central1/functions:generateUploadUrl  
+ 
+[debug] [2019-02-05T20:22:08.225Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:08.225Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-a17ca52b-f021-4711-8476-72665acf2c9c/0c899dcb-271e-489a-a3f5-325f70f76d16.zip?GoogleAccessId=service-68202492210@gcf-admin-robot.iam.gserviceaccount.com&Expires=1549399929&Signature=CNlR3g7UREoKe3rZ20sK%2BhQMZvHxgltewXUxRjRLMnxxMqdL6yVbG3WdV0424K6cnm3o0px8zPIZSEKmeZyJIHDzehZCHHgbBaQ2eFd%2BWnUkNiQJty6JGGpttDnfQ7%2FGArJdMueDbMW5FLZKqm4lxy19%2FvLBJEhRHJc3OgdTuaN1jjD642QpMLaSniVo9ol1G1%2FB4FuFz1NS7RmC48o3PTyyEpf%2FtD7J5LWKlOGSAudoMFox%2FKTGoOxxQVzwPiLKs1wKbGKTlonm60ME0BOBNfV4rykzP56275w0xtnG3PBosKehew%2BcsvgIWNBLk5cApovKluuwv86mctGxlk58LA%3D%3D  
+
+[debug] [2019-02-05T20:22:08.504Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: functions folder uploaded successfully
+[debug] [2019-02-05T20:22:08.506Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/orbit-chat-v2/locations/-/functions  
+ 
+[debug] [2019-02-05T20:22:08.893Z] <<< HTTP RESPONSE 200
+[info] i  functions: creating Node.js 6 function messageCreated(us-central1)...
+[debug] [2019-02-05T20:22:08.903Z] Trigger is:  {"eventTrigger":{"resource":"projects/orbit-chat-v2/databases/(default)/documents/comments/${chatroomId-channelId}/comments","eventType":"providers/cloud.firestore/eventTypes/document.create","service":"firestore.googleapis.com"}}
+[info] i  functions: updating Node.js 6 function helloWorld(us-central1)...
+[debug] [2019-02-05T20:22:08.906Z] Trigger is:  {"httpsTrigger":{}}
+[debug] [2019-02-05T20:22:08.908Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/orbit-chat-v2/locations/us-central1/functions  
+
+[debug] [2019-02-05T20:22:08.909Z] >>> HTTP REQUEST PATCH https://cloudfunctions.googleapis.com/v1/projects/orbit-chat-v2/locations/us-central1/functions/helloWorld {"updateMask":"sourceUploadUrl,name,labels,httpsTrigger"} 
+
+[debug] [2019-02-05T20:22:09.202Z] <<< HTTP RESPONSE 400
+[debug] [2019-02-05T20:22:09.202Z] <<< HTTP RESPONSE BODY
+[warn] ⚠  functions: failed to create function messageCreated
+[info] HTTP Error: 400, The request has errors
+[debug] [2019-02-05T20:22:09.416Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:09.418Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/orbit-chat-v2/locations/-/functions  
+ 
+[debug] [2019-02-05T20:22:09.756Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:09.757Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3JiaXQtY2hhdC12Mi91cy1jZW50cmFsMS9oZWxsb1dvcmxkLzgxMUhrVEdTWFhj  
+ 
+[debug] [2019-02-05T20:22:09.967Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:11.968Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3JiaXQtY2hhdC12Mi91cy1jZW50cmFsMS9oZWxsb1dvcmxkLzgxMUhrVEdTWFhj  
+ 
+[debug] [2019-02-05T20:22:12.159Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:14.161Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3JiaXQtY2hhdC12Mi91cy1jZW50cmFsMS9oZWxsb1dvcmxkLzgxMUhrVEdTWFhj  
+ 
+[debug] [2019-02-05T20:22:14.294Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:16.294Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3JiaXQtY2hhdC12Mi91cy1jZW50cmFsMS9oZWxsb1dvcmxkLzgxMUhrVEdTWFhj  
+ 
+[debug] [2019-02-05T20:22:16.491Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:18.493Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3JiaXQtY2hhdC12Mi91cy1jZW50cmFsMS9oZWxsb1dvcmxkLzgxMUhrVEdTWFhj  
+ 
+[debug] [2019-02-05T20:22:18.676Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:20.678Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3JiaXQtY2hhdC12Mi91cy1jZW50cmFsMS9oZWxsb1dvcmxkLzgxMUhrVEdTWFhj  
+ 
+[debug] [2019-02-05T20:22:20.866Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:22.867Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3JiaXQtY2hhdC12Mi91cy1jZW50cmFsMS9oZWxsb1dvcmxkLzgxMUhrVEdTWFhj  
+ 
+[debug] [2019-02-05T20:22:23.058Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:25.059Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3JiaXQtY2hhdC12Mi91cy1jZW50cmFsMS9oZWxsb1dvcmxkLzgxMUhrVEdTWFhj  
+ 
+[debug] [2019-02-05T20:22:25.241Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:27.242Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3JiaXQtY2hhdC12Mi91cy1jZW50cmFsMS9oZWxsb1dvcmxkLzgxMUhrVEdTWFhj  
+ 
+[debug] [2019-02-05T20:22:27.440Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:29.822Z] ----------------------------------------------------------------------
+[debug] [2019-02-05T20:22:29.825Z] Command:       /usr/local/bin/node /usr/bin/firebase deploy --only functions
+[debug] [2019-02-05T20:22:29.825Z] CLI Version:   6.1.1
+[debug] [2019-02-05T20:22:29.825Z] Platform:      linux
+[debug] [2019-02-05T20:22:29.825Z] Node Version:  v10.14.2
+[debug] [2019-02-05T20:22:30.223Z] Time:          Tue Feb 05 2019 14:22:29 GMT-0600 (GMT-06:00)
+[debug] [2019-02-05T20:22:30.223Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-02-05T20:22:30.237Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-02-05T20:22:30.237Z] > authorizing via signed-in user
+[debug] [2019-02-05T20:22:30.238Z] [iam] checking project orbit-chat-v2 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2019-02-05T20:22:30.240Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/orbit-chat-v2:testIamPermissions  
+
+[debug] [2019-02-05T20:22:30.517Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'orbit-chat-v2'...
+[info] 
+[info] i  deploying functions
+[debug] [2019-02-05T20:22:33.901Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase serve --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "firebase-admin": "~6.0.0",
+    "firebase-functions": "^2.1.0"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2019-02-05T20:22:33.903Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/orbit-chat-v2?view=CONSUMER_VIEW  
+ 
+[debug] [2019-02-05T20:22:33.904Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/orbit-chat-v2?view=CONSUMER_VIEW  
+ 
+[debug] [2019-02-05T20:22:34.555Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:34.562Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] [2019-02-05T20:22:34.564Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/orbit-chat-v2  
+ 
+[debug] [2019-02-05T20:22:34.733Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:34.733Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/68202492210:getServerAppConfig  
+ 
+[debug] [2019-02-05T20:22:34.920Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2019-02-05T20:22:34.923Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/orbit-chat-v2/configs  
+ 
+[debug] [2019-02-05T20:22:35.064Z] <<< HTTP RESPONSE 200
+[info] i  functions: packaged functions (42.27 KB) for uploading
+[debug] [2019-02-05T20:22:35.402Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/orbit-chat-v2/locations/us-central1/functions:generateUploadUrl  
+ 
+[debug] [2019-02-05T20:22:36.544Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:36.544Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-a17ca52b-f021-4711-8476-72665acf2c9c/7bad9e90-dc54-4180-b710-58ded1c9b66f.zip?GoogleAccessId=service-68202492210@gcf-admin-robot.iam.gserviceaccount.com&Expires=1549399958&Signature=G%2FWbFdtcQVcPBodCIGLckLF%2Bbizl2USDVhKshGhnsNNEUNiJMYYoUo6Nd2rigFHTC5G3Byw5TPoistQPdyF2SZzSKodqu1OciEsP3UeKj4Er20roKXtg9EVRPs%2Bubo1l5XN6GPtbElXTuFPswSMc%2BJPibcAwzOhoRIfl1iS1qh2yJ5LoM2fxz%2BLpcvlluXzYrkKcPpwH%2BXP4M22f%2BDizVQbHRjdcoCsjOdKgWxFiL8XsQ3Z7rAW0dSTG11FMdvU4%2FbB0SdKdQ%2FUpgET5wJchMz6A2Djf%2FsEQicHYX%2Bm5oCt73gjnbP6%2F4pjTnXJdtgMVC8Hki0huG87sPzQUzTuvSQ%3D%3D  
+
+[debug] [2019-02-05T20:22:36.806Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: functions folder uploaded successfully
+[debug] [2019-02-05T20:22:36.808Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/orbit-chat-v2/locations/-/functions  
+ 
+[debug] [2019-02-05T20:22:37.166Z] <<< HTTP RESPONSE 200
+[info] i  functions: creating Node.js 6 function messageCreated(us-central1)...
+[debug] [2019-02-05T20:22:37.170Z] Trigger is:  {"eventTrigger":{"resource":"projects/orbit-chat-v2/databases/(default)/documents/comments/${chatroomId-channelId}/comments","eventType":"providers/cloud.firestore/eventTypes/document.create","service":"firestore.googleapis.com"}}
+[info] i  functions: updating Node.js 6 function helloWorld(us-central1)...
+[debug] [2019-02-05T20:22:37.171Z] Trigger is:  {"httpsTrigger":{}}
+[debug] [2019-02-05T20:22:37.173Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/orbit-chat-v2/locations/us-central1/functions  
+
+[debug] [2019-02-05T20:22:37.173Z] >>> HTTP REQUEST PATCH https://cloudfunctions.googleapis.com/v1/projects/orbit-chat-v2/locations/us-central1/functions/helloWorld {"updateMask":"sourceUploadUrl,name,labels,httpsTrigger"} 
+
+[debug] [2019-02-05T20:22:37.467Z] <<< HTTP RESPONSE 400
+[debug] [2019-02-05T20:22:37.467Z] <<< HTTP RESPONSE BODY
+[warn] ⚠  functions: failed to create function messageCreated
+[info] HTTP Error: 400, The request has errors
+[debug] [2019-02-05T20:22:37.516Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:37.518Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/orbit-chat-v2/locations/-/functions  
+ 
+[debug] [2019-02-05T20:22:37.878Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:37.878Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3JiaXQtY2hhdC12Mi91cy1jZW50cmFsMS9oZWxsb1dvcmxkL2FhdnJZWHRYUGFB  
+ 
+[debug] [2019-02-05T20:22:38.087Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:40.088Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3JiaXQtY2hhdC12Mi91cy1jZW50cmFsMS9oZWxsb1dvcmxkL2FhdnJZWHRYUGFB  
+ 
+[debug] [2019-02-05T20:22:40.283Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:42.285Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3JiaXQtY2hhdC12Mi91cy1jZW50cmFsMS9oZWxsb1dvcmxkL2FhdnJZWHRYUGFB  
+ 
+[debug] [2019-02-05T20:22:42.488Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:44.489Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3JiaXQtY2hhdC12Mi91cy1jZW50cmFsMS9oZWxsb1dvcmxkL2FhdnJZWHRYUGFB  
+ 
+[debug] [2019-02-05T20:22:44.696Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:46.697Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3JiaXQtY2hhdC12Mi91cy1jZW50cmFsMS9oZWxsb1dvcmxkL2FhdnJZWHRYUGFB  
+ 
+[debug] [2019-02-05T20:22:46.887Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:48.890Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3JiaXQtY2hhdC12Mi91cy1jZW50cmFsMS9oZWxsb1dvcmxkL2FhdnJZWHRYUGFB  
+ 
+[debug] [2019-02-05T20:22:49.130Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:51.132Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3JiaXQtY2hhdC12Mi91cy1jZW50cmFsMS9oZWxsb1dvcmxkL2FhdnJZWHRYUGFB  
+ 
+[debug] [2019-02-05T20:22:51.297Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:53.298Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3JiaXQtY2hhdC12Mi91cy1jZW50cmFsMS9oZWxsb1dvcmxkL2FhdnJZWHRYUGFB  
+ 
+[debug] [2019-02-05T20:22:53.473Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:55.474Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3JiaXQtY2hhdC12Mi91cy1jZW50cmFsMS9oZWxsb1dvcmxkL2FhdnJZWHRYUGFB  
+ 
+[debug] [2019-02-05T20:22:55.701Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:57.702Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3JiaXQtY2hhdC12Mi91cy1jZW50cmFsMS9oZWxsb1dvcmxkL2FhdnJZWHRYUGFB  
+ 
+[debug] [2019-02-05T20:22:57.845Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-05T20:22:59.846Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/b3JiaXQtY2hhdC12Mi91cy1jZW50cmFsMS9oZWxsb1dvcmxkL2FhdnJZWHRYUGFB  
+ 
