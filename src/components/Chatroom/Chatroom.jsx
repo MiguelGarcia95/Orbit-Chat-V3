@@ -2,7 +2,7 @@ import React from 'react';
 import firebase from '../../firebase';
 import {Grid} from 'semantic-ui-react';
 import {getChatroom} from '../../actions/chatroomActions';
-import {unsetChannel, setChannel, getChannelComments} from '../../actions/channelActions';
+import {unsetChannel, setChannel, getChannelComments, setComments} from '../../actions/channelActions';
 import {connect} from 'react-redux';
 import Spinner from '../Layout/Spinner';
 import ChatCommentPanel from '../ChatCommentPanel/ChatCommentPanel';
@@ -52,6 +52,7 @@ class Chatroom extends React.Component {
       this.props.setChannel(this.getMatchingChannels(categories[0], channels));
     } else if (currentChannel) {
       this.props.getChannelComments(currentChannel.channel.chatroomId, currentChannel.id);
+
       this.getChannelComemntrsRT(currentChannel.channel.chatroomId, currentChannel.id);
     }
   }
@@ -61,7 +62,8 @@ class Chatroom extends React.Component {
     const firestore = getFirestore();
     firestore.collection(`comments/${chatroomId}-${channelId}/comments`).onSnapshot(snapshot => {
       let changes = snapshot.docChanges();
-      console.log(changes)
+      console.log(changes[0])
+      // this.props.setComments(changes)
       // can have a setComments actions and pass them from here
     })
   }
@@ -97,7 +99,8 @@ const mapDispatchToProps = dispatch => {
     getChatroom: roomId => dispatch(getChatroom(roomId)),
     unsetChannel: () => dispatch(unsetChannel()),
     setChannel: (channel) => dispatch(setChannel(channel)),
-    getChannelComments: (chatroomId, channelId) => dispatch(getChannelComments(chatroomId, channelId))
+    getChannelComments: (chatroomId, channelId) => dispatch(getChannelComments(chatroomId, channelId)),
+    setComments: comments => dispatch(setComments(comments))
   }
 }
 
