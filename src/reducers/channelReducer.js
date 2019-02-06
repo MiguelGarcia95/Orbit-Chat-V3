@@ -61,16 +61,14 @@ const chatroomReducer = (state = initialState, action) => {
       return newArray
     }, []);
 
-    // console.log(filteredComments)
     let sortedComments = [];
-    if (filteredComments.length > 1) {
+    if (filteredComments.length !== 0) {
       sortedComments = filteredComments.sort(function(a, b) {
         return new Date(a.comment.createdAt.toDate()) - new Date(b.comment.createdAt.toDate());
       });
     } else {
       sortedComments = [...filteredComments];
     }
-    
 
     // console.log('New Comment Array', newComments);
       return {
