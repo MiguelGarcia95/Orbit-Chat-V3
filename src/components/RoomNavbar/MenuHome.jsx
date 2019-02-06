@@ -8,15 +8,17 @@ class MenuHome extends React.Component {
   
   render() {
     return (
-      <Grid >
-        <Container fluid textAlign='right'>
-          <Header as='h4' className='home_option' floated='left' >Option name</Header>
-          {/* <Icon name='plus' style={{cursor: 'pointer'}}  onClick={this.openModal} /> */}
-        </Container>
-        <Container fluid textAlign='right'>
-        </Container>
-        {/* <p>Friends</p> <h3>Direct Messages</h3> */}
-      </Grid>
+      <React.Fragment>
+        <Grid >
+          <Container fluid textAlign='right' className='home_option' >
+            <Header as='h3' floated='left' >Friends</Header>
+            <Icon name='users' style={{cursor: 'pointer'}}  size='large'/>
+          </Container>
+          <Container fluid textAlign='right'>
+          </Container>
+          {/* <p>Friends</p> <h3>Direct Messages</h3> */}
+        </Grid>
+      </React.Fragment>
     )
   }
 }
