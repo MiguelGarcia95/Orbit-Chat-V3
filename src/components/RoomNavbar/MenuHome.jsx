@@ -1,5 +1,5 @@
 import React from 'react';
-import {Menu} from 'semantic-ui-react';
+import {Grid, Container, Header, Icon} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 
 class MenuHome extends React.Component {
@@ -8,9 +8,15 @@ class MenuHome extends React.Component {
   
   render() {
     return (
-      <Menu>
-        <p>Home settings & nakama</p>
-      </Menu> 
+      <Grid >
+        <Container fluid textAlign='right'>
+          <Header as='h4' className='home_option' floated='left' >Option name</Header>
+          {/* <Icon name='plus' style={{cursor: 'pointer'}}  onClick={this.openModal} /> */}
+        </Container>
+        <Container fluid textAlign='right'>
+        </Container>
+        {/* <p>Friends</p> <h3>Direct Messages</h3> */}
+      </Grid>
     )
   }
 }
