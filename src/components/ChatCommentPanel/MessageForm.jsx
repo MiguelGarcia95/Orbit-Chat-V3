@@ -6,15 +6,14 @@ import {createChannelComments} from '../../actions/channelActions';
 class MessageForm extends React.Component {
   state = {
     comment: '',
-    channel: this.props.channel,
     user: this.props.user
   }
 
   onChange = e => this.setState({[e.target.name]: e.target.value});
   
   onSubmit = () => {
-    // console.log(this.state)
-    this.props.createChannelComments(this.state);
+    // console.log({...this.state, channel: this.props.channel})
+    this.props.createChannelComments({...this.state, channel: this.props.channel});
   }
 
   render() {

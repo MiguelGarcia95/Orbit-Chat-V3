@@ -63,7 +63,7 @@ const chatroomReducer = (state = initialState, action) => {
 
     let sortedComments = [];
     if (filteredComments.length !== 0) {
-      sortedComments = filteredComments.sort(function(a, b) {
+      sortedComments = filteredComments.sort((a, b) => {
         if (b.comment.createdAt !== null && a.comment.createdAt !== null) {
           return new Date(a.comment.createdAt.toDate()) - new Date(b.comment.createdAt.toDate());
         }

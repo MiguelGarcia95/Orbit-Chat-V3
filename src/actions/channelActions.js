@@ -61,7 +61,7 @@ export const getChannels = (chatroomId) => {
 export const getChannelComments = (chatroomId, channelId) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
-    firestore.collection(`comments/${chatroomId}-${channelId}/comments`).get().then(data => {
+    firestore.collection(`comments/${channelId}/comments`).get().then(data => {
       let comments = [];
       data.forEach(doc => {
         comments.push({id: doc.id, comment: doc.data()})
@@ -116,7 +116,7 @@ export const createChannelComments = comment => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
     // comments/ chatroomId-channelId / comments
-    firestore.add(`comments/${comment.channel.channel.chatroomId}-${comment.channel.id}/comments`, {
+    firestore.add(`comments/${comment.channel.id}/comments`, {
       comment: comment.comment,
       uid: comment.user.uid,
       username: comment.user.displayName,
