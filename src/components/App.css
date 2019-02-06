@@ -62,8 +62,14 @@ html, body, .app {
 }
 
 .home_option {
-  margin: 30px 0px 10px 0px !important;
+  padding: 30px 15px !important;
+  box-sizing: border-box;
   font-weight: 400 !important;
+  cursor: pointer;
+}
+
+.home_option:hover {
+  background-color: rgba(0,0,0,0.1)
 }
 
 .category_channel {
