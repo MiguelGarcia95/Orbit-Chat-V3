@@ -39,13 +39,6 @@ class MessageForm extends React.Component {
             labelPosition='left'
             icon='comment'
           />
-          {/* <Button
-            color='black'
-            // onClick={this.openModal}
-            content='Upload Image'
-            labelPosition='right'
-            icon='picture'
-          /> */}
         </Button.Group>
       </Segment>
     )
