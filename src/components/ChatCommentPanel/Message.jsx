@@ -14,7 +14,7 @@ const Message = ({message, user}) => {
       <Comment.Avatar src={message.avatar}  />
       <Comment.Content className={isOwnMessage(message, user)} >
         <Comment.Author as='a'>{message.username}</Comment.Author>
-        {/* <Comment.Metadata >{timeFromNow(message.createdAt.toDate())}</Comment.Metadata> */}
+        {message.createdAt && message.createdAt.toDate() && <Comment.Metadata >{timeFromNow(message.createdAt.toDate())}</Comment.Metadata> }
         <Comment.Text>{message.comment}</Comment.Text>
       </Comment.Content>
     </Comment>
