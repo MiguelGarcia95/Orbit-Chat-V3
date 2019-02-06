@@ -42,30 +42,42 @@ const chatroomReducer = (state = initialState, action) => {
         comments: action.payload.comments
       }
     case actionTypes.SET_COMMENTS:
-    // console.log('Old Comments', state.comments);
-    // console.log('Incoming Comments', action.payload.comments);
     let newComments = [...state.comments, ...action.payload.comments];
 
     var filteredComments = newComments.reduce((newArray, comment) => {
       if (newArray.length > 0) {
-
+        let isInArray = false;
+        newArray.forEach(arrayComment => {
+          if (comment.id === arrayComment.id) {
+            isInArray = true;
+          }
+        });
+        if (!isInArray) {
+          newArray.push(comment)
+        }
       } else {
-        console.log('New Array is 0')
         newArray.push(comment)
       }
       return newArray
     }, []);
 
-    console.log(filteredComments)
+    // console.log(filteredComments)
+    let sortedComments = [];
+    if (filteredComments.length > 1) {
+      sortedComments = filteredComments.sort(function(a, b) {
+        return new Date(a.comment.createdAt.toDate()) - new Date(b.comment.createdAt.toDate());
+      });
+    } else {
+      sortedComments = [...filteredComments];
+    }
+    
 
-    // let sortedComments = newComments.sort(function(a, b) {
-    //   return new Date(a.comment.createdAt.toDate()) - new Date(b.comment.createdAt.toDate());
-    // });
-    console.log('New Comment Array', newComments);
+    // console.log('New Comment Array', newComments);
       return {
         ...state,
         channelError: action.payload.channelError,
-        comments: action.payload.comments
+        comments: sortedComments
+        // comments: action.payload.comments
       }
     default:
       return state;
