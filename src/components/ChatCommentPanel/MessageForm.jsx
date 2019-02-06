@@ -13,9 +13,13 @@ class MessageForm extends React.Component {
   
   onSubmit = () => {
     this.props.createChannelComments({...this.state, channel: this.props.channel});
+    this.clearForm();
   }
 
+  clearForm = () => this.setState({comment: ''});
+
   render() {
+    const {comment} = this.state;
     return (
       <Segment className='message_form'>
         <Input
@@ -24,9 +28,10 @@ class MessageForm extends React.Component {
           onChange={this.onChange}
           style={{marginBottom: '0.7em'}}
           labelPosition='left'
+          value={comment}
           placeholder='Write your message'
         />
-        <Button.Group icon widths='2'>
+        <Button.Group icon >
           <Button
             onClick={this.onSubmit}
             color='blue'
@@ -34,13 +39,13 @@ class MessageForm extends React.Component {
             labelPosition='left'
             icon='comment'
           />
-          <Button
+          {/* <Button
             color='black'
             // onClick={this.openModal}
             content='Upload Image'
             labelPosition='right'
             icon='picture'
-          />
+          /> */}
         </Button.Group>
       </Segment>
     )
