@@ -2,9 +2,10 @@ import React from 'react';
 import {Comment} from 'semantic-ui-react';
 import moment from 'moment';
 
-const timeFromNow = timestamp => {
-  
-  return moment(timestamp.createdAt.toDate()).fromNow();
+const timeFromNow = message => {
+  if (message.createdAt !== null) {
+    return moment(message.createdAt.toDate()).fromNow();
+  }
 }
 
 const isOwnMessage = (message, user) => {
