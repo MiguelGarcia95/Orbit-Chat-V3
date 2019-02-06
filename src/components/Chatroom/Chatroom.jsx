@@ -35,7 +35,12 @@ class Chatroom extends React.Component {
       this.setState({fetchedChatroom: true});
     }
 
-    this.setCurrentChannel(nextProps.currentChannel, nextProps.channels, nextProps.categories);
+    if (this.props.currentChannel !== nextProps.currentChannel) {
+      console.log('Different channel')
+      this.setCurrentChannel(nextProps.currentChannel, nextProps.channels, nextProps.categories, false);
+    }
+
+    this.setCurrentChannel(nextProps.currentChannel, nextProps.channels, nextProps.categories, true);
 
     this.setState({firstLoad: false});
   }
@@ -49,11 +54,13 @@ class Chatroom extends React.Component {
     }, {}) 
   }
 
-  setCurrentChannel = (currentChannel, channels, categories) => {
+  setCurrentChannel = (currentChannel, channels, categories, isNewChannel) => {
     if (!currentChannel && channels.length > 0 && categories.length > 0) {
       this.props.setChannel(this.getMatchingChannels(categories[0], channels));
-    } else if (currentChannel) {
+    } else if (currentChannel && isNewChannel) {
       this.getChannelComemntrsRT(currentChannel.channel.chatroomId, currentChannel.id);
+    } else if (currentChannel && !isNewChannel) {
+      this.props.getChannelComments(currentChannel.channel.chatroomId, currentChannel.id)
     }
   }
 
