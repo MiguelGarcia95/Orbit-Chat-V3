@@ -43,7 +43,7 @@ const chatroomReducer = (state = initialState, action) => {
       }
     case actionTypes.SET_COMMENTS:
     let newComments = [...state.comments, ...action.payload.comments];
-
+    
     var filteredComments = newComments.reduce((newArray, comment) => {
       if (newArray.length > 0) {
         let isInArray = false;
@@ -64,13 +64,14 @@ const chatroomReducer = (state = initialState, action) => {
     let sortedComments = [];
     if (filteredComments.length !== 0) {
       sortedComments = filteredComments.sort(function(a, b) {
-        return new Date(a.comment.createdAt.toDate()) - new Date(b.comment.createdAt.toDate());
+        if (b.comment.createdAt !== null && a.comment.createdAt !== null) {
+          return new Date(a.comment.createdAt.toDate()) - new Date(b.comment.createdAt.toDate());
+        }
       });
     } else {
       sortedComments = [...filteredComments];
     }
 
-    // console.log('New Comment Array', newComments);
       return {
         ...state,
         channelError: action.payload.channelError,
