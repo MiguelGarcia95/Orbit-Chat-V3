@@ -42,9 +42,25 @@ const chatroomReducer = (state = initialState, action) => {
         comments: action.payload.comments
       }
     case actionTypes.SET_COMMENTS:
-    console.log('Old Comments', state.comments);
-    console.log('Incoming Comments', action.payload.comments);
+    // console.log('Old Comments', state.comments);
+    // console.log('Incoming Comments', action.payload.comments);
     let newComments = [...state.comments, ...action.payload.comments];
+
+    var filteredComments = newComments.reduce((newArray, comment) => {
+      if (newArray.length > 0) {
+
+      } else {
+        console.log('New Array is 0')
+        newArray.push(comment)
+      }
+      return newArray
+    }, []);
+
+    console.log(filteredComments)
+
+    // let sortedComments = newComments.sort(function(a, b) {
+    //   return new Date(a.comment.createdAt.toDate()) - new Date(b.comment.createdAt.toDate());
+    // });
     console.log('New Comment Array', newComments);
       return {
         ...state,
