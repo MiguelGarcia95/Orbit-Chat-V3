@@ -22,7 +22,7 @@ export const joinChatroom = (user, chatroom) => {
 export const leaveChatroom = (user, chatroom) => {
   return (dispatch, getState, {getFirestore}) => {
     console.log(user);
-    console.log(chatroom)
+    console.log(chatroom);
   }
 };
 
