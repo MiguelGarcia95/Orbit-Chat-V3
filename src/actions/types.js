@@ -14,6 +14,7 @@ export const GET_CHATROOMS = 'GET_CHATROOMS';
 
 // Category
 export const CREATE_CATEGORY = 'CREATE_CATEGORY';
+export const DELETE_CATEGORY = 'DELETE_CATEGORY';
 export const GET_CHATROOM_CATEGORIES = 'GET_CHATROOM_CATEGORIES';
 
 // Channels 
