@@ -28,6 +28,12 @@ export const createChannel = channel => {
   }
 }
 
+export const deleteChannel = channel => {
+  return (dispatch, getState, {getFirestore}) => {
+    console.log(channel);
+  }
+}
+
 export const getChannels = (chatroomId) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
