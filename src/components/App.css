@@ -65,6 +65,18 @@ html, body, .app {
   /* width: 100%; */
 }
 
+.home_DM {
+  margin-top: 100px !important;
+}
+
+.home_DM .home_option {
+  cursor: auto;
+}
+
+.home_DM .home_option:hover {
+  background-color: rgba(0,0,0,0)
+}
+
 .home_option {
   padding: 15px !important;
   box-sizing: border-box;

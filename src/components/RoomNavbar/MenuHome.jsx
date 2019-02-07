@@ -21,8 +21,8 @@ class MenuHome extends React.Component {
           </Grid.Row>
         </Grid>
 
-        <Grid className='home_optiopns_container' style={{marginTop: '0'}}>
-          <Grid.Row onClick={this.onClick} className='home_option home_DM' verticalAlign="middle" textAlign='center' >
+        <Grid className='home_optiopns_container home_DM' style={{marginTop: '0'}}>
+          <Grid.Row onClick={this.onClick} className='home_option' verticalAlign="middle" textAlign='center' >
             <Container fluid textAlign='right' >
               <Header as='h3' style={{margin: '0'}} floated='left'>Direct Messages</Header>
               <Icon name='mail'  size='large'/>
