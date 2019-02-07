@@ -19,22 +19,17 @@ class MenuHome extends React.Component {
               <Icon name='users'  size='large'/>
             </Container>
           </Grid.Row>
-          <Grid.Row onClick={this.onClick} className='home_option' verticalAlign="middle" >
-            <Container fluid textAlign='right' >
-              <Header as='h3' style={{margin: '0'}} floated='left'>Friends</Header>
-              <Icon name='users'  size='large'/>
-            </Container>
-          </Grid.Row>
-          <Grid.Row onClick={this.onClick} className='home_option' verticalAlign="middle" >
-            <Container fluid textAlign='right' >
-              <Header as='h3' style={{margin: '0'}} floated='left'>Friends</Header>
-              <Icon name='users'  size='large'/>
-            </Container>
-          </Grid.Row>
-          <Container fluid textAlign='right'>
-          </Container>
-          {/* <p>Friends</p> <h3>Direct Messages</h3> */}
         </Grid>
+
+        <Grid className='home_optiopns_container' style={{marginTop: '0'}}>
+          <Grid.Row onClick={this.onClick} className='home_option home_DM' verticalAlign="middle" textAlign='center' >
+            <Container fluid textAlign='right' >
+              <Header as='h3' style={{margin: '0'}} floated='left'>Direct Messages</Header>
+              <Icon name='mail'  size='large'/>
+            </Container>
+          </Grid.Row>
+        </Grid>
+          {/* <p>Friends</p> <h3>Direct Messages</h3> */}
       </React.Fragment>
     )
   }
