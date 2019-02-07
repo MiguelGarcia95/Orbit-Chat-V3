@@ -12,8 +12,20 @@ class MenuHome extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Grid >
-          <Grid.Row onClick={this.onClick} className='home_option' >
+        <Grid className='home_optiopns_container' style={{marginTop: '0'}}>
+          <Grid.Row onClick={this.onClick} className='home_option' verticalAlign="middle" textAlign='center' >
+            <Container fluid textAlign='right' >
+              <Header as='h3' style={{margin: '0'}} floated='left'>Friends</Header>
+              <Icon name='users'  size='large'/>
+            </Container>
+          </Grid.Row>
+          <Grid.Row onClick={this.onClick} className='home_option' verticalAlign="middle" >
+            <Container fluid textAlign='right' >
+              <Header as='h3' style={{margin: '0'}} floated='left'>Friends</Header>
+              <Icon name='users'  size='large'/>
+            </Container>
+          </Grid.Row>
+          <Grid.Row onClick={this.onClick} className='home_option' verticalAlign="middle" >
             <Container fluid textAlign='right' >
               <Header as='h3' style={{margin: '0'}} floated='left'>Friends</Header>
               <Icon name='users'  size='large'/>
