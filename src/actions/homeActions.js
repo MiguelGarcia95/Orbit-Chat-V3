@@ -39,3 +39,22 @@ export const removeFriend = (user, friend) => {
     console.log(friend)
   }
 };
+
+export const setFriendsPanel = (user) => {
+  return (dispatch, getState, {getFirestore}) {
+    console.log(user);
+  }
+}
+
+export const displayDirectMessages = (user, otherUser) => {
+  return (dispatch, getState, {getFirestore}) => {
+    console.log(user);
+    console.log(otherUser)
+  }
+} 
+
+export const getDirectMessages = (user) => {
+  return (dispatch, getState, {getFirestore}) => {
+    console.log(user)
+  }
+}
