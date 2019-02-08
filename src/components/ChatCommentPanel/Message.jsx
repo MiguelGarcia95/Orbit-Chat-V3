@@ -5,44 +5,49 @@ import {connect} from 'react-redux';
 import {deleteChannelComment} from '../../actions/channelActions';
 import {createDirectMessage} from '../../actions/homeActions';
 
-const timeFromNow = message => {
-  if (message.createdAt !== null) {
-    return moment(message.createdAt.toDate()).fromNow();
+class Message extends React.Component{
+  timeFromNow = message => {
+    if (message.createdAt !== null) {
+      return moment(message.createdAt.toDate()).fromNow();
+    }
   }
-}
+  
+  isOwnMessageClass = (message, user) => {
+    return message.uid === user.uid ? 'message_self' : ''
+  }
+  
+  isOwnMessageOptions = (message, user) => {
+    if (message.uid === user.uid ) {
+      return (
+        <Dropdown.Item content='Delete' icon='x' />
+      )
+    } else {
+      return (
+        <Dropdown.Item content={`Send ${message.username} DM`} icon='at' />
+      )
+    }
+  }
 
-const isOwnMessageClass = (message, user) => {
-  return message.uid === user.uid ? 'message_self' : ''
-}
-
-const isOwnMessageOptions = (message, user) => {
-  if (message.uid === user.uid ) {
+  render() {
+    const {message, user} = this.props;
     return (
-      <Dropdown.Item content='Delete' icon='x' />
-    )
-  } else {
-    return (
-      <Dropdown.Item content={`Send ${message.username} DM`} icon='at' />
+      <React.Fragment>
+        <Comment className="chat_comment">
+          <Comment.Avatar src={message.avatar}  />
+          <Comment.Content className={`comment_body ${this.isOwnMessageClass(message, user)}`} >
+            <Comment.Author as='a'>{message.username}</Comment.Author>
+            {message.createdAt &&  <Comment.Metadata >{this.timeFromNow(message)}</Comment.Metadata> }
+            <Comment.Text>{message.comment}</Comment.Text>
+            <Dropdown icon='ellipsis vertical' className='message_options'>
+              <Dropdown.Menu direction='left' >
+                {this.isOwnMessageOptions(message, user)}
+              </Dropdown.Menu>
+            </Dropdown>
+          </Comment.Content>
+        </Comment>
+      </React.Fragment>
     )
   }
-}
-
-const Message = ({message, user}) => {
-  return (
-    <Comment className="chat_comment">
-      <Comment.Avatar src={message.avatar}  />
-      <Comment.Content className={`comment_body ${isOwnMessageClass(message, user)}`} >
-        <Comment.Author as='a'>{message.username}</Comment.Author>
-        {message.createdAt &&  <Comment.Metadata >{timeFromNow(message)}</Comment.Metadata> }
-        <Comment.Text>{message.comment}</Comment.Text>
-        <Dropdown icon='ellipsis vertical' className='message_options'>
-          <Dropdown.Menu direction='left' >
-            {isOwnMessageOptions(message, user)}
-          </Dropdown.Menu>
-        </Dropdown>
-      </Comment.Content>
-    </Comment>
-  )
 }
 
 export default connect()(Message);
