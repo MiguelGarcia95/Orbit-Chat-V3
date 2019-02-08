@@ -31,14 +31,15 @@ export const signUp = credentials => {
           photoURL: `http://gravatar.com/avatar/${md5(credentials.email)}?d=identicon`
         })
 
-        //Create Firestore user
-        firestore.add('users', {
+        //Create firestore user and set custom Id
+        firestore.collection('users').doc(createdUser.user.uid).set({
           username: credentials.username,
           avatar: `http://gravatar.com/avatar/${md5(credentials.email)}?d=identicon`,
           uid: createdUser.user.uid,
           email: credentials.email,
           createdAt: firestore.FieldValue.serverTimestamp()
         });
+
       }).then(() => {
         dispatch({
           type: actionTypes.SIGN_UP,
