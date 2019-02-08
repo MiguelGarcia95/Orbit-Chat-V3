@@ -15,15 +15,13 @@ const isOwnMessageClass = (message, user) => {
 const isOwnMessageOptions = (message, user) => {
   if (message.uid === user.uid ) {
     return (
-      <Dropdown icon='caret down'>
-        <Dropdown.Menu direction='left' >
-          <Dropdown.Item text='New Category' onClick={this.openModal} />
-        </Dropdown.Menu>
-      </Dropdown>
+      <Dropdown.Item text='Delete Comment' />
     )
     // console.log('return option to edit and or delete comment')
   } else {
-    // console.log('return option to add as a friend or send a dm')
+    return (
+      <Dropdown.Item text='Send User a Direct Message' />
+    )
   }
 }
 
@@ -37,7 +35,7 @@ const Message = ({message, user}) => {
         <Comment.Text>{message.comment}</Comment.Text>
         <Dropdown icon='ellipsis vertical' className='message_options'>
           <Dropdown.Menu direction='left' >
-            <Dropdown.Item text='New Category'  />
+            {isOwnMessageOptions(message, user)}
           </Dropdown.Menu>
         </Dropdown>
       </Comment.Content>
