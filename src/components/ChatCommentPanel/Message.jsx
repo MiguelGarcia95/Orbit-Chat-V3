@@ -40,7 +40,7 @@ class Message extends React.Component{
   closeModal = () => this.setState({modal: false});
 
   onSubmit = () => {
-    this.createDirectMessage(this.props.user, this.props.message.uid, this.state.comment)
+    this.props.createDirectMessage(this.props.user, this.props.message.uid, this.state.comment)
   }
 
   render() {
@@ -89,7 +89,7 @@ class Message extends React.Component{
 const mapDispatchToProps = dispatch => {
   return {
     deleteChannelComment: (channel, comment) => dispatch(deleteChannelComment(channel, comment)),
-    createDirectMessage: (user, secondUser, message) => dispatch(createDirectMessage(user, secondUser, message))
+    createDirectMessage: (user, secondUserId, message) => dispatch(createDirectMessage(user, secondUserId, message))
   }
 }
 
