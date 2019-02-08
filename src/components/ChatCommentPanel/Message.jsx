@@ -7,7 +7,8 @@ import {createDirectMessage} from '../../actions/homeActions';
 
 class Message extends React.Component{
   state = {
-    modal: false
+    modal: false,
+    comment: ''
   }
 
   timeFromNow = message => {
@@ -39,7 +40,7 @@ class Message extends React.Component{
   closeModal = () => this.setState({modal: false});
 
   onSubmit = () => {
-    // this.createDirectMessage(user, message.uid, this.state.comment)
+    this.createDirectMessage(this.props.user, this.props.message.uid, this.state.comment)
   }
 
   render() {
