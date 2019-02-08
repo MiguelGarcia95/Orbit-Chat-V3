@@ -132,7 +132,8 @@ html, body, .app {
 }
 
 .chat_comment {
-
+  padding: 5px 0 !important;
+  margin-top: 0px !important;
 }
 
 .message_form {
@@ -147,4 +148,14 @@ html, body, .app {
 .message_self {
   border-left: 2px solid orange;
   padding-left: 8px;
+}
+
+.comment_body {
+  position: relative;
+}
+
+.message_options {
+  position: absolute !important;
+  right: 0;
+  top: 0;
 }
