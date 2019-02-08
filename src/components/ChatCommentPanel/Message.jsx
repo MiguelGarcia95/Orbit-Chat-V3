@@ -1,11 +1,15 @@
 import React from 'react';
-import {Comment, Dropdown} from 'semantic-ui-react';
+import {Comment, Dropdown, Modal, Label, Input, Segment, Button} from 'semantic-ui-react';
 import moment from 'moment';
 import {connect} from 'react-redux';
 import {deleteChannelComment} from '../../actions/channelActions';
 import {createDirectMessage} from '../../actions/homeActions';
 
 class Message extends React.Component{
+  state = {
+    modal: false
+  }
+
   timeFromNow = message => {
     if (message.createdAt !== null) {
       return moment(message.createdAt.toDate()).fromNow();
@@ -28,8 +32,19 @@ class Message extends React.Component{
     }
   }
 
+  onChange = e => this.setState({[e.target.name]: e.target.value});
+
+  openModal = () => this.setState({modal: true});
+
+  closeModal = () => this.setState({modal: false});
+
+  onSubmit = () => {
+
+  }
+
   render() {
     const {message, user} = this.props;
+    const {modal} = this.state;
     return (
       <React.Fragment>
         <Comment className="chat_comment">
@@ -45,6 +60,21 @@ class Message extends React.Component{
             </Dropdown>
           </Comment.Content>
         </Comment>
+
+        <Modal open={modal} onClose={this.closeModal} >
+          <Modal.Header>DM</Modal.Header>
+          <Modal.Content>
+            <Segment>
+              <Label attached='top' color='black' >Name</Label>
+              <Input fluid placeholder='Message' name='comment' onChange={this.onChange} />
+            </Segment>
+            <Button.Group attached='bottom'>
+              <Button negative onClick={this.closeModal} > Cancel</Button>
+              <Button.Or />
+              <Button positive onClick={this.onSubmit} > Create</Button>
+            </Button.Group>
+          </Modal.Content>
+        </Modal>
       </React.Fragment>
     )
   }
