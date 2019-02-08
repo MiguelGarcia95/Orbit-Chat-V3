@@ -15,12 +15,12 @@ const isOwnMessageClass = (message, user) => {
 const isOwnMessageOptions = (message, user) => {
   if (message.uid === user.uid ) {
     return (
-      <Dropdown.Item text='Delete Comment' />
+      <Dropdown.Item content='Delete' icon='x' />
     )
     // console.log('return option to edit and or delete comment')
   } else {
     return (
-      <Dropdown.Item text='Send User a Direct Message' />
+      <Dropdown.Item content={`Send ${message.username} DM`} icon='at' />
     )
   }
 }
