@@ -1,6 +1,6 @@
 import * as actionTypes from './types';
 
-export const createDirectMessage = message => {
+export const createDirectMessage = (user, secondUser, message) => {
   return (dispatch, getState, {getFirestore}) => {
     console.log(message)
   }
