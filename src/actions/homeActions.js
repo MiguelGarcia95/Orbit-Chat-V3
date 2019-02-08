@@ -41,7 +41,7 @@ export const removeFriend = (user, friend) => {
 };
 
 export const setFriendsPanel = (user) => {
-  return (dispatch, getState, {getFirestore}) {
+  return (dispatch, getState, {getFirestore}) => {
     console.log(user);
   }
 }

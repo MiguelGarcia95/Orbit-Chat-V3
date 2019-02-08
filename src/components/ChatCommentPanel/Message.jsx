@@ -1,6 +1,9 @@
 import React from 'react';
 import {Comment, Dropdown} from 'semantic-ui-react';
 import moment from 'moment';
+import {connect} from 'react-redux';
+import {deleteChannelComment} from '../../actions/channelActions';
+import {createDirectMessage} from '../../actions/homeActions';
 
 const timeFromNow = message => {
   if (message.createdAt !== null) {
@@ -42,4 +45,4 @@ const Message = ({message, user}) => {
   )
 }
 
-export default Message;
+export default connect()(Message);
