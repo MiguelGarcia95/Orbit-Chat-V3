@@ -121,8 +121,8 @@ html, body, .app {
   margin-top: 0px !important;
   margin-bottom: 0px !important;
   box-sizing: border-box;
-  /* height: 100%; */
-  width: 100%;
+  width: 100% !important;
+  max-width: none !important;
   position: relative;
   float: left;
   /* padding-top: 70px !important; */
