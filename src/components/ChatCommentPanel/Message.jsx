@@ -1,5 +1,5 @@
 import React from 'react';
-import {Comment, Dropdown, Modal, Label, Input, Segment, Button} from 'semantic-ui-react';
+import {Comment, Dropdown, Modal, Input, Segment, Button} from 'semantic-ui-react';
 import moment from 'moment';
 import {connect} from 'react-redux';
 import {deleteChannelComment} from '../../actions/channelActions';
@@ -27,7 +27,7 @@ class Message extends React.Component{
       )
     } else {
       return (
-        <Dropdown.Item content={`Send ${message.username} DM`} icon='at' />
+        <Dropdown.Item content={`Send ${message.username} DM`} icon='at' onClick={this.openModal} />
       )
     }
   }
@@ -65,7 +65,6 @@ class Message extends React.Component{
           <Modal.Header>DM</Modal.Header>
           <Modal.Content>
             <Segment>
-              <Label attached='top' color='black' >Name</Label>
               <Input fluid placeholder='Message' name='comment' onChange={this.onChange} />
             </Segment>
             <Button.Group attached='bottom'>
