@@ -1,5 +1,5 @@
 import React from 'react';
-import {Comment, Dropdown, Icon} from 'semantic-ui-react';
+import {Comment, Dropdown} from 'semantic-ui-react';
 import moment from 'moment';
 
 const timeFromNow = message => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Segment, Input, Button} from 'semantic-ui-react';
 import {connect} from 'react-redux';
-import {createChannelComments} from '../../actions/channelActions';
+import {createChannelComment} from '../../actions/channelActions';
 
 class MessageForm extends React.Component {
   state = {
@@ -12,7 +12,7 @@ class MessageForm extends React.Component {
   onChange = e => this.setState({[e.target.name]: e.target.value});
   
   onSubmit = () => {
-    this.props.createChannelComments({...this.state, channel: this.props.channel});
+    this.props.createChannelComment({...this.state, channel: this.props.channel});
     this.clearForm();
   }
 
@@ -47,7 +47,7 @@ class MessageForm extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createChannelComments: comment => dispatch(createChannelComments(comment))
+    createChannelComment: comment => dispatch(createChannelComment(comment))
   }
 }
 

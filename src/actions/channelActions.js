@@ -118,7 +118,15 @@ export const setComments = (docComments) => {
   }
 }
 
-export const createChannelComments = comment => {
+export const deleteChannelComment = (channel, comment) => {
+  return (dispatch, getState, {getFirestore}) => {
+    const firestore = getFirestore();
+    console.log(channel);
+    console.log(comment)
+  }
+}
+ 
+export const createChannelComment = comment => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
     // comments/ chatroomId-channelId / comments
