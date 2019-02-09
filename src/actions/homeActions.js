@@ -5,11 +5,41 @@ export const createDirectMessage = (user, secondUserId, message) => {
     const firestore = getFirestore();
 
     firestore.add(`users/${user.uid}/messages/${secondUserId}/messages`, {
-
+      comment: message,
+      uid: user.uid,
+      username: user.displayName,
+      avatar: user.photoURL,
+      createdAt: firestore.FieldValue.serverTimestamp()
+    }).catch(err => {
+      dispatch({
+        type: actionTypes.CREATE_DIRECT_MESSAGE,
+        payload: {
+          homeError: err.message
+        }
+      })
     })
-    // console.log(user)
-    // console.log(secondUserId)
-    // console.log(message)
+
+    firestore.add(`users/${secondUserId}/messages/${user.uid}/messages`, {
+      comment: message,
+      uid: user.uid,
+      username: user.displayName,
+      avatar: user.photoURL,
+      createdAt: firestore.FieldValue.serverTimestamp()
+    }).then(() => {
+      dispatch({
+        type: actionTypes.CREATE_DIRECT_MESSAGE,
+        payload: {
+          homeError: null
+        }
+      })
+    }).catch(err => {
+      dispatch({
+        type: actionTypes.CREATE_DIRECT_MESSAGE,
+        payload: {
+          homeError: err.message
+        }
+      })
+    })
   }
 }
 
