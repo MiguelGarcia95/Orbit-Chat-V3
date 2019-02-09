@@ -121,8 +121,8 @@ export const setComments = (docComments) => {
 export const deleteChannelComment = (channel, comment) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
-    console.log(channel);
-    console.log(comment)
+    // console.log(channel);
+    // console.log(comment)
   }
 }
  

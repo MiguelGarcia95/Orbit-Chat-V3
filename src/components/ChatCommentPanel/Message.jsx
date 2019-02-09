@@ -29,11 +29,15 @@ class Message extends React.Component{
   onSubmit = () => {
     this.props.createDirectMessage(this.props.user, this.props.message.uid, this.state.comment)
   }
+
+  onDelete = () => {
+    this.props.deleteChannelComment()
+  }
   
   isOwnMessageOptions = (message, user) => {
     if (message.uid === user.uid ) {
       return (
-        <Dropdown.Item content='Delete' icon='x' onClick={this.props.deleteChannelComment()} />
+        <Dropdown.Item content='Delete' icon='x' onClick={this.onDelete} />
       )
     } else {
       return (
