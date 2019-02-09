@@ -15,9 +15,6 @@ import RoomNavbar from './components/RoomNavbar/RoomNavbar';
 import Chatroom from './components/Chatroom/Chatroom';
 
 class Root extends React.Component {
-  state = {
-  }
-
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
