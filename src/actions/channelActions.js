@@ -99,6 +99,7 @@ export const getChannelComments = (chatroomId, channelId) => {
 export const setComments = (docComments) => {
   return (dispatch) => {
     let comments = [];
+    let commentToDelete = [];
 
     docComments.forEach(docComment => {
       if (docComment.type === 'added') {
@@ -106,7 +107,7 @@ export const setComments = (docComments) => {
       } else if (docComment.type === 'modified') {
         comments.push({id: docComment.doc.id, comment: docComment.doc.data()})
       } else if (docComment.type === 'removed') {
-        console.log('deleted');
+        commentToDelete.push({id: docComment.doc.id, comment: docComment.doc.data()})
       }
     })
 
@@ -115,6 +116,7 @@ export const setComments = (docComments) => {
       payload: {
         comments: comments,
         channelError: null,
+        commentToDelete: commentToDelete
       }
     })
   }
