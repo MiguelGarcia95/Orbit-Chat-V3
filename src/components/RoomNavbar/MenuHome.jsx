@@ -1,6 +1,7 @@
 import React from 'react';
 import {Grid, Container, Header, Icon} from 'semantic-ui-react';
 import {connect} from 'react-redux';
+import {getDirectMessages} from '../../actions/homeActions';
 
 class MenuHome extends React.Component {
   state = {
@@ -34,4 +35,10 @@ class MenuHome extends React.Component {
   }
 }
 
-export default connect()(MenuHome);
+const mapDispatchToProps = dispatch => {
+  return {
+    getDirectMessages: user => dispatch(getDirectMessages(user))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(MenuHome);
