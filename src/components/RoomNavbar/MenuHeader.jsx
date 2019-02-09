@@ -32,7 +32,7 @@ class MenuHeader extends React.Component {
               {this.props.chatroom.chatroom.name}
               </Container>
             </Grid.Column>
-            <Grid.Column verticalAlign='middle' width={2}>
+            <Grid.Column verticalAlign='middle' width={2} style={{position: 'absolute', right: '0px', marginRight: '10px'}}>
               <Container fluid>
                 <Dropdown icon='caret down'>
                   <Dropdown.Menu direction='left' >

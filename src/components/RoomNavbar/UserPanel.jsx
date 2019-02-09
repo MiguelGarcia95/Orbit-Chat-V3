@@ -30,7 +30,7 @@ class UserPanel extends React.Component {
               {user.displayName}
               </Container>
             </Grid.Column>
-            <Grid.Column verticalAlign='middle' width={2}>
+            <Grid.Column verticalAlign='middle' width={2} style={{position: 'absolute', right: '0px', marginRight: '15px'}}>
               <Container fluid>
                 <Icon name='cog' className='grid-icon' onClick={this.openModal} />
               </Container>
