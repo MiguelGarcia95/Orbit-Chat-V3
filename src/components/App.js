@@ -7,9 +7,6 @@ import {connect} from 'react-redux';
 import Spinner from './Layout/Spinner';
 
 class App extends React.Component {
-  state = {
-  }
-
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if (!user) {
