@@ -8,7 +8,7 @@ class Messages extends React.Component {
 
   displayMessages = (messages, user) => {
     return messages.map(message => {
-      return <Message key={message.id} message={message.comment} user={user} />
+      return <Message key={message.id} messageId={message.id} message={message.comment} user={user} />
     })
   }
 
