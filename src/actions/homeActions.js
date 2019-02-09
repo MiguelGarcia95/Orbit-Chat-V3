@@ -2,9 +2,14 @@ import * as actionTypes from './types';
 
 export const createDirectMessage = (user, secondUserId, message) => {
   return (dispatch, getState, {getFirestore}) => {
-    console.log(user)
-    console.log(secondUserId)
-    console.log(message)
+    const firestore = getFirestore();
+
+    firestore.add(`users/${user.uid}/messages/${secondUserId}/messages`, {
+
+    })
+    // console.log(user)
+    // console.log(secondUserId)
+    // console.log(message)
   }
 }
 
