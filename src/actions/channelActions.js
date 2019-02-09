@@ -105,7 +105,9 @@ export const setComments = (docComments) => {
         comments.push({id: docComment.doc.id, comment: docComment.doc.data()})
       } else if (docComment.type === 'modified') {
         comments.push({id: docComment.doc.id, comment: docComment.doc.data()})
-      } 
+      } else if (docComment.type === 'removed') {
+        console.log('deleted');
+      }
     })
 
     dispatch({
@@ -121,7 +123,22 @@ export const setComments = (docComments) => {
 export const deleteChannelComment = (channelId, commentId) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
-    console.log(`${channelId} - ${commentId}`);
+    firestore.collection(`comments/${channelId}/comments`)
+      .doc(commentId).delete().then(() => {
+        dispatch({
+          type: actionTypes.DELETE_CHANNEL_COMMENT,
+          payload: {
+            channelError: null
+          }
+        })
+      }).catch(err => {
+        dispatch({
+          type: actionTypes.DELETE_CHANNEL_COMMENT,
+          payload: {
+            channelError: err.message
+          }
+        })
+      })
   }
 }
  
