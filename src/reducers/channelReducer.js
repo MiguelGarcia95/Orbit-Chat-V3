@@ -44,7 +44,7 @@ const chatroomReducer = (state = initialState, action) => {
     case actionTypes.SET_COMMENTS:
     let newComments = [...state.comments, ...action.payload.comments];
     
-    var filteredComments = newComments.reduce((newArray, comment) => {
+    let filteredComments = newComments.reduce((newArray, comment) => {
       if (newArray.length > 0) {
         let isInArray = false;
         newArray.forEach(arrayComment => {
@@ -72,10 +72,21 @@ const chatroomReducer = (state = initialState, action) => {
       sortedComments = [...filteredComments];
     }
 
+    let comments = sortedComments.reduce((newArray, comment) => {
+      if (action.payload.commentToDelete.length > 0) {
+        if (action.payload.commentToDelete[0].id !== comment.id) {
+          newArray.push(comment)
+        }
+      } else {
+        newArray.push(comment)
+      }
+      return newArray;
+    }, []);
+
       return {
         ...state,
         channelError: action.payload.channelError,
-        comments: sortedComments
+        comments: comments
         // comments: action.payload.comments
       }
     default:
