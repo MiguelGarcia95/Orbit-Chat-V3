@@ -7,6 +7,10 @@ class MenuHome extends React.Component {
   state = {
   }
 
+  componentDidMount() {
+    this.props.getDirectMessages(this.props.user);
+  }
+
   onClick = () => {console.log('test')}
  
 
