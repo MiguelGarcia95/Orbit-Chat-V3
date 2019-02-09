@@ -92,6 +92,10 @@ export const displayDirectMessages = (user, otherUser) => {
 
 export const getDirectMessages = (user) => {
   return (dispatch, getState, {getFirestore}) => {
-    console.log(user)
+    const firestore = getFirestore();
+    
+    firestore.collection(`users/${user.uid}/messages`).get().then(data => {
+      console.log(data)
+    })
   }
 }
