@@ -37,6 +37,10 @@ class ChannelCategory extends React.Component {
     this.props.setChannel(channel)
   }
 
+  isActiveChannel = (channel) => {
+    return channel.id === this.props.currentChannel.id  ? 'active' : ''
+  }
+
   displayChannels = (channels, category) => {
     let matchingChannels = this.sortChannels(channels, category);
     return matchingChannels.map(channel => {
@@ -46,7 +50,7 @@ class ChannelCategory extends React.Component {
           textAlign='left'  
           key={channel.id}
           onClick={this.onChannelClick.bind(null, channel)}
-          className='category_channel' 
+          className={`category_channel ${this.isActiveChannel(channel)}`} 
         >
           {channel.channel.name}
         </Header>
@@ -56,7 +60,7 @@ class ChannelCategory extends React.Component {
 
   render() {
     const {modal, category} = this.state;
-    const {channels} = this.props;
+    const {channels, currentChannel} = this.props;
     return (
       <React.Fragment>
         <Grid >
@@ -65,7 +69,7 @@ class ChannelCategory extends React.Component {
             <Icon name='plus' style={{cursor: 'pointer'}}  onClick={this.openModal} />
           </Container>
           <Container fluid textAlign='right'>
-            {this.displayChannels(channels, category)}
+            {currentChannel && this.displayChannels(channels, category)}
           </Container>
         </Grid>
 
@@ -93,6 +97,12 @@ class ChannelCategory extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    currentChannel: state.channel.currentChannel
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     createChannel: channel => dispatch(createChannel(channel)),
@@ -100,4 +110,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(ChannelCategory);
+export default connect(mapStateToProps, mapDispatchToProps)(ChannelCategory);

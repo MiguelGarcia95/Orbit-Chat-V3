@@ -95,6 +95,10 @@ html, body, .app {
   cursor: pointer;
 }
 
+.category_channel.active {
+  background-color: rgba(0,0,0,0.1);
+}
+
 .category_channel:hover {
   background-color: rgba(0,0,0,0.1);
 }
