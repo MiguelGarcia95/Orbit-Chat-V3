@@ -5,9 +5,6 @@ import {getChannels} from '../../actions/channelActions';
 import ChannelCategory from '../Layout/ChannelCategory';
 
 class MenuCategories extends React.Component {
-  state = {
-  }
-
   componentDidMount() {
     this.props.getChatroomCategories(this.props.chatroom.id);
     this.props.getChannels(this.props.chatroom.id);
