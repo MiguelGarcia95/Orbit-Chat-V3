@@ -29,7 +29,6 @@ class MenuHome extends React.Component {
             </Container>
           </Grid.Row>
         </Grid>
-          {/* <p>Friends</p> <h3>Direct Messages</h3> */}
       </React.Fragment>
     )
   }
