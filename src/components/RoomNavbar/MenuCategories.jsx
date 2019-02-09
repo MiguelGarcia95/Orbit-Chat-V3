@@ -31,7 +31,6 @@ class MenuCategories extends React.Component {
     const {categories} = this.props;
     return (
       <React.Fragment>
-        {/* <Grid className='category_container' > */}
         <div className='category_container'  >
         {this.displayCategories(categories)}
         </div>
