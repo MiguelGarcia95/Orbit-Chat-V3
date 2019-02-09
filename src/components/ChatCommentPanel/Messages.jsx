@@ -11,8 +11,8 @@ const displayMessages = (messages, user) => {
 const Messages = ({messages, user}) => {
   return (
     <Comment.Group className='chat_comment_container'>
-        {displayMessages(messages, user)}
-      </Comment.Group>
+      {displayMessages(messages, user)}
+    </Comment.Group>
   )
 }
 
