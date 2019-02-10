@@ -86,7 +86,7 @@ class Message extends React.Component{
 const mapDispatchToProps = dispatch => {
   return {
     deleteChannelComment: (channelId, commentId) => dispatch(deleteChannelComment(channelId, commentId)),
-    createDirectMessage: (user, secondUserId, message) => dispatch(createDirectMessage(user, secondUserId, message))
+    createDirectMessage: (user, message, comment) => dispatch(createDirectMessage(user, message, comment))
   }
 }
 
