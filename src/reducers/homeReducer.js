@@ -17,7 +17,7 @@ const homeReducer = (state = initialState, action) => {
         ...state,
         homeroomError: action.payload.homeroomError
       }
-    case actionTypes.GET_DIRECT_MESSAGES_REFERENCE:
+    case actionTypes.DIRECT_MESSAGES_REFERENCE:
       return {
         ...state,
         homeroomError: action.payload.homeroomError,
