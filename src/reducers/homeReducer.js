@@ -1,7 +1,8 @@
 import * as actionTypes from '../actions/types';
 
 const initialState = {
-  homeroomError: null
+  homeroomError: null,
+  references: []
 }
 
 const homeReducer = (state = initialState, action) => {
@@ -15,6 +16,12 @@ const homeReducer = (state = initialState, action) => {
       return {
         ...state,
         homeroomError: action.payload.homeroomError
+      }
+    case actionTypes.GET_DIRECT_MESSAGES_REFERENCE:
+      return {
+        ...state,
+        homeroomError: action.payload.homeroomError,
+        references: action.payload.references
       }
     case actionTypes.JOIN_CHATROOM:
       return {
