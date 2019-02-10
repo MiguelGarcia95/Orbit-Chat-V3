@@ -47,6 +47,34 @@ export const createDirectMessage = (user, secondUserId, message) => {
   }
 }
 
+export const getDirectMessagesReference = userId => {
+  return (dispatch, getState, {getFirestore}) => {
+    const firestore = getFirestore();
+    firestore.collection(`users/${userId}/dmList`).get().then(data => {
+      let references = [];
+      data.forEach(doc => {
+        references.push(doc.data())
+      })
+
+      dispatch({
+        type: GET_DIRECT_MESSAGES_REFERENCE,
+        payload: {
+          homeError: null,
+          references: references
+        }
+      })
+    }).catch(err => {
+      dispatch({
+        type: GET_DIRECT_MESSAGES_REFERENCE,
+        payload: {
+          homeError: err.message,
+          references: []
+        }
+      })
+    })
+  }
+}
+
 export const deleteDirectMessage = message => {
   return (dispatch, getState, {getFirestore}) => {
     console.log(message.id)
