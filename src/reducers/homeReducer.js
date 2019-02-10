@@ -17,10 +17,10 @@ const homeReducer = (state = initialState, action) => {
         ...state,
         homeroomError: action.payload.homeroomError
       }
-    case actionTypes.DIRECT_MESSAGES_REFERENCE:
+    case actionTypes.GET_DIRECT_MESSAGES_REFERENCE:
       return {
         ...state,
-        homeroomError: action.payload.homeroomError,
+        homeroomError: action.payload.homeError,
         references: action.payload.references
       }
     case actionTypes.JOIN_CHATROOM:

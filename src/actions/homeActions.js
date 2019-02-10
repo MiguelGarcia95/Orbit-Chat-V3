@@ -57,7 +57,7 @@ export const getDirectMessagesReference = userId => {
       })
 
       dispatch({
-        type: actionTypes.DIRECT_MESSAGES_REFERENCE,
+        type: actionTypes.GET_DIRECT_MESSAGES_REFERENCE,
         payload: {
           homeError: null,
           references: references
@@ -65,7 +65,7 @@ export const getDirectMessagesReference = userId => {
       })
     }).catch(err => {
       dispatch({
-        type: actionTypes.DIRECT_MESSAGES_REFERENCE,
+        type: actionTypes.GET_DIRECT_MESSAGES_REFERENCE,
         payload: {
           homeError: err.message,
           references: []

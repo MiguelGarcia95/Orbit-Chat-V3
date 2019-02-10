@@ -1,14 +1,15 @@
 import React from 'react';
 import {Grid, Container, Header, Icon} from 'semantic-ui-react';
 import {connect} from 'react-redux';
-import {getDirectMessages} from '../../actions/homeActions';
+import {getDirectMessages, getDirectMessagesReference} from '../../actions/homeActions';
 
 class MenuHome extends React.Component {
   state = {
   }
 
   componentDidMount() {
-    this.props.getDirectMessages(this.props.user);
+    // this.props.getDirectMessages(this.props.user);
+    this.props.getDirectMessagesReference(this.props.user.uid);
   }
 
   onClick = () => {console.log('test')}
@@ -41,7 +42,8 @@ class MenuHome extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getDirectMessages: user => dispatch(getDirectMessages(user))
+    getDirectMessages: user => dispatch(getDirectMessages(user)),
+    getDirectMessagesReference: userId => dispatch(getDirectMessagesReference(userId))
   }
 }
 
