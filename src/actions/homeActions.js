@@ -122,15 +122,19 @@ export const displayDirectMessages = (user, otherUser) => {
   }
 } 
 
-export const getDirectMessages = (user) => {
+export const getDirectMessages = (user, references) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
+
+    console.log(user.uid);
+    console.log(references);
     // firestore.collection(`users/${user.uid}/messages/3Moc5vy0VgXvBA2Rf2RwWecHWjs1/messages`).get().then(data => {
-      firestore.collection('users').doc(user.uid).get().then(doc => {
-        // data.forEach(doc => {
-        //   console.log({id: doc.id, data: doc.data()})
-        // })
-      console.log(doc.data())
-    })
+    
+    // firestore.collection('users').doc(user.uid).get().then(doc => {
+    //     // data.forEach(doc => {
+    //     //   console.log({id: doc.id, data: doc.data()})
+    //     // })
+    //   console.log(doc.data())
+    // })
   }
 }
