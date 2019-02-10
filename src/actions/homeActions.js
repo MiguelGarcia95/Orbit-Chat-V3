@@ -7,6 +7,7 @@ export const createDirectMessage = (user, secondUserId, message) => {
     firestore.add(`users/${user.uid}/messages/${secondUserId}/messages`, {
       comment: message,
       uid: user.uid,
+      uid2: secondUserId,
       username: user.displayName,
       avatar: user.photoURL,
       createdAt: firestore.FieldValue.serverTimestamp()
