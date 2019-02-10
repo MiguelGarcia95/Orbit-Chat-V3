@@ -1,16 +1,18 @@
 import * as actionTypes from './types';
 
-export const createDirectMessage = (user, secondUserId, message) => {
+export const createDirectMessage = (user, message, comment) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
 
-    firestore.add(`users/${user.uid}/messages/${secondUserId}/messages`, {
-      comment: message,
+    firestore.add(`users/${user.uid}/messages/${message.id}/messages`, {
+      comment: comment,
       uid: user.uid,
       uid1: user.uid,
-      uid2: secondUserId,
+      uid2: message.id,
       username: user.displayName,
       avatar: user.photoURL,
+      avatar1: user.photoURL,
+      avatar2: message.avatar,
       createdAt: firestore.FieldValue.serverTimestamp()
     }).catch(err => {
       dispatch({
@@ -21,13 +23,15 @@ export const createDirectMessage = (user, secondUserId, message) => {
       })
     })
 
-    firestore.add(`users/${secondUserId}/messages/${user.uid}/messages`, {
-      comment: message,
+    firestore.add(`users/${message.id}/messages/${user.uid}/messages`, {
+      comment: comment,
       uid: user.uid,
-      uid1: secondUserId,
+      uid1: message.id,
       uid2: user.uid,
       username: user.displayName,
       avatar: user.photoURL,
+      avatar1: message.avatar,
+      avatar2: user.photoURL,
       createdAt: firestore.FieldValue.serverTimestamp()
     }).then(() => {
       dispatch({
