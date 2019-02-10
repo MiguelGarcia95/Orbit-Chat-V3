@@ -2,7 +2,8 @@ import * as actionTypes from '../actions/types';
 
 const initialState = {
   homeroomError: null,
-  references: []
+  references: [],
+  currentView: 'friends'
 }
 
 const homeReducer = (state = initialState, action) => {

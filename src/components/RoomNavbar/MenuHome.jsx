@@ -13,10 +13,12 @@ class MenuHome extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.references.length > 0) {
-      console.log('should get dms')
+      // console.log('should get dms')
       nextProps.references.forEach(reference => {
+        // console.log(reference.uid)
         this.props.getDirectMessages(this.props.user, reference.uid);
       })
+      // this.props.getDirectMessages(this.props.user, nextProps.references);
     }
   }
 
@@ -51,13 +53,14 @@ class MenuHome extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    references: state.home.references
+    references: state.home.references,
+    currentView: state.home.currentView
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getDirectMessages: user => dispatch(getDirectMessages(user)),
+    getDirectMessages: (user, references) => dispatch(getDirectMessages(user, references)),
     getDirectMessagesReference: userId => dispatch(getDirectMessagesReference(userId))
   }
 }
