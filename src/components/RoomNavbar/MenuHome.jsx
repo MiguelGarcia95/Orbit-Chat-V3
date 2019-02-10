@@ -8,9 +8,16 @@ class MenuHome extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.getDirectMessages(this.props.user);
     this.props.getDirectMessagesReference(this.props.user.uid);
   }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.references.length > 0) {
+      console.log('should get dms')
+      // this.props.getDirectMessages(this.props.user);
+    }
+  }
+
 
   onClick = () => {console.log('test')}
  
@@ -40,6 +47,12 @@ class MenuHome extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    references: state.home.references
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     getDirectMessages: user => dispatch(getDirectMessages(user)),
@@ -47,4 +60,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(MenuHome);
+export default connect(mapStateToProps, mapDispatchToProps)(MenuHome);
