@@ -14,7 +14,9 @@ class MenuHome extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.references.length > 0) {
       console.log('should get dms')
-      this.props.getDirectMessages(this.props.user, nextProps.references);
+      nextProps.references.forEach(reference => {
+        this.props.getDirectMessages(this.props.user, reference.uid);
+      })
     }
   }
 
