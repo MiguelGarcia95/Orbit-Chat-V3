@@ -31,7 +31,8 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.auth.currentUser
+    user: state.auth.currentUser,
+    currentView: state.home.currentView
   }
 }
 

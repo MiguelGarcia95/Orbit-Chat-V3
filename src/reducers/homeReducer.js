@@ -47,6 +47,12 @@ const homeReducer = (state = initialState, action) => {
         homeroomError: action.payload.homeError,
         directMessages: allMessages
       }
+    case actionTypes.SET_HOME_VIEW: 
+      return {
+        ...state,
+        homeroomError: action.payload.homeError,
+        currentView: action.payload.currentView
+      }
     case actionTypes.JOIN_CHATROOM:
       return {
         ...state,

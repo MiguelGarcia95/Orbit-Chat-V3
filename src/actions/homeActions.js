@@ -78,6 +78,18 @@ export const getDirectMessagesReference = userId => {
   }
 }
 
+export const setHomeView = view => {
+  return (dispatch) => {
+    dispatch({
+      type: actionTypes.SET_HOME_VIEW,
+      payload: {
+        homeError: null,
+        currentView: view
+      }
+    })
+  }
+}
+
 export const deleteDirectMessage = message => {
   return (dispatch, getState, {getFirestore}) => {
     console.log(message.id)
@@ -128,9 +140,6 @@ export const displayDirectMessages = (user, otherUser) => {
 export const getDirectMessages = (user, reference) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
-    
-    // console.log(user.uid);
-    // console.log(reference);
     
     firestore.collection(`users/${user.uid}/messages/${reference}/messages`).get().then(data => {
       let messages = [];

@@ -50,8 +50,7 @@ class MenuHome extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    references: state.home.references,
-    currentView: state.home.currentView
+    references: state.home.references
   }
 }
 
