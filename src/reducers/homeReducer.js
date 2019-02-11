@@ -24,6 +24,12 @@ const homeReducer = (state = initialState, action) => {
         homeroomError: action.payload.homeError,
         references: action.payload.references
       }
+    case actionTypes.GET_DIRECT_MESSAGES:
+      console.log(action.payload.userMessages)
+      return {
+        ...state,
+        homeroomError: action.payload.homeError
+      }
     case actionTypes.JOIN_CHATROOM:
       return {
         ...state,
