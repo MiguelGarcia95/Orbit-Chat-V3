@@ -27,7 +27,8 @@ class Message extends React.Component{
   clearForm = () => this.setState({modal: false, comment: ''});
 
   onSubmit = () => {
-    this.props.createDirectMessage(this.props.user, this.props.message, this.state.comment)
+    this.props.createDirectMessage(this.props.user, this.props.message, this.state.comment);
+    this.clearForm();
   }
 
   onDelete = () => {
