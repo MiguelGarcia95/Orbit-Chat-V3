@@ -4,11 +4,12 @@ export const createDirectMessage = (user, message, comment) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
 
-    firestore.add(`users/${user.uid}/messages/${message.id}/messages`, {
+
+    firestore.add(`users/${user.uid}/messages/${message.uid}/messages`, {
       comment: comment,
       uid: user.uid,
       uid1: user.uid,
-      uid2: message.id,
+      uid2: message.uid,
       username: user.displayName,
       avatar: user.photoURL,
       avatar1: user.photoURL,
@@ -23,10 +24,10 @@ export const createDirectMessage = (user, message, comment) => {
       })
     })
 
-    firestore.add(`users/${message.id}/messages/${user.uid}/messages`, {
+    firestore.add(`users/${message.uid}/messages/${user.uid}/messages`, {
       comment: comment,
       uid: user.uid,
-      uid1: message.id,
+      uid1: message.uid,
       uid2: user.uid,
       username: user.displayName,
       avatar: user.photoURL,
