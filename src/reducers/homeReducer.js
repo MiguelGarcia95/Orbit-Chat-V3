@@ -3,7 +3,8 @@ import * as actionTypes from '../actions/types';
 const initialState = {
   homeroomError: null,
   references: [],
-  currentView: 'friends'
+  currentView: 'friends',
+  directMessages: []
 }
 
 const homeReducer = (state = initialState, action) => {
@@ -28,7 +29,8 @@ const homeReducer = (state = initialState, action) => {
       console.log(action.payload.userMessages)
       return {
         ...state,
-        homeroomError: action.payload.homeError
+        homeroomError: action.payload.homeError,
+        directMessages: action.payload.userMessages
       }
     case actionTypes.JOIN_CHATROOM:
       return {
