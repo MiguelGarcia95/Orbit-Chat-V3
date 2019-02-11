@@ -27,8 +27,17 @@ const homeReducer = (state = initialState, action) => {
       }
     case actionTypes.GET_DIRECT_MESSAGES:
       let allMessages = [];
+
       if (state.directMessages.length > 0) {
-        
+        let inDMArray = false;
+        state.directMessages.forEach(message => {
+          if (message.uid === action.payload.userMessages.uid) {
+            inDMArray = true;
+          }
+        })
+        if (!inDMArray) {
+          allMessages.push(action.payload.userMessages);
+        }
       } else {
         allMessages.push(action.payload.userMessages);
       }
@@ -36,7 +45,7 @@ const homeReducer = (state = initialState, action) => {
       return {
         ...state,
         homeroomError: action.payload.homeError,
-        directMessages: action.payload.userMessages
+        directMessages: allMessages
       }
     case actionTypes.JOIN_CHATROOM:
       return {
