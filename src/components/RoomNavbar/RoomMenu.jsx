@@ -30,9 +30,7 @@ class RoomMenu extends React.Component {
     const {inChatroom, currentChatroom} = this.props;
     return (
       <Menu size='large' fixed='left' vertical >
-        {/* If it passes, we are in a chatroom and display */}
         {this.displayMenuHeader(inChatroom, currentChatroom, user)}
-        {/* for categories set active category for parent of active channel. Active category can't collapse */}
         {this.displayMenuContent(inChatroom, currentChatroom, user)}
         <UserPanel user={user} /> 
       </Menu> 
