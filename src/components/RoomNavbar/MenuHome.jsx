@@ -22,9 +22,9 @@ class MenuHome extends React.Component {
     }
   }
 
+  // Get real time comments
 
-  onClick = () => {console.log('test')}
- 
+  onClick = () => {console.log('test')} 
 
   render() {
     return (
