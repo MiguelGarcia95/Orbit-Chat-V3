@@ -136,13 +136,12 @@ export const getDirectMessages = (user, reference) => {
       let messages = [];
       let avatar;
       data.forEach(doc => {
-        // console.log({id: doc.id, data: doc.data()})
         if (!avatar) {
           avatar = doc.data().avatar;
         }
-        console.log(avatar)
+        messages.push({id: doc.id, data: doc.data()})
       })
-
+      
     })
   }
 }
