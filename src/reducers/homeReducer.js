@@ -26,7 +26,13 @@ const homeReducer = (state = initialState, action) => {
         references: action.payload.references
       }
     case actionTypes.GET_DIRECT_MESSAGES:
-      console.log(action.payload.userMessages)
+      let allMessages = [];
+      if (state.directMessages.length > 0) {
+        
+      } else {
+        allMessages.push(action.payload.userMessages);
+      }
+
       return {
         ...state,
         homeroomError: action.payload.homeError,
