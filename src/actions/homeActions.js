@@ -12,7 +12,6 @@ export const createDirectMessage = (user, message, comment) => {
       uid2: message.uid,
       username: user.displayName,
       avatar: user.photoURL,
-      avatar1: user.photoURL,
       avatar2: message.avatar,
       createdAt: firestore.FieldValue.serverTimestamp()
     }).catch(err => {
@@ -31,8 +30,7 @@ export const createDirectMessage = (user, message, comment) => {
       uid2: user.uid,
       username: user.displayName,
       avatar: user.photoURL,
-      avatar1: message.avatar,
-      avatar2: user.photoURL,
+      avatar2: message.avatar,
       createdAt: firestore.FieldValue.serverTimestamp()
     }).then(() => {
       dispatch({
