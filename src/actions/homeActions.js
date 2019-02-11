@@ -137,11 +137,26 @@ export const getDirectMessages = (user, reference) => {
       let avatar;
       data.forEach(doc => {
         if (!avatar) {
-          avatar = doc.data().avatar;
+          avatar = doc.data().avatar2;
         }
         messages.push({id: doc.id, data: doc.data()})
       })
-      
+
+      dispatch({
+        type: actionTypes.GET_DIRECT_MESSAGES,
+        payload: {
+          homeError: null,
+          userMessages: {uid: reference, avatar: avatar, messages: messages}
+        }
+      })
+    }).catch(err => {
+      dispatch({
+        type: actionTypes.GET_DIRECT_MESSAGES,
+        payload: {
+          homeError: err.message,
+          userMessages: null
+        }
+      })
     })
   }
 }
