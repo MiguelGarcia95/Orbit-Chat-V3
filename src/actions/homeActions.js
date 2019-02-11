@@ -139,14 +139,20 @@ export const getDirectMessages = (user, reference) => {
         if (!avatar) {
           avatar = doc.data().avatar2;
         }
-        messages.push({id: doc.id, data: doc.data()})
+        messages.push({id: doc.id, message: doc.data()})
       })
+
+      let sortedMessages = messages.sort((a, b) => {
+        if (b.message.createdAt !== null && a.message.createdAt !== null) {
+          return new Date(a.message.createdAt.toDate()) - new Date(b.message.createdAt.toDate());
+        }
+      });
 
       dispatch({
         type: actionTypes.GET_DIRECT_MESSAGES,
         payload: {
           homeError: null,
-          userMessages: {uid: reference, avatar: avatar, messages: messages}
+          userMessages: {uid: reference, avatar: avatar, messages: sortedMessages}
         }
       })
     }).catch(err => {
