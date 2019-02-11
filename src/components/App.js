@@ -18,7 +18,8 @@ class App extends React.Component {
   }
 
   render() {
-    const {user} = this.props;
+    const {user, currentView} = this.props;
+    console.log(currentView)
     return !user ? <Spinner /> : (
       <Grid columns='equal'>
         <Grid.Column style={{marginLeft: 320}}>
