@@ -1,7 +1,7 @@
 import React from 'react';
 import {Grid, Container, Header, Icon, Image} from 'semantic-ui-react';
 import {connect} from 'react-redux';
-import {getDirectMessages, getDirectMessagesReference} from '../../actions/homeActions';
+import {setFriendsPanel} from '../../actions/homeActions';
 
 class MenuHome extends React.Component {
   isOptionActive = name => {
@@ -71,8 +71,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getDirectMessages: (user, references) => dispatch(getDirectMessages(user, references)),
-    getDirectMessagesReference: userId => dispatch(getDirectMessagesReference(userId))
+    setFriendsPanel: view => dispatch(setFriendsPanel(view))
   }
 }
 
