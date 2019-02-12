@@ -34,6 +34,7 @@ class MenuHome extends React.Component {
 
   render() {
     const {directMessages} = this.props;
+    console.log(this.props.references)
     return (
       <React.Fragment>
         <Grid className='home_optiopns_container' style={{marginTop: '0'}}>

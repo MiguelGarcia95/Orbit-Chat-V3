@@ -18,6 +18,7 @@ export const createDirectMessage = (user, message, comment) => {
         listRef.get().then(doc => {
           if (!doc.exists) {
             listRef.set({
+              uid: message.uid,
               avatar: message.avatar,
               username: message.username
             })
@@ -45,6 +46,7 @@ export const createDirectMessage = (user, message, comment) => {
         listRef.get().then(doc => {
           if (!doc.exists) {
             listRef.set({
+              uid: user.uid,
               avatar: user.photoURL,
               username: user.displayName
             })
