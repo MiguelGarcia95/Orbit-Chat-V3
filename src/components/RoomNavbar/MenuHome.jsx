@@ -16,14 +16,14 @@ class MenuHome extends React.Component {
 
   onClick = () => {console.log('test')}
 
-  displayMessageNotifications = (messages) => {
-    if (messages.length > 0) {
-      console.log(messages)
-      return messages.map(message => {
+  displayReferences = (references) => {
+    if (references.length > 0) {
+      console.log(references)
+      return references.map(reference => {
         return (
-          <Grid.Row key={message.uid} onClick={this.onClick} className={`home_option`} verticalAlign="middle" textAlign='center'>
+          <Grid.Row key={reference.uid} onClick={this.onClick} className={`home_option`} verticalAlign="middle" textAlign='center'>
             <Container fluid textAlign='right' >
-              <Header as='h3' style={{margin: '0'}} floated='left'>{message.username}</Header>
+              <Header as='h3' style={{margin: '0'}} floated='left'>{reference.username}</Header>
               <Icon name='mail'  size='large'/>
             </Container>
           </Grid.Row>
@@ -33,8 +33,7 @@ class MenuHome extends React.Component {
   }
 
   render() {
-    const {directMessages} = this.props;
-    console.log(this.props.references)
+    const {references} = this.props;
     return (
       <React.Fragment>
         <Grid className='home_optiopns_container' style={{marginTop: '0'}}>
@@ -53,7 +52,7 @@ class MenuHome extends React.Component {
               <Icon name='mail'  size='large'/>
             </Container>
           </Grid.Row>
-          {directMessages &&  this.displayMessageNotifications(directMessages)}
+          {references &&  this.displayReferences(references)}
         </Grid>
       </React.Fragment>
     )
