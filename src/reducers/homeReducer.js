@@ -26,26 +26,26 @@ const homeReducer = (state = initialState, action) => {
         references: action.payload.references
       }
     case actionTypes.GET_DIRECT_MESSAGES:
-      let allMessages = [];
+      // let allMessages = [];
 
-      if (state.directMessages.length > 0) {
-        let inDMArray = false;
-        state.directMessages.forEach(message => {
-          if (message.uid === action.payload.userMessages.uid) {
-            inDMArray = true;
-          }
-        })
-        if (!inDMArray) {
-          allMessages.push(action.payload.userMessages);
-        }
-      } else {
-        allMessages.push(action.payload.userMessages);
-      }
+      // if (state.directMessages.length > 0) {
+      //   let inDMArray = false;
+      //   state.directMessages.forEach(message => {
+      //     if (message.uid === action.payload.userMessages.uid) {
+      //       inDMArray = true;
+      //     }
+      //   })
+      //   if (!inDMArray) {
+      //     allMessages.push(action.payload.userMessages);
+      //   }
+      // } else {
+      //   allMessages.push(action.payload.userMessages);
+      // }
 
       return {
         ...state,
         homeroomError: action.payload.homeError,
-        directMessages: allMessages
+        directMessages: action.payload.userMessages
       }
     case actionTypes.SET_HOME_VIEW: 
       return {
