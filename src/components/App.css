@@ -4,7 +4,10 @@ html, body, .app {
   background: #eee;
   padding: 0;
 }
-.app {position: absolute;}
+
+body {position: absolute; top: 0;}
+
+/* .app {position: absolute;} */
 
 .Menu_User {
   text-align: center; 
