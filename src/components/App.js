@@ -34,7 +34,7 @@ class App extends React.Component {
 
   render() {
     const {user, currentView} = this.props;
-    // console.log(this.props.directMessages)
+    console.log(this.props.directMessages)
     return !user ? <Spinner /> : (
       <Grid columns='equal'>
         <Grid.Column style={{marginLeft: 320}}>
