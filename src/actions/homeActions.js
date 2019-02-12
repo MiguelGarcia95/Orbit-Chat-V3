@@ -163,11 +163,7 @@ export const getDirectMessages = (user, reference) => {
     
     firestore.collection(`users/${user.uid}/messages/${reference}/messages`).get().then(data => {
       let messages = [];
-      let avatar;
       data.forEach(doc => {
-        if (!avatar) {
-          avatar = doc.data().avatar2;
-        }
         messages.push({id: doc.id, message: doc.data()})
       })
 
@@ -181,7 +177,7 @@ export const getDirectMessages = (user, reference) => {
         type: actionTypes.GET_DIRECT_MESSAGES,
         payload: {
           homeError: null,
-          userMessages: {uid: reference, avatar: avatar, messages: sortedMessages}
+          userMessages: sortedMessages
         }
       })
     }).catch(err => {

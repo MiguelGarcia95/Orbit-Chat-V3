@@ -12,8 +12,6 @@ class MenuHome extends React.Component {
     return this.props.currentView !== 'friends' ? 'active' : '';
   }
 
-  // Get real time comments
-
   onClick = view => {
     console.log('clicked')
     this.props.setHomeView(view)
