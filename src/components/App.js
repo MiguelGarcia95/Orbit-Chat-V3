@@ -22,7 +22,7 @@ class App extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.references.length > 0) {
       nextProps.references.forEach(reference => {
-        this.props.getDirectMessages(this.props.user, reference.uid);
+        // this.props.getDirectMessages(this.props.user, reference.uid);
       })
     }
   }
