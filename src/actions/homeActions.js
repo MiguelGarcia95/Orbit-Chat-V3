@@ -1,26 +1,23 @@
 import * as actionTypes from './types';
 
-export const createDirectMessage = (user, message, comment) => {
+export const createDirectMessage = (user, otherUser, comment) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
 
-
-    firestore.add(`users/${user.uid}/messages/${message.uid}/messages`, {
+    firestore.add(`users/${user.uid}/messages/${otherUser.uid}/messages`, {
       comment: comment,
       uid: user.uid,
-      // uid1: user.uid,
-      // uid2: message.uid,
       username: user.displayName,
       avatar: user.photoURL,
       createdAt: firestore.FieldValue.serverTimestamp()
     }).then(() => {
-        let listRef = firestore.collection(`users/${user.uid}/dmList`).doc(message.uid);
+        let listRef = firestore.collection(`users/${user.uid}/dmList`).doc(otherUser.uid);
         listRef.get().then(doc => {
           if (!doc.exists) {
             listRef.set({
-              uid: message.uid,
-              avatar: message.avatar,
-              username: message.username
+              uid: otherUser.uid,
+              avatar: otherUser.avatar,
+              username: otherUser.username
             })
           }
         })
@@ -33,16 +30,14 @@ export const createDirectMessage = (user, message, comment) => {
       })
     })
 
-    firestore.add(`users/${message.uid}/messages/${user.uid}/messages`, {
+    firestore.add(`users/${otherUser.uid}/messages/${user.uid}/messages`, {
       comment: comment,
       uid: user.uid,
-      // uid1: message.uid,
-      // uid2: user.uid,
       username: user.displayName,
       avatar: user.photoURL,
       createdAt: firestore.FieldValue.serverTimestamp()
     }).then(() => {
-      let listRef = firestore.collection(`users/${message.uid}/dmList`).doc(user.uid);
+      let listRef = firestore.collection(`users/${otherUser.uid}/dmList`).doc(user.uid);
         listRef.get().then(doc => {
           if (!doc.exists) {
             listRef.set({
