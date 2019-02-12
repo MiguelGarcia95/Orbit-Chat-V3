@@ -20,12 +20,16 @@ class App extends React.Component {
     })
   }
 
+
+
   UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.currentView !== nextProps.currentView) {
+      console.log('view chaNGED')
+    }
   }
 
   render() {
     const {user, currentView} = this.props;
-    console.log(currentView)
     return !user ? <Spinner /> : (
       <Grid columns='equal'>
         <Grid.Column style={{marginLeft: 320}}>
