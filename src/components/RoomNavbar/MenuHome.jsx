@@ -21,7 +21,7 @@ class MenuHome extends React.Component {
       console.log(references)
       return references.map(reference => {
         return (
-          <Grid.Row key={reference.uid} onClick={this.onClick} className={`home_option`} verticalAlign="middle" textAlign='center'>
+          <Grid.Row key={reference.uid} onClick={this.onClick} className={`home_option_reference`} verticalAlign="middle" textAlign='center'>
             <Container fluid textAlign='right' >
               <Header as='h3' style={{margin: '0'}} floated='left'>{reference.username}</Header>
               <Icon name='mail'  size='large'/>
@@ -52,7 +52,9 @@ class MenuHome extends React.Component {
               <Icon name='mail'  size='large'/>
             </Container>
           </Grid.Row>
-          {references &&  this.displayReferences(references)}
+          <section className='home_options_ref_container'>
+            {references &&  this.displayReferences(references)}
+          </section>
         </Grid>
       </React.Fragment>
     )

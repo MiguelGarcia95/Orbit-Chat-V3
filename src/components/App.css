@@ -87,6 +87,21 @@ html, body, .app {
   background-color: rgba(0,0,0,0.1)
 }
 
+.home_options_ref_container {
+  margin-top: 20px !important;
+}
+
+.home_option_reference {
+  margin: 0px !important;
+  padding: 5px 10px !important;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.home_option_reference:hover, .home_option_reference.active {
+  background-color: rgba(0,0,0,0.1)
+}
+
 .category_channel {
   margin: 0px !important;
   padding: 5px !important;
