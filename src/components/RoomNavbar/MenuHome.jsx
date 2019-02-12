@@ -14,9 +14,14 @@ class MenuHome extends React.Component {
 
   // Get real time comments
 
-  onClick = () => {console.log('test')} 
+  onClick = () => {console.log('test')}
+
+  displayMessageNotifications = (messages) => {
+    console.log(messages)
+  }
 
   render() {
+    const {directMessages} = this.props;
     return (
       <React.Fragment>
         <Grid className='home_optiopns_container' style={{marginTop: '0'}}>
