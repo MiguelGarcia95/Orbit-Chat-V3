@@ -3,7 +3,7 @@ import * as actionTypes from '../actions/types';
 const initialState = {
   homeroomError: null,
   references: [],
-  currentView: 'friends',
+  currentView: '',
   directMessages: []
 }
 
