@@ -4,21 +4,6 @@ import {connect} from 'react-redux';
 import {getDirectMessages, getDirectMessagesReference} from '../../actions/homeActions';
 
 class MenuHome extends React.Component {
-  state = {
-  }
-
-  componentDidMount() {
-    this.props.getDirectMessagesReference(this.props.user.uid);
-  }
-
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.references.length > 0) {
-      nextProps.references.forEach(reference => {
-        this.props.getDirectMessages(this.props.user, reference.uid);
-      })
-    }
-  }
-
   isOptionActive = name => {
     return name === this.props.currentView ? 'active' : '';
   }
@@ -59,7 +44,8 @@ class MenuHome extends React.Component {
 const mapStateToProps = state => {
   return {
     references: state.home.references,
-    currentView: state.home.currentView
+    currentView: state.home.currentView,
+    directMessages: state.home.directMessages
   }
 }
 

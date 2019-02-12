@@ -5,6 +5,7 @@ import {Grid} from 'semantic-ui-react';
 import {clearChatroom} from '../actions/chatroomActions';
 import {connect} from 'react-redux';
 import Spinner from './Layout/Spinner';
+import {getDirectMessages, getDirectMessagesReference} from '../actions/homeActions';
 
 class App extends React.Component {
   componentDidMount() {
@@ -13,8 +14,17 @@ class App extends React.Component {
         this.props.history.push('/signin');
       } else {
         this.props.clearChatroom();
+        this.props.getDirectMessagesReference(user.uid);
       }
     })
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.references.length > 0) {
+      nextProps.references.forEach(reference => {
+        this.props.getDirectMessages(this.props.user, reference.uid);
+      })
+    }
   }
 
   render() {
@@ -33,13 +43,16 @@ class App extends React.Component {
 const mapStateToProps = state => {
   return {
     user: state.auth.currentUser,
-    currentView: state.home.currentView
+    currentView: state.home.currentView,
+    references: state.home.references,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    clearChatroom: () => dispatch(clearChatroom())
+    clearChatroom: () => dispatch(clearChatroom()),
+    getDirectMessages: (user, references) => dispatch(getDirectMessages(user, references)),
+    getDirectMessagesReference: userId => dispatch(getDirectMessagesReference(userId))
   }
 }
 
