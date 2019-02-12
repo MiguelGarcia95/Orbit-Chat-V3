@@ -28,6 +28,9 @@ class App extends React.Component {
     }
   }
 
+  // Get real time comments
+
+
   render() {
     const {user, currentView} = this.props;
     return !user ? <Spinner /> : (
