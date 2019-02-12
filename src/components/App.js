@@ -25,7 +25,7 @@ class App extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.currentView !== nextProps.currentView && nextProps.currentView !== 'friends') {
       console.log('view chaNGED')
-      // this.props.getDirectMessages(nextProps.user, nextProps.currentView)
+      this.props.getDirectMessages(nextProps.user, nextProps.currentView)
     }
   }
 
@@ -34,6 +34,7 @@ class App extends React.Component {
 
   render() {
     const {user, currentView} = this.props;
+    console.log(this.props.directMessages)
     return !user ? <Spinner /> : (
       <Grid columns='equal'>
         <Grid.Column style={{marginLeft: 320}}>
@@ -49,6 +50,7 @@ const mapStateToProps = state => {
     user: state.auth.currentUser,
     currentView: state.home.currentView,
     references: state.home.references,
+    directMessages: state.home.directMessages
   }
 }
 
