@@ -47,7 +47,7 @@ class MenuHome extends React.Component {
           <Grid.Row
             onClick={() => this.onClick('friends')} 
             className={`home_option ${this.isOptionActive('friends')}`} 
-            verticalAlign="middle" textAlign='center' 
+            verticalAlign="middle" textAlign='center'
           >
             <Container fluid textAlign='right'>
               <Header as='h3' style={{margin: '0'}} floated='left'>Friends</Header>
