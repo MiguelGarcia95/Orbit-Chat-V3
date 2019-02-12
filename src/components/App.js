@@ -38,9 +38,11 @@ class App extends React.Component {
     const {user, currentView} = this.props;
     // console.log(this.props.directMessages)
     return !user ? <Spinner /> : (
-      <Grid columns='equal'>
+      <Grid columns='equal' className='app'>
         <Grid.Column style={{marginLeft: 320}}>
-          <React.Fragment></React.Fragment>
+          <React.Fragment>
+            <HomeContentPanel />
+          </React.Fragment>
         </Grid.Column>
       </Grid>
     );

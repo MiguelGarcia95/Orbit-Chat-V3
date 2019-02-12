@@ -13,7 +13,8 @@ class HomeContentPanel extends React.Component {
 
   render() {
     return (
-      <section className='chat_comment_panel'>
+      <section className='home_content_panel'>
+        <h1>p</h1>
       </section>
     )
   }

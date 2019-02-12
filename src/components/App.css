@@ -4,7 +4,7 @@ html, body, .app {
   background: #eee;
   padding: 0;
 }
-.app {}
+.app {position: absolute;}
 
 .Menu_User {
   text-align: center; 
@@ -129,6 +129,14 @@ html, body, .app {
   width: 100%;
   height: 100%;
   position: absolute;
+  top: 0;
+}
+
+.home_content_panel {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: red;
   top: 0;
 }
 
