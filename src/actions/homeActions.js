@@ -8,18 +8,18 @@ export const createDirectMessage = (user, message, comment) => {
     firestore.add(`users/${user.uid}/messages/${message.uid}/messages`, {
       comment: comment,
       uid: user.uid,
-      uid1: user.uid,
-      uid2: message.uid,
+      // uid1: user.uid,
+      // uid2: message.uid,
       username: user.displayName,
       avatar: user.photoURL,
-      avatar2: message.avatar,
       createdAt: firestore.FieldValue.serverTimestamp()
     }).then(() => {
         let listRef = firestore.collection(`users/${user.uid}/dmList`).doc(message.uid);
         listRef.get().then(doc => {
           if (!doc.exists) {
             listRef.set({
-              
+              avatar: message.avatar,
+              username: message.username
             })
           }
         })
@@ -35,13 +35,22 @@ export const createDirectMessage = (user, message, comment) => {
     firestore.add(`users/${message.uid}/messages/${user.uid}/messages`, {
       comment: comment,
       uid: user.uid,
-      uid1: message.uid,
-      uid2: user.uid,
+      // uid1: message.uid,
+      // uid2: user.uid,
       username: user.displayName,
       avatar: user.photoURL,
-      avatar2: message.avatar,
       createdAt: firestore.FieldValue.serverTimestamp()
     }).then(() => {
+      let listRef = firestore.collection(`users/${message.uid}/dmList`).doc(user.uid);
+        listRef.get().then(doc => {
+          if (!doc.exists) {
+            listRef.set({
+              avatar: user.photoURL,
+              username: user.displayName
+            })
+          }
+        })
+
       dispatch({
         type: actionTypes.CREATE_DIRECT_MESSAGE,
         payload: {
