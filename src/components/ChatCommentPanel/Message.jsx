@@ -27,6 +27,7 @@ class Message extends React.Component{
   clearForm = () => this.setState({modal: false, comment: ''});
 
   onSubmit = () => {
+    // this.props.message has the information of the other user
     this.props.createDirectMessage(this.props.user, this.props.message, this.state.comment);
     this.clearForm();
   }
@@ -87,7 +88,7 @@ class Message extends React.Component{
 const mapDispatchToProps = dispatch => {
   return {
     deleteChannelComment: (channelId, commentId) => dispatch(deleteChannelComment(channelId, commentId)),
-    createDirectMessage: (user, message, comment) => dispatch(createDirectMessage(user, message, comment))
+    createDirectMessage: (user, otherUser, comment) => dispatch(createDirectMessage(user, otherUser, comment))
   }
 }
 
