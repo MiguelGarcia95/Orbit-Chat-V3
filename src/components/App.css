@@ -89,12 +89,12 @@ html, body, .app {
 
 .home_options_ref_container {
   margin-top: 20px !important;
+  padding: 0px !important;
 }
 
 .home_option_reference {
   margin: 0px !important;
-  padding: 5px 10px !important;
-  box-sizing: border-box;
+  padding: 10px !important;
   cursor: pointer;
 }
 
