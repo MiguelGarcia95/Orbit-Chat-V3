@@ -17,7 +17,9 @@ class MenuHome extends React.Component {
   onClick = () => {console.log('test')}
 
   displayMessageNotifications = (messages) => {
-    console.log(messages)
+    if (messages.length > 0) {
+      console.log(messages)
+    }
   }
 
   render() {
