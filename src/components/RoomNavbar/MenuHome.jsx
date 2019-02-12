@@ -1,7 +1,7 @@
 import React from 'react';
 import {Grid, Container, Header, Icon, Image} from 'semantic-ui-react';
 import {connect} from 'react-redux';
-import {setFriendsPanel} from '../../actions/homeActions';
+import {setHomeView} from '../../actions/homeActions';
 
 class MenuHome extends React.Component {
   isOptionActive = name => {
@@ -14,14 +14,17 @@ class MenuHome extends React.Component {
 
   // Get real time comments
 
-  onClick = () => {console.log('test')}
+  onClick = view => {
+    console.log('clicked')
+    this.props.setHomeView(view)
+  }
 
   displayReferences = (references) => {
     if (references.length > 0) {
       console.log(references)
       return references.map(reference => {
         return (
-          <Grid.Row key={reference.uid} onClick={this.onClick} className={`home_option_reference`} verticalAlign="middle" textAlign='center'>
+          <Grid.Row onClick={this.onClick.bind(null, reference.uid)}  key={reference.uid}  className={`home_option_reference`} verticalAlign="middle" textAlign='center'>
             <Container fluid textAlign='right' >
               <Header as='h3' style={{margin: '0', lineHeight: '35px'}} floated='left' >{reference.username}</Header>
               <Image circular src={reference.avatar} size='mini' floated='right' verticalAlign="middle" />
@@ -37,7 +40,7 @@ class MenuHome extends React.Component {
     return (
       <React.Fragment>
         <Grid className='home_optiopns_container' style={{marginTop: '0'}}>
-          <Grid.Row onClick={this.onClick} className={`home_option ${this.isOptionActive('friends')}`} verticalAlign="middle" textAlign='center' >
+          <Grid.Row onClick={this.onClick(null, 'friends')} className={`home_option ${this.isOptionActive('friends')}`} verticalAlign="middle" textAlign='center' >
             <Container fluid textAlign='right'>
               <Header as='h3' style={{margin: '0'}} floated='left'>Friends</Header>
               <Icon name='users'  size='large'/>
@@ -46,7 +49,7 @@ class MenuHome extends React.Component {
         </Grid>
 
         <Grid className='home_optiopns_container home_DM' style={{marginTop: '0'}}>
-          <Grid.Row onClick={this.onClick} className={`home_option ${this.isDMOnDisplay()}`} verticalAlign="middle" textAlign='center' >
+          <Grid.Row className={`home_option ${this.isDMOnDisplay()}`} verticalAlign="middle" textAlign='center' >
             <Container fluid textAlign='right' >
               <Header as='h3' style={{margin: '0'}} floated='left'>Direct Messages</Header>
               <Icon name='mail'  size='large'/>
@@ -71,7 +74,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setFriendsPanel: view => dispatch(setFriendsPanel(view))
+    setHomeView: view => dispatch(setHomeView(view))
   }
 }
 
