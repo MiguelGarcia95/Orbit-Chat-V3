@@ -19,6 +19,16 @@ class MenuHome extends React.Component {
   displayMessageNotifications = (messages) => {
     if (messages.length > 0) {
       console.log(messages)
+      return messages.map(message => {
+        return (
+          <Grid.Row key={message.uid} onClick={this.onClick} className={`home_option`} verticalAlign="middle" textAlign='center'>
+            <Container fluid textAlign='right' >
+              <Header as='h3' style={{margin: '0'}} floated='left'>{message.username}</Header>
+              <Icon name='mail'  size='large'/>
+            </Container>
+          </Grid.Row>
+        )
+      })
     }
   }
 
@@ -42,7 +52,7 @@ class MenuHome extends React.Component {
               <Icon name='mail'  size='large'/>
             </Container>
           </Grid.Row>
-          {directMessages && this.displayMessageNotifications(directMessages)}
+          {directMessages &&  this.displayMessageNotifications(directMessages)}
         </Grid>
       </React.Fragment>
     )
