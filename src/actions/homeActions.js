@@ -14,6 +14,15 @@ export const createDirectMessage = (user, message, comment) => {
       avatar: user.photoURL,
       avatar2: message.avatar,
       createdAt: firestore.FieldValue.serverTimestamp()
+    }).then(() => {
+        let listRef = firestore.collection(`users/${user.uid}/dmList`).doc(message.uid);
+        listRef.get().then(doc => {
+          if (!doc.exists) {
+            listRef.set({
+              
+            })
+          }
+        })
     }).catch(err => {
       dispatch({
         type: actionTypes.CREATE_DIRECT_MESSAGE,
