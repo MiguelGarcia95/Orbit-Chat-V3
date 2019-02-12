@@ -19,6 +19,10 @@ class MenuHome extends React.Component {
     }
   }
 
+  isOptionActive = name => {
+    return name === this.props.currentView ? 'active' : '';
+  }
+
   // Get real time comments
 
   onClick = () => {console.log('test')} 
@@ -27,7 +31,7 @@ class MenuHome extends React.Component {
     return (
       <React.Fragment>
         <Grid className='home_optiopns_container' style={{marginTop: '0'}}>
-          <Grid.Row onClick={this.onClick} className='home_option' verticalAlign="middle" textAlign='center' >
+          <Grid.Row onClick={this.onClick} className='home_option active' verticalAlign="middle" textAlign='center' >
             <Container fluid textAlign='right' >
               <Header as='h3' style={{margin: '0'}} floated='left'>Friends</Header>
               <Icon name='users'  size='large'/>
@@ -50,7 +54,8 @@ class MenuHome extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    references: state.home.references
+    references: state.home.references,
+    currentView: state.home.currentView
   }
 }
 
