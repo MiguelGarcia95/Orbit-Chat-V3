@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Container, Header, Icon} from 'semantic-ui-react';
+import {Grid, Container, Header, Icon, Image} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {getDirectMessages, getDirectMessagesReference} from '../../actions/homeActions';
 
@@ -24,7 +24,8 @@ class MenuHome extends React.Component {
           <Grid.Row key={reference.uid} onClick={this.onClick} className={`home_option_reference`} verticalAlign="middle" textAlign='center'>
             <Container fluid textAlign='right' >
               <Header as='h3' style={{margin: '0'}} floated='left'>{reference.username}</Header>
-              <Icon name='mail'  size='large'/>
+              {/* <Icon name='mail'  size='large'/> */}
+              <Image circular src={reference.avatar} size='mini' floated='right' verticalAlign="middle" textAlign='center' />
             </Container>
           </Grid.Row>
         )
