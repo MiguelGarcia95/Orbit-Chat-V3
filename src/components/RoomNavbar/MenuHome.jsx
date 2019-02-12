@@ -24,7 +24,7 @@ class MenuHome extends React.Component {
       console.log(references)
       return references.map(reference => {
         return (
-          <Grid.Row onClick={this.onClick.bind(null, reference.uid)}  key={reference.uid}  className={`home_option_reference`} verticalAlign="middle" textAlign='center'>
+          <Grid.Row onClick={() => this.onClick(reference.uid)}  key={reference.uid}  className={`home_option_reference ${this.isOptionActive(reference.uid)}`} verticalAlign="middle" textAlign='center'>
             <Container fluid textAlign='right' >
               <Header as='h3' style={{margin: '0', lineHeight: '35px'}} floated='left' >{reference.username}</Header>
               <Image circular src={reference.avatar} size='mini' floated='right' verticalAlign="middle" />
@@ -40,7 +40,7 @@ class MenuHome extends React.Component {
     return (
       <React.Fragment>
         <Grid className='home_optiopns_container' style={{marginTop: '0'}}>
-          <Grid.Row onClick={this.onClick(null, 'friends')} className={`home_option ${this.isOptionActive('friends')}`} verticalAlign="middle" textAlign='center' >
+          <Grid.Row onClick={() => this.onClick('friends')} className={`home_option ${this.isOptionActive('friends')}`} verticalAlign="middle" textAlign='center' >
             <Container fluid textAlign='right'>
               <Header as='h3' style={{margin: '0'}} floated='left'>Friends</Header>
               <Icon name='users'  size='large'/>
