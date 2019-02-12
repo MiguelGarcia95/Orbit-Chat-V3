@@ -13,13 +13,11 @@ class MenuHome extends React.Component {
   }
 
   onClick = view => {
-    console.log('clicked')
     this.props.setHomeView(view)
   }
 
   displayReferences = (references) => {
     if (references.length > 0) {
-      console.log(references)
       return references.map(reference => {
         return (
           <Grid.Row 
