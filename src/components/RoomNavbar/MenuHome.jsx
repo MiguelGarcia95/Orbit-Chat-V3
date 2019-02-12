@@ -24,7 +24,7 @@ class MenuHome extends React.Component {
           <Grid.Row key={reference.uid} onClick={this.onClick} className={`home_option_reference`} verticalAlign="middle" textAlign='center'>
             <Container fluid textAlign='right' >
               <Header as='h3' style={{margin: '0', lineHeight: '35px'}} floated='left' >{reference.username}</Header>
-              <Image circular src={reference.avatar} size='mini' floated='right' verticalAlign="middle" textAlign='center' />
+              <Image circular src={reference.avatar} size='mini' floated='right' verticalAlign="middle" />
             </Container>
           </Grid.Row>
         )
