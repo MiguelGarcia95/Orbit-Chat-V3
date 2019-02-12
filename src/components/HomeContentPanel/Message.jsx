@@ -20,13 +20,8 @@ class Message extends React.Component{
     return message.uid === user.uid ? 'message_self' : ''
   }
 
-  openModal = () => this.setState({modal: true});
-  closeModal = () => this.setState({modal: false});
-
-  onSubmit = () => {
-    // this.props.message has the information of the other user
-    this.props.createDirectMessage(this.props.user, this.props.message, this.state.comment);
-  }
+  // openModal = () => this.setState({modal: true});
+  // closeModal = () => this.setState({modal: false});
 
   onDelete = () => {
     this.props.deleteChannelComment(this.props.message.channelId, this.props.messageId)
@@ -63,7 +58,7 @@ class Message extends React.Component{
           </Comment.Content>
         </Comment>
 
-        <Modal open={modal} onClose={this.closeModal} >
+        {/* <Modal open={modal} onClose={this.closeModal} >
           <Modal.Header>DM</Modal.Header>
           <Modal.Content>
             <Segment>
@@ -75,7 +70,7 @@ class Message extends React.Component{
               <Button positive onClick={this.onSubmit} > Create</Button>
             </Button.Group>
           </Modal.Content>
-        </Modal>
+        </Modal> */}
       </React.Fragment>
     )
   }
