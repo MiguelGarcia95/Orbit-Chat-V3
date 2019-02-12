@@ -83,7 +83,7 @@ html, body, .app {
   cursor: pointer;
 }
 
-.home_option:hover {
+.home_option:hover, .home_option.active {
   background-color: rgba(0,0,0,0.1)
 }
 

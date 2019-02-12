@@ -23,6 +23,10 @@ class MenuHome extends React.Component {
     return name === this.props.currentView ? 'active' : '';
   }
 
+  isDMOnDisplay = () => {
+    return this.props.currentView !== 'friends' ? 'active' : '';
+  }
+
   // Get real time comments
 
   onClick = () => {console.log('test')} 
@@ -31,8 +35,8 @@ class MenuHome extends React.Component {
     return (
       <React.Fragment>
         <Grid className='home_optiopns_container' style={{marginTop: '0'}}>
-          <Grid.Row onClick={this.onClick} className='home_option active' verticalAlign="middle" textAlign='center' >
-            <Container fluid textAlign='right' >
+          <Grid.Row onClick={this.onClick} className={`home_option ${this.isOptionActive('friends')}`} verticalAlign="middle" textAlign='center' >
+            <Container fluid textAlign='right'>
               <Header as='h3' style={{margin: '0'}} floated='left'>Friends</Header>
               <Icon name='users'  size='large'/>
             </Container>
@@ -40,7 +44,7 @@ class MenuHome extends React.Component {
         </Grid>
 
         <Grid className='home_optiopns_container home_DM' style={{marginTop: '0'}}>
-          <Grid.Row onClick={this.onClick} className='home_option' verticalAlign="middle" textAlign='center' >
+          <Grid.Row onClick={this.onClick} className={`home_option ${this.isDMOnDisplay()}`} verticalAlign="middle" textAlign='center' >
             <Container fluid textAlign='right' >
               <Header as='h3' style={{margin: '0'}} floated='left'>Direct Messages</Header>
               <Icon name='mail'  size='large'/>
