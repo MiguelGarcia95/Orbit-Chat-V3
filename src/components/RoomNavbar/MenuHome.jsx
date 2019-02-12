@@ -40,6 +40,7 @@ class MenuHome extends React.Component {
               <Icon name='mail'  size='large'/>
             </Container>
           </Grid.Row>
+          {directMessages && this.displayMessageNotifications(directMessages)}
         </Grid>
       </React.Fragment>
     )
