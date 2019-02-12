@@ -5,7 +5,7 @@ import {Grid} from 'semantic-ui-react';
 import {clearChatroom} from '../actions/chatroomActions';
 import {connect} from 'react-redux';
 import Spinner from './Layout/Spinner';
-import {getDirectMessages, getDirectMessagesReference} from '../actions/homeActions';
+import {getDirectMessages, getDirectMessagesReference, setHomeView} from '../actions/homeActions';
 
 class App extends React.Component {
   componentDidMount() {
@@ -15,6 +15,7 @@ class App extends React.Component {
       } else {
         this.props.clearChatroom();
         this.props.getDirectMessagesReference(user.uid);
+        this.props.setHomeView('friends')
       }
     })
   }
@@ -47,7 +48,8 @@ const mapDispatchToProps = dispatch => {
   return {
     clearChatroom: () => dispatch(clearChatroom()),
     getDirectMessages: (user, references) => dispatch(getDirectMessages(user, references)),
-    getDirectMessagesReference: userId => dispatch(getDirectMessagesReference(userId))
+    getDirectMessagesReference: userId => dispatch(getDirectMessagesReference(userId)),
+    setHomeView: view => dispatch(setHomeView(view))
   }
 }
 
