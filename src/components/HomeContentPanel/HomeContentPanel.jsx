@@ -11,10 +11,11 @@ class HomeContentPanel extends React.Component {
   state = {
   }
 
+  
+
   render() {
     return (
       <section className='home_content_panel'>
-        <h1>p</h1>
       </section>
     )
   }
