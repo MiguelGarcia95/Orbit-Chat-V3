@@ -97,11 +97,12 @@ export const getReference = (userId, referenceId) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
     firestore.collection(`users/${userId}/dmList`).doc(referenceId).get().then(data => {
+      const currentReference = data.data();
       dispatch({
         type: actionTypes.GET_REFERENCE,
         payload: {
           homeError: null,
-          currentReference: data.data()
+          currentReference: currentReference
         }
       })
     }).catch(err => {

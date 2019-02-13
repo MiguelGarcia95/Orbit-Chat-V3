@@ -4,7 +4,8 @@ const initialState = {
   homeroomError: null,
   references: [],
   currentView: '',
-  directMessages: []
+  directMessages: [],
+  currentReference: null
 }
 
 const homeReducer = (state = initialState, action) => {
@@ -24,6 +25,12 @@ const homeReducer = (state = initialState, action) => {
         ...state,
         homeroomError: action.payload.homeError,
         references: action.payload.references
+      }
+    case actionTypes.GET_REFERENCE:
+      return {
+        ...state,
+        homeroomError: action.payload.homeError,
+        currentReference: action.payload.currentReference
       }
     case actionTypes.GET_DIRECT_MESSAGES:
       // let allMessages = [];

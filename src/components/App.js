@@ -35,13 +35,13 @@ class App extends React.Component {
 
 
   render() {
-    const {user, currentView} = this.props;
+    const {user, currentView, currentReference} = this.props;
     // console.log(this.props.directMessages)
     return !user ? <Spinner /> : (
       <Grid columns='equal' className='app' style={{marginTop: '0px'}}>
         <Grid.Column style={{marginLeft: 320}}>
           <React.Fragment>
-            <HomeContentPanel currentView={currentView} user={user} />
+            <HomeContentPanel currentView={currentView} user={user} currentReference={currentReference} />
           </React.Fragment>
         </Grid.Column>
       </Grid>
@@ -54,7 +54,8 @@ const mapStateToProps = state => {
     user: state.auth.currentUser,
     currentView: state.home.currentView,
     references: state.home.references,
-    directMessages: state.home.directMessages
+    directMessages: state.home.directMessages,
+    currentReference: state.home.currentReference
   }
 }
 
