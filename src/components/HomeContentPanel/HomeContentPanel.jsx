@@ -29,10 +29,10 @@ class HomeContentPanel extends React.Component {
   displayHomeContent = view => {
     if (view === 'friends') {
     } else {
-      const {currentReference} = this.props;
+      const {otherUser} = this.props;
       return (
         <React.Fragment>
-          {currentReference && <FriendChatHeader friend={currentReference} />}
+          {otherUser && <FriendChatHeader friend={otherUser} />}
         </React.Fragment>
       )
     }
