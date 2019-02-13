@@ -31,7 +31,15 @@ class App extends React.Component {
   }
 
   // Get real time comments
-
+  // users/${user.uid}/messages/${reference}/messages
+  
+  // getChannelComemntrsRT = (user, reference) => {
+  //   const firestore = getFirestore();
+  //   firestore.collection(`comments/${channelId}/comments`).onSnapshot(snapshot => {
+  //     let changes = snapshot.docChanges();
+  //     this.props.setComments(changes)
+  //   })
+  // }
 
   render() {
     const {user, currentView, currentReference} = this.props;
@@ -60,7 +68,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     clearChatroom: () => dispatch(clearChatroom()),
-    getDirectMessages: (user, references) => dispatch(getDirectMessages(user, references)),
+    getDirectMessages: (user, reference) => dispatch(getDirectMessages(user, reference)),
     getDirectMessagesReference: userId => dispatch(getDirectMessagesReference(userId)),
     setHomeView: view => dispatch(setHomeView(view))
   }
