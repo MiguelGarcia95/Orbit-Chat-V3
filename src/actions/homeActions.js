@@ -93,6 +93,15 @@ export const getDirectMessagesReference = userId => {
   }
 }
 
+export const getReference = (userId, referenceId) => {
+  return (dispatch, getState, {getFirestore}) => {
+    const firestore = getFirestore();
+    firestore.collection(`users/${userId}/dmList`).doc(referenceId).get().then(data => {
+      console.log(data);
+    })
+  } 
+}
+
 export const setHomeView = view => {
   return (dispatch) => {
     dispatch({
