@@ -126,6 +126,7 @@ body {position: absolute; top: 0;}
   height: 50px;
   box-sizing: border-box;
   margin: 0 !important;
+  z-index: 200;
 
   position: absolute;
 }
@@ -146,15 +147,16 @@ body {position: absolute; top: 0;}
 }
 
 .chat_comment_container {
-  margin-top: 50px !important;
+  padding-top: 50px !important;
+  padding-bottom: 150px !important;
+  margin-top: 0px !important;
   margin-bottom: 0px !important;
   width: 100% !important;
   height: 100%; 
   top: 0;
   max-width: none !important;
-  /* box-sizing: border-box; */
   position: relative;
-  /* float: left; */
+  background-color: red;
 }
 
 .chat_comment {
