@@ -5,14 +5,15 @@ import {createDirectMessage} from '../../actions/homeActions';
 
 class MessageForm extends React.Component {
   state = {
-    comment: '',
-    user: this.props.user
+    comment: ''
   }
 
   onChange = e => this.setState({[e.target.name]: e.target.value});
   
   onSubmit = () => {
-    // this.props.createDirectMessage({...this.state, channel: this.props.channel});
+    // this.props.createDirectMessage(user, otherUser, comment)
+    console.log(this.props.user)
+    console.log(this.props.otherUser)
     this.clearForm();
   }
 
