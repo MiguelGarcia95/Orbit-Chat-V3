@@ -31,12 +31,12 @@ class HomeContentPanel extends React.Component {
   displayHomeContent = view => {
     if (view === 'friends') {
     } else {
-      const {otherUser, user} = this.props;
+      const {otherUser, user, directMessages} = this.props;
       return (
         <React.Fragment>
           {otherUser && <FriendChatHeader friend={otherUser} />}
           {otherUser && <MessageForm friend={otherUser} user={user} />}
-          <Messages />
+          {directMessages && <Messages messages={directMessages} />}
         </React.Fragment>
       )
     }
@@ -52,10 +52,16 @@ class HomeContentPanel extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    directMessages: state.home.directMessages
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     getReference: (userId, referenceId) => dispatch(getReference(userId, referenceId))
   }
 }
 
-export default connect(null, mapDispatchToProps)(HomeContentPanel);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeContentPanel);
