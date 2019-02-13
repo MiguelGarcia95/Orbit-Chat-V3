@@ -126,6 +126,8 @@ body {position: absolute; top: 0;}
   height: 50px;
   box-sizing: border-box;
   margin: 0 !important;
+
+  position: absolute;
 }
 
 .chat_comment_panel {
@@ -144,13 +146,15 @@ body {position: absolute; top: 0;}
 }
 
 .chat_comment_container {
-  margin-top: 0px !important;
+  margin-top: 50px !important;
   margin-bottom: 0px !important;
-  box-sizing: border-box;
   width: 100% !important;
+  height: 100%; 
+  top: 0;
   max-width: none !important;
+  /* box-sizing: border-box; */
   position: relative;
-  float: left;
+  /* float: left; */
 }
 
 .chat_comment {
