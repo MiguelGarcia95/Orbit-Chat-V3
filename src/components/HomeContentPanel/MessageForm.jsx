@@ -11,10 +11,7 @@ class MessageForm extends React.Component {
   onChange = e => this.setState({[e.target.name]: e.target.value});
   
   onSubmit = () => {
-    // this.props.createDirectMessage(user, otherUser, comment)
-    console.log(this.props.user)
-    console.log(this.props.otherUser)
-    console.log(this.state.comment);
+    this.props.createDirectMessage(this.props.user, this.props.otherUser, this.state.comment);
     this.clearForm();
   }
 
