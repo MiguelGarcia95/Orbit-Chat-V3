@@ -45,7 +45,7 @@ class HomeContentPanel extends React.Component {
   }
 }
 
-const mapDispatchToProps = referenceId => {
+const mapDispatchToProps = dispatch => {
   return {
     getReference: (userId, referenceId) => dispatch(getReference(userId, referenceId))
   }
