@@ -23,16 +23,19 @@ class HomeContentPanel extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.currentView !== nextProps.currentView && nextProps.currentView !== 'friends') {
       this.props.getReference(nextProps.user.uid, nextProps.currentView)
+    } else if (this.props.currentView !== nextProps.currentView && nextProps.currentView === 'friends') {
+      // get friends and friend invites
     }
   }
 
   displayHomeContent = view => {
     if (view === 'friends') {
     } else {
-      const {otherUser} = this.props;
+      const {otherUser, user} = this.props;
       return (
         <React.Fragment>
           {otherUser && <FriendChatHeader friend={otherUser} />}
+          {otherUser && <MessageForm friend={otherUser} user={user} />}
         </React.Fragment>
       )
     }
