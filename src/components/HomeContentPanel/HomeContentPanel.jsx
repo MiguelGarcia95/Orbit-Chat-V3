@@ -7,7 +7,6 @@ import FriendListHeader from './FriendListHeader';
 import FriendChatHeader from './FriendListHeader';
 import Messages from './Messages';
 import MessageForm from './MessageForm';
-import { dispatch } from 'rxjs/internal/observable/pairs';
 
 class HomeContentPanel extends React.Component {
   state = {
@@ -30,6 +29,9 @@ class HomeContentPanel extends React.Component {
   displayHomeContent = view => {
     if (view === 'friends') {
     } else {
+      return (
+        <FriendChatHeader  />
+      )
     }
   }
 
