@@ -32,7 +32,6 @@ class HomeContentPanel extends React.Component {
     if (view === 'friends') {
     } else {
       const {otherUser, user, directMessages} = this.props;
-      console.log(directMessages)
       return (
         <React.Fragment>
           {otherUser && <FriendChatHeader friend={otherUser} />}
