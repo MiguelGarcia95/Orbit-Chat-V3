@@ -26,7 +26,6 @@ class App extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.currentView !== nextProps.currentView && nextProps.currentView !== 'friends') {
-      // console.log('view chaNGED')
       this.props.getDirectMessages(nextProps.user, nextProps.currentView)
     }
   }
