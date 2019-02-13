@@ -11,11 +11,19 @@ class HomeContentPanel extends React.Component {
   state = {
   }
 
-  
+  displayHomeContent = view => {
+    if (view === 'friends') {
+      console.log('return friend list view')
+    } else {
+      console.log('return dm chat')
+    }
+  }
 
   render() {
+    const {currentView} = this.props;
     return (
       <section className='home_content_panel'>
+        {currentView && this.displayHomeContent(currentView)}
       </section>
     )
   }
