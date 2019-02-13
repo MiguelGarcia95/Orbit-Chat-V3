@@ -14,6 +14,7 @@ class MessageForm extends React.Component {
     // this.props.createDirectMessage(user, otherUser, comment)
     console.log(this.props.user)
     console.log(this.props.otherUser)
+    console.log(this.state.comment);
     this.clearForm();
   }
 
