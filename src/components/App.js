@@ -53,8 +53,8 @@ const mapStateToProps = state => {
     user: state.auth.currentUser,
     currentView: state.home.currentView,
     references: state.home.references,
-    directMessages: state.home.directMessages,
-    // currentReference: state.home.currentReference
+    // directMessages: state.home.directMessages,
+    currentReference: state.home.currentReference
   }
 }
 

@@ -4,14 +4,14 @@ import {Comment} from 'semantic-ui-react';
 
 const displayMessages = (messages, user) => {
   return messages.map(message => {
-    return <Message key={message.id} messageId={message.id} message={message.comment} user={user} />
+    return <Message key={message.id} messageId={message.id} message={message.message} user={user} />
   })
 }
 
 const Messages = ({messages, user}) => {
   return (
     <Comment.Group className='chat_comment_container'>
-      {/* {displayMessages(messages, user)} */}
+      {displayMessages(messages, user)}
     </Comment.Group>
   )
 }
