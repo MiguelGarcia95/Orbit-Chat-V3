@@ -5,12 +5,8 @@ import ChatCommentHeader from './ChatCommentHeader';
 import Messages from './Messages';
 import MessageForm from './MessageForm';
 
-class ChatCommentPanel extends React.Component {
-  state = {
-  }
-
-  render() {
-    const {channel, user, comments} = this.props;
+const ChatCommentPanel = (props) => {
+    const {channel, user, comments} = props;
     return (
       <section className='chat_comment_panel'>
         <ChatCommentHeader channel={channel} />
@@ -18,7 +14,6 @@ class ChatCommentPanel extends React.Component {
         <MessageForm channel={channel} user={user}  />
       </section>
     )
-  }
 }
 
 const mapStateToProps = state => {
