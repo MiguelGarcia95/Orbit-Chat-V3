@@ -29,9 +29,7 @@ class HomeContentPanel extends React.Component {
 
   displayHomeContent = view => {
     if (view === 'friends') {
-      console.log('return friend list view')
     } else {
-      console.log('return dm chat')
     }
   }
 
