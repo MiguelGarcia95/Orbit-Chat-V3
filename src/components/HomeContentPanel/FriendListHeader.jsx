@@ -5,9 +5,6 @@ const FriendListHeader = ({friend}) => {
   return (
     <Grid className='home_comment_header'>
       <Grid.Row columns='1' style={{padding: '0px'}}>
-        {/* <Grid.Column verticalAlign='middle' >
-          <p><strong>Avatar - </strong> {friend.username}</p>
-        </Grid.Column> */}
         <Container fluid textAlign='right' >
           <Image circular src={friend.avatar} size='mini' floated='left' verticalAlign="middle" style={{marginBottom: '0', marginTop: '7.5px'}} />
           <Header as='h5' floated='left' style={{lineHeight: '50px'}} >{friend.username}</Header>
