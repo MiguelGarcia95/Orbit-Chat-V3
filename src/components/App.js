@@ -41,7 +41,7 @@ class App extends React.Component {
       <Grid columns='equal' className='app' style={{marginTop: '0px'}}>
         <Grid.Column style={{marginLeft: 320}}>
           <React.Fragment>
-            <HomeContentPanel currentView={currentView} />
+            <HomeContentPanel currentView={currentView} user={user} />
           </React.Fragment>
         </Grid.Column>
       </Grid>

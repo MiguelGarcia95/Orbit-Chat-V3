@@ -97,7 +97,7 @@ export const getReference = (userId, referenceId) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
     firestore.collection(`users/${userId}/dmList`).doc(referenceId).get().then(data => {
-      console.log(data);
+      console.log(data.data());
     })
   } 
 }
