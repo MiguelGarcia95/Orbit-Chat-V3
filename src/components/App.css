@@ -138,6 +138,17 @@ body {position: absolute; top: 0;}
   position: relative;
 }
 
+.home_comment_header {
+  background: white; 
+  color: #232323; 
+  width: 100%;
+  height: 50px;
+  margin: 0 !important;
+  z-index: 200;
+  position: absolute; 
+  padding: 0 10px !important;
+}
+
 .chat_comment_header {
   text-align: left; 
   background: white; 
