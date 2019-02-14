@@ -2,10 +2,13 @@ import React from 'react';
 import './App.css';
 import firebase from '../firebase';
 import {Grid} from 'semantic-ui-react';
-import {clearChatroom} from '../actions/chatroomActions';
 import {connect} from 'react-redux';
 import Spinner from './Layout/Spinner';
+import {getFirestore} from 'redux-firestore';
+
+import {clearChatroom} from '../actions/chatroomActions';
 import {getDirectMessages, getDirectMessagesReference, setHomeView} from '../actions/homeActions';
+
 
 import HomeContentPanel from './HomeContentPanel/HomeContentPanel';
  
@@ -27,19 +30,19 @@ class App extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.currentView !== nextProps.currentView && nextProps.currentView !== 'friends') {
       this.props.getDirectMessages(nextProps.user, nextProps.currentView)
+      // this.getChannelComemntrsRT(nextProps.user, nextProps.currentView)
     }
   }
 
   // Get real time comments
-  // users/${user.uid}/messages/${reference}/messages
-  
-  // getChannelComemntrsRT = (user, reference) => {
-  //   const firestore = getFirestore();
-  //   firestore.collection(`comments/${channelId}/comments`).onSnapshot(snapshot => {
-  //     let changes = snapshot.docChanges();
-  //     this.props.setComments(changes)
-  //   })
-  // }
+
+  getChannelComemntrsRT = (user, reference) => {
+    const firestore = getFirestore();
+    firestore.collection(`users/${user.uid}/messages/${reference}/messages`).onSnapshot(snapshot => {
+      let changes = snapshot.docChanges();
+      this.props.setComments(changes)
+    })
+  }
 
   render() {
     const {user, currentView, currentReference} = this.props;
