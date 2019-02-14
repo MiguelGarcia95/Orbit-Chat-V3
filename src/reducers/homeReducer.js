@@ -39,22 +39,6 @@ const homeReducer = (state = initialState, action) => {
 
       let filteredComments = removeDuplicateComments(newComments);
       
-      // let filteredComments = newComments.reduce((newArray, comment) => {
-      //   if (newArray.length > 0) {
-      //     let isInArray = false;
-      //     newArray.forEach(arrayComment => {
-      //       if (comment.id === arrayComment.id) {
-      //         isInArray = true;
-      //       }
-      //     });
-      //     if (!isInArray) {
-      //       newArray.push(comment)
-      //     }
-      //   } else {
-      //     newArray.push(comment)
-      //   }
-      //   return newArray
-      // }, []);
 
       let sortedComments = [];
       if (filteredComments.length !== 0) {
