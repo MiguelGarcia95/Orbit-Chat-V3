@@ -33,11 +33,16 @@ class Message extends React.Component{
   isOwnMessageOptions = (message, user) => {
     if (message.uid === user.uid ) {
       return (
-        <Dropdown.Item content='Delete' icon='x' onClick={this.onDelete} />
+        <React.Fragment>
+          <Dropdown.Item content='Delete' icon='x' onClick={this.onDelete} />
+        </React.Fragment>
       )
     } else {
       return (
-        <Dropdown.Item content={`Send Friend Request`} icon='user plus' onClick={this.sendFriendRequest} />
+        <React.Fragment>
+          <Dropdown.Item content='Delete' icon='x' onClick={this.onDelete} />
+          <Dropdown.Item content={`Send Friend Request`} icon='user plus' onClick={this.sendFriendRequest} />
+        </React.Fragment>
       )
     }
   }
