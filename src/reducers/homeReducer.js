@@ -18,7 +18,7 @@ const homeReducer = (state = initialState, action) => {
     case actionTypes.DELETE_DIRECT_MESSAGE:
       return {
         ...state,
-        homeroomError: action.payload.homeroomError
+        homeroomError: action.payload.homeError
       }
     case actionTypes.GET_DIRECT_MESSAGES_REFERENCE:
       return {
