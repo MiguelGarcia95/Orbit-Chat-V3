@@ -36,7 +36,7 @@ class HomeContentPanel extends React.Component {
         <React.Fragment>
           {otherUser && <FriendChatHeader friend={otherUser} />}
           {otherUser && <MessageForm otherUser={otherUser} user={user} />}
-          {directMessages && <Messages messages={directMessages} user={user} />}
+          {directMessages && <Messages messages={directMessages} user={user} otherUser={otherUser} />}
         </React.Fragment>
       )
     }
