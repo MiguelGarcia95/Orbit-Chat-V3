@@ -33,7 +33,7 @@ const homeReducer = (state = initialState, action) => {
         currentReference: action.payload.currentReference
       }
     case actionTypes.SET_COMMENTS_HOME:
-      let newComments = [...state.directMessages, ...action.payload.directMessages];
+      let newComments = [...state.directMessages, ...action.payload.userMessages];
       
       let filteredComments = newComments.reduce((newArray, comment) => {
         if (newArray.length > 0) {

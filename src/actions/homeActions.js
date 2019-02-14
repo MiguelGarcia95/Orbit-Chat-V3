@@ -229,7 +229,7 @@ export const setComments = (docComments) => {
     dispatch({
       type: actionTypes.SET_COMMENTS_HOME,
       payload: {
-        comments: comments,
+        userMessages: comments,
         channelError: null,
         commentToDelete: commentToDelete
       }
