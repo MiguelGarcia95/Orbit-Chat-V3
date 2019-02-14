@@ -37,7 +37,7 @@ class App extends React.Component {
     const firestore = getFirestore();
     firestore.collection(`users/${user.uid}/messages/${reference}/messages`).onSnapshot(snapshot => {
       let changes = snapshot.docChanges();
-      this.props.setComments(changes)
+      this.props.setComments(changes, reference)
     })
   }
 
@@ -69,7 +69,7 @@ const mapDispatchToProps = dispatch => {
     clearChatroom: () => dispatch(clearChatroom()),
     getDirectMessagesReference: userId => dispatch(getDirectMessagesReference(userId)),
     setHomeView: view => dispatch(setHomeView(view)),
-    setComments: docComments => dispatch(setComments(docComments))
+    setComments: (docComments, reference) => dispatch(setComments(docComments, reference))
   }
 }
 
