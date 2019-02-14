@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Image, Container, Modal, Segment, Button, Label, Input, Icon} from 'semantic-ui-react';
+import {Grid, Image, Container, Modal, Segment, Button, Label, Input, Icon, Dropdown} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {signOut} from '../../actions/authActions';
 
