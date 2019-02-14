@@ -129,12 +129,6 @@ export const setHomeView = view => {
   }
 }
 
-export const deleteDirectMessage = message => {
-  return (dispatch, getState, {getFirestore}) => {
-    console.log(message.id)
-  }
-}
-
 export const joinChatroom = (user, chatroom) => {
   return (dispatch, getState, {getFirestore}) => {
     console.log(user);
@@ -234,5 +228,27 @@ export const setComments = (docComments) => {
         commentToDelete: commentToDelete
       }
     })
+  }
+}
+
+export const deleteDirectMessage = (channelId, commentId) => {
+  return (dispatch, getState, {getFirestore}) => {
+    const firestore = getFirestore();
+    firestore.collection(`comments/${channelId}/comments`)
+      .doc(commentId).delete().then(() => {
+        dispatch({
+          type: actionTypes.DELETE_CHANNEL_COMMENT,
+          payload: {
+            channelError: null
+          }
+        })
+      }).catch(err => {
+        dispatch({
+          type: actionTypes.DELETE_CHANNEL_COMMENT,
+          payload: {
+            channelError: err.message
+          }
+        })
+      })
   }
 }
