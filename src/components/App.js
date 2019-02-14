@@ -7,7 +7,7 @@ import Spinner from './Layout/Spinner';
 import {getFirestore} from 'redux-firestore';
 
 import {clearChatroom} from '../actions/chatroomActions';
-import {getDirectMessages, getDirectMessagesReference, setHomeView} from '../actions/homeActions';
+import {getDirectMessages, getDirectMessagesReference, setHomeView, setComments} from '../actions/homeActions';
 
 
 import HomeContentPanel from './HomeContentPanel/HomeContentPanel';
@@ -73,7 +73,8 @@ const mapDispatchToProps = dispatch => {
     clearChatroom: () => dispatch(clearChatroom()),
     getDirectMessages: (user, reference) => dispatch(getDirectMessages(user, reference)),
     getDirectMessagesReference: userId => dispatch(getDirectMessagesReference(userId)),
-    setHomeView: view => dispatch(setHomeView(view))
+    setHomeView: view => dispatch(setHomeView(view)),
+    setComments: docComments => dispatch(setComments(docComments))
   }
 }
 
