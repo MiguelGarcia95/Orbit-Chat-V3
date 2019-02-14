@@ -37,7 +37,7 @@ class Message extends React.Component{
       )
     } else {
       return (
-        <Dropdown.Item content={`Send Friend Request`} icon='plus' onClick={this.sendFriendRequest} />
+        <Dropdown.Item content={`Send Friend Request`} icon='user plus' onClick={this.sendFriendRequest} />
       )
     }
   }
