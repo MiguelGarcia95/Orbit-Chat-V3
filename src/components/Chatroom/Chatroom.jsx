@@ -36,7 +36,7 @@ class Chatroom extends React.Component {
     }
 
     if (this.props.currentChannel !== nextProps.currentChannel) {
-      console.log('Different channel')
+      // console.log('Different channel')
       this.setCurrentChannel(nextProps.currentChannel, nextProps.channels, nextProps.categories, false);
     }
 
