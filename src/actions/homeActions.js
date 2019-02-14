@@ -218,11 +218,11 @@ export const setComments = (docComments) => {
 
     docComments.forEach(docComment => {
       if (docComment.type === 'added') {
-        comments.push({id: docComment.doc.id, comment: docComment.doc.data()})
+        comments.push({id: docComment.doc.id, message: docComment.doc.data()})
       } else if (docComment.type === 'modified') {
-        comments.push({id: docComment.doc.id, comment: docComment.doc.data()})
+        comments.push({id: docComment.doc.id, message: docComment.doc.data()})
       } else if (docComment.type === 'removed') {
-        commentToDelete.push({id: docComment.doc.id, comment: docComment.doc.data()})
+        commentToDelete.push({id: docComment.doc.id, commmessageent: docComment.doc.data()})
       }
     })
 
