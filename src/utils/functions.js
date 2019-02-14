@@ -17,3 +17,18 @@ export const removeDuplicateComments = (comments) => {
   }, []);
 }
 
+export const sortCommentsByDate = (comments) => {
+  let sortedComments = [];
+
+  if (comments.length !== 0) {
+    sortedComments = comments.sort((a, b) => {
+      if (b.message.createdAt !== null && a.message.createdAt !== null) {
+        return new Date(a.message.createdAt.toDate()) - new Date(b.message.createdAt.toDate());
+      }
+    });
+  } else {
+    sortedComments = [...comments];
+  }
+
+  return sortedComments;
+}
