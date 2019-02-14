@@ -74,10 +74,17 @@ const homeReducer = (state = initialState, action) => {
         }
         return newArray;
       }, []);
+
+      let referencedComments = comments.reduce((newArray, comment) => {
+        if (action.payload.referenceId === comment.reference) {
+          newArray.push(comment)
+        }
+        return newArray;
+      }, [])
       
       return {
         ...state,
-        directMessages: comments,
+        directMessages: referencedComments,
         homeroomError: action.payload.homeError
       }
     case actionTypes.GET_DIRECT_MESSAGES:
