@@ -170,11 +170,11 @@ export const displayDirectMessages = (user, otherUser) => {
   }
 } 
 
-export const getDirectMessages = (user, reference) => {
+export const getDirectMessages = (user, otherUserId) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
     
-    firestore.collection(`users/${user.uid}/messages/${reference}/messages`).get().then(data => {
+    firestore.collection(`users/${user.uid}/messages/${otherUserId}/messages`).get().then(data => {
       let messages = [];
       data.forEach(doc => {
         messages.push({id: doc.id, message: doc.data()})

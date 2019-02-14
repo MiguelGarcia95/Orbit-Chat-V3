@@ -6,7 +6,7 @@ import {createDirectMessage, deleteDirectMessage} from '../../actions/homeAction
 
 class Message extends React.Component{
   state = {
-    modal: false,
+    modal: false
   }
 
   timeFromNow = message => {
