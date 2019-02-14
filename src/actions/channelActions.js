@@ -74,7 +74,7 @@ export const getChannelComments = (chatroomId, channelId) => {
       })
 
       let sortedComments = comments.sort(function(a, b) {
-        return new Date(a.comment.createdAt.toDate()) - new Date(b.comment.createdAt.toDate());
+        return new Date(a.message.createdAt.toDate()) - new Date(b.message.createdAt.toDate());
       });
 
       dispatch({
