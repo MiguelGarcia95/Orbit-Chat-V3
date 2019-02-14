@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/types';
-import {removeDuplicateComments, sortCommentsByDate, removeDeletedComments} from '../utils/functions';
+import {removeDuplicateComments, sortCommentsByDate, removeDeletedComments, removeUnrelatedComments} from '../utils/functions';
 
 const initialState = {
   homeroomError: null,
@@ -43,12 +43,14 @@ const homeReducer = (state = initialState, action) => {
 
       let comments = removeDeletedComments(sortedComments, action.payload.commentToDelete);
 
-      let referencedComments = comments.reduce((newArray, comment) => {
-        if (action.payload.referenceId === comment.reference) {
-          newArray.push(comment)
-        }
-        return newArray;
-      }, [])
+      let referencedComments = removeUnrelatedComments(comments, action.payload.referenceId)
+
+      // let referencedComments = comments.reduce((newArray, comment) => {
+      //   if (action.payload.referenceId === comment.reference) {
+      //     newArray.push(comment)
+      //   }
+      //   return newArray;
+      // }, [])
       
       return {
         ...state,

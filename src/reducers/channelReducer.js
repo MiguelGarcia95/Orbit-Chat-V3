@@ -49,11 +49,8 @@ const chatroomReducer = (state = initialState, action) => {
       }
     case actionTypes.SET_COMMENTS:
     let newComments = [...state.comments, ...action.payload.comments];
-
     let filteredComments = removeDuplicateComments(newComments);
-
     let sortedComments = sortCommentsByDate(filteredComments);
-
     let comments = removeDeletedComments(sortedComments, action.payload.commentToDelete);
 
       return {

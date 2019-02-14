@@ -46,3 +46,12 @@ export const removeDeletedComments = (comments, commentToDelete) => {
   }, []);
 }
 
+export const removeUnrelatedComments = (comments, referenceId) => {
+  return comments.reduce((newArray, comment) => {
+    if (referenceId === comment.reference) {
+      newArray.push(comment)
+    }
+    return newArray;
+  }, [])
+}
+
