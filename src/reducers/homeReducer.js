@@ -5,7 +5,8 @@ const initialState = {
   references: [],
   currentView: '',
   directMessages: [],
-  currentReference: null
+  currentReference: null,
+  referenceId: null
 }
 
 const homeReducer = (state = initialState, action) => {
