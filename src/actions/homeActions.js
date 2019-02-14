@@ -231,10 +231,10 @@ export const setComments = (docComments) => {
   }
 }
 
-export const deleteDirectMessage = (user, reference, commentId) => {
+export const deleteDirectMessage = (user, otherUserId, commentId) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
-    firestore.collection(`users/${user.uid}/messages/${reference}/messages`)
+    firestore.collection(`users/${user.uid}/messages/${otherUserId}/messages`)
       .doc(commentId).delete().then(() => {
         dispatch({
           type: actionTypes.DELETE_DIRECT_MESSAGE,
