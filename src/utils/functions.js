@@ -32,3 +32,17 @@ export const sortCommentsByDate = (comments) => {
 
   return sortedComments;
 }
+
+export const removeDeletedComments = (comments, commentToDelete) => {
+  return comments.reduce((newArray, comment) => {
+    if (action.payload.commentToDelete.length > 0) {
+      if (action.payload.commentToDelete[0].id !== comment.id) {
+        newArray.push(comment)
+      }
+    } else {
+      newArray.push(comment)
+    }
+    return newArray;
+  }, []);
+}
+
