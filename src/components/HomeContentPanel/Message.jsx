@@ -23,7 +23,7 @@ class Message extends React.Component{
   // closeModal = () => this.setState({modal: false});
 
   onDelete = () => {
-    // this.props.deleteDirectMessage(this.props.message.channelId, this.props.messageId)
+    this.props.deleteDirectMessage(this.props.user, this.props.otherUser.uid, this.props.messageId)
   }
   
   isOwnMessageOptions = (message, user) => {
