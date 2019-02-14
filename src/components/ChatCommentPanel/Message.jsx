@@ -28,8 +28,11 @@ class Message extends React.Component{
 
   onSubmit = () => {
     // this.props.message has the information of the other user
-    this.props.createDirectMessage(this.props.user, this.props.message, this.state.comment);
-    this.clearForm();
+    console.log('You, Auth User: ', this.props.user);
+    console.log('User you are messaging: ', this.props.message);
+    console.log('Your Comment: ', this.state.comment);
+    // this.props.createDirectMessage(this.props.user, this.props.message, this.state.comment);
+    // this.clearForm();
   }
 
   onDelete = () => {
