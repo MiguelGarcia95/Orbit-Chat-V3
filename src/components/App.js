@@ -7,7 +7,7 @@ import Spinner from './Layout/Spinner';
 import {getFirestore} from 'redux-firestore';
 
 import {clearChatroom} from '../actions/chatroomActions';
-import {getDirectMessages, getDirectMessagesReference, setHomeView, setComments} from '../actions/homeActions';
+import {getDirectMessagesReference, setHomeView, setComments} from '../actions/homeActions';
 
 
 import HomeContentPanel from './HomeContentPanel/HomeContentPanel';
@@ -29,13 +29,11 @@ class App extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.currentView !== nextProps.currentView && nextProps.currentView !== 'friends') {
-      // this.props.getDirectMessages(nextProps.user, nextProps.currentView)
       this.getChannelComemntrsRT(nextProps.user, nextProps.currentView)
     }
   }
 
   // Get real time comments
-
   getChannelComemntrsRT = (user, reference) => {
     const firestore = getFirestore();
     firestore.collection(`users/${user.uid}/messages/${reference}/messages`).onSnapshot(snapshot => {
@@ -71,7 +69,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     clearChatroom: () => dispatch(clearChatroom()),
-    getDirectMessages: (user, reference) => dispatch(getDirectMessages(user, reference)),
     getDirectMessagesReference: userId => dispatch(getDirectMessagesReference(userId)),
     setHomeView: view => dispatch(setHomeView(view)),
     setComments: docComments => dispatch(setComments(docComments))
