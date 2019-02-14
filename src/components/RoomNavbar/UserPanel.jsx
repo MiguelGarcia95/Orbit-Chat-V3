@@ -15,6 +15,10 @@ class UserPanel extends React.Component {
 
   closeModal = () => this.setState({modal: false});
 
+  onLogout = () => {
+    this.props.signOut();
+  }
+
   onSubmit = () => {
 
   }
@@ -33,7 +37,13 @@ class UserPanel extends React.Component {
             </Grid.Column>
             <Grid.Column verticalAlign='middle' width={2} style={{position: 'absolute', right: '0px', marginRight: '15px'}}>
               <Container fluid>
-                <Icon name='cog' className='grid-icon' onClick={this.openModal} />
+                {/* <Icon name='cog' className='grid-icon' onClick={this.openModal} /> */}
+                <Dropdown icon='cog' className='grid-icon'>
+                  <Dropdown.Menu direction='left' >
+                    <Dropdown.Item content='Delete' icon='x' onClick={this.onDelete} />
+
+                  </Dropdown.Menu>
+                </Dropdown>
               </Container>
             </Grid.Column>
           </Grid.Row>
