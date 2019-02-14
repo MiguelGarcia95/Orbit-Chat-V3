@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/types';
+import {removeDuplicateComments} from '../utils/functions';
 
 const initialState = {
   currentChannel: null,
@@ -48,23 +49,25 @@ const chatroomReducer = (state = initialState, action) => {
       }
     case actionTypes.SET_COMMENTS:
     let newComments = [...state.comments, ...action.payload.comments];
+
+    let filteredComments = removeDuplicateComments(newComments);
     
-    let filteredComments = newComments.reduce((newArray, comment) => {
-      if (newArray.length > 0) {
-        let isInArray = false;
-        newArray.forEach(arrayComment => {
-          if (comment.id === arrayComment.id) {
-            isInArray = true;
-          }
-        });
-        if (!isInArray) {
-          newArray.push(comment)
-        }
-      } else {
-        newArray.push(comment)
-      }
-      return newArray
-    }, []);
+    // let filteredComments = newComments.reduce((newArray, comment) => {
+    //   if (newArray.length > 0) {
+    //     let isInArray = false;
+    //     newArray.forEach(arrayComment => {
+    //       if (comment.id === arrayComment.id) {
+    //         isInArray = true;
+    //       }
+    //     });
+    //     if (!isInArray) {
+    //       newArray.push(comment)
+    //     }
+    //   } else {
+    //     newArray.push(comment)
+    //   }
+    //   return newArray
+    // }, []);
 
     let sortedComments = [];
     if (filteredComments.length !== 0) {
