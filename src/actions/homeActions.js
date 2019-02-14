@@ -209,7 +209,6 @@ export const setComments = (docComments, reference) => {
   return (dispatch) => {
     let comments = [];
     let commentToDelete = [];
-    console.log(reference);
     docComments.forEach(docComment => {
       if (docComment.type === 'added') {
         comments.push({id: docComment.doc.id, message: docComment.doc.data(), reference: reference})
