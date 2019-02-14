@@ -210,3 +210,29 @@ export const getDirectMessages = (user, reference) => {
     })
   }
 }
+
+export const setComments = (docComments) => {
+  return (dispatch) => {
+    let comments = [];
+    let commentToDelete = [];
+
+    docComments.forEach(docComment => {
+      if (docComment.type === 'added') {
+        comments.push({id: docComment.doc.id, comment: docComment.doc.data()})
+      } else if (docComment.type === 'modified') {
+        comments.push({id: docComment.doc.id, comment: docComment.doc.data()})
+      } else if (docComment.type === 'removed') {
+        commentToDelete.push({id: docComment.doc.id, comment: docComment.doc.data()})
+      }
+    })
+
+    dispatch({
+      type: actionTypes.SET_COMMENTS_HOME,
+      payload: {
+        comments: comments,
+        channelError: null,
+        commentToDelete: commentToDelete
+      }
+    })
+  }
+}
