@@ -36,22 +36,11 @@ const homeReducer = (state = initialState, action) => {
       }
     case actionTypes.SET_COMMENTS_HOME:
       let newComments = [...state.directMessages, ...action.payload.userMessages];
-
       let filteredComments = removeDuplicateComments(newComments);
-
       let sortedComments = sortCommentsByDate(filteredComments);
-
       let comments = removeDeletedComments(sortedComments, action.payload.commentToDelete);
+      let referencedComments = removeUnrelatedComments(comments, action.payload.referenceId);
 
-      let referencedComments = removeUnrelatedComments(comments, action.payload.referenceId)
-
-      // let referencedComments = comments.reduce((newArray, comment) => {
-      //   if (action.payload.referenceId === comment.reference) {
-      //     newArray.push(comment)
-      //   }
-      //   return newArray;
-      // }, [])
-      
       return {
         ...state,
         directMessages: referencedComments,
