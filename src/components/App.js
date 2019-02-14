@@ -29,8 +29,8 @@ class App extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.currentView !== nextProps.currentView && nextProps.currentView !== 'friends') {
-      this.props.getDirectMessages(nextProps.user, nextProps.currentView)
-      // this.getChannelComemntrsRT(nextProps.user, nextProps.currentView)
+      // this.props.getDirectMessages(nextProps.user, nextProps.currentView)
+      this.getChannelComemntrsRT(nextProps.user, nextProps.currentView)
     }
   }
 
