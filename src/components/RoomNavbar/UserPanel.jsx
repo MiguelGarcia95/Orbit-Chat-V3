@@ -1,6 +1,7 @@
 import React from 'react';
 import {Grid, Image, Container, Modal, Segment, Button, Label, Input, Icon} from 'semantic-ui-react';
 import {connect} from 'react-redux';
+import {signOut} from '../../actions/authActions';
 
 class UserPanel extends React.Component {
   state = {
@@ -61,4 +62,10 @@ class UserPanel extends React.Component {
   }
 }
 
-export default connect()(UserPanel);
+const mapDispatchToProps = dispatch => {
+  return {
+    signOut: () => dispatch(signOut())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(UserPanel);
