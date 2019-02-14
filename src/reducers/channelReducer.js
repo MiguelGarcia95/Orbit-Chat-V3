@@ -30,6 +30,11 @@ const chatroomReducer = (state = initialState, action) => {
         ...state,
         channelError: action.payload.channelError
       }
+    case actionTypes.DELETE_CHANNEL_COMMENT:
+      return {
+        ...state,
+        channelError: action.payload.channelError
+      }
     case actionTypes.UNSET_CHANNEL:
       return {
         ...state,
@@ -87,7 +92,6 @@ const chatroomReducer = (state = initialState, action) => {
         ...state,
         channelError: action.payload.channelError,
         comments: comments
-        // comments: action.payload.comments
       }
     default:
       return state;

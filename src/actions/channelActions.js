@@ -147,7 +147,7 @@ export const deleteChannelComment = (channelId, commentId) => {
 export const createChannelComment = comment => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
-    // comments/ chatroomId-channelId / comments
+    
     firestore.add(`comments/${comment.channel.id}/comments`, {
       comment: comment.comment,
       uid: comment.user.uid,
