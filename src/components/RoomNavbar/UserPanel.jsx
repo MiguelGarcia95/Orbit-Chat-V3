@@ -37,11 +37,10 @@ class UserPanel extends React.Component {
             </Grid.Column>
             <Grid.Column verticalAlign='middle' width={2} style={{position: 'absolute', right: '0px', marginRight: '15px'}}>
               <Container fluid>
-                {/* <Icon name='cog' className='grid-icon' onClick={this.openModal} /> */}
                 <Dropdown icon='cog' className='grid-icon'>
                   <Dropdown.Menu direction='left' >
-                    <Dropdown.Item content='Delete' icon='x' onClick={this.onDelete} />
-
+                    <Dropdown.Item content='Logout' icon='power off' onClick={this.onLogout} />
+                    <Dropdown.Item content='Settingsogout' icon='cog' onClick={this.openModal} />
                   </Dropdown.Menu>
                 </Dropdown>
               </Container>
