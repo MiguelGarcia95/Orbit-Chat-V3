@@ -55,8 +55,8 @@ const homeReducer = (state = initialState, action) => {
       let sortedComments = [];
       if (filteredComments.length !== 0) {
         sortedComments = filteredComments.sort((a, b) => {
-          if (b.comment.createdAt !== null && a.comment.createdAt !== null) {
-            return new Date(a.comment.createdAt.toDate()) - new Date(b.comment.createdAt.toDate());
+          if (b.message.createdAt !== null && a.message.createdAt !== null) {
+            return new Date(a.message.createdAt.toDate()) - new Date(b.message.createdAt.toDate());
           }
         });
       } else {
