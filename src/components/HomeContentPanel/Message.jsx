@@ -2,8 +2,7 @@ import React from 'react';
 import {Comment, Dropdown, Modal, Input, Segment, Button} from 'semantic-ui-react';
 import moment from 'moment';
 import {connect} from 'react-redux';
-import {deleteChannelComment} from '../../actions/channelActions';
-import {createDirectMessage} from '../../actions/homeActions';
+import {createDirectMessage, deleteDirectMessage} from '../../actions/homeActions';
 
 class Message extends React.Component{
   state = {
@@ -24,7 +23,7 @@ class Message extends React.Component{
   // closeModal = () => this.setState({modal: false});
 
   onDelete = () => {
-    this.props.deleteChannelComment(this.props.message.channelId, this.props.messageId)
+    // this.props.deleteDirectMessage(this.props.message.channelId, this.props.messageId)
   }
   
   isOwnMessageOptions = (message, user) => {
@@ -78,8 +77,8 @@ class Message extends React.Component{
 
 const mapDispatchToProps = dispatch => {
   return {
-    deleteChannelComment: (channelId, commentId) => dispatch(deleteChannelComment(channelId, commentId)),
-    createDirectMessage: (user, otherUser, comment) => dispatch(createDirectMessage(user, otherUser, comment))
+    createDirectMessage: (user, otherUser, comment) => dispatch(createDirectMessage(user, otherUser, comment)),
+    deleteDirectMessage: (user, reference, commentId) => dispatch(deleteDirectMessage(user, reference, commentId))
   }
 }
 
