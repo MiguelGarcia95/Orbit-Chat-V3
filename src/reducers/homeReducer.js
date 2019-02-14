@@ -76,25 +76,10 @@ const homeReducer = (state = initialState, action) => {
       
       return {
         ...state,
-        directMessages: comments
+        directMessages: comments,
+        homeroomError: action.payload.homeError
       }
     case actionTypes.GET_DIRECT_MESSAGES:
-      // let allMessages = [];
-
-      // if (state.directMessages.length > 0) {
-      //   let inDMArray = false;
-      //   state.directMessages.forEach(message => {
-      //     if (message.uid === action.payload.userMessages.uid) {
-      //       inDMArray = true;
-      //     }
-      //   })
-      //   if (!inDMArray) {
-      //     allMessages.push(action.payload.userMessages);
-      //   }
-      // } else {
-      //   allMessages.push(action.payload.userMessages);
-      // }
-
       return {
         ...state,
         homeroomError: action.payload.homeError,
