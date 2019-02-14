@@ -40,16 +40,6 @@ const homeReducer = (state = initialState, action) => {
       let filteredComments = removeDuplicateComments(newComments);
 
       let sortedComments = sortCommentsByDate(filteredComments);
-      // let sortedComments = [];
-      // if (filteredComments.length !== 0) {
-      //   sortedComments = filteredComments.sort((a, b) => {
-      //     if (b.message.createdAt !== null && a.message.createdAt !== null) {
-      //       return new Date(a.message.createdAt.toDate()) - new Date(b.message.createdAt.toDate());
-      //     }
-      //   });
-      // } else {
-      //   sortedComments = [...filteredComments];
-      // }
 
       let comments = sortedComments.reduce((newArray, comment) => {
         if (action.payload.commentToDelete.length > 0) {

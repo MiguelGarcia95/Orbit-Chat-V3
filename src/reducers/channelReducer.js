@@ -54,17 +54,6 @@ const chatroomReducer = (state = initialState, action) => {
 
     let sortedComments = sortCommentsByDate(filteredComments);
 
-    // let sortedComments = [];
-    // if (filteredComments.length !== 0) {
-    //   sortedComments = filteredComments.sort((a, b) => {
-    //     if (b.comment.createdAt !== null && a.comment.createdAt !== null) {
-    //       return new Date(a.comment.createdAt.toDate()) - new Date(b.comment.createdAt.toDate());
-    //     }
-    //   });
-    // } else {
-    //   sortedComments = [...filteredComments];
-    // }
-
     let comments = sortedComments.reduce((newArray, comment) => {
       if (action.payload.commentToDelete.length > 0) {
         if (action.payload.commentToDelete[0].id !== comment.id) {
