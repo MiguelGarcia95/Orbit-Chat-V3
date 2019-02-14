@@ -1,12 +1,13 @@
 import React from 'react';
 import firebase from '../../firebase';
 import {Grid} from 'semantic-ui-react';
+import {connect} from 'react-redux';
+import {getFirestore} from 'redux-firestore';
+
 import {getChatroom} from '../../actions/chatroomActions';
 import {unsetChannel, setChannel, getChannelComments, setComments} from '../../actions/channelActions';
-import {connect} from 'react-redux';
 import Spinner from '../Layout/Spinner';
 import ChatCommentPanel from '../ChatCommentPanel/ChatCommentPanel';
-import {getFirestore} from 'redux-firestore';
 
 class Chatroom extends React.Component {
   state = {
