@@ -40,7 +40,7 @@ class UserPanel extends React.Component {
                 <Dropdown icon='cog' className='grid-icon'>
                   <Dropdown.Menu direction='left' >
                     <Dropdown.Item content='Logout' icon='power off' onClick={this.onLogout} />
-                    <Dropdown.Item content='Settingsogout' icon='cog' onClick={this.openModal} />
+                    <Dropdown.Item content='Settings' icon='cog' onClick={this.openModal} />
                   </Dropdown.Menu>
                 </Dropdown>
               </Container>
