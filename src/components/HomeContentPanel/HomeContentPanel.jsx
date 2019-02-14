@@ -12,14 +12,6 @@ class HomeContentPanel extends React.Component {
   state = {
   }
 
-  componentDidMount() {
-    if (this.props.currentView !== 'friends') {
-      // this.props.getReference(this.props.user.uid, this.props.currentView)
-    }
-  }
-
-
-
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.currentView !== nextProps.currentView && nextProps.currentView !== 'friends') {
       this.props.getReference(nextProps.user.uid, nextProps.currentView)
