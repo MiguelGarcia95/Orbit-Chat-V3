@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/types';
-import {removeDuplicateComments} from '../utils/functions';
+import {removeDuplicateComments, sortCommentsByDate} from '../utils/functions';
 
 const initialState = {
   homeroomError: null,
@@ -38,18 +38,18 @@ const homeReducer = (state = initialState, action) => {
       let newComments = [...state.directMessages, ...action.payload.userMessages];
 
       let filteredComments = removeDuplicateComments(newComments);
-      
 
-      let sortedComments = [];
-      if (filteredComments.length !== 0) {
-        sortedComments = filteredComments.sort((a, b) => {
-          if (b.message.createdAt !== null && a.message.createdAt !== null) {
-            return new Date(a.message.createdAt.toDate()) - new Date(b.message.createdAt.toDate());
-          }
-        });
-      } else {
-        sortedComments = [...filteredComments];
-      }
+      let sortedComments = sortCommentsByDate(filteredComments);
+      // let sortedComments = [];
+      // if (filteredComments.length !== 0) {
+      //   sortedComments = filteredComments.sort((a, b) => {
+      //     if (b.message.createdAt !== null && a.message.createdAt !== null) {
+      //       return new Date(a.message.createdAt.toDate()) - new Date(b.message.createdAt.toDate());
+      //     }
+      //   });
+      // } else {
+      //   sortedComments = [...filteredComments];
+      // }
 
       let comments = sortedComments.reduce((newArray, comment) => {
         if (action.payload.commentToDelete.length > 0) {
