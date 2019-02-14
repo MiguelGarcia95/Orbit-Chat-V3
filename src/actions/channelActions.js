@@ -70,7 +70,7 @@ export const getChannelComments = (chatroomId, channelId) => {
     firestore.collection(`comments/${channelId}/comments`).get().then(data => {
       let comments = [];
       data.forEach(doc => {
-        comments.push({id: doc.id, comment: doc.data()})
+        comments.push({id: doc.id, message: doc.data()})
       })
 
       let sortedComments = comments.sort(function(a, b) {
@@ -103,11 +103,11 @@ export const setComments = (docComments) => {
 
     docComments.forEach(docComment => {
       if (docComment.type === 'added') {
-        comments.push({id: docComment.doc.id, comment: docComment.doc.data()})
+        comments.push({id: docComment.doc.id, message: docComment.doc.data()})
       } else if (docComment.type === 'modified') {
-        comments.push({id: docComment.doc.id, comment: docComment.doc.data()})
+        comments.push({id: docComment.doc.id, message: docComment.doc.data()})
       } else if (docComment.type === 'removed') {
-        commentToDelete.push({id: docComment.doc.id, comment: docComment.doc.data()})
+        commentToDelete.push({id: docComment.doc.id, message: docComment.doc.data()})
       }
     })
 

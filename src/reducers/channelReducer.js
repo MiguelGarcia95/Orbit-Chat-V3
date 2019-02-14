@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/types';
-import {removeDuplicateComments} from '../utils/functions';
+import {removeDuplicateComments, sortCommentsByDate} from '../utils/functions';
 
 const initialState = {
   currentChannel: null,
@@ -51,17 +51,19 @@ const chatroomReducer = (state = initialState, action) => {
     let newComments = [...state.comments, ...action.payload.comments];
 
     let filteredComments = removeDuplicateComments(newComments);
-    
-    let sortedComments = [];
-    if (filteredComments.length !== 0) {
-      sortedComments = filteredComments.sort((a, b) => {
-        if (b.comment.createdAt !== null && a.comment.createdAt !== null) {
-          return new Date(a.comment.createdAt.toDate()) - new Date(b.comment.createdAt.toDate());
-        }
-      });
-    } else {
-      sortedComments = [...filteredComments];
-    }
+
+    let sortedComments = sortCommentsByDate(filteredComments);
+
+    // let sortedComments = [];
+    // if (filteredComments.length !== 0) {
+    //   sortedComments = filteredComments.sort((a, b) => {
+    //     if (b.comment.createdAt !== null && a.comment.createdAt !== null) {
+    //       return new Date(a.comment.createdAt.toDate()) - new Date(b.comment.createdAt.toDate());
+    //     }
+    //   });
+    // } else {
+    //   sortedComments = [...filteredComments];
+    // }
 
     let comments = sortedComments.reduce((newArray, comment) => {
       if (action.payload.commentToDelete.length > 0) {
