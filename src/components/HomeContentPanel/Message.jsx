@@ -22,6 +22,10 @@ class Message extends React.Component{
   // openModal = () => this.setState({modal: true});
   // closeModal = () => this.setState({modal: false});
 
+  sendFriendRequest = () => {
+
+  }
+
   onDelete = () => {
     this.props.deleteDirectMessage(this.props.user, this.props.otherUser.uid, this.props.messageId)
   }
@@ -33,14 +37,14 @@ class Message extends React.Component{
       )
     } else {
       return (
-        <Dropdown.Item content={`Send Friend Request`} icon='plus' />
+        <Dropdown.Item content={`Send Friend Request`} icon='plus' onClick={this.sendFriendRequest} />
       )
     }
   }
 
   render() {
     const {message, user} = this.props;
-    const {modal} = this.state;
+    // const {modal} = this.state;
     return (
       <React.Fragment>
         <Comment className="chat_comment">
