@@ -224,29 +224,29 @@ export const setComments = (docComments) => {
       type: actionTypes.SET_COMMENTS_HOME,
       payload: {
         userMessages: comments,
-        channelError: null,
+        homeError: null,
         commentToDelete: commentToDelete
       }
     })
   }
 }
 
-export const deleteDirectMessage = (channelId, commentId) => {
+export const deleteDirectMessage = (user, reference, commentId) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
-    firestore.collection(`comments/${channelId}/comments`)
+    firestore.collection(`users/${user.uid}/messages/${reference}/messages`)
       .doc(commentId).delete().then(() => {
         dispatch({
-          type: actionTypes.DELETE_CHANNEL_COMMENT,
+          type: actionTypes.DELETE_DIRECT_MESSAGE,
           payload: {
-            channelError: null
+            homeError: null
           }
         })
       }).catch(err => {
         dispatch({
-          type: actionTypes.DELETE_CHANNEL_COMMENT,
+          type: actionTypes.DELETE_DIRECT_MESSAGE,
           payload: {
-            channelError: err.message
+            homeError: err.message
           }
         })
       })
