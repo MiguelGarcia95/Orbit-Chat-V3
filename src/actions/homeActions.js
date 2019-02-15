@@ -177,7 +177,7 @@ export const setComments = (docComments, reference) => {
       } else if (docComment.type === 'modified') {
         comments.push({id: docComment.doc.id, message: docComment.doc.data(), reference: reference})
       } else if (docComment.type === 'removed') {
-        commentToDelete.push({id: docComment.doc.id, commmessageent: docComment.doc.data(), reference: reference})
+        commentToDelete.push({id: docComment.doc.id, message: docComment.doc.data(), reference: reference})
       }
     })
 

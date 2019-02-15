@@ -171,3 +171,27 @@ export const getChatrooms = () => {
     })
   }
 }
+
+export const setChatrooms = (docChatrooms) => {
+  return (dispatch) => {
+    let chatrooms = [];
+    let chatroomToDelete = [];
+    docChatrooms.forEach(docChatroom => {
+      if (docChatroom.type === 'added') {
+        chatrooms.push({id: docChatroom.doc.id, chatroom: docChatroom.doc.data()})
+      } else if (docChatroom.type === 'modified') {
+        chatrooms.push({id: docChatroom.doc.id, chatroom: docChatroom.doc.data()})
+      } else if (docChatroom.type === 'removed') {
+        chatroomToDelete.push({id: docChatroom.doc.id, chatroom: docChatroom.doc.data()})
+      }
+    })
+
+    dispatch({
+      type: actionTypes.SET_CHATROOMS,
+      payload: {
+        chatrooms: [],
+        chatroomError: null
+      }
+    })
+  }
+}
