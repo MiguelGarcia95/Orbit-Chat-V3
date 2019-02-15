@@ -7,7 +7,7 @@ import Spinner from './Layout/Spinner';
 import {getFirestore} from 'redux-firestore';
 
 import {clearChatroom} from '../actions/chatroomActions';
-import {getDirectMessagesReference, setHomeView, setComments, setReferences} from '../actions/homeActions';
+import {setHomeView, setComments, setReferences} from '../actions/homeActions';
 
 
 import HomeContentPanel from './HomeContentPanel/HomeContentPanel';
@@ -19,7 +19,6 @@ class App extends React.Component {
         this.props.history.push('/signin');
       } else {
         this.props.clearChatroom();
-        // this.props.getDirectMessagesReference(user.uid);
         this.getDirectMessagesReferenceRT(user.uid);
         this.props.setHomeView('friends')
       }
@@ -76,7 +75,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     clearChatroom: () => dispatch(clearChatroom()),
-    getDirectMessagesReference: userId => dispatch(getDirectMessagesReference(userId)),
     setHomeView: view => dispatch(setHomeView(view)),
     setComments: (docComments, reference) => dispatch(setComments(docComments, reference)),
     setReferences: docReferences => dispatch(setReferences(docReferences))

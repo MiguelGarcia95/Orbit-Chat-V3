@@ -41,6 +41,7 @@ const homeReducer = (state = initialState, action) => {
       let references = [...state.references, ...action.payload.references];
       let uniqueReferences = removeDuplicateReferences(references);
       let allReferences = removeDeletedReferences(uniqueReferences, action.payload.referencesToDelete);
+      
       return {
         ...state,
         homeroomError: action.payload.homeError,
