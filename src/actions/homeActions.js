@@ -247,10 +247,8 @@ export const setComments = (docComments, reference) => {
     dispatch({
       type: actionTypes.SET_COMMENTS_HOME,
       payload: {
-        userMessages: comments,
         homeError: null,
-        commentToDelete: commentToDelete,
-        referenceId: reference
+        references: references
       }
     })
   }
@@ -271,7 +269,15 @@ export const setReferences = docReferences => {
       }
     })
 
-
+    dispatch({
+      type: actionTypes.SET_DIRECT_MESSAGES_REFERENCE,
+      payload: {
+        userMessages: comments,
+        homeError: null,
+        commentToDelete: commentToDelete,
+        referenceId: reference
+      }
+    })
   }
 }
 
