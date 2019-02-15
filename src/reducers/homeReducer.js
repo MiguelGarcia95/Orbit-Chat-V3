@@ -35,7 +35,7 @@ const homeReducer = (state = initialState, action) => {
         references: action.payload.references
       }
     case actionTypes.SET_DIRECT_MESSAGES_REFERENCE:
-      let uniqueReferences = removeDuplicateReferences(action.payload.references)
+      let uniqueReferences = removeDuplicateReferences(action.payload.references);
       console.log(uniqueReferences)
       return {
         ...state,
