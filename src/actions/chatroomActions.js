@@ -189,7 +189,7 @@ export const setChatrooms = (docChatrooms) => {
     dispatch({
       type: actionTypes.SET_CHATROOMS,
       payload: {
-        chatrooms: [],
+        chatrooms: chatrooms,
         chatroomError: null
       }
     })
