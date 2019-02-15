@@ -3,7 +3,7 @@ import {Grid, Container, Header, Image, Icon} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {deleteDirectMessageChat} from '../../actions/homeActions';
 
-const FriendChatHeader = ({friend, user}) => {
+const FriendChatHeader = ({friend, user, deleteDirectMessageChat}) => {
   return (
     <Grid className='home_comment_header'>
       <Grid.Row columns='1' style={{padding: '0px'}}>
@@ -14,7 +14,7 @@ const FriendChatHeader = ({friend, user}) => {
           <Icon 
             name='trash alternate outline' 
             size='large' color='red' 
-
+            onClick={() => deleteDirectMessageChat(user, friend, [])}
             style={{marginBottom: '0', marginTop: '14.5px', cursor: 'pointer'}}
           />
         </Container>
