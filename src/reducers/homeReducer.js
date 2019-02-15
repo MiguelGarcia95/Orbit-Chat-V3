@@ -41,11 +41,11 @@ const homeReducer = (state = initialState, action) => {
       let references = [...state.references, ...action.payload.references];
       let uniqueReferences = removeDuplicateReferences(references);
       let allReferences = removeDeletedReferences(uniqueReferences, action.payload.referencesToDelete);
-
-      console.log(uniqueReferences)
+      // console.log(uniqueReferences)
       return {
         ...state,
-        
+        homeroomError: action.payload.homeError,
+        references: allReferences
       }
     case actionTypes.GET_REFERENCE:
       return {
