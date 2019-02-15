@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {getReference} from '../../actions/homeActions';
 import FriendList from './FriendList';
 import FriendListHeader from './FriendListHeader';
-import FriendChatHeader from './FriendListHeader';
+import FriendChatHeader from './FriendChatHeader';
 import Messages from './Messages';
 import MessageForm from './MessageForm';
 
