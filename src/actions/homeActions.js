@@ -134,7 +134,11 @@ export const deleteDirectMessageChat = (user, otherUser, allMessageIds) => {
     const firestore = getFirestore();
 
     allMessageIds.forEach(messageId => {
-      deleteDirectMessage(user, otherUser.uid, messageId);
+      // deleteDirectMessage(user, otherUser.uid, messageId);
+      firestore
+        .collection(`users/${user.uid}/messages/${otherUser.uid}/messages`)
+        .doc(messageId)
+        .delete()
     })
 
     firestore.collection(`users/${user.uid}/dmList`).doc(otherUser.uid)
