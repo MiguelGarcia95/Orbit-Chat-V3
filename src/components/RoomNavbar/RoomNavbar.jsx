@@ -2,7 +2,8 @@ import React from 'react';
 import {Grid, Sidebar, Menu, Button, Divider, Image, Modal, Input, Label, Segment} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {createChatroom, getChatrooms} from '../../actions/chatroomActions';
+import {getFirestore} from 'redux-firestore';
+import {createChatroom, getChatrooms, setChatrooms} from '../../actions/chatroomActions';
 import RoomMenu from './RoomMenu';
 
 class RoomNavbar extends React.Component {
@@ -24,6 +25,14 @@ class RoomNavbar extends React.Component {
       currentChatroom: props.currentChatroom,
       inChatroom: props.inChatroom
     }
+  }
+
+  getChatroomsRT = () => {
+    const firestore = getFirestore();
+    firestore.collection(`chatrooms`).onSnapshot(snapshot => {
+      let changes = snapshot.docChanges();
+      this.props.setChatrooms(changes)
+    })
   }
 
   onChange = e => this.setState({[e.target.name]: e.target.value});
@@ -113,7 +122,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     createChatroom: (chatroom) => dispatch(createChatroom(chatroom)),
-    getChatrooms: () => dispatch(getChatrooms())
+    getChatrooms: () => dispatch(getChatrooms()),
+    setChatrooms: docChatrooms => dispatch(setChatrooms(docChatrooms))
   }
 }
 
