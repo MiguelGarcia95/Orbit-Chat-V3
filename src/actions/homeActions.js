@@ -134,7 +134,6 @@ export const deleteDirectMessageChat = (user, otherUser, allMessageIds) => {
     const firestore = getFirestore();
 
     allMessageIds.forEach(messageId => {
-      // deleteDirectMessage(user, otherUser.uid, messageId);
       firestore
         .collection(`users/${user.uid}/messages/${otherUser.uid}/messages`)
         .doc(messageId)
@@ -254,6 +253,16 @@ export const setComments = (docComments, reference) => {
         referenceId: reference
       }
     })
+  }
+}
+
+export const setReferences = docReferences => {
+  return (dispatch) => {
+    let references = [];
+    let referencesToDelete = [];
+
+    
+
   }
 }
 
