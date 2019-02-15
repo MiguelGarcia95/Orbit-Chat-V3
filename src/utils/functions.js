@@ -55,3 +55,10 @@ export const removeUnrelatedComments = (comments, referenceId) => {
   }, [])
 }
 
+export const getIdsFromMessages = messages => {
+  let messageIds = [];
+  messages.forEach(message => {
+    messageIds.push(message.id);
+  });
+  return messageIds;
+}
