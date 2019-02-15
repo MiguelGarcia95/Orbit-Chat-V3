@@ -2,6 +2,7 @@ import React from 'react';
 import {Grid, Container, Header, Image, Icon} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {deleteDirectMessageChat} from '../../actions/homeActions';
+import {getIdsFromMessages} from '../../utils/functions';
 
 const FriendChatHeader = ({friend, user, deleteDirectMessageChat, messages}) => {
   return (
@@ -14,7 +15,7 @@ const FriendChatHeader = ({friend, user, deleteDirectMessageChat, messages}) => 
           <Icon 
             name='trash alternate outline' 
             size='large' color='red' 
-            onClick={() => deleteDirectMessageChat(user, friend, messages)}
+            onClick={() => deleteDirectMessageChat(user, friend, getIdsFromMessages(messages))}
             style={{marginBottom: '0', marginTop: '14.5px', cursor: 'pointer'}}
           />
         </Container>
