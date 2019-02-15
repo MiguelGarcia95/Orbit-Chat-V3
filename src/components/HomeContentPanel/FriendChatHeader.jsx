@@ -1,7 +1,7 @@
 import React from 'react';
 import {Grid, Container, Header, Image, Icon} from 'semantic-ui-react';
 
-const FriendChatHeader = ({friend}) => {
+const FriendChatHeader = ({friend, user}) => {
   return (
     <Grid className='home_comment_header'>
       <Grid.Row columns='1' style={{padding: '0px'}}>
@@ -12,7 +12,7 @@ const FriendChatHeader = ({friend}) => {
           <Icon 
             name='trash alternate outline' 
             size='large' color='red' 
-            
+
             style={{marginBottom: '0', marginTop: '14.5px', cursor: 'pointer'}}
           />
         </Container>

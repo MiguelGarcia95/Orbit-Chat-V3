@@ -26,7 +26,7 @@ class HomeContentPanel extends React.Component {
       const {otherUser, user, directMessages} = this.props;
       return (
         <React.Fragment>
-          {otherUser && <FriendChatHeader friend={otherUser} />}
+          {otherUser && <FriendChatHeader friend={otherUser} user={user} />}
           {otherUser && <MessageForm otherUser={otherUser} user={user} />}
           {directMessages && <Messages messages={directMessages} user={user} otherUser={otherUser} />}
         </React.Fragment>
