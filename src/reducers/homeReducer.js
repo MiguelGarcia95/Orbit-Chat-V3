@@ -1,5 +1,8 @@
 import * as actionTypes from '../actions/types';
-import {removeDuplicateComments, sortCommentsByDate, removeDeletedComments, removeUnrelatedComments, removeDuplicateReferences} from '../utils/functions';
+import {
+  removeDuplicateComments, sortCommentsByDate, removeDeletedComments, removeUnrelatedComments, 
+  removeDuplicateReferences, removeDeletedReferences
+} from '../utils/functions';
 
 const initialState = {
   homeroomError: null,
@@ -35,7 +38,10 @@ const homeReducer = (state = initialState, action) => {
         references: action.payload.references
       }
     case actionTypes.SET_DIRECT_MESSAGES_REFERENCE:
-      let uniqueReferences = removeDuplicateReferences(action.payload.references);
+      let references = [...state.references, ...action.payload.references];
+      let uniqueReferences = removeDuplicateReferences(references);
+      let allReferences = removeDeletedReferences(uniqueReferences, action.payload.referencesToDelete);
+
       console.log(uniqueReferences)
       return {
         ...state,

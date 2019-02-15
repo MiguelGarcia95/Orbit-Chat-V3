@@ -82,7 +82,7 @@ export const removeDuplicateReferences = (references) => {
   }, []);
 }
 
-export const removeDeletedReferences+ = (references, referenceToDelete) => {
+export const removeDeletedReferences = (references, referenceToDelete) => {
   return references.reduce((newArray, reference) => {
     if (referenceToDelete.length > 0) {
       if (referenceToDelete[0].uid !== reference.uid) {
