@@ -7,7 +7,7 @@ import Spinner from './Layout/Spinner';
 import {getFirestore} from 'redux-firestore';
 
 import {clearChatroom} from '../actions/chatroomActions';
-import {getDirectMessagesReference, setHomeView, setComments} from '../actions/homeActions';
+import {getDirectMessagesReference, setHomeView, setComments, setReferences} from '../actions/homeActions';
 
 
 import HomeContentPanel from './HomeContentPanel/HomeContentPanel';
@@ -36,7 +36,8 @@ class App extends React.Component {
   getDirectMessagesReferenceRT = userId => {
     const firestore = getFirestore();
     firestore.collection(`users/${userId}/dmList`).onSnapshot(snapshot => {
-
+      let changes = snapshot.docChanges();
+      this.props.setReferences(changes)
     })
   }
 
@@ -76,7 +77,8 @@ const mapDispatchToProps = dispatch => {
     clearChatroom: () => dispatch(clearChatroom()),
     getDirectMessagesReference: userId => dispatch(getDirectMessagesReference(userId)),
     setHomeView: view => dispatch(setHomeView(view)),
-    setComments: (docComments, reference) => dispatch(setComments(docComments, reference))
+    setComments: (docComments, reference) => dispatch(setComments(docComments, reference)),
+    setReferences: docReferences => dispatch(setReferences(docReferences))
   }
 }
 
