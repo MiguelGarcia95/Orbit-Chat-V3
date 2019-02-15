@@ -131,16 +131,24 @@ export const setHomeView = view => {
 
 export const deleteDirectMessageChat = (user, otherUser, allMessageIds) => {
   return (dispatch, getstate, {getFirestore}) => {
+    const firestore = getFirestore();
 
-    // allMessageIds.forEach(messageId => {
-    //   deleteDirectMessage(user, otherUser.uid, messageId);
-    // })
+    allMessageIds.forEach(messageId => {
+      deleteDirectMessage(user, otherUser.uid, messageId);
+    })
 
-
-    // users/${user.uid}/messages/${otherUser.uid}/messages/messageId
-    // users/${user.uid}/dmList`).doc(otherUser.uid);
+    firestore.collection(`users/${user.uid}/dmList`).doc(otherUser.uid)
+      .delete().then(() => {
+        dispatch({
+          type: actionTypes.DELETE_DIRECT_MESSAGE_CHAT,
+          payload: {
+            homeError: null
+          }
+        })
+      })
   }
 }
+
 
 export const joinChatroom = (user, chatroom) => {
   return (dispatch, getState, {getFirestore}) => {
