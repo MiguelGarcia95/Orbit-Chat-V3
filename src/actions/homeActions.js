@@ -131,9 +131,12 @@ export const setHomeView = view => {
 
 export const deleteDirectMessageChat = (user, otherUser, allMessageIds) => {
   return (dispatch, getstate, {getFirestore}) => {
-    console.log(user);
-    console.log(otherUser);
-    console.log(allMessageIds);
+
+    // allMessageIds.forEach(messageId => {
+    //   deleteDirectMessage(user, otherUser.uid, messageId);
+    // })
+
+
     // users/${user.uid}/messages/${otherUser.uid}/messages/messageId
     // users/${user.uid}/dmList`).doc(otherUser.uid);
   }
