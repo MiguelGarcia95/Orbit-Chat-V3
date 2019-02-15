@@ -34,6 +34,12 @@ const homeReducer = (state = initialState, action) => {
         homeroomError: action.payload.homeError,
         references: action.payload.references
       }
+    case actionTypes.SET_DIRECT_MESSAGES_REFERENCE:
+      console.log(action.payload.references)
+      return {
+        ...state,
+        
+      }
     case actionTypes.GET_REFERENCE:
       return {
         ...state,
