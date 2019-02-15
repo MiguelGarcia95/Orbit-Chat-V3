@@ -129,6 +129,16 @@ export const setHomeView = view => {
   }
 }
 
+export const deleteDirectMessageChat = (user, otherUser, allMessageIds) => {
+  return (dispatch, getstate, {getFirestore}) => {
+    console.log(user);
+    console.log(otherUser);
+    console.log(allMessageIds);
+    // users/${user.uid}/messages/${otherUser.uid}/messages/messageId
+    // users/${user.uid}/dmList`).doc(otherUser.uid);
+  }
+}
+
 export const joinChatroom = (user, chatroom) => {
   return (dispatch, getState, {getFirestore}) => {
     console.log(user);
