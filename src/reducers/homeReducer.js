@@ -31,17 +31,17 @@ const homeReducer = (state = initialState, action) => {
         homeroomError: action.payload.homeError,
         currentView: action.payload.currentView
       }
-    case actionTypes.GET_DIRECT_MESSAGES_REFERENCE:
-      return {
-        ...state,
-        homeroomError: action.payload.homeError,
-        references: action.payload.references
-      }
+    // case actionTypes.GET_DIRECT_MESSAGES_REFERENCE:
+    //   return {
+    //     ...state,
+    //     homeroomError: action.payload.homeError,
+    //     references: action.payload.references
+    //   }
     case actionTypes.SET_DIRECT_MESSAGES_REFERENCE:
       let references = [...state.references, ...action.payload.references];
       let uniqueReferences = removeDuplicateReferences(references);
       let allReferences = removeDeletedReferences(uniqueReferences, action.payload.referencesToDelete);
-      
+
       return {
         ...state,
         homeroomError: action.payload.homeError,
@@ -65,12 +65,12 @@ const homeReducer = (state = initialState, action) => {
         directMessages: referencedComments,
         homeroomError: action.payload.homeError
       }
-    case actionTypes.GET_DIRECT_MESSAGES:
-      return {
-        ...state,
-        homeroomError: action.payload.homeError,
-        directMessages: action.payload.userMessages
-      }
+    // case actionTypes.GET_DIRECT_MESSAGES:
+    //   return {
+    //     ...state,
+    //     homeroomError: action.payload.homeError,
+    //     directMessages: action.payload.userMessages
+    //   }
     case actionTypes.SET_HOME_VIEW: 
       return {
         ...state,
