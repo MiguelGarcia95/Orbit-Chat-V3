@@ -62,3 +62,22 @@ export const getIdsFromMessages = messages => {
   });
   return messageIds;
 }
+
+export const removeDuplicateReferences = (references) => {
+  return references.reduce((newArray, reference) => {
+    if (newArray.length > 0) {
+      let isInArray = false;
+      newArray.forEach(arrayReference => {
+        if (reference.uid === arrayReference.uid) {
+          isInArray = true;
+        }
+      });
+      if (!isInArray) {
+        newArray.push(reference)
+      }
+    } else {
+      newArray.push(reference)
+    }
+    return newArray
+  }, []);
+}

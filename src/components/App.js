@@ -19,7 +19,8 @@ class App extends React.Component {
         this.props.history.push('/signin');
       } else {
         this.props.clearChatroom();
-        this.props.getDirectMessagesReference(user.uid);
+        // this.props.getDirectMessagesReference(user.uid);
+        this.getDirectMessagesReferenceRT(user.uid);
         this.props.setHomeView('friends')
       }
     })
