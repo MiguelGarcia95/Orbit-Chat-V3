@@ -146,7 +146,8 @@ export const deleteDirectMessageChat = (user, otherUser, allMessageIds) => {
         dispatch({
           type: actionTypes.DELETE_DIRECT_MESSAGE_CHAT,
           payload: {
-            homeError: null
+            homeError: null,
+            currentView: 'friends'
           }
         })
       })
