@@ -260,8 +260,17 @@ export const setReferences = docReferences => {
   return (dispatch) => {
     let references = [];
     let referencesToDelete = [];
-
     
+    docReferences.forEach(docReference => {
+      if (docReference.type === 'added') {
+        references.push(docReference.doc.data())
+      } else if (docReference.type === 'modified') {
+        references.push(docReference.doc.data())
+      } else if (docReference.type === 'removed') {
+        referencesToDelete.push(docReference.doc.data())
+      }
+    })
+
 
   }
 }
