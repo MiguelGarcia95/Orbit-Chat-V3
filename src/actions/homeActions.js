@@ -65,34 +65,6 @@ export const createDirectMessage = (user, otherUser, comment) => {
   }
 }
 
-// export const getDirectMessagesReference = userId => {
-//   return (dispatch, getState, {getFirestore}) => {
-//     const firestore = getFirestore();
-//     firestore.collection(`users/${userId}/dmList`).get().then(data => {
-//       let references = [];
-//       data.forEach(doc => {
-//         references.push(doc.data())
-//       })
-
-//       dispatch({
-//         type: actionTypes.GET_DIRECT_MESSAGES_REFERENCE,
-//         payload: {
-//           homeError: null,
-//           references: references
-//         }
-//       })
-//     }).catch(err => {
-//       dispatch({
-//         type: actionTypes.GET_DIRECT_MESSAGES_REFERENCE,
-//         payload: {
-//           homeError: err.message,
-//           references: []
-//         }
-//       })
-//     })
-//   }
-// }
-
 export const getReference = (userId, referenceId) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
@@ -193,42 +165,7 @@ export const displayDirectMessages = (user, otherUser) => {
     console.log(user);
     console.log(otherUser)
   }
-} 
-
-// export const getDirectMessages = (user, otherUserId) => {
-//   return (dispatch, getState, {getFirestore}) => {
-//     const firestore = getFirestore();
-    
-//     firestore.collection(`users/${user.uid}/messages/${otherUserId}/messages`).get().then(data => {
-//       let messages = [];
-//       data.forEach(doc => {
-//         messages.push({id: doc.id, message: doc.data()})
-//       })
-
-//       let sortedMessages = messages.sort((a, b) => {
-//         if (b.message.createdAt !== null && a.message.createdAt !== null) {
-//           return new Date(a.message.createdAt.toDate()) - new Date(b.message.createdAt.toDate());
-//         }
-//       });
-
-//       dispatch({
-//         type: actionTypes.GET_DIRECT_MESSAGES,
-//         payload: {
-//           homeError: null,
-//           userMessages: sortedMessages
-//         }
-//       })
-//     }).catch(err => {
-//       dispatch({
-//         type: actionTypes.GET_DIRECT_MESSAGES,
-//         payload: {
-//           homeError: err.message,
-//           userMessages: null
-//         }
-//       })
-//     })
-//   }
-// }
+}
 
 export const setComments = (docComments, reference) => {
   return (dispatch) => {
