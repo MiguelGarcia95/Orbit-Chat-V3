@@ -33,6 +33,13 @@ class App extends React.Component {
     }
   }
 
+  getDirectMessagesReferenceRT = userId => {
+    const firestore = getFirestore();
+    firestore.collection(`users/${userId}/dmList`).onSnapshot(snapshot => {
+
+    })
+  }
+
   getChannelComemntrsRT = (user, reference) => {
     const firestore = getFirestore();
     firestore.collection(`users/${user.uid}/messages/${reference}/messages`).onSnapshot(snapshot => {
