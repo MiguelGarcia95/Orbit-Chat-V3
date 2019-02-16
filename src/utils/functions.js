@@ -131,7 +131,7 @@ export const sortCategoriesByDate = categories => {
   let sortedCategories = [];
 
   if (categories.length !== 0) {
-    sortedCategories = comments.sort((a, b) => {
+    sortedCategories = categories.sort((a, b) => {
       if (b.category.createdAt !== null && a.category.createdAt !== null ) {
         return new Date(a.category.createdAt.toDate()) - new Date(b.category.createdAt.toDate());
       }

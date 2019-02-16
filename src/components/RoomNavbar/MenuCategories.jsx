@@ -9,7 +9,8 @@ import ChannelCategory from '../Layout/ChannelCategory';
 
 class MenuCategories extends React.Component {
   componentDidMount() {
-    this.props.getChatroomCategories(this.props.chatroom.id);
+    // this.props.getChatroomCategories(this.props.chatroom.id);
+    this.getChatroomCategoriesRT(this.props.chatroom.id);
     this.props.getChannels(this.props.chatroom.id);
   }
 
