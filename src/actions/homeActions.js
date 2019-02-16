@@ -140,21 +140,28 @@ export const leaveChatroom = (user, chatroom) => {
   }
 };
 
-export const addFriend = (user, friend) => {
+export const addFriend = (user, otherUser) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
 
-    // firestore.collection(`users/${user.uid}/friends`).doc(friend.uid).set({
-    //   uid: friend.uid,
-    //   username: friend.username,
-    //   avatar: friend.avatar,
+    // firestore.collection(`users/${user.uid}/friends`).doc(otherUser.uid).set({
+    //   uid: otherUser.uid,
+    //   username: otherUser.username,
+    //   avatar: otherUser.avatar,
     //   status: 'pending'
     // });
 
     console.log(user);
-    console.log(friend)
+    console.log(otherUser)
   }
 };
+
+export const acceptFriend = (user, friendId) => {
+  return (dispatch, getState, {getFirestore}) => {
+    const firestore = getFirestore();
+    
+  }
+}
 
 export const removeFriend = (user, friend) => {
   return (dispatch, getState, {getFirestore}) => {
