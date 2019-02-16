@@ -143,16 +143,33 @@ export const leaveChatroom = (user, chatroom) => {
 export const addFriend = (user, otherUser) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
+    let listRef = firestore.collection(`users/${user.uid}/dmList`).doc(otherUser.uid);
+    // listRef.get().then(doc => {
+    //   if (!doc.exists) {
+    //     listRef.set({
+    //       uid: otherUser.uid,
+    //       avatar: otherUser.avatar,
+    //       username: otherUser.username
+    //     })
+    //   }
+    // })
 
-    // firestore.collection(`users/${user.uid}/friends`).doc(otherUser.uid).set({
-    //   uid: otherUser.uid,
-    //   username: otherUser.username,
-    //   avatar: otherUser.avatar,
-    //   status: 'pending'
-    // });
+    let addFriendRef = firestore.collection(`users/${user.uid}/friends`).doc(otherUser.uid);
 
-    console.log(user);
-    console.log(otherUser)
+    addFriendRef.get().then(doc => {
+      if (!doc.exists) {
+        addFriendRef.set({
+          uid: otherUser.uid,
+          //   username: otherUser.username,
+          //   avatar: otherUser.avatar,
+          //   status: 'pending'
+        }).then({
+
+        }).catch(err => {
+
+        })
+      }
+    })
   }
 };
 
