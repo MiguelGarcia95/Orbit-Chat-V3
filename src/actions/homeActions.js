@@ -142,6 +142,14 @@ export const leaveChatroom = (user, chatroom) => {
 
 export const addFriend = (user, friend) => {
   return (dispatch, getState, {getFirestore}) => {
+    const firestore = getFirestore();
+
+    // firestore.collection(`users/${user.uid}/friends`).doc(friend.uid).set({
+    //   uid: friend.uid,
+    //   username: friend.username,
+    //   avatar: friend.avatar
+    // });
+
     console.log(user);
     console.log(friend)
   }
