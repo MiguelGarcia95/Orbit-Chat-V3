@@ -4,7 +4,7 @@ import {Grid} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {getFirestore} from 'redux-firestore';
 
-import {getChatroom, clearChatroom} from '../../actions/chatroomActions';
+import {getChatroom} from '../../actions/chatroomActions';
 import {unsetChannel, setChannel, getChannelComments, setComments} from '../../actions/channelActions';
 import Spinner from '../Layout/Spinner';
 import ChatCommentPanel from '../ChatCommentPanel/ChatCommentPanel';
@@ -22,7 +22,6 @@ class Chatroom extends React.Component {
         this.props.history.push('/signin');
       } else {
         this.props.unsetChannel();
-        this.props.clearChatroom();
         this.props.getChatroom(this.props.match.params.roomId)
       }
     })
@@ -37,7 +36,6 @@ class Chatroom extends React.Component {
       this.setState({fetchedChatroom: true});
     } else if (this.props.match.params.roomId !== nextProps.match.params.roomId) {
       this.props.unsetChannel();
-      this.props.clearChatroom();
       this.props.getChatroom(nextProps.match.params.roomId);
     }
 
@@ -108,7 +106,6 @@ const mapDispatchToProps = dispatch => {
   return {
     getChatroom: roomId => dispatch(getChatroom(roomId)),
     unsetChannel: () => dispatch(unsetChannel()),
-    clearChatroom: () => dispatch(clearChatroom()),
     setChannel: (channel) => dispatch(setChannel(channel)),
     getChannelComments: (chatroomId, channelId) => dispatch(getChannelComments(chatroomId, channelId)),
     setComments: comments => dispatch(setComments(comments))

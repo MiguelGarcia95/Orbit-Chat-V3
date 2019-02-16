@@ -138,7 +138,8 @@ export const clearChatroom = () => {
         chatroomError: null,
         currentChatroom: null,
         inChatroom: false,
-        chatroomRedirect: false
+        chatroomRedirect: false,
+        categories: []
       }
     })
   }
