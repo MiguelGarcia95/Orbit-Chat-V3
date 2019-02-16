@@ -127,7 +127,6 @@ export const removeDeletedChatrooms = (chatrooms, chatroomToDelete) => {
   }, []);
 }
 
-// categories
 export const sortCategoriesByDate = categories => {
   let sortedCategories = [];
 

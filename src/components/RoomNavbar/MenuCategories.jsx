@@ -62,6 +62,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getChatroomCategories: chatroomId => dispatch(getChatroomCategories(chatroomId)),
+    setCategories: categories => dispatch(setCategories(categories)),
     getChannels: (chatroomId) => dispatch(getChannels(chatroomId))
   }
 }

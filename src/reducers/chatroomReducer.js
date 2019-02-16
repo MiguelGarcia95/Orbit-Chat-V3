@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/types';
-import {removeDuplicateChatrooms, removeDeletedChatrooms} from '../utils/functions';
+import {removeDuplicateChatrooms, removeDeletedChatrooms, sortCategoriesByDate} from '../utils/functions';
 
 const initialState = {
   currentChatroom: null,
@@ -32,6 +32,15 @@ const chatroomReducer = (state = initialState, action) => {
         categories: action.payload.categories,
         chatroomError: action.payload.chatroomError
       }
+    case actionTypes.SET_CHATROOM_CATEGORIES:
+      let categories = [...state.categories, ...action.payload.categories];
+      let sortedCategories = sortCategoriesByDate(categories);
+      return {
+        ...state,
+        categories: sortedCategories,
+        chatroomError: action.payload.chatroomError
+
+      }
     case actionTypes.CLEAR_CHATROOM:
       return {
         ...state,
@@ -42,7 +51,7 @@ const chatroomReducer = (state = initialState, action) => {
         categories: action.payload.categories
       }
     case actionTypes.SET_CHATROOMS:
-      let chatrooms = [state.chatrooms, action.payload.chatrooms];
+      let chatrooms = [...state.chatrooms, ...action.payload.chatrooms];
       let uniqueChatrooms = removeDuplicateChatrooms(chatrooms);
       let allChatrooms = removeDeletedChatrooms(uniqueChatrooms, action.payload.chatroomToDelete);
 
