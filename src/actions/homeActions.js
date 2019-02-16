@@ -147,7 +147,8 @@ export const addFriend = (user, friend) => {
     // firestore.collection(`users/${user.uid}/friends`).doc(friend.uid).set({
     //   uid: friend.uid,
     //   username: friend.username,
-    //   avatar: friend.avatar
+    //   avatar: friend.avatar,
+    //   status: 'pending'
     // });
 
     console.log(user);
