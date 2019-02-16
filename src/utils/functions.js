@@ -142,3 +142,19 @@ export const sortCategoriesByDate = categories => {
 
   return sortedCategories;
 }
+
+export const sortChannelsByDate = channels => {
+  let sortedChannels = [];
+
+  if (channels.length !== 0) {
+    sortedChannels = channels.sort((a, b) => {
+      if (b.channel.createdAt !== null && a.channel.createdAt !== null ) {
+        return new Date(a.channel.createdAt.toDate()) - new Date(b.channel.createdAt.toDate());
+      }
+    })
+  } else {
+    sortedChannels = [...channels];
+  }
+
+  return sortedChannels;
+}

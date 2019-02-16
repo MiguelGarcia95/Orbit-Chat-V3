@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/types';
-import {removeDuplicateComments, sortCommentsByDate, removeDeletedComments} from '../utils/functions';
+import {removeDuplicateComments, sortCommentsByDate, removeDeletedComments, sortChannelsByDate} from '../utils/functions';
 
 const initialState = {
   currentChannel: null,
@@ -20,6 +20,14 @@ const chatroomReducer = (state = initialState, action) => {
         ...state,
         channelError: action.payload.channelError,
         channels: action.payload.channels
+      }
+    case actionTypes.SET_CHANNELS:
+      let channels = [...state.channels, ...action.payload.channels];
+      let sortedChannels = sortChannelsByDate(channels);
+      return {
+        ...state,
+        channels: sortedChannels,
+        channelError: action.payload.channelError
       }
     case actionTypes.SET_CHANNEL:
       return {
