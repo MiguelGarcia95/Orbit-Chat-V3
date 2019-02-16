@@ -86,35 +86,35 @@ export const setCategories = docCategories => {
   }
 }
 
-export const getChatroomCategories = chatroomId => {
-  return (dispatch, getState, {getFirestore}) => {
-    const firestore = getFirestore();
-    firestore.collection(`categories/${chatroomId}/categories`).get().then(data => {
-      let categories = [];
-      data.forEach(doc => {
-        categories.push({id: doc.id, category: doc.data()})
-      })
-      let sortedcategories = categories.sort(function(a, b) {
-        return new Date(a.category.createdAt.toDate()) - new Date(b.category.createdAt.toDate());
-      });
-      dispatch({
-        type: actionTypes.GET_CHATROOM_CATEGORIES,
-        payload: {
-          chatroomError: null,
-          categories: sortedcategories
-        }
-      })
-    }).catch(err => {
-      dispatch({
-        type: actionTypes.GET_CHATROOM_CATEGORIES,
-        payload: {
-          chatroomError: err.message,
-          categories: []
-        }
-      })
-    })
-  }
-}
+// export const getChatroomCategories = chatroomId => {
+//   return (dispatch, getState, {getFirestore}) => {
+//     const firestore = getFirestore();
+//     firestore.collection(`categories/${chatroomId}/categories`).get().then(data => {
+//       let categories = [];
+//       data.forEach(doc => {
+//         categories.push({id: doc.id, category: doc.data()})
+//       })
+//       let sortedcategories = categories.sort(function(a, b) {
+//         return new Date(a.category.createdAt.toDate()) - new Date(b.category.createdAt.toDate());
+//       });
+//       dispatch({
+//         type: actionTypes.GET_CHATROOM_CATEGORIES,
+//         payload: {
+//           chatroomError: null,
+//           categories: sortedcategories
+//         }
+//       })
+//     }).catch(err => {
+//       dispatch({
+//         type: actionTypes.GET_CHATROOM_CATEGORIES,
+//         payload: {
+//           chatroomError: err.message,
+//           categories: []
+//         }
+//       })
+//     })
+//   }
+// }
 
 export const getChatroom = chatroomId => {
   return (dispatch, getState, {getFirestore}) => {
