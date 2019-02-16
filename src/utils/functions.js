@@ -33,6 +33,16 @@ export const sortCommentsByDate = (comments) => {
   return sortedComments;
 }
 
+export const removeCommentsFromOtherChannels = (comments, channelId) => {
+  let channelComments = [];
+  comments.forEach(comment => {
+    if (comment.message.channelId === channelId) {
+      channelComments.push(comment)
+    }
+  })
+  return channelComments;
+}
+
 export const removeDeletedComments = (comments, commentToDelete) => {
   return comments.reduce((newArray, comment) => {
     if (commentToDelete.length > 0) {

@@ -67,7 +67,6 @@ class Chatroom extends React.Component {
     }
   }
 
-  //real-time listener
   getChannelComemntrsRT = (chatroomId, channelId) => {
     const firestore = getFirestore();
     firestore.collection(`comments/${channelId}/comments`).onSnapshot(snapshot => {
