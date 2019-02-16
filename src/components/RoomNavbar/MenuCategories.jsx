@@ -3,14 +3,15 @@ import {connect} from 'react-redux';
 import {getFirestore} from 'redux-firestore';
 
 import {setCategories} from '../../actions/chatroomActions';
-import {getChannels} from '../../actions/channelActions';
+import {setChannels} from '../../actions/channelActions';
 import ChannelCategory from '../Layout/ChannelCategory';
 
 
 class MenuCategories extends React.Component {
   componentDidMount() {
     this.getChatroomCategoriesRT(this.props.chatroom.id);
-    this.props.getChannels(this.props.chatroom.id);
+    // this.props.getChannels(this.props.chatroom.id);
+    this.getChannelsRT(this.props.chatroom.id);
   }
 
   getChatroomCategoriesRT = (chatroomId) => {
@@ -22,7 +23,11 @@ class MenuCategories extends React.Component {
   }
 
   getChannelsRT = (chatroomId) => {
-
+    const firestore = getFirestore();
+    firestore.collection(`channels/${chatroomId}/channels`).onSnapshot(snapshot => {
+      let changes = snapshot.docChanges();
+      this.props.setChannels(changes);
+    })
   }
   
 
@@ -61,8 +66,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setCategories: categories => dispatch(setCategories(categories)),
-    getChannels: (chatroomId) => dispatch(getChannels(chatroomId))
+    setCategories: docCategories => dispatch(setCategories(docCategories)),
+    setChannels: docChannels => dispatch(setChannels(docChannels))
   }
 }
 
