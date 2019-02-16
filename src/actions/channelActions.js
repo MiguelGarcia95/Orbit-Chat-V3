@@ -34,6 +34,32 @@ export const deleteChannel = channel => {
   }
 }
 
+export const setChannels = docChannels => {
+  return (dispatch) => {
+    let channels = [];
+    let channelToDelete = [];
+
+    docChannels.forEach(docChannel => {
+      if (docChannel.type === 'added') {
+        channels.push({id: docChannel.doc.id, channel: docChannel.doc.data()})
+      } else if (docChannel.type === 'modified') {
+        channels.push({id: docChannel.doc.id, channel: docChannel.doc.data()})
+      } else if (docChannel.type === 'removed') {
+        channelToDelete.push({id: docChannel.doc.id, channel: docChannel.doc.data()})
+      }
+    })
+
+    dispatch({
+      type: actionTypes.SET_CHANNELS,
+      payload: {
+        channelError: null,
+        channels: channels,
+        channelToDelete: channelToDelete
+      }
+    })
+  }
+}
+
 export const getChannels = (chatroomId) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();

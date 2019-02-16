@@ -22,6 +22,7 @@ export const CREATE_CHANNEL = 'CREATE_CHANNEL';
 export const DELETE_CHANNEL = 'DELETE_CHANNEL';
 export const GET_CHATROOM_CHANNELS = 'GET_CHATROOM_CHANNELS';
 export const SET_CHANNEL = 'SET_CHANNEL';
+export const SET_CHANNELS = 'SET_CHANNELS';
 export const UNSET_CHANNEL = 'UNSET_CHANNEL';
 
 // Comments
