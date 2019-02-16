@@ -126,3 +126,20 @@ export const removeDeletedChatrooms = (chatrooms, chatroomToDelete) => {
     return newArray;
   }, []);
 }
+
+// categories
+export const sortCategoriesByDate = categories => {
+  let sortedCategories = [];
+
+  if (categories.length !== 0) {
+    sortedCategories = comments.sort((a, b) => {
+      if (b.category.createdAt !== null && a.category.createdAt !== null ) {
+        return new Date(a.category.createdAt.toDate()) - new Date(b.category.createdAt.toDate());
+      }
+    })
+  } else {
+    sortedCategories = [...categories];
+  }
+
+  return sortedCategories;
+}
