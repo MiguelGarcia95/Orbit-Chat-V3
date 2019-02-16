@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {getFirestore} from 'redux-firestore';
 
 import {getChatroom, clearChatroom} from '../../actions/chatroomActions';
-import {unsetChannel, setChannel, getChannelComments, setComments} from '../../actions/channelActions';
+import {unsetChannel, setChannel, setComments} from '../../actions/channelActions';
 import Spinner from '../Layout/Spinner';
 import ChatCommentPanel from '../ChatCommentPanel/ChatCommentPanel';
 
@@ -64,8 +64,6 @@ class Chatroom extends React.Component {
       this.props.setChannel(this.getMatchingChannels(categories[0], channels));
     } else if (currentChannel && isNewChannel) {
       this.getChannelComemntrsRT(currentChannel.channel.chatroomId, currentChannel.id);
-    } else if (currentChannel && !isNewChannel) {
-      this.props.getChannelComments(currentChannel.channel.chatroomId, currentChannel.id)
     }
   }
 
@@ -110,7 +108,6 @@ const mapDispatchToProps = dispatch => {
     unsetChannel: () => dispatch(unsetChannel()),
     clearChatroom: () => dispatch(clearChatroom()),
     setChannel: (channel) => dispatch(setChannel(channel)),
-    getChannelComments: (chatroomId, channelId) => dispatch(getChannelComments(chatroomId, channelId)),
     setComments: comments => dispatch(setComments(comments))
   }
 }
