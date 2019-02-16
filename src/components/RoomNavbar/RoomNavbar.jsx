@@ -3,7 +3,7 @@ import {Grid, Sidebar, Menu, Button, Divider, Image, Modal, Input, Label, Segmen
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getFirestore} from 'redux-firestore';
-import {createChatroom, getChatrooms, setChatrooms} from '../../actions/chatroomActions';
+import {createChatroom, setChatrooms} from '../../actions/chatroomActions';
 import RoomMenu from './RoomMenu';
 
 class RoomNavbar extends React.Component {
@@ -14,7 +14,7 @@ class RoomNavbar extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getChatrooms()
+    this.getChatroomsRT()
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -122,7 +122,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     createChatroom: (chatroom) => dispatch(createChatroom(chatroom)),
-    getChatrooms: () => dispatch(getChatrooms()),
     setChatrooms: docChatrooms => dispatch(setChatrooms(docChatrooms))
   }
 }
