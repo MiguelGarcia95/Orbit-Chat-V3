@@ -1,8 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {getChatroomCategories} from '../../actions/chatroomActions';
+import {getFirestore} from 'redux-firestore';
+
+import {getChatroomCategories, setCategories} from '../../actions/chatroomActions';
 import {getChannels} from '../../actions/channelActions';
 import ChannelCategory from '../Layout/ChannelCategory';
+
 
 class MenuCategories extends React.Component {
   componentDidMount() {
@@ -11,7 +14,11 @@ class MenuCategories extends React.Component {
   }
 
   getChatroomCategoriesRT = (chatroomId) => {
-
+    const firestore = getFirestore();
+    firestore.collection(`categories/${chatroomId}/categories`).onSnapshot(snapshot => {
+      let changes = snapshot.docChanges();
+      this.props.setCategories(changes);
+    })
   }
 
   getChannelsRT = (chatroomId) => {
