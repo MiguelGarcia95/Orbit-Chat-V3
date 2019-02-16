@@ -2,7 +2,7 @@ import React from 'react';
 import {Comment, Dropdown, Modal, Input, Segment, Button} from 'semantic-ui-react';
 import moment from 'moment';
 import {connect} from 'react-redux';
-import {createDirectMessage, deleteDirectMessage} from '../../actions/homeActions';
+import {createDirectMessage, deleteDirectMessage, addFriend} from '../../actions/homeActions';
 
 class Message extends React.Component{
   state = {
@@ -23,7 +23,7 @@ class Message extends React.Component{
   // closeModal = () => this.setState({modal: false});
 
   sendFriendRequest = () => {
-
+    this.props.addFriend(this.props.user, this.props.otherUser);
   }
 
   onDelete = () => {
@@ -87,7 +87,8 @@ class Message extends React.Component{
 const mapDispatchToProps = dispatch => {
   return {
     createDirectMessage: (user, otherUser, comment) => dispatch(createDirectMessage(user, otherUser, comment)),
-    deleteDirectMessage: (user, otherUserId, commentId) => dispatch(deleteDirectMessage(user, otherUserId, commentId))
+    deleteDirectMessage: (user, otherUserId, commentId) => dispatch(deleteDirectMessage(user, otherUserId, commentId)),
+    addFriend: (user, otherUser) => dispatch(addFriend(user, otherUser))
   }
 }
 
