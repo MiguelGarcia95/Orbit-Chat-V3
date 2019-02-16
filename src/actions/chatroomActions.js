@@ -190,7 +190,8 @@ export const setChatrooms = (docChatrooms) => {
       type: actionTypes.SET_CHATROOMS,
       payload: {
         chatrooms: chatrooms,
-        chatroomError: null
+        chatroomError: null,
+        chatroomToDelete: chatroomToDelete
       }
     })
   }
