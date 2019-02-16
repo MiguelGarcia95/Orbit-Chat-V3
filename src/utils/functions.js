@@ -94,3 +94,35 @@ export const removeDeletedReferences = (references, referenceToDelete) => {
     return newArray;
   }, []);
 }
+
+export const removeDuplicateChatrooms = (chatrooms) => {
+  return chatrooms.reduce((newArray, chatroom) => {
+    if (newArray.length > 0) {
+      let isInArray = false;
+      newArray.forEach(arrayChatroom => {
+        if (chatroom.id === arrayChatroom.id) {
+          isInArray = true;
+        }
+      });
+      if (!isInArray) {
+        newArray.push(chatroom)
+      }
+    } else {
+      newArray.push(chatroom)
+    }
+    return newArray
+  }, []);
+}
+
+export const removeDeletedChatrooms = (chatrooms, chatroomToDelete) => {
+  return chatrooms.reduce((newArray, chatroom) => {
+    if (chatroomToDelete.length > 0) {
+      if (chatroomToDelete[0].id !== chatroom.id) {
+        newArray.push(chatroom)
+      }
+    } else {
+      newArray.push(chatroom)
+    }
+    return newArray;
+  }, []);
+}
