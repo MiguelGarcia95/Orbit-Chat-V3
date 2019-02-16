@@ -11,7 +11,6 @@ export const DELETE_CHATROOM = 'DELETE_CHATROOM';
 export const GET_CHATROOM = 'GET_CHATROOM';
 export const SET_CHATROOMS = 'SET_CHATROOMS';
 export const CLEAR_CHATROOM = 'CLEAR_CHATROOM';
-export const GET_CHATROOMS = 'GET_CHATROOMS';
 
 // Category
 export const CREATE_CATEGORY = 'CREATE_CATEGORY';

@@ -41,11 +41,6 @@ const chatroomReducer = (state = initialState, action) => {
         chatroomRedirect: action.payload.chatroomRedirect,
         categories: action.payload.categories
       }
-    case actionTypes.GET_CHATROOMS:
-      return {
-        ...state,
-        chatrooms: action.payload.chatrooms
-      }
     case actionTypes.SET_CHATROOMS:
       let chatrooms = [state.chatrooms, action.payload.chatrooms];
       let uniqueChatrooms = removeDuplicateChatrooms(chatrooms);
