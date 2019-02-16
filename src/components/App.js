@@ -9,7 +9,6 @@ import {getFirestore} from 'redux-firestore';
 import {clearChatroom} from '../actions/chatroomActions';
 import {setHomeView, setComments, setReferences} from '../actions/homeActions';
 
-
 import HomeContentPanel from './HomeContentPanel/HomeContentPanel';
  
 class App extends React.Component {

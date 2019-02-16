@@ -145,34 +145,6 @@ export const clearChatroom = () => {
   }
 }
 
-// export const getChatrooms = () => {
-//   return (dispatch, getState, {getFirestore}) => {
-//     // get only get chatrooms that you belong too, later 
-//     const firestore = getFirestore();
-//     firestore.collection('chatrooms').get().then(data => {
-//       let chatrooms = [];
-//       data.forEach(doc => {
-//         chatrooms.push({id: doc.id, chatroom: doc.data()})
-//       })
-//       dispatch({
-//         type: actionTypes.GET_CHATROOMS,
-//         payload: {
-//           chatrooms: chatrooms,
-//           chatroomError: null
-//         }
-//       })
-//     }).catch(err => {
-//       dispatch({
-//         type: actionTypes.GET_CHATROOMS,
-//         payload: {
-//           chatrooms: [],
-//           chatroomError: err.message
-//         }
-//       })
-//     })
-//   }
-// }
-
 export const setChatrooms = (docChatrooms) => {
   return (dispatch) => {
     let chatrooms = [];
