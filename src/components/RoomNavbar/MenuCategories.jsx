@@ -2,14 +2,13 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {getFirestore} from 'redux-firestore';
 
-import {getChatroomCategories, setCategories} from '../../actions/chatroomActions';
+import {setCategories} from '../../actions/chatroomActions';
 import {getChannels} from '../../actions/channelActions';
 import ChannelCategory from '../Layout/ChannelCategory';
 
 
 class MenuCategories extends React.Component {
   componentDidMount() {
-    // this.props.getChatroomCategories(this.props.chatroom.id);
     this.getChatroomCategoriesRT(this.props.chatroom.id);
     this.props.getChannels(this.props.chatroom.id);
   }
@@ -62,7 +61,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getChatroomCategories: chatroomId => dispatch(getChatroomCategories(chatroomId)),
     setCategories: categories => dispatch(setCategories(categories)),
     getChannels: (chatroomId) => dispatch(getChannels(chatroomId))
   }
