@@ -61,6 +61,31 @@ export const createCategory = category => {
   }
 }
 
+export const setCategories = docCategories => {
+  return (dispatch) => {
+    let categories = [];
+    let categoryToDelete = [];
+    docCategories.forEach(docCategory => {
+      if (docCategory.type === 'added') {
+        categories.push({id: docCategory.doc.id, category: docCategory.doc.data()})
+      } else if (docCategory.type === 'modified') {
+        categories.push({id: docCategory.doc.id, category: docCategory.doc.data()})
+      } else if (docCategory.type === 'removed') {
+        categoryToDelete.push({id: docCategory.doc.id, category: docCategory.doc.data()})
+      }
+    })
+
+    dispatch({
+      type: actionTypes.SET_CHATROOM_CATEGORIES,
+      payload: {
+        chatroomError: null,
+        categories: categories,
+        categoryToDelete: categoryToDelete
+      }
+    })
+  }
+}
+
 export const getChatroomCategories = chatroomId => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
