@@ -10,6 +10,15 @@ class MenuCategories extends React.Component {
     this.props.getChannels(this.props.chatroom.id);
   }
 
+  getChatroomCategoriesRT = (chatroomId) => {
+
+  }
+
+  getChannelsRT = (chatroomId) => {
+
+  }
+  
+
   displayCategories = (categories) => {
     return categories.map(category => {
       return (

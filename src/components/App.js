@@ -24,8 +24,6 @@ class App extends React.Component {
     })
   }
 
-
-
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.currentView !== nextProps.currentView && nextProps.currentView !== 'friends') {
       this.getChannelComemntrsRT(nextProps.user, nextProps.currentView)
