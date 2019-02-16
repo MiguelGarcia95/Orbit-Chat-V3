@@ -60,36 +60,6 @@ export const setChannels = docChannels => {
   }
 }
 
-export const getChannels = (chatroomId) => {
-  return (dispatch, getState, {getFirestore}) => {
-    const firestore = getFirestore();
-    firestore.collection(`channels/${chatroomId}/channels`).get().then(data => {
-      let channels = [];
-      data.forEach(doc => {
-        channels.push({id: doc.id, channel: doc.data()})
-      })
-      let sortedChannels = channels.sort(function(a, b) {
-        return new Date(a.channel.createdAt.toDate()) - new Date(b.channel.createdAt.toDate());
-      });
-      dispatch({
-        type: actionTypes.GET_CHATROOM_CHANNELS,
-        payload: {
-          channelError: null,
-          channels: sortedChannels
-        }
-      })
-    }).catch(err => {
-      dispatch({
-        type: actionTypes.GET_CHATROOM_CHANNELS,
-        payload: {
-          channelError: err.message,
-          channels: []
-        }
-      })
-    })
-  }
-}
-
 export const getChannelComments = (chatroomId, channelId) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();

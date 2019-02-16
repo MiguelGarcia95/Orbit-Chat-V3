@@ -15,12 +15,12 @@ const chatroomReducer = (state = initialState, action) => {
         ...state,
         channelError: action.payload.channelError
       }
-    case actionTypes.GET_CHATROOM_CHANNELS:
-      return {
-        ...state,
-        channelError: action.payload.channelError,
-        channels: action.payload.channels
-      }
+    // case actionTypes.GET_CHATROOM_CHANNELS:
+    //   return {
+    //     ...state,
+    //     channelError: action.payload.channelError,
+    //     channels: action.payload.channels
+    //   }
     case actionTypes.SET_CHANNELS:
       let channels = [...state.channels, ...action.payload.channels];
       let sortedChannels = sortChannelsByDate(channels);
