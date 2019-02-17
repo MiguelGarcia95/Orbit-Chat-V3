@@ -143,30 +143,29 @@ export const leaveChatroom = (user, chatroom) => {
 export const addFriend = (user, otherUser) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
-    let listRef = firestore.collection(`users/${user.uid}/dmList`).doc(otherUser.uid);
-    // listRef.get().then(doc => {
-    //   if (!doc.exists) {
-    //     listRef.set({
-    //       uid: otherUser.uid,
-    //       avatar: otherUser.avatar,
-    //       username: otherUser.username
-    //     })
-    //   }
-    // })
 
     let addFriendRef = firestore.collection(`users/${user.uid}/friends`).doc(otherUser.uid);
-
     addFriendRef.get().then(doc => {
       if (!doc.exists) {
         addFriendRef.set({
-          uid: otherUser.uid,
-          //   username: otherUser.username,
-          //   avatar: otherUser.avatar,
-          //   status: 'pending'
-        }).then({
-
+            id: otherUser.uid,
+            username: otherUser.username,
+            avatar: otherUser.avatar,
+            status: 'pending'
+        }).then(() => {
+          dispatch({
+            type: actionTypes.ADD_FRIEND,
+            payload: {
+              homeError: null
+            }
+          })
         }).catch(err => {
-
+          dispatch({
+            type: actionTypes.ADD_FRIEND,
+            payload: {
+              homeError: err.message
+            }
+          })
         })
       }
     })
