@@ -4,7 +4,7 @@ import {Grid} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {getFirestore} from 'redux-firestore';
 
-import {getChatroom, clearChatroom, getChatroomUsers} from '../../actions/chatroomActions';
+import {getChatroom, clearChatroom, getChatroomUsers, joinChatroom} from '../../actions/chatroomActions';
 import {unsetChannel, setChannel, setComments} from '../../actions/channelActions';
 import Spinner from '../Layout/Spinner';
 import ChatCommentPanel from '../ChatCommentPanel/ChatCommentPanel';
@@ -42,6 +42,11 @@ class Chatroom extends React.Component {
       this.props.clearChatroom();
       this.props.getChatroom(nextProps.match.params.roomId);
       this.props.getChatroomUsers(this.props.match.params.roomId);
+    }
+
+    if (nextProps.chatroomUsers.length === 0 && nextProps.currentChatroom) {
+      // console.log(nextProps.currentChatroom)
+      // this.props.joinChatroom(nextProps.user, nextProps.currentChatroom)
     }
 
     this.setCurrentChannel(nextProps.currentChannel, nextProps.channels, nextProps.categories, true);
@@ -107,7 +112,8 @@ const mapDispatchToProps = dispatch => {
     clearChatroom: () => dispatch(clearChatroom()),
     setChannel: (channel) => dispatch(setChannel(channel)),
     setComments: comments => dispatch(setComments(comments)),
-    getChatroomUsers: chatroomId => dispatch(getChatroomUsers(chatroomId))
+    getChatroomUsers: chatroomId => dispatch(getChatroomUsers(chatroomId)),
+    joinChatroom: (user, chatroom) => dispatch(joinChatroom(user, chatroom))
   }
 }
 
