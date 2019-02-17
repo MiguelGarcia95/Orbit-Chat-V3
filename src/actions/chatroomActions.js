@@ -90,12 +90,18 @@ export const joinChatroom = (user, chatroom) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
 
+    firestore.collection(`chatrooms/${chatroom.id}/users`).doc(user.uid).set({
+      uid: user.uid,
+      avatar: user.photoURL,
+      username: user.displayName
+    })
     firestore.collection(`users/${user.uid}/chatrooms`).doc(chatroom.id).set({
-      avatar: chatroom.chatroom.avatar,
-      createdAt: chatroom.chatroom.createdAt,
-      description: chatroom.chatroom.description,
-      name: chatroom.chatroom.name,
-      uid: chatroom.chatroom.uid
+      // avatar: chatroom.chatroom.avatar,
+      // createdAt: chatroom.chatroom.createdAt,
+      // description: chatroom.chatroom.description,
+      // name: chatroom.chatroom.name,
+      uid: chatroom.chatroom.uid,
+      id: chatroom.id
     }).then(() => {
       dispatch({
         type: actionTypes.JOIN_CHATROOM,
