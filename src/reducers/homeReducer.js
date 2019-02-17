@@ -85,6 +85,11 @@ const homeReducer = (state = initialState, action) => {
         ...state,
         homeroomError: action.payload.homeError
       }
+    case actionTypes.REJECT_FRIEND:
+      return {
+        ...state,
+        homeroomError: action.payload.homeError
+      }
     default:
       return state;
   }
