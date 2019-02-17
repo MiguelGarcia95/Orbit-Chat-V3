@@ -166,7 +166,8 @@ export const getChatroomUsers = chatroomId => {
     firestore.collection(`chatrooms/${chatroomId}/users`).get().then(data => {
       let users = [];
       data.forEach(doc => {
-        users.push({id: doc.id, chatroom: doc.data()})
+        users.push({id: doc.id, user: doc.data()})
+        // users.push(doc.data())
       });
       dispatch({
         type: actionTypes.GET_CHATROOM_USERS,
