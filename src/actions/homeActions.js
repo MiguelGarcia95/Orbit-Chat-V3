@@ -167,6 +167,13 @@ export const addFriend = (user, otherUser) => {
             }
           })
         })
+      } else {
+        dispatch({
+          type: actionTypes.ADD_FRIEND,
+          payload: {
+            homeError: 'Friend Request Already Sent.'
+          }
+        })
       }
     })
   }
