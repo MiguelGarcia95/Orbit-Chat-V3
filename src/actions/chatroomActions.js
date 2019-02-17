@@ -96,10 +96,6 @@ export const joinChatroom = (user, chatroom) => {
       username: user.displayName
     })
     firestore.collection(`users/${user.uid}/chatrooms`).doc(chatroom.id).set({
-      // avatar: chatroom.chatroom.avatar,
-      // createdAt: chatroom.chatroom.createdAt,
-      // description: chatroom.chatroom.description,
-      // name: chatroom.chatroom.name,
       uid: chatroom.chatroom.uid,
       id: chatroom.id
     }).then(() => {
