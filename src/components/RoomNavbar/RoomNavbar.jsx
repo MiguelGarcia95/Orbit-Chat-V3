@@ -71,7 +71,6 @@ class RoomNavbar extends React.Component {
 
   render() {
     const {modal, user, chatrooms, currentChatroom, inChatroom} = this.state;
-    console.log(chatrooms)
     return !user ? null : (
       <Grid columns='equal' >
         <Sidebar 

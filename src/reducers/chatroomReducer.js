@@ -55,7 +55,7 @@ const chatroomReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        chatrooms: action.payload.chatrooms
+        chatrooms: allChatrooms
       }
     case actionTypes.CREATE_CATEGORY:
       return {
