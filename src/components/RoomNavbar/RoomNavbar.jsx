@@ -3,7 +3,7 @@ import {Grid, Sidebar, Menu, Button, Divider, Image, Modal, Input, Label, Segmen
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getFirestore} from 'redux-firestore';
-import {createChatroom, setChatrooms, joinChatroom} from '../../actions/chatroomActions';
+import {createChatroom, setChatrooms} from '../../actions/chatroomActions';
 import RoomMenu from './RoomMenu';
 
 class RoomNavbar extends React.Component {
@@ -11,7 +11,7 @@ class RoomNavbar extends React.Component {
     modal: false,
     name: '',
     description: '',
-    createdNewChatroom: false
+    // createdNewChatroom: false
   }
 
   componentDidMount() {
@@ -19,18 +19,17 @@ class RoomNavbar extends React.Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    let createdNewChatroom = state.createdNewChatroom;
-    if (state.createdNewChatroom) {
-      props.joinChatroom(props.user, props.newChatroomId);
-      createdNewChatroom = false;
-    }
+    // let createdNewChatroom = state.createdNewChatroom;
+    // if (state.createdNewChatroom) {
+    //   createdNewChatroom = false;
+    // }
     return {
       ...state,
       user: props.user,
       chatrooms: props.chatrooms,
       currentChatroom: props.currentChatroom,
       inChatroom: props.inChatroom,
-      createdNewChatroom: createdNewChatroom
+      // createdNewChatroom: createdNewChatroom
     }
   }
 
@@ -131,8 +130,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     createChatroom: (chatroom) => dispatch(createChatroom(chatroom)),
-    setChatrooms: docChatrooms => dispatch(setChatrooms(docChatrooms)),
-    joinChatroom: (user, chatroomId) => dispatch(joinChatroom(user, chatroomId))
+    setChatrooms: docChatrooms => dispatch(setChatrooms(docChatrooms))
   }
 }
 
