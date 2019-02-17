@@ -190,12 +190,12 @@ export const acceptFriend = (user, otherUser) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
 
-    let addFriendRef = firestore.collection(`users/${user.uid}/friends`).doc(otherUser.uid);
-    let addFriendRef2 = firestore.collection(`users/${otherUser.uid}/friends`).doc(user.uid);
-    addFriendRef.update({
+    let acceptFriendRef = firestore.collection(`users/${user.uid}/friends`).doc(otherUser.uid);
+    let acceptFriendRef2 = firestore.collection(`users/${otherUser.uid}/friends`).doc(user.uid);
+    acceptFriendRef.update({
       status: 'accepted'
     });
-    addFriendRef2.update({
+    acceptFriendRef2.update({
       status: 'accepted'
     }).then(() => {
       dispatch({
@@ -207,6 +207,34 @@ export const acceptFriend = (user, otherUser) => {
     }).catch(err => {
       dispatch({
         type: actionTypes.ACCEPT_FRIEND,
+        payload: {
+          homeError: err.message
+        }
+      })
+    })
+
+  }
+}
+
+export const rejectFriend = (user, otherUser) => {
+  return (dispatch, getState, {getFirestore}) => {
+    const firestore = getFirestore();
+
+    let rejectFriendRef = firestore.collection(`users/${user.uid}/friends`).doc(otherUser.uid);
+    let rejectFriendRef2 = firestore.collection(`users/${otherUser.uid}/friends`).doc(user.uid);
+    rejectFriendRef.delete();
+    rejectFriendRef2.update({
+      status: 'rejected'
+    }).then(() => {
+      dispatch({
+        type: actionTypes.REJECT_FRIEND,
+        payload: {
+          homeError: null
+        }
+      })
+    }).catch(err => {
+      dispatch({
+        type: actionTypes.REJECT_FRIEND,
         payload: {
           homeError: err.message
         }
