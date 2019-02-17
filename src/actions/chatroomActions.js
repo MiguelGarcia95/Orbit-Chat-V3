@@ -163,7 +163,14 @@ export const leaveChatroom = (user, chatroom) => {
 export const getChatroomUsers = chatroomId => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
-    
+    firestore.collection(`chatrooms/${chatroom.id}/users`).get().then(data => {
+      let chatrooms = [];
+      data.forEach(doc => {
+        chatrooms.push({id: doc.id, chatroom: doc.data()})
+      });
+      console.log(chatrooms);
+    })
+
     // dispatch({
     //   type: actionTypes.GET_CHATROOM_USERS,
     //   payload: {

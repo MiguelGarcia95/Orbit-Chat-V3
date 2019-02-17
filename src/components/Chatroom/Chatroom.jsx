@@ -4,7 +4,7 @@ import {Grid} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {getFirestore} from 'redux-firestore';
 
-import {getChatroom, clearChatroom} from '../../actions/chatroomActions';
+import {getChatroom, clearChatroom, getChatroomUsers} from '../../actions/chatroomActions';
 import {unsetChannel, setChannel, setComments} from '../../actions/channelActions';
 import Spinner from '../Layout/Spinner';
 import ChatCommentPanel from '../ChatCommentPanel/ChatCommentPanel';
@@ -23,7 +23,8 @@ class Chatroom extends React.Component {
       } else {
         this.props.unsetChannel();
         this.props.clearChatroom();
-        this.props.getChatroom(this.props.match.params.roomId)
+        this.props.getChatroom(this.props.match.params.roomId);
+        this.props.getChatroomUsers(this.props.match.params.roomId);
       }
     })
   }
@@ -34,11 +35,13 @@ class Chatroom extends React.Component {
     } else if (!this.state.firstLoad && !this.state.fetchedChatroom) {
       this.props.unsetChannel();
       this.props.getChatroom(nextProps.match.params.roomId);
+      this.props.getChatroomUsers(this.props.match.params.roomId);
       this.setState({fetchedChatroom: true});
     } else if (this.props.match.params.roomId !== nextProps.match.params.roomId) {
       this.props.unsetChannel();
       this.props.clearChatroom();
       this.props.getChatroom(nextProps.match.params.roomId);
+      this.props.getChatroomUsers(this.props.match.params.roomId);
     }
 
     this.setCurrentChannel(nextProps.currentChannel, nextProps.channels, nextProps.categories, true);
@@ -102,7 +105,8 @@ const mapDispatchToProps = dispatch => {
     unsetChannel: () => dispatch(unsetChannel()),
     clearChatroom: () => dispatch(clearChatroom()),
     setChannel: (channel) => dispatch(setChannel(channel)),
-    setComments: comments => dispatch(setComments(comments))
+    setComments: comments => dispatch(setComments(comments)),
+    getChatroomUsers: chatroomId => dispatch(getChatroomUsers(chatroomId))
   }
 }
 
