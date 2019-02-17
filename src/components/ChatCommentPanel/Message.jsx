@@ -37,6 +37,10 @@ class Message extends React.Component{
   onDelete = () => {
     this.props.deleteChannelComment(this.props.message.channelId, this.props.messageId)
   }
+
+  sendFriendRequest = () => {
+    this.props.addFriend(this.props.user, this.props.otherUser);
+  }
   
   isOwnMessageOptions = (message, user) => {
     if (message.uid === user.uid ) {
@@ -45,7 +49,10 @@ class Message extends React.Component{
       )
     } else {
       return (
-        <Dropdown.Item content={`Send ${message.username} DM`} icon='at' onClick={this.openModal} />
+        <React.Fragment>
+          <Dropdown.Item content={`Send ${message.username} DM`} icon='at' onClick={this.openModal} />
+          <Dropdown.Item content={`Send Friend Request`} icon='user plus' onClick={this.sendFriendRequest} />
+        </React.Fragment>
       )
     }
   }
