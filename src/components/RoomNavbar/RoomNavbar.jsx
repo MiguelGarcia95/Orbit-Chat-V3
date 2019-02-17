@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getFirestore} from 'redux-firestore';
 import {createChatroom, setChatrooms} from '../../actions/chatroomActions';
+import {joinChatroom} from '../../actions/homeActions';
 import RoomMenu from './RoomMenu';
 
 class RoomNavbar extends React.Component {
@@ -21,7 +22,7 @@ class RoomNavbar extends React.Component {
   static getDerivedStateFromProps(props, state) {
     let createdNewChatroom = state.createdNewChatroom;
     if (state.createdNewChatroom) {
-      props.joinChatroom(props.newChatroomId);
+      props.joinChatroom(props.user, props.newChatroomId);
       createdNewChatroom = false;
     }
     return {
@@ -131,7 +132,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     createChatroom: (chatroom) => dispatch(createChatroom(chatroom)),
-    setChatrooms: docChatrooms => dispatch(setChatrooms(docChatrooms))
+    setChatrooms: docChatrooms => dispatch(setChatrooms(docChatrooms)),
+    joinChatroom: (user, chatroomId) => dispatch(joinChatroom(user, chatroomId))
   }
 }
 
