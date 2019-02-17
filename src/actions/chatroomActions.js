@@ -160,6 +160,20 @@ export const leaveChatroom = (user, chatroom) => {
   }
 };
 
+export const getChatroomUsers = chatroomId => {
+  return (dispatch, getState, {getFirestore}) => {
+    const firestore = getFirestore();
+    
+    // dispatch({
+    //   type: actionTypes.GET_CHATROOM_USERS,
+    //   payload: {
+    //     chatroomError: null,
+    //     chatroomUsers: []
+    //   }
+    // })
+  }
+}
+
 export const getChatroom = chatroomId => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
