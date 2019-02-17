@@ -3,7 +3,7 @@ import {Comment, Dropdown, Modal, Input, Segment, Button} from 'semantic-ui-reac
 import moment from 'moment';
 import {connect} from 'react-redux';
 import {deleteChannelComment} from '../../actions/channelActions';
-import {createDirectMessage} from '../../actions/homeActions';
+import {createDirectMessage, addFriend} from '../../actions/homeActions';
 
 class Message extends React.Component{
   state = {
@@ -97,7 +97,8 @@ class Message extends React.Component{
 const mapDispatchToProps = dispatch => {
   return {
     deleteChannelComment: (channelId, commentId) => dispatch(deleteChannelComment(channelId, commentId)),
-    createDirectMessage: (user, otherUser, comment) => dispatch(createDirectMessage(user, otherUser, comment))
+    createDirectMessage: (user, otherUser, comment) => dispatch(createDirectMessage(user, otherUser, comment)),
+    addFriend: (user, otherUser) => dispatch(addFriend(user, otherUser))
   }
 }
 
