@@ -27,9 +27,6 @@ class Message extends React.Component{
   clearForm = () => this.setState({modal: false, comment: ''});
 
   onSubmit = () => {
-    // console.log('You, Auth User: ', this.props.user);
-    // console.log('User you are messaging: ', this.props.message);
-    // console.log('Your Comment: ', this.state.comment);
     this.props.createDirectMessage(this.props.user, this.props.message, this.state.comment);
     this.clearForm();
   }
@@ -39,7 +36,7 @@ class Message extends React.Component{
   }
 
   sendFriendRequest = () => {
-    this.props.addFriend(this.props.user, this.props.otherUser);
+    this.props.addFriend(this.props.user, this.props.message);
   }
   
   isOwnMessageOptions = (message, user) => {

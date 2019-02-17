@@ -145,14 +145,21 @@ export const addFriend = (user, otherUser) => {
     const firestore = getFirestore();
 
     let addFriendRef = firestore.collection(`users/${user.uid}/friends`).doc(otherUser.uid);
+    let addFriendRef2 = firestore.collection(`users/${otherUser.uid}/friends`).doc(user.uid);
     addFriendRef.get().then(doc => {
       if (!doc.exists) {
         addFriendRef.set({
-            id: otherUser.uid,
+            uid: otherUser.uid,
             username: otherUser.username,
             avatar: otherUser.avatar,
             status: 'pending'
-        }).then(() => {
+        })
+        addFriendRef2.set({
+          uid: user.uid,
+          username: user.displayName,
+          avatar: user.photoURL,
+          status: 'pending'
+      }).then(() => {
           dispatch({
             type: actionTypes.ADD_FRIEND,
             payload: {
