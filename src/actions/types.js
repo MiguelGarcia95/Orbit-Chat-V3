@@ -38,6 +38,8 @@ export const JOIN_CHATROOM = 'JOIN_CHATROOM';
 export const LEAVE_CHATROOM = 'LEAVE_CHATROOM';
 
 export const ADD_FRIEND = 'ADD_FRIEND';
+export const ACCEPT_FRIEND = 'ACCEPT_FRIEND';
+export const REJECT_FRIEND = 'REJECT_FRIEND';
 export const REMOVE_FRIEND = 'REMOVE_FRIEND';
 
 export const SET_HOME_VIEW = 'SET_HOME_VIEW';

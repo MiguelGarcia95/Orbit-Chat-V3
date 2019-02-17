@@ -186,10 +186,33 @@ export const addFriend = (user, otherUser) => {
   }
 };
 
-export const acceptFriend = (user, friendId) => {
+export const acceptFriend = (user, otherUser) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
-    
+
+    let addFriendRef = firestore.collection(`users/${user.uid}/friends`).doc(otherUser.uid);
+    let addFriendRef2 = firestore.collection(`users/${otherUser.uid}/friends`).doc(user.uid);
+    addFriendRef.update({
+      status: 'accepted'
+    });
+    addFriendRef2.update({
+      status: 'accepted'
+    }).then(() => {
+      dispatch({
+        type: actionTypes.ACCEPT_FRIEND,
+        payload: {
+          homeError: null
+        }
+      })
+    }).catch(err => {
+      dispatch({
+        type: actionTypes.ACCEPT_FRIEND,
+        payload: {
+          homeError: err.message
+        }
+      })
+    })
+
   }
 }
 
