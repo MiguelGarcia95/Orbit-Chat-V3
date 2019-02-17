@@ -270,13 +270,6 @@ export const setFriendsPanel = (user) => {
   }
 }
 
-export const displayDirectMessages = (user, otherUser) => {
-  return (dispatch, getState, {getFirestore}) => {
-    console.log(user);
-    console.log(otherUser)
-  }
-}
-
 export const setComments = (docComments, reference) => {
   return (dispatch) => {
     let comments = [];
