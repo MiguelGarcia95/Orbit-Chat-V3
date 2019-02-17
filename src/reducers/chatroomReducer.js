@@ -41,7 +41,6 @@ const chatroomReducer = (state = initialState, action) => {
         ...state,
         categories: sortedCategories,
         chatroomError: action.payload.chatroomError
-
       }
     case actionTypes.CLEAR_CHATROOM:
       return {

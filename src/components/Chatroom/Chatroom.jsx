@@ -95,7 +95,8 @@ const mapStateToProps = state => {
     currentChatroom: state.chat.currentChatroom,
     currentChannel: state.channel.currentChannel,
     channels: state.channel.channels,
-    categories: state.chat.categories
+    categories: state.chat.categories,
+    chatroomUsers: state.chat.chatroomUsers
   }
 }
 
