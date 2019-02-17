@@ -80,10 +80,10 @@ const homeReducer = (state = initialState, action) => {
         ...state,
         homeroomError: action.payload.homeError
       }
-    case actionTypes.REMOVE_FRIEND:
+    case actionTypes.DELETE_FRIEND:
       return {
         ...state,
-        homeroomError: action.payload.homeroomError
+        homeroomError: action.payload.homeError
       }
     default:
       return state;

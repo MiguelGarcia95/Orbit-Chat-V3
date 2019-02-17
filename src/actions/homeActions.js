@@ -242,10 +242,25 @@ export const rejectFriend = (user, otherUser) => {
   }
 }
 
-export const removeFriend = (user, friend) => {
+export const deleteFriend = (user, otherUser) => {
   return (dispatch, getState, {getFirestore}) => {
-    console.log(user);
-    console.log(friend)
+    const firestore = getFirestore();
+
+    firestore.collection(`users/${user.uid}/friends`).doc(otherUser.uid).delete().then(() => {
+      dispatch({
+        type: actionTypes.DELETE_FRIEND,
+        payload: {
+          homeError: null
+        }
+      })
+    }).catch(err => {
+      dispatch({
+        type: actionTypes.DELETE_FRIEND,
+        payload: {
+          homeError: err.message
+        }
+      })
+    });
   }
 };
 
