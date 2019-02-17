@@ -10,7 +10,8 @@ class RoomNavbar extends React.Component {
   state = {
     modal: false,
     name: '',
-    description: ''
+    description: '',
+    createdNewChatroom: false
   }
 
   componentDidMount() {
@@ -18,12 +19,18 @@ class RoomNavbar extends React.Component {
   }
 
   static getDerivedStateFromProps(props, state) {
+    let createdNewChatroom = state.createdNewChatroom;
+    if (state.createdNewChatroom) {
+      props.joinChatroom(props.newChatroomId);
+      createdNewChatroom = false;
+    }
     return {
       ...state,
       user: props.user,
       chatrooms: props.chatrooms,
       currentChatroom: props.currentChatroom,
-      inChatroom: props.inChatroom
+      inChatroom: props.inChatroom,
+      createdNewChatroom: createdNewChatroom
     }
   }
 
@@ -58,6 +65,7 @@ class RoomNavbar extends React.Component {
 
   onSubmit = () => {
     this.props.createChatroom(this.state);
+    this.setState({createdNewChatroom: true});
     this.closeModal();
   }
 
@@ -116,6 +124,7 @@ const mapStateToProps = state => {
     chatrooms: state.chat.chatrooms,
     currentChatroom: state.chat.currentChatroom,
     inChatroom: state.chat.inChatroom,
+    newChatroomId: state.chat.newChatroomId
   }
 }
 
