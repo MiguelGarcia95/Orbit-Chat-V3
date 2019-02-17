@@ -125,32 +125,6 @@ export const deleteDirectMessageChat = (user, otherUser, allMessageIds) => {
   }
 }
 
-
-export const joinChatroom = (user, chatroom) => {
-  return (dispatch, getState, {getFirestore}) => {
-    const firestore = getFirestore();
-
-    firestore.collection(`users/${user.uid}/chatrooms`).doc(chatroom.id).set({
-      avatar: chatroom.chatroom.avatar,
-      createdAt: chatroom.chatroom.createdAt,
-      description: chatroom.chatroom.description,
-      name: chatroom.chatroom.name,
-      uid: chatroom.chatroom.uid
-    }).then(() => {
-
-    }).catch(err => {
-      
-    })
-  }
-};
-
-export const leaveChatroom = (user, chatroom) => {
-  return (dispatch, getState, {getFirestore}) => {
-    console.log(user);
-    console.log(chatroom);
-  }
-};
-
 export const addFriend = (user, otherUser) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();

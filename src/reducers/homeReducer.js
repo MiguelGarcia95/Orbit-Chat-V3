@@ -65,16 +65,6 @@ const homeReducer = (state = initialState, action) => {
         homeroomError: action.payload.homeError,
         currentView: action.payload.currentView
       }
-    case actionTypes.JOIN_CHATROOM:
-      return {
-        ...state,
-        homeroomError: action.payload.homeroomError
-      }
-    case actionTypes.LEAVE_CHATROOM:
-      return {
-        ...state,
-        homeroomError: action.payload.homeroomError
-      }
     case actionTypes.ADD_FRIEND:
       return {
         ...state,
