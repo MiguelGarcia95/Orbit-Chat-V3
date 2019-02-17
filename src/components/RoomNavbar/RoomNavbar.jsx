@@ -11,7 +11,7 @@ class RoomNavbar extends React.Component {
     modal: false,
     name: '',
     description: '',
-    // createdNewChatroom: false
+    createdNewChatroom: false
   }
 
   componentDidMount() {
@@ -19,17 +19,18 @@ class RoomNavbar extends React.Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    // let createdNewChatroom = state.createdNewChatroom;
-    // if (state.createdNewChatroom) {
-    //   createdNewChatroom = false;
-    // }
+    let createdNewChatroom = state.createdNewChatroom;
+    if (state.createdNewChatroom && props.newChatroomId) {
+      props.history.push(`/app/${props.newChatroomId}`);
+      createdNewChatroom = false;
+    }
     return {
       ...state,
       user: props.user,
       chatrooms: props.chatrooms,
       currentChatroom: props.currentChatroom,
       inChatroom: props.inChatroom,
-      // createdNewChatroom: createdNewChatroom
+      createdNewChatroom: createdNewChatroom
     }
   }
 
