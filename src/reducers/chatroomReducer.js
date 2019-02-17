@@ -75,7 +75,9 @@ const chatroomReducer = (state = initialState, action) => {
     case actionTypes.LEAVE_CHATROOM:
       return {
         ...state,
-        chatroomError: action.payload.chatroomError
+        chatroomError: action.payload.chatroomError,
+        currentChatroom: action.payload.currentChatroom
+
       }
     default:
       return state;
