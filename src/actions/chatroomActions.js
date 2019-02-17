@@ -118,8 +118,37 @@ export const joinChatroom = (user, chatroom) => {
 
 export const leaveChatroom = (user, chatroom) => {
   return (dispatch, getState, {getFirestore}) => {
-    console.log(user);
-    console.log(chatroom);
+    const firestore = getFirestore();
+    let chatroomRef = firestore.collection(`users/${user.uid}/chatrooms`).doc(chatroom.id);
+    chatroomRef.get().then(doc => {
+      if (doc.exists) {
+        chatroomRef.delete().then(() => {
+          dispatch({
+            type: actionTypes.LEAVE_CHATROOM,
+            payload: {
+              chatroomError: null,
+              currentChatroom: null
+            }
+          })
+        }).catch(err => {
+          dispatch({
+            type: actionTypes.LEAVE_CHATROOM,
+            payload: {
+              chatroomError: err.message,
+              currentChatroom: null
+            }
+          })
+        })
+      } else {
+        dispatch({
+          type: actionTypes.LEAVE_CHATROOM,
+          payload: {
+            chatroomError: 'You are not a member of this chatroom...',
+            currentChatroom: null
+          }
+        })
+      }
+    })
   }
 };
 
