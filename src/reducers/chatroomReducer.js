@@ -61,12 +61,12 @@ const chatroomReducer = (state = initialState, action) => {
     case actionTypes.JOIN_CHATROOM:
       return {
         ...state,
-        homeroomError: action.payload.homeroomError
+        chatroomError: action.payload.chatroomError
       }
     case actionTypes.LEAVE_CHATROOM:
       return {
         ...state,
-        homeroomError: action.payload.homeroomError
+        chatroomError: action.payload.chatroomError
       }
     default:
       return state;

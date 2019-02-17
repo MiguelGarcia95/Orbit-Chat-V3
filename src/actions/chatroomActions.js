@@ -100,14 +100,16 @@ export const joinChatroom = (user, chatroom) => {
       dispatch({
         type: actionTypes.JOIN_CHATROOM,
         payload: {
-          homeError: null
+          chatroomError: null,
+          currentChatroom: chatroom
         }
       })
     }).catch(err => {
       dispatch({
         type: actionTypes.JOIN_CHATROOM,
         payload: {
-          homeError: err.message
+          chatroomError: err.message,
+          currentChatroom: null
         }
       })
     })
