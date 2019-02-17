@@ -212,7 +212,6 @@ export const acceptFriend = (user, otherUser) => {
         }
       })
     })
-
   }
 }
 
@@ -240,7 +239,6 @@ export const rejectFriend = (user, otherUser) => {
         }
       })
     })
-
   }
 }
 
