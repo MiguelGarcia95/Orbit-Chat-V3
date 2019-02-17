@@ -3,8 +3,7 @@ import {Grid, Sidebar, Menu, Button, Divider, Image, Modal, Input, Label, Segmen
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getFirestore} from 'redux-firestore';
-import {createChatroom, setChatrooms} from '../../actions/chatroomActions';
-import {joinChatroom} from '../../actions/homeActions';
+import {createChatroom, setChatrooms, joinChatroom} from '../../actions/chatroomActions';
 import RoomMenu from './RoomMenu';
 
 class RoomNavbar extends React.Component {
