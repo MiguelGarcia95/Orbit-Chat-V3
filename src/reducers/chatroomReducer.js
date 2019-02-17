@@ -59,9 +59,18 @@ const chatroomReducer = (state = initialState, action) => {
         chatroomError: allChatrooms
       }
     case actionTypes.JOIN_CHATROOM:
+      let currentChatroom = !action.payload.currentChatroom ? state.currentChatroom : action.payload.currentChatroom;
+      // let currentChatroom;
+      // if (!action.payload.currentChatroom) {
+      //   currentChatroom = state.currentChatroom
+      // } else {
+      //   currentChatroom = action.payload.currentChatroom
+      // }
+
       return {
         ...state,
-        chatroomError: action.payload.chatroomError
+        chatroomError: action.payload.chatroomError,
+        currentChatroom: currentChatroom
       }
     case actionTypes.LEAVE_CHATROOM:
       return {
