@@ -11,12 +11,30 @@ class RoomNavbar extends React.Component {
     modal: false,
     name: '',
     description: '',
-    createdNewChatroom: false
+    createdNewChatroom: false,
+    userChatrooms: []
   }
 
   componentDidMount() {
     this.getChatroomsRT()
   }
+
+  // static getDerivedStateFromProps(props, state) {
+  //   let createdNewChatroom = state.createdNewChatroom;
+  //   if (state.createdNewChatroom && props.newChatroomId) {
+  //     props.history.push(`/app/${props.newChatroomId}`);
+  //     createdNewChatroom = false;
+  //   }
+
+  //   if (props.userChatrooms.length > 0) {
+  //     // console.log(props.userChatrooms);
+  //   }
+
+  //   return {
+  //     createdNewChatroom: createdNewChatroom,
+  //     userChatrooms: props.userChatrooms
+  //   }
+  // }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.state.createdNewChatroom && nextProps.newChatroomId) {
@@ -24,9 +42,10 @@ class RoomNavbar extends React.Component {
       this.setState({createdNewChatroom: false});
     }
     if (nextProps.userChatrooms.length > 0) {
-      // console.log(nextProps.userChatrooms);
+      console.log(nextProps.userChatrooms);
     }
   }
+
 
   getChatroomsRT = () => {
     const firestore = getFirestore();
@@ -65,7 +84,7 @@ class RoomNavbar extends React.Component {
 
   render() {
     const {modal} = this.state;
-    const {user, chatrooms, currentChatroom, inChatroom} = this.props;
+    const {user, chatrooms, currentChatroom, inChatroom, userChatrooms} = this.props;
     return !user ? null : (
       <Grid columns='equal' >
         <Sidebar 
@@ -84,7 +103,7 @@ class RoomNavbar extends React.Component {
           <Divider hidden />
           <Button icon='add' size='small' color='grey' inverted onClick={this.openModal} />
           
-          {this.displayChatRooms(chatrooms)}
+          {this.displayChatRooms(userChatrooms)}
 
           <Modal open={modal} onClose={this.closeModal} >
             <Modal.Header>Create A New Chatroom</Modal.Header>
