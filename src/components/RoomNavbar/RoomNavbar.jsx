@@ -3,7 +3,7 @@ import {Grid, Sidebar, Menu, Button, Divider, Image, Modal, Input, Label, Segmen
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getFirestore} from 'redux-firestore';
-import {createChatroom, setChatrooms, getUserChatrooms} from '../../actions/chatroomActions';
+import {createChatroom, setChatrooms} from '../../actions/chatroomActions';
 import RoomMenu from './RoomMenu';
 
 class RoomNavbar extends React.Component {
@@ -24,7 +24,6 @@ class RoomNavbar extends React.Component {
       props.history.push(`/app/${props.newChatroomId}`);
       createdNewChatroom = false;
     }
-    // getUserChatrooms
     console.log(props.userChatrooms);
     return {
       ...state,
@@ -134,8 +133,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     createChatroom: chatroom => dispatch(createChatroom(chatroom)),
-    setChatrooms: docChatrooms => dispatch(setChatrooms(docChatrooms)),
-    getUserChatrooms: user => dispatch(getUserChatrooms(user))
+    setChatrooms: docChatrooms => dispatch(setChatrooms(docChatrooms))
   }
 }
 
