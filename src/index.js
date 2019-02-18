@@ -7,6 +7,7 @@ import 'semantic-ui-css/semantic.min.css'
 
 import firebase from './firebase';
 import {setUser} from './actions/authActions';
+import {getUserChatrooms} from './actions/chatroomActions';
 import store from './store';
 import App from './components/App';
 import SignUp from './components/Auth/SignUp';
@@ -19,6 +20,7 @@ class Root extends React.Component {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.props.setUser(user);
+        this.props.getUserChatrooms(user);
       }
     })
   }
@@ -41,7 +43,8 @@ class Root extends React.Component {
 
 const mapDispatchToState = dispatch => {
   return {
-    setUser: user => dispatch(setUser(user))
+    setUser: user => dispatch(setUser(user)),
+    getUserChatrooms: user => dispatch(getUserChatrooms(user))
   }
 }
 
