@@ -30,13 +30,7 @@ class RoomNavbar extends React.Component {
     }
 
     return {
-      ...state,
-      // user: props.user,
-      // chatrooms: props.chatrooms,
-      // currentChatroom: props.currentChatroom,
-      // inChatroom: props.inChatroom,
       createdNewChatroom: createdNewChatroom,
-      // userChatrooms: props.userChatrooms
     }
   }
 
