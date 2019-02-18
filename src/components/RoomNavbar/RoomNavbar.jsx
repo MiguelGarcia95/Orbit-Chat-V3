@@ -12,11 +12,12 @@ class RoomNavbar extends React.Component {
     name: '',
     description: '',
     createdNewChatroom: false,
-    userChatrooms: []
+    userChatrooms: [],
+    fetchedChatrooms: false
   }
 
   componentDidMount() {
-    this.getChatroomsRT()
+    // this.getChatroomsRT()
   }
 
   // static getDerivedStateFromProps(props, state) {
@@ -41,8 +42,10 @@ class RoomNavbar extends React.Component {
       nextProps.history.push(`/app/${nextProps.newChatroomId}`);
       this.setState({createdNewChatroom: false});
     }
-    if (nextProps.userChatrooms.length > 0) {
+    if (nextProps.userChatrooms.length > 0 && !this.state.fetchedChatrooms) {
       console.log(nextProps.userChatrooms);
+      this.setState({fetchedChatrooms: true});
+      this.getChatroomsRT();
     }
   }
 
@@ -77,7 +80,10 @@ class RoomNavbar extends React.Component {
   }
 
   onSubmit = () => {
-    this.props.createChatroom(this.state);
+    this.props.createChatroom({
+      ...this.state,
+      user: this.props.user
+    });
     this.setState({createdNewChatroom: true});
     this.closeModal();
   }
@@ -103,7 +109,7 @@ class RoomNavbar extends React.Component {
           <Divider hidden />
           <Button icon='add' size='small' color='grey' inverted onClick={this.openModal} />
           
-          {this.displayChatRooms(userChatrooms)}
+          {this.displayChatRooms(chatrooms)}
 
           <Modal open={modal} onClose={this.closeModal} >
             <Modal.Header>Create A New Chatroom</Modal.Header>
