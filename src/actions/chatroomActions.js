@@ -106,8 +106,11 @@ export const joinChatroom = (user, chatroom) => {
     addChatroomRefToUserRef.get().then(doc => {
       if (!doc.exists) {
         addChatroomRefToUserRef.set({
+          name:  chatroom.name,
+          description:  chatroom.description,
+          avatar: chatroom.avatar,
           uid: chatroom.chatroom.uid,
-          id: chatroom.id
+          createdAt: firestore.FieldValue.serverTimestamp()
         }).then(() => {
           dispatch({
             type: actionTypes.JOIN_CHATROOM,
@@ -173,7 +176,6 @@ export const getChatroomUsers = chatroomId => {
       let users = [];
       data.forEach(doc => {
         users.push({id: doc.id, user: doc.data()})
-        // users.push(doc.data())
       });
       dispatch({
         type: actionTypes.GET_CHATROOM_USERS,
@@ -202,7 +204,6 @@ export const getUserChatrooms = user => {
       data.forEach(doc => {
         chatrooms.push({id: doc.id, chatroom: doc.data()});
       })
-      // console.log(chatrooms);
       dispatch({
         type: actionTypes.GET_USER_CHATROOMS,
         payload: {
