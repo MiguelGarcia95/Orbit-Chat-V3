@@ -12,8 +12,7 @@ import ChatCommentPanel from '../ChatCommentPanel/ChatCommentPanel';
 class Chatroom extends React.Component {
   state = {
     redirect: false,
-    firstLoad: true,
-    fetchedChatroom: false
+    firstLoad: true
   }
 
   componentDidMount() {
