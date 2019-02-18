@@ -45,7 +45,7 @@ class Chatroom extends React.Component {
       this.props.getChatroomUsers(nextProps.currentChatroom.id);
     } else if (nextProps.chatroomUsers.length > 0) {
       // console.log(this.isUserAMember(nextProps.user, nextProps.chatroomUsers))
-      
+
       // console.log(nextProps.currentChatroom.id)
       // console.log(nextProps.match.params.roomId)
     }
@@ -63,15 +63,15 @@ class Chatroom extends React.Component {
     }, {}) 
   }
 
-  isUserAMember = (user, chatroomUsers) => {
-    let hasUserJoined = false;
-    chatroomUsers.forEach(chatroomUser => {
-      if (user.uid === chatroomUser.user.uid) {
-        hasUserJoined = true;
-      }
-    });
-    return hasUserJoined;
-  }
+  // isUserAMember = (user, chatroomUsers) => {
+  //   let hasUserJoined = false;
+  //   chatroomUsers.forEach(chatroomUser => {
+  //     if (user.uid === chatroomUser.user.uid) {
+  //       hasUserJoined = true;
+  //     }
+  //   });
+  //   return hasUserJoined;
+  // }
 
   setCurrentChannel = (currentChannel, channels, categories, isNewChannel) => {
     if (!currentChannel && channels.length > 0 && categories.length > 0) {
