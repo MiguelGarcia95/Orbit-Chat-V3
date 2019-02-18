@@ -197,6 +197,29 @@ export const getChatroomUsers = chatroomId => {
 export const getUserChatrooms = user => {
   return (dispatch, getState, {getFirestore}) => {
     // GET_USER_CHATROOMS
+    const firestore = getFirestore();
+    firestore.collection(`users/${user.uid}/chatrooms`).get().then(data => {
+      let chatrooms = [];
+      data.forEach(doc => {
+        chatrooms.push({id: doc.id, chatroom: doc.data()});
+      })
+      console.log(chatrooms);
+      dispatch({
+        type: actionTypes.GET_USER_CHATROOMS,
+        payload: {
+          chatroomError: null,
+          userChatrooms: chatrooms
+        }
+      })
+    }).catch(err => {
+      dispatch({
+        type: actionTypes.GET_USER_CHATROOMS,
+        payload: {
+          chatroomError: err.message,
+          userChatrooms: []
+        }
+      })
+    })
   }
 }
 
