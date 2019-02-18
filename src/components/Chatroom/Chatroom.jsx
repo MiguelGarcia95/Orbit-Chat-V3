@@ -32,19 +32,14 @@ class Chatroom extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (!this.state.firstLoad && nextProps.chatroomRedirect) {
       this.props.history.push('/app');
-    } else if (!this.state.firstLoad && !this.state.fetchedChatroom) {
-      this.props.unsetChannel();
-      this.props.getChatroom(nextProps.match.params.roomId);
-      this.props.getChatroomUsers(this.props.match.params.roomId);
-      this.setState({fetchedChatroom: true});
-    } else if (this.props.match.params.roomId !== nextProps.match.params.roomId) {
+    } else if (!this.state.firstLoad && this.props.match.params.roomId !== nextProps.match.params.roomId) {
       this.props.unsetChannel();
       this.props.clearChatroom();
       this.props.getChatroom(nextProps.match.params.roomId);
       this.props.getChatroomUsers(this.props.match.params.roomId);
     }
 
-    if (nextProps.chatroomUsers.length === 0 && nextProps.currentChatroom) {
+    if (nextProps.chatroomUsers.length === 0 && nextProps.currentChatroom && !this.state.firstLoad) {
       this.props.joinChatroom(nextProps.user, nextProps.currentChatroom);
       this.props.getChatroomUsers(nextProps.currentChatroom.id);
     }

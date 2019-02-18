@@ -113,8 +113,7 @@ export const joinChatroom = (user, chatroom) => {
             type: actionTypes.JOIN_CHATROOM,
             payload: {
               chatroomError: null,
-              currentChatroom: chatroom,
-              chatroomRedirect: null
+              currentChatroom: chatroom
             }
           })
         })
@@ -123,8 +122,7 @@ export const joinChatroom = (user, chatroom) => {
           type: actionTypes.JOIN_CHATROOM,
           payload: {
             chatroomError: 'Already In Chatroom',
-            currentChatroom: chatroom,
-            chatroomRedirect: null
+            currentChatroom: chatroom
           }
         })
       }
