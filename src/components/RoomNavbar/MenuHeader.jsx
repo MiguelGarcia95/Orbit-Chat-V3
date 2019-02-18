@@ -36,7 +36,8 @@ class MenuHeader extends React.Component {
               <Container fluid>
                 <Dropdown icon='caret down'>
                   <Dropdown.Menu direction='left' >
-                    <Dropdown.Item text='New Category' onClick={this.openModal} />
+                    <Dropdown.Item content='New Category' onClick={this.openModal} icon='list' />
+                    <Dropdown.Item content='Leave Chatroom' onClick={this.openModal} icon='minus circle' />
                   </Dropdown.Menu>
                 </Dropdown>
               </Container>
