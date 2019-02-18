@@ -90,32 +90,44 @@ export const joinChatroom = (user, chatroom) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
 
-    firestore.collection(`chatrooms/${chatroom.id}/users`).doc(user.uid).set({
-      uid: user.uid,
-      avatar: user.photoURL,
-      username: user.displayName
+    let addUserToChatroomRef = firestore.collection(`chatrooms/${chatroom.id}/users`).doc(user.uid);
+    let addChatroomRefToUserRef = firestore.collection(`users/${user.uid}/chatrooms`).doc(chatroom.id);
+
+    addUserToChatroomRef.get().then(doc => {
+      if (!doc.exists) {
+        addUserToChatroomRef.set({
+          uid: user.uid,
+          avatar: user.photoURL,
+          username: user.displayName
+        })
+      }
     })
-    firestore.collection(`users/${user.uid}/chatrooms`).doc(chatroom.id).set({
-      uid: chatroom.chatroom.uid,
-      id: chatroom.id
-    }).then(() => {
-      dispatch({
-        type: actionTypes.JOIN_CHATROOM,
-        payload: {
-          chatroomError: null,
-          currentChatroom: chatroom,
-          chatroomRedirect: true
-        }
-      })
-    }).catch(err => {
-      dispatch({
-        type: actionTypes.JOIN_CHATROOM,
-        payload: {
-          chatroomError: err.message,
-          currentChatroom: null,
-          chatroomRedirect: true
-        }
-      })
+    
+    addChatroomRefToUserRef.get().then(doc => {
+      if (!doc.exists) {
+        addChatroomRefToUserRef.set({
+          uid: chatroom.chatroom.uid,
+          id: chatroom.id
+        }).then(() => {
+          dispatch({
+            type: actionTypes.JOIN_CHATROOM,
+            payload: {
+              chatroomError: null,
+              currentChatroom: chatroom,
+              chatroomRedirect: null
+            }
+          })
+        })
+      } else {
+        dispatch({
+          type: actionTypes.JOIN_CHATROOM,
+          payload: {
+            chatroomError: 'Already In Chatroom',
+            currentChatroom: chatroom,
+            chatroomRedirect: null
+          }
+        })
+      }
     })
   }
 };
