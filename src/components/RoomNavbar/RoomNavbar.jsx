@@ -24,14 +24,19 @@ class RoomNavbar extends React.Component {
       props.history.push(`/app/${props.newChatroomId}`);
       createdNewChatroom = false;
     }
-    console.log(props.userChatrooms);
+
+    if (props.userChatrooms.length > 0) {
+      // console.log(props.userChatrooms);
+    }
+
     return {
       ...state,
       user: props.user,
       chatrooms: props.chatrooms,
       currentChatroom: props.currentChatroom,
       inChatroom: props.inChatroom,
-      createdNewChatroom: createdNewChatroom
+      createdNewChatroom: createdNewChatroom,
+      userChatrooms: props.userChatrooms
     }
   }
 

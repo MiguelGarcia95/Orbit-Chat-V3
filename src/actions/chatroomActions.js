@@ -202,7 +202,7 @@ export const getUserChatrooms = user => {
       data.forEach(doc => {
         chatrooms.push({id: doc.id, chatroom: doc.data()});
       })
-      console.log(chatrooms);
+      // console.log(chatrooms);
       dispatch({
         type: actionTypes.GET_USER_CHATROOMS,
         payload: {

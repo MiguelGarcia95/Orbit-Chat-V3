@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/types';
-import {removeDuplicateChatrooms, removeDeletedChatrooms, sortCategoriesByDate} from '../utils/functions';
+import {removeDuplicateChatrooms, removeDeletedChatrooms, sortCategoriesByDate, getUserChatrooms} from '../utils/functions';
 
 const initialState = {
   currentChatroom: null,
@@ -63,10 +63,10 @@ const chatroomReducer = (state = initialState, action) => {
       let chatrooms = [...state.chatrooms, ...action.payload.chatrooms];
       let uniqueChatrooms = removeDuplicateChatrooms(chatrooms);
       let allChatrooms = removeDeletedChatrooms(uniqueChatrooms, action.payload.chatroomToDelete);
-
+      let userChatrooms = getUserChatrooms(allChatrooms, state.userChatrooms);
       return {
         ...state,
-        chatrooms: allChatrooms
+        chatrooms: userChatrooms
       }
     case actionTypes.CREATE_CATEGORY:
       return {
