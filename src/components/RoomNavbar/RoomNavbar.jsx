@@ -90,7 +90,8 @@ class RoomNavbar extends React.Component {
 
   render() {
     const {modal} = this.state;
-    const {user, chatrooms, currentChatroom, inChatroom, userChatrooms} = this.props;
+    const {user, chatrooms, currentChatroom, inChatroom} = this.props;
+    console.log(chatrooms)
     return !user ? null : (
       <Grid columns='equal' >
         <Sidebar 
@@ -109,7 +110,7 @@ class RoomNavbar extends React.Component {
           <Divider hidden />
           <Button icon='add' size='small' color='grey' inverted onClick={this.openModal} />
           
-          {this.displayChatRooms(userChatrooms)}
+          {this.displayChatRooms(chatrooms)}
 
           <Modal open={modal} onClose={this.closeModal} >
             <Modal.Header>Create A New Chatroom</Modal.Header>

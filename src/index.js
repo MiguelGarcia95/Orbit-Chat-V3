@@ -20,7 +20,7 @@ class Root extends React.Component {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.props.setUser(user);
-        this.props.getUserChatrooms(user);
+        // this.props.getUserChatrooms(user);
       }
     })
   }
