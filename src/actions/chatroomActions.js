@@ -196,7 +196,6 @@ export const getChatroomUsers = chatroomId => {
 
 export const getUserChatrooms = user => {
   return (dispatch, getState, {getFirestore}) => {
-    // GET_USER_CHATROOMS
     const firestore = getFirestore();
     firestore.collection(`users/${user.uid}/chatrooms`).get().then(data => {
       let chatrooms = [];
