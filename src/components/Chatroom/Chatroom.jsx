@@ -39,8 +39,12 @@ class Chatroom extends React.Component {
     }
 
     if (nextProps.chatroomUsers.length === 0 && nextProps.currentChatroom && !this.state.firstLoad) {
-      this.props.joinChatroom(nextProps.user, nextProps.currentChatroom);
+      if (nextProps.currentChatroom.chatroom.uid === nextProps.user.uid) {
+        this.props.joinChatroom(nextProps.user, nextProps.currentChatroom);
+      }
       this.props.getChatroomUsers(nextProps.currentChatroom.id);
+    } else if (nextProps.chatroomUsers.length > 0) {
+      console.log(this.isUserAMember(nextProps.user, nextProps.chatroomUsers))
     }
 
     this.setCurrentChannel(nextProps.currentChannel, nextProps.channels, nextProps.categories, true);
@@ -54,6 +58,16 @@ class Chatroom extends React.Component {
       }
       return filteredChannels
     }, {}) 
+  }
+
+  isUserAMember = (user, chatroomUsers) => {
+    let hasUserJoined = false;
+    chatroomUsers.forEach(chatroomUser => {
+      if (user.uid === chatroomUser.user.uid) {
+        hasUserJoined = true;
+      }
+    });
+    return hasUserJoined;
   }
 
   setCurrentChannel = (currentChannel, channels, categories, isNewChannel) => {

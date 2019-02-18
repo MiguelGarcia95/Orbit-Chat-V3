@@ -49,7 +49,8 @@ const chatroomReducer = (state = initialState, action) => {
         currentChatroom: action.payload.currentChatroom,
         inChatroom: action.payload.inChatroom,
         chatroomRedirect: action.payload.chatroomRedirect,
-        categories: action.payload.categories
+        categories: action.payload.categories,
+        chatroomUsers: action.payload.chatroomUsers
       }
     case actionTypes.SET_CHATROOMS:
       let chatrooms = [...state.chatrooms, ...action.payload.chatrooms];

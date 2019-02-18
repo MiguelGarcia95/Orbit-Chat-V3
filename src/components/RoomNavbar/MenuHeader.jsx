@@ -1,7 +1,7 @@
 import React from 'react';
 import {Grid, Container, Modal, Segment, Button, Label, Input, Dropdown} from 'semantic-ui-react';
 import {connect} from 'react-redux';
-import {createCategory} from '../../actions/chatroomActions';
+import {createCategory, leaveChatroom} from '../../actions/chatroomActions';
 
 class MenuHeader extends React.Component {
   state = {
@@ -67,7 +67,8 @@ class MenuHeader extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createCategory: category => dispatch(createCategory(category))
+    createCategory: category => dispatch(createCategory(category)),
+    leaveChatroom: (user, chatroom) => dispatch(leaveChatroom(user, chatroom))
   }
 }
 
