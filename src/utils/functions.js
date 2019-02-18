@@ -142,6 +142,8 @@ export const getUserChatrooms = (chatrooms, userChatrooms) => {
     if (userChatrooms.length > 0) {
       let isUserInChatroom = false;
       userChatrooms.forEach(userChatroom => {
+        console.log(chatroom)
+        console.log(userChatroom)
         if (chatroom.id === userChatroom.id) {
           isUserInChatroom = true;
         }

@@ -31,13 +31,17 @@ class RoomNavbar extends React.Component {
 
     return {
       ...state,
-      user: props.user,
-      chatrooms: props.chatrooms,
-      currentChatroom: props.currentChatroom,
-      inChatroom: props.inChatroom,
+      // user: props.user,
+      // chatrooms: props.chatrooms,
+      // currentChatroom: props.currentChatroom,
+      // inChatroom: props.inChatroom,
       createdNewChatroom: createdNewChatroom,
-      userChatrooms: props.userChatrooms
+      // userChatrooms: props.userChatrooms
     }
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+
   }
 
   getChatroomsRT = () => {
@@ -76,7 +80,8 @@ class RoomNavbar extends React.Component {
   }
 
   render() {
-    const {modal, user, chatrooms, currentChatroom, inChatroom} = this.state;
+    const {modal} = this.state;
+    const {user, chatrooms, currentChatroom, inChatroom} = this.props;
     return !user ? null : (
       <Grid columns='equal' >
         <Sidebar 
