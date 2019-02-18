@@ -18,24 +18,14 @@ class RoomNavbar extends React.Component {
     this.getChatroomsRT()
   }
 
-  static getDerivedStateFromProps(props, state) {
-    let createdNewChatroom = state.createdNewChatroom;
-    if (state.createdNewChatroom && props.newChatroomId) {
-      props.history.push(`/app/${props.newChatroomId}`);
-      createdNewChatroom = false;
-    }
-
-    if (props.userChatrooms.length > 0) {
-      // console.log(props.userChatrooms);
-    }
-
-    return {
-      createdNewChatroom: createdNewChatroom,
-    }
-  }
-
   UNSAFE_componentWillReceiveProps(nextProps) {
-
+    if (this.state.createdNewChatroom && nextProps.newChatroomId) {
+      nextProps.history.push(`/app/${nextProps.newChatroomId}`);
+      this.setState({createdNewChatroom: false});
+    }
+    if (nextProps.userChatrooms.length > 0) {
+      // console.log(nextProps.userChatrooms);
+    }
   }
 
   getChatroomsRT = () => {
