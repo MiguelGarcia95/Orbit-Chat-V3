@@ -194,6 +194,12 @@ export const getChatroomUsers = chatroomId => {
   }
 }
 
+export const getUserChatrooms = user => {
+  return (dispatch, getState, {getFirestore}) => {
+    // GET_USER_CHATROOMS
+  }
+}
+
 export const getChatroom = chatroomId => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
