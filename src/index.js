@@ -9,7 +9,7 @@ import firebase from './firebase';
 import {getFirestore} from 'redux-firestore';
 
 import {setUser} from './actions/authActions';
-import {getUserChatrooms, setChatrooms} from './actions/chatroomActions';
+import {setChatrooms} from './actions/chatroomActions';
 import store from './store';
 import App from './components/App';
 import SignUp from './components/Auth/SignUp';
@@ -22,7 +22,6 @@ class Root extends React.Component {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.props.setUser(user);
-        // this.props.getUserChatrooms(user);
         this.getChatroomsRT(user)
       }
     })
@@ -30,8 +29,6 @@ class Root extends React.Component {
 
   getChatroomsRT = (user) => {
     const firestore = getFirestore();
-    // users/${user.uid}/chatrooms
-    // firestore.collection(`chatrooms`).onSnapshot(snapshot => {
       firestore.collection(`users/${user.uid}/chatrooms`).onSnapshot(snapshot => {
       let changes = snapshot.docChanges();
       this.props.setChatrooms(changes)
@@ -49,9 +46,6 @@ class Root extends React.Component {
           <Route exact path="/" render={() => (<Redirect to="/app" />)} /> 
         </Switch>
         <Route path='/app' component={RoomNavbar} />
-        {/* <Route path='/app'
-          render={(props) => <RoomNavbar {...props} user={this.props.user} />}
-        /> */}
       </React.Fragment>
     )
   }
@@ -66,7 +60,6 @@ const mapStateToProps = state => {
 const mapDispatchToState = dispatch => {
   return {
     setUser: user => dispatch(setUser(user)),
-    getUserChatrooms: user => dispatch(getUserChatrooms(user)),
     setChatrooms: docChatrooms => dispatch(setChatrooms(docChatrooms))
   }
 }
