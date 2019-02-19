@@ -24,6 +24,14 @@ class App extends React.Component {
     })
   }
 
+  /*
+    Instead of using nameError, use 
+    displayMessage: {
+      type: error, 
+      message: 'Message here'
+    }
+  */
+
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.currentView !== nextProps.currentView && nextProps.currentView !== 'friends') {
       this.getChannelComemntrsRT(nextProps.user, nextProps.currentView)
