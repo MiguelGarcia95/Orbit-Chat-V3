@@ -18,7 +18,7 @@ class RoomNavbar extends React.Component {
 
   componentDidMount() {
     // this.getChatroomsRT()
-    // console.log(this.props.user)
+    console.log(this.props.chatrooms)
   }
 
   componentDidUpdate() {
@@ -43,14 +43,15 @@ class RoomNavbar extends React.Component {
   }
 
 
-  getChatroomsRT = (user) => {
-    const firestore = getFirestore();
-    // users/${user.uid}/chatrooms
-    firestore.collection(`users/${user.uid}/chatrooms`).onSnapshot(snapshot => {
-      let changes = snapshot.docChanges();
-      this.props.setChatrooms(changes)
-    })
-  }
+  // getChatroomsRT = (user) => {
+  //   const firestore = getFirestore();
+  //   // users/${user.uid}/chatrooms
+  //   // firestore.collection(`users/${user.uid}/chatrooms`).onSnapshot(snapshot => {
+  //     firestore.collection(`chatrooms`).onSnapshot(snapshot => {
+  //     let changes = snapshot.docChanges();
+  //     this.props.setChatrooms(changes)
+  //   })
+  // }
 
   onChange = e => this.setState({[e.target.name]: e.target.value});
 

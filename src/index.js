@@ -6,8 +6,10 @@ import * as serviceWorker from './serviceWorker';
 import 'semantic-ui-css/semantic.min.css'
 
 import firebase from './firebase';
+import {getFirestore} from 'redux-firestore';
+
 import {setUser} from './actions/authActions';
-import {getUserChatrooms} from './actions/chatroomActions';
+import {getUserChatrooms, setChatrooms} from './actions/chatroomActions';
 import store from './store';
 import App from './components/App';
 import SignUp from './components/Auth/SignUp';
@@ -21,7 +23,18 @@ class Root extends React.Component {
       if (user) {
         this.props.setUser(user);
         // this.props.getUserChatrooms(user);
+        this.getChatroomsRT(user)
       }
+    })
+  }
+
+  getChatroomsRT = (user) => {
+    const firestore = getFirestore();
+    // users/${user.uid}/chatrooms
+    // firestore.collection(`chatrooms`).onSnapshot(snapshot => {
+      firestore.collection(`users/${user.uid}/chatrooms`).onSnapshot(snapshot => {
+      let changes = snapshot.docChanges();
+      this.props.setChatrooms(changes)
     })
   }
 
@@ -53,7 +66,8 @@ const mapStateToProps = state => {
 const mapDispatchToState = dispatch => {
   return {
     setUser: user => dispatch(setUser(user)),
-    getUserChatrooms: user => dispatch(getUserChatrooms(user))
+    getUserChatrooms: user => dispatch(getUserChatrooms(user)),
+    setChatrooms: docChatrooms => dispatch(setChatrooms(docChatrooms))
   }
 }
 
