@@ -68,6 +68,7 @@ const homeReducer = (state = initialState, action) => {
       }
     case actionTypes.SET_FRIENDS:
       return {
+        ...state,
         friendsList: action.payload.friendsList,
         homeroomError: action.payload.homeError,
       }

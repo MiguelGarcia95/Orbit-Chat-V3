@@ -21,11 +21,11 @@ class HomeContentPanel extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.currentView !== nextProps.currentView && nextProps.currentView !== 'friends') {
-      // this.props.getReference(nextProps.user.uid, nextProps.currentView)
+      this.props.getReference(nextProps.user.uid, nextProps.currentView)
       // console.log('dms')
     } else if (this.props.currentView !== nextProps.currentView && nextProps.currentView === 'friends') {
       // console.log('friends')
-      // this.getFriendsRT(nextProps.user);
+      this.getFriendsRT(nextProps.user);
     }
   }
 

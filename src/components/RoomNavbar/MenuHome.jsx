@@ -4,8 +4,8 @@ import {connect} from 'react-redux';
 import {setHomeView} from '../../actions/homeActions';
 
 class MenuHome extends React.Component {
-  isOptionActive = name => {
-    return name === this.props.currentView ? 'active' : '';
+  isOptionActive = option => {
+    return option === this.props.currentView ? 'active' : '';
   }
 
   isDMOnDisplay = () => {

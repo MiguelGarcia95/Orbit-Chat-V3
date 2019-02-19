@@ -20,7 +20,7 @@ class App extends React.Component {
         this.props.clearChatroom();
         this.getDirectMessagesReferenceRT(user.uid);
         this.props.setHomeView('friends')
-        console.log(this.props.currentView)
+        // console.log(this.props.currentView)
       }
     })
   }
