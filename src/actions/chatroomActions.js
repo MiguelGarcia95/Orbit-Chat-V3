@@ -105,11 +105,10 @@ export const joinChatroom = (user, chatroom) => {
     
     addChatroomRefToUserRef.get().then(doc => {
       if (!doc.exists) {
-        console.log('addChatrromToUser')
         addChatroomRefToUserRef.set({
-          name:  chatroom.name,
-          description:  chatroom.description,
-          avatar: chatroom.avatar,
+          name:  chatroom.chatroom.name,
+          description:  chatroom.chatroom.description,
+          avatar: chatroom.chatroom.avatar,
           uid: chatroom.chatroom.uid,
           createdAt: firestore.FieldValue.serverTimestamp()
         }).then(() => {
