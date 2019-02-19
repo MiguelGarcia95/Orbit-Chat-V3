@@ -52,6 +52,7 @@ class RoomNavbar extends React.Component {
 
   getChatroomsRT = () => {
     const firestore = getFirestore();
+    // users/${user.uid}/chatrooms
     firestore.collection(`chatrooms`).onSnapshot(snapshot => {
       let changes = snapshot.docChanges();
       this.props.setChatrooms(changes)
