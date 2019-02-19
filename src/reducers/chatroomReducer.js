@@ -53,17 +53,10 @@ const chatroomReducer = (state = initialState, action) => {
         categories: action.payload.categories,
         chatroomUsers: action.payload.chatroomUsers
       }
-    case actionTypes.GET_USER_CHATROOMS:
-      return {
-        ...state,
-        userChatrooms: action.payload.userChatrooms,
-        chatroomError: action.payload.chatroomError
-      }
     case actionTypes.SET_CHATROOMS:
       let chatrooms = [...state.chatrooms, ...action.payload.chatrooms];
       let uniqueChatrooms = removeDuplicateChatrooms(chatrooms);
       let allChatrooms = removeDeletedChatrooms(uniqueChatrooms, action.payload.chatroomToDelete);
-      // let userChatrooms = getUserChatrooms(allChatrooms, state.userChatrooms);
       return {
         ...state,
         chatrooms: allChatrooms,
