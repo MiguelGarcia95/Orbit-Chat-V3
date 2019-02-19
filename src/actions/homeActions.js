@@ -250,9 +250,27 @@ export const deleteFriend = (user, otherUser) => {
 };
 
 export const setFriends = docFriends => {
-  return (dispatch, getState, {getFirestore}) => {
-    console.log(docFriends);
-    // SET_FRIENDS
+  return (dispatch) => {
+    let friends = [];
+    let friendToDelete = [];
+    docFriends.forEach(docFriend => {
+      if (docFriend.type === 'added') {
+        friends.push({id: docFriend.doc.id, friend: docFriend.doc.data()});
+      } else if (docFriend.type === 'modified') {
+        friends.push({id: docFriend.doc.id, friend: docFriend.doc.data()});
+      } else if (docFriend.type === 'removed') {
+        friendToDelete.push({id: docFriend.doc.id, friend: docFriend.doc.data()});
+      }
+    });
+
+    dispatch({
+      type: actionTypes.SET_FRIENDS,
+      payload: {
+        friendsList: friends,
+        homeError: null,
+        friendToDelete: friendToDelete
+      }
+    })
   }
 }
 
