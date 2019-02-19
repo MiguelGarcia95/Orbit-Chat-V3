@@ -17,44 +17,31 @@ class RoomNavbar extends React.Component {
   }
 
   componentDidMount() {
-    this.getChatroomsRT()
-    console.log(this.props.user)
+    // this.getChatroomsRT()
+    // console.log(this.props.user)
   }
-
-  // static getDerivedStateFromProps(props, state) {
-  //   let createdNewChatroom = state.createdNewChatroom;
-  //   if (state.createdNewChatroom && props.newChatroomId) {
-  //     props.history.push(`/app/${props.newChatroomId}`);
-  //     createdNewChatroom = false;
-  //   }
-
-  //   if (props.userChatrooms.length > 0) {
-  //     // console.log(props.userChatrooms);
-  //   }
-
-  //   return {
-  //     createdNewChatroom: createdNewChatroom,
-  //     userChatrooms: props.userChatrooms
-  //   }
-  // }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.state.createdNewChatroom && nextProps.newChatroomId) {
       nextProps.history.push(`/app/${nextProps.newChatroomId}`);
       this.setState({createdNewChatroom: false});
     }
-    if (nextProps.userChatrooms.length > 0 && !this.state.fetchedChatrooms) {
-      // console.log(nextProps.userChatrooms);
-      this.setState({fetchedChatrooms: true});
-      // this.getChatroomsRT();
+    // if (nextProps.userChatrooms.length > 0 && !this.state.fetchedChatrooms) {
+    //   // console.log(nextProps.userChatrooms);
+    //   this.setState({fetchedChatrooms: true});
+    //   // this.getChatroomsRT();
+    // }
+    
+    if (nextProps.user) {
+      // this.getChatroomsRT(nextProps.user)
     }
   }
 
 
-  getChatroomsRT = () => {
+  getChatroomsRT = (user) => {
     const firestore = getFirestore();
     // users/${user.uid}/chatrooms
-    firestore.collection(`chatrooms`).onSnapshot(snapshot => {
+    firestore.collection(`users/${user.uid}/chatrooms`).onSnapshot(snapshot => {
       let changes = snapshot.docChanges();
       this.props.setChatrooms(changes)
     })
