@@ -63,15 +63,16 @@ const chatroomReducer = (state = initialState, action) => {
       let chatrooms = [...state.chatrooms, ...action.payload.chatrooms];
       let uniqueChatrooms = removeDuplicateChatrooms(chatrooms);
       let allChatrooms = removeDeletedChatrooms(uniqueChatrooms, action.payload.chatroomToDelete);
-      let userChatrooms = getUserChatrooms(allChatrooms, state.userChatrooms);
+      // let userChatrooms = getUserChatrooms(allChatrooms, state.userChatrooms);
       return {
         ...state,
-        chatrooms: userChatrooms
+        chatrooms: allChatrooms,
+        chatroomError: action.payload.chatroomError
       }
     case actionTypes.CREATE_CATEGORY:
       return {
         ...state,
-        chatroomError: allChatrooms
+        chatroomError: action.payload.chatroomError
       }
     case actionTypes.JOIN_CHATROOM:
       let currentChatroom = !action.payload.currentChatroom ? state.currentChatroom : action.payload.currentChatroom;

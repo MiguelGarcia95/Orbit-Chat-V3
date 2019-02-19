@@ -18,7 +18,6 @@ class RoomNavbar extends React.Component {
 
   componentDidMount() {
     // this.getChatroomsRT()
-    console.log(this.props.chatrooms)
   }
 
   componentDidUpdate() {
