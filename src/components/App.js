@@ -58,7 +58,7 @@ class App extends React.Component {
     const {user, currentView, currentReference} = this.props;
     return !user ? <Spinner /> : (
       <Grid columns='equal' className='app' style={{marginTop: '0px'}}>
-        <Grid.Column style={{marginLeft: 320}}>
+        <Grid.Column style={{marginLeft: 312}}>
           <React.Fragment>
             <HomeContentPanel currentView={currentView} user={user} otherUser={currentReference} />
           </React.Fragment>
