@@ -105,6 +105,7 @@ export const joinChatroom = (user, chatroom) => {
     
     addChatroomRefToUserRef.get().then(doc => {
       if (!doc.exists) {
+        console.log('addChatrromToUser')
         addChatroomRefToUserRef.set({
           name:  chatroom.name,
           description:  chatroom.description,
