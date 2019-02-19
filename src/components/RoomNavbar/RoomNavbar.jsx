@@ -18,6 +18,7 @@ class RoomNavbar extends React.Component {
 
   componentDidMount() {
     this.getChatroomsRT()
+    console.log(this.props.user)
   }
 
   // static getDerivedStateFromProps(props, state) {
@@ -43,7 +44,7 @@ class RoomNavbar extends React.Component {
       this.setState({createdNewChatroom: false});
     }
     if (nextProps.userChatrooms.length > 0 && !this.state.fetchedChatrooms) {
-      console.log(nextProps.userChatrooms);
+      // console.log(nextProps.userChatrooms);
       this.setState({fetchedChatrooms: true});
       // this.getChatroomsRT();
     }
@@ -92,7 +93,7 @@ class RoomNavbar extends React.Component {
   render() {
     const {modal} = this.state;
     const {user, chatrooms, currentChatroom, inChatroom} = this.props;
-    console.log(chatrooms)
+    // console.log(chatrooms)
     return !user ? null : (
       <Grid columns='equal' >
         <Sidebar 

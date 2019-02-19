@@ -36,8 +36,17 @@ class Root extends React.Component {
           <Route exact path="/" render={() => (<Redirect to="/app" />)} /> 
         </Switch>
         <Route path='/app' component={RoomNavbar} />
+        {/* <Route path='/app'
+          render={(props) => <RoomNavbar {...props} user={this.props.user} />}
+        /> */}
       </React.Fragment>
     )
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    user: state.auth.currentUser
   }
 }
 
@@ -48,7 +57,7 @@ const mapDispatchToState = dispatch => {
   }
 }
 
-const RootWithAuth = withRouter(connect(null, mapDispatchToState)(Root));
+const RootWithAuth = withRouter(connect(mapStateToProps, mapDispatchToState)(Root));
 
 const RootWithRouter = () => {
   return (
