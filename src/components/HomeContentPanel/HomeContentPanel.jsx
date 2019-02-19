@@ -22,15 +22,20 @@ class HomeContentPanel extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.currentView !== nextProps.currentView && nextProps.currentView !== 'friends') {
       this.props.getReference(nextProps.user.uid, nextProps.currentView)
-      // console.log('dms')
     } else if (this.props.currentView !== nextProps.currentView && nextProps.currentView === 'friends') {
-      // console.log('friends')
       this.getFriendsRT(nextProps.user);
     }
   }
 
   displayHomeContent = view => {
     if (view === 'friends') {
+      const {friendsList} = this.props;
+      return (
+        <React.Fragment>
+          <FriendListHeader />
+          {friendsList && <FriendList />}
+        </React.Fragment>
+      )
     } else {
       const {otherUser, user, directMessages} = this.props;
       return (
@@ -63,7 +68,8 @@ class HomeContentPanel extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    directMessages: state.home.directMessages
+    directMessages: state.home.directMessages,
+    friendsList: state.home.friendsList
   }
 }
 
