@@ -21,6 +21,11 @@ class RoomNavbar extends React.Component {
     // console.log(this.props.user)
   }
 
+  componentDidUpdate() {
+    // this.getChatroomsRT(this.props.user)
+    // console.log(this.props.user)
+  }
+
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.state.createdNewChatroom && nextProps.newChatroomId) {
       nextProps.history.push(`/app/${nextProps.newChatroomId}`);
@@ -31,7 +36,7 @@ class RoomNavbar extends React.Component {
     //   this.setState({fetchedChatrooms: true});
     //   // this.getChatroomsRT();
     // }
-    
+
     if (nextProps.user) {
       // this.getChatroomsRT(nextProps.user)
     }
