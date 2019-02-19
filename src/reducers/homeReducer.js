@@ -7,8 +7,9 @@ import {
 const initialState = {
   homeroomError: null,
   references: [],
-  currentView: '',
+  currentView: 'friends',
   directMessages: [],
+  friendsList: [],
   currentReference: null,
   referenceId: null
 }

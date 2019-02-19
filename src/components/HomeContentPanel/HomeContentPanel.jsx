@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {getFirestore} from 'redux-firestore';
 
-import {getReference} from '../../actions/homeActions';
+import {getReference, setFriends} from '../../actions/homeActions';
 import FriendList from './FriendList';
 import FriendListHeader from './FriendListHeader';
 import FriendChatHeader from './FriendChatHeader';
@@ -11,12 +12,20 @@ import MessageForm from './MessageForm';
 class HomeContentPanel extends React.Component {
   state = {
   }
+  
+  componentWillMount() {
+    if (this.props.currentView === 'friends') {
+      // this.getFriendsRT(this.props.user);
+    }
+  }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.currentView !== nextProps.currentView && nextProps.currentView !== 'friends') {
       this.props.getReference(nextProps.user.uid, nextProps.currentView)
+      // console.log('dms')
     } else if (this.props.currentView !== nextProps.currentView && nextProps.currentView === 'friends') {
-      // get friends and friend invites
+      // console.log('friends')
+      // this.getFriendsRT(nextProps.user);
     }
   }
 
@@ -32,6 +41,14 @@ class HomeContentPanel extends React.Component {
         </React.Fragment>
       )
     }
+  }
+
+  getFriendsRT = (user) => {
+    const firestore = getFirestore();
+    firestore.collection(`users/${user.uid}/friends`).onSnapshot(snapshot => {
+      let changes = snapshot.docChanges();
+      this.props.setFriends(changes)
+    })
   }
 
   render() {
@@ -52,7 +69,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getReference: (userId, referenceId) => dispatch(getReference(userId, referenceId))
+    getReference: (userId, referenceId) => dispatch(getReference(userId, referenceId)),
+    setFriends: docFriends => dispatch(setFriends(docFriends))
   }
 }
 
