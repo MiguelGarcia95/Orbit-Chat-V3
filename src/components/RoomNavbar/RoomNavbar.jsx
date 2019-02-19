@@ -2,7 +2,7 @@ import React from 'react';
 import {Grid, Sidebar, Menu, Button, Divider, Image, Modal, Input, Label, Segment} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {getFirestore} from 'redux-firestore';
+// import {getFirestore} from 'redux-firestore';
 import {createChatroom, setChatrooms} from '../../actions/chatroomActions';
 import RoomMenu from './RoomMenu';
 
@@ -16,41 +16,12 @@ class RoomNavbar extends React.Component {
     fetchedChatrooms: false
   }
 
-  componentDidMount() {
-    // this.getChatroomsRT()
-  }
-
-  componentDidUpdate() {
-    // this.getChatroomsRT(this.props.user)
-    // console.log(this.props.user)
-  }
-
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.state.createdNewChatroom && nextProps.newChatroomId) {
       nextProps.history.push(`/app/${nextProps.newChatroomId}`);
       this.setState({createdNewChatroom: false});
     }
-    // if (nextProps.userChatrooms.length > 0 && !this.state.fetchedChatrooms) {
-    //   // console.log(nextProps.userChatrooms);
-    //   this.setState({fetchedChatrooms: true});
-    //   // this.getChatroomsRT();
-    // }
-
-    if (nextProps.user) {
-      // this.getChatroomsRT(nextProps.user)
-    }
   }
-
-
-  // getChatroomsRT = (user) => {
-  //   const firestore = getFirestore();
-  //   // users/${user.uid}/chatrooms
-  //   // firestore.collection(`users/${user.uid}/chatrooms`).onSnapshot(snapshot => {
-  //     firestore.collection(`chatrooms`).onSnapshot(snapshot => {
-  //     let changes = snapshot.docChanges();
-  //     this.props.setChatrooms(changes)
-  //   })
-  // }
 
   onChange = e => this.setState({[e.target.name]: e.target.value});
 
@@ -85,7 +56,6 @@ class RoomNavbar extends React.Component {
   render() {
     const {modal} = this.state;
     const {user, chatrooms, currentChatroom, inChatroom} = this.props;
-    // console.log(chatrooms)
     return !user ? null : (
       <Grid columns='equal' >
         <Sidebar 
