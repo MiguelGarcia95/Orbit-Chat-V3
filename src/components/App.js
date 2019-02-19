@@ -20,7 +20,6 @@ class App extends React.Component {
         this.props.clearChatroom();
         this.getDirectMessagesReferenceRT(user.uid);
         this.props.setHomeView('friends')
-        // console.log(this.props.currentView)
       }
     })
   }
@@ -35,7 +34,7 @@ class App extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
       if (this.props.currentView !== nextProps.currentView && nextProps.currentView !== 'friends') {
-      // this.getChannelCommentsRT(nextProps.user, nextProps.currentView)
+      this.getChannelCommentsRT(nextProps.user, nextProps.currentView)
     }
   }
 
