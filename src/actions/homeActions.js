@@ -249,9 +249,10 @@ export const deleteFriend = (user, otherUser) => {
   }
 };
 
-export const setFriendsPanel = (user) => {
+export const setFriends = docFriends => {
   return (dispatch, getState, {getFirestore}) => {
-    console.log(user);
+    console.log(docFriends);
+    // SET_FRIENDS
   }
 }
 
