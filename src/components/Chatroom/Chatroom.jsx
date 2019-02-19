@@ -82,7 +82,7 @@ class Chatroom extends React.Component {
     const firestore = getFirestore();
     firestore.collection(`comments/${channelId}/comments`).onSnapshot(snapshot => {
       let changes = snapshot.docChanges();
-      this.props.setComments(changes)
+      this.props.setComments(changes);
     })
   }
 
