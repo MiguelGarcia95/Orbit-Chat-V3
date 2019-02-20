@@ -189,9 +189,33 @@ export const sortChannelsByDate = channels => {
 }
 
 export const removeDuplicateFriends = friends => {
-
+  return friends.reduce((newArray, friend) => {
+    if (newArray.length > 0) {
+      let isInArray = false;
+      newArray.forEach(arrayFriend => {
+        if (friend.id === arrayFriend.id) {
+          isInArray = true;
+        }
+      });
+      if (!isInArray) {
+        newArray.push(friend)
+      }
+    } else {
+      newArray.push(friend)
+    }
+    return newArray
+  }, []);
 }
 
 export const removeDeletedFriends = (friends, friendToDelete) => {
-  
+  return friends.reduce((newArray, friend) => {
+    if (friendToDelete.length > 0) {
+      if (friendToDelete[0].id !== friend.id) {
+        newArray.push(friend)
+      }
+    } else {
+      newArray.push(friend)
+    }
+    return newArray;
+  }, []);
 }
