@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {List, Button, Image} from 'semantic-ui-react';
-import {rejectFriend, acceptFriend} from '../../actions/homeActions';
+import {rejectFriend, acceptFriend, deleteFriend} from '../../actions/homeActions';
 
 const displayButtons = (friend, user) => {
   if (friend.status === 'accepted') {
@@ -51,7 +51,8 @@ const Friend = ({friend, user}) => {
 const mapDispatchToProps = dispatch => {
   return {
     rejectFriend: (user, otherUser) => dispatch(rejectFriend(user, otherUser)),
-    acceptFriend: (user, otherUser) => dispatch(acceptFriend(user, otherUser))
+    acceptFriend: (user, otherUser) => dispatch(acceptFriend(user, otherUser)),
+    deleteFriend: (user, otherUser) => dispatch(deleteFriend(user, otherUser))
   }
 }
 
