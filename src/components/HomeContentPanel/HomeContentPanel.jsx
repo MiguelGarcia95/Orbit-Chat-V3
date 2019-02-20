@@ -39,12 +39,12 @@ class HomeContentPanel extends React.Component {
         </React.Fragment>
       )
     } else {
-      const {otherUser, user, directMessages} = this.props;
+      const {otherUser, user, directMessages, friendsList} = this.props;
       return (
         <React.Fragment>
-          {otherUser && <FriendChatHeader friend={otherUser} user={user} messages={directMessages} />}
+          {otherUser && <FriendChatHeader friend={otherUser} user={user} messages={directMessages} friends={friendsList} />}
           {otherUser && <MessageForm otherUser={otherUser} user={user} />}
-          {directMessages && <Messages messages={directMessages} user={user} otherUser={otherUser} />}
+          {directMessages && <Messages messages={directMessages} user={user} otherUser={otherUser} friends={friendsList}/>}
         </React.Fragment>
       )
     }

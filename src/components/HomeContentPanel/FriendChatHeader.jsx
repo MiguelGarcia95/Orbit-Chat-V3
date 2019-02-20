@@ -1,7 +1,7 @@
 import React from 'react';
 import {Grid, Container, Header, Image, Icon, Button} from 'semantic-ui-react';
 import {connect} from 'react-redux';
-import {deleteDirectMessageChat} from '../../actions/homeActions';
+import {deleteDirectMessageChat, addFriend} from '../../actions/homeActions';
 import {getIdsFromMessages} from '../../utils/functions';
 
 const FriendChatHeader = ({friend, user, deleteDirectMessageChat, messages}) => {
@@ -31,7 +31,8 @@ const FriendChatHeader = ({friend, user, deleteDirectMessageChat, messages}) => 
 
 const mapDispatchToProps = dispatch => {
   return {
-    deleteDirectMessageChat: (user, otherUser, allMessageIds) => dispatch(deleteDirectMessageChat(user, otherUser, allMessageIds))
+    deleteDirectMessageChat: (user, otherUser, allMessageIds) => dispatch(deleteDirectMessageChat(user, otherUser, allMessageIds)),
+    addFriend: (user, otherUser) => dispatch(addFriend(user, otherUser))
   }
 }
 
