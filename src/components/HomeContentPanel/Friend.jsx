@@ -7,26 +7,51 @@ const displayButtons = (friend, user) => {
   if (friend.status === 'accepted') {
     return (
       <React.Fragment>
-        <Button color='red' content='Delete' icon='trash alternate outline' labelPosition='right' />
+        <Button 
+          content='Delete' 
+          color='red' 
+          icon='trash alternate outline' 
+          labelPosition='right' 
+        />
       </React.Fragment>
     )
   } else if (friend.status === 'rejected') {
     return (
       <React.Fragment>
-        <Button color='red' content='Delete' icon='trash alternate outline' labelPosition='right' />
+        <Button 
+          content='Delete' 
+          color='red' 
+          icon='trash alternate outline' 
+          labelPosition='right' 
+        />
       </React.Fragment>
     )
   } else if (isUserSender(friend, user)) {
     return (
       <React.Fragment>
-        <Button content='Waiting' color='grey' icon='wait' labelPosition='right' disabled />
+        <Button 
+          content='Waiting' 
+          color='grey' 
+          icon='wait' 
+          labelPosition='right' disabled 
+        />
       </React.Fragment>
     )
   } else {
     return (
       <React.Fragment>
-        <Button content='Accept' colr='green' icon='check' labelPosition='right' />
-        <Button content='Reject' coloro='orange' icon='user cancel' labelPosition='right' />
+        <Button 
+          content='Accept' 
+          color='green' 
+          icon='check' 
+          labelPosition='right' 
+        />
+        <Button 
+          content='Reject' 
+          color='orange' 
+          icon='user cancel' 
+          labelPosition='right' 
+        />
       </React.Fragment>
     )
   }
