@@ -4,7 +4,7 @@ import Friend from './Friend';
 
 const displayFriends = friends => {
   return friends.map(friend => {
-    return <Friend key={friend.id} friend={friend} />
+    return <Friend key={friend.id} friend={friend.friend} />
   })
 }
 
