@@ -19,7 +19,7 @@ const displayButtons = friend => {
       <React.Fragment>
         <Button content='Accept' color='green' icon='check' labelPosition='right' />
         <Button content='Reject' color='orange' icon='user cancel' labelPosition='right' />
-        <Button content='Waiting' color='grey' icon='user cancel' labelPosition='right' disabled />
+        <Button content='Waiting' color='grey' icon='wait' labelPosition='right' disabled />
       </React.Fragment>
     )
   }
