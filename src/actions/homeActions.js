@@ -255,22 +255,26 @@ export const setFriends = docFriends => {
   return (dispatch) => {
     let friends = [];
     let friendToDelete = [];
+    let friendsUpdated = [];
     docFriends.forEach(docFriend => {
       if (docFriend.type === 'added') {
         friends.push({id: docFriend.doc.id, friend: docFriend.doc.data()});
       } else if (docFriend.type === 'modified') {
-        friends.push({id: docFriend.doc.id, friend: docFriend.doc.data()});
+        friendsUpdated.push({id: docFriend.doc.id, friend: docFriend.doc.data()});
       } else if (docFriend.type === 'removed') {
         friendToDelete.push({id: docFriend.doc.id, friend: docFriend.doc.data()});
       }
     });
+
+    console.log(docFriends)
 
     dispatch({
       type: actionTypes.SET_FRIENDS,
       payload: {
         friendsList: friends,
         homeError: null,
-        friendToDelete: friendToDelete
+        friendToDelete: friendToDelete,
+        friendsUpdated: friendsUpdated
       }
     })
   }

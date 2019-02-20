@@ -68,11 +68,11 @@ const homeReducer = (state = initialState, action) => {
       }
     case actionTypes.SET_FRIENDS:
       let allFriends = [...state.friendsList, ... action.payload.friendsList];
-      
-      // friendToDelete
+      let filteredFriends = removeDuplicateFriends(allFriends);
+      let friends = removeDeletedFriends(filteredFriends, action.payload.friendToDelete);
       return {
         ...state,
-        friendsList: action.payload.friendsList,
+        friendsList: friends,
         homeroomError: action.payload.homeError,
       }
     case actionTypes.ADD_FRIEND:
