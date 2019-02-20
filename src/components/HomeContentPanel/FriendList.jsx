@@ -1,5 +1,5 @@
 import React from 'react';
-import {Comment} from 'semantic-ui-react';
+import {List} from 'semantic-ui-react';
 import Friend from './Friend';
 
 const displayFriends = friends => {
@@ -10,9 +10,9 @@ const displayFriends = friends => {
 
 const FriendList = ({friends}) => {
   return (
-    <Comment.Group className='chat_comment_container'>
+    <List divided verticalAlign='middle' className='chat_comment_container'>
       {displayFriends(friends)}
-    </Comment.Group>
+    </List>
   )
 }
 
