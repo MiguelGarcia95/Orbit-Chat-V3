@@ -35,7 +35,7 @@ class HomeContentPanel extends React.Component {
       return (
         <React.Fragment>
           <FriendListHeader />
-          {friendsList && <FriendList friendsToShow={friendsToShow} />}
+          {friendsList && <FriendList friendsToShow={friendsToShow} friends={friendsList} />}
         </React.Fragment>
       )
     } else {
