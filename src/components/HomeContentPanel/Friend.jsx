@@ -50,9 +50,9 @@ const Friend = ({friend, user}) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    rejectFriend: (user, otherUser) => dispatch(rejectFriend(user, otherUser)),
-    acceptFriend: (user, otherUser) => dispatch(acceptFriend(user, otherUser)),
-    deleteFriend: (user, otherUser) => dispatch(deleteFriend(user, otherUser))
+    rejectFriend: (user, friend) => dispatch(rejectFriend(user, friend)),
+    acceptFriend: (user, friend) => dispatch(acceptFriend(user, friend)),
+    deleteFriend: (user, friend) => dispatch(deleteFriend(user, friend))
   }
 }
 
