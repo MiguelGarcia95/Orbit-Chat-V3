@@ -137,13 +137,15 @@ export const addFriend = (user, otherUser) => {
             uid: otherUser.uid,
             username: otherUser.username,
             avatar: otherUser.avatar,
-            status: 'pending'
+            status: 'pending',
+            canAccept: otherUser.uid
         })
         addFriendRef2.set({
           uid: user.uid,
           username: user.displayName,
           avatar: user.photoURL,
-          status: 'pending'
+          status: 'pending',
+          canAccept: otherUser.uid
       }).then(() => {
           dispatch({
             type: actionTypes.ADD_FRIEND,
