@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Container, Header, Image, Icon} from 'semantic-ui-react';
+import {Grid, Container, Header, Image, Icon, Button} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {deleteDirectMessageChat} from '../../actions/homeActions';
 import {getIdsFromMessages} from '../../utils/functions';
@@ -11,13 +11,18 @@ const FriendChatHeader = ({friend, user, deleteDirectMessageChat, messages}) => 
         <Container fluid textAlign='right' >
           <Image circular src={friend.avatar} size='mini' floated='left' verticalAlign="middle" style={{marginBottom: '0', marginTop: '7.5px'}} />
           <Header as='h5' floated='left' style={{lineHeight: '50px'}} >{friend.username}</Header>
-          {/* 21 height of icon */}
-          <Icon 
-            name='trash alternate outline' 
-            size='large' color='red' 
+          {/* 35 height of button */}
+          <Button circular
+            animated='fade' color='red'
+            style={{padding: '10px 20px'}} 
+            style={{marginBottom: '0', marginTop: '7.6px', cursor: 'pointer'}}
             onClick={() => deleteDirectMessageChat(user, friend, getIdsFromMessages(messages))}
-            style={{marginBottom: '0', marginTop: '14.5px', cursor: 'pointer'}}
-          />
+          >
+            <Button.Content hidden>Delete</Button.Content>
+            <Button.Content visible>
+              <Icon name='trash alternate outline' />
+            </Button.Content>
+          </Button>
         </Container>
       </Grid.Row>
     </Grid>
