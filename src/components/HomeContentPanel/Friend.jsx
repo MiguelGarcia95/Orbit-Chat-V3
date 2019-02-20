@@ -1,6 +1,16 @@
 import React from 'react';
 import {List, Button, Image} from 'semantic-ui-react';
 
+const getFriendStatus = friend => {
+  if (friend.status === 'accepted') {
+
+  } else if (friend.status === 'rejected') {
+
+  } else {
+    
+  }
+}
+
 const Friend = ({friend}) => {
   console.log(friend)
   return (
