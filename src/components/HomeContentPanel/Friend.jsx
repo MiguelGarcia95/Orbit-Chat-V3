@@ -22,6 +22,12 @@ class Friend extends React.Component {
       return (
         <React.Fragment>
           <Button 
+            content='Rejected' 
+            color='red' 
+            icon='x' 
+            labelPosition='right' disabled 
+          />
+          <Button 
             content='Delete' 
             color='red' 
             icon='trash alternate outline' 
