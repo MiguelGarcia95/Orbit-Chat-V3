@@ -187,3 +187,11 @@ export const sortChannelsByDate = channels => {
 
   return sortedChannels;
 }
+
+export const removeDuplicateFriends = friends => {
+
+}
+
+export const removeDeletedFriends = (friends, friendToDelete) => {
+  
+}
