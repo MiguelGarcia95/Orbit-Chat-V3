@@ -1,10 +1,10 @@
 import React from 'react';
-import {Grid, Comment} from 'semantic-ui-react';
+import {Comment} from 'semantic-ui-react';
 import Friend from './Friend';
 
 const displayFriends = friends => {
   return friends.map(friend => {
-    return <Friend friend={friend} />
+    return <Friend key={friend.id} friend={friend} />
   })
 }
 

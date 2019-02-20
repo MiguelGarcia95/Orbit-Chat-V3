@@ -1,7 +1,8 @@
 import React from 'react';
 import {Comment} from 'semantic-ui-react';
 
-const Friend = ({friends}) => {
+const Friend = ({friend}) => {
+  console.log(friend)
   return (
     <Comment className="chat_comment">
       {/* <Comment.Avatar src={message.avatar}  /> */}
