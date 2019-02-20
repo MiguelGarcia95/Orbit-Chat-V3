@@ -11,7 +11,8 @@ const displayButtons = (friend, user) => {
           content='Delete' 
           color='red' 
           icon='trash alternate outline' 
-          labelPosition='right' 
+          labelPosition='right'
+          onClick={() => this.props.deleteFriend(user, friend)}
         />
       </React.Fragment>
     )
@@ -22,7 +23,8 @@ const displayButtons = (friend, user) => {
           content='Delete' 
           color='red' 
           icon='trash alternate outline' 
-          labelPosition='right' 
+          labelPosition='right'
+          onClick={() => this.props.deleteFriend(user, friend)}
         />
       </React.Fragment>
     )
@@ -44,13 +46,15 @@ const displayButtons = (friend, user) => {
           content='Accept' 
           color='green' 
           icon='check' 
-          labelPosition='right' 
+          labelPosition='right'
+          onClick={() => this.props.acceptFriend(user, friend)}
         />
         <Button 
           content='Reject' 
           color='orange' 
           icon='user cancel' 
-          labelPosition='right' 
+          labelPosition='right'
+          onClick={() => this.props.rejectFriend(user, friend)}
         />
       </React.Fragment>
     )
