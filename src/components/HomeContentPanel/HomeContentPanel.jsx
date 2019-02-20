@@ -11,6 +11,7 @@ import MessageForm from './MessageForm';
 
 class HomeContentPanel extends React.Component {
   state = {
+    friendsToShow: 'all'
   }
   
   componentWillMount() {
