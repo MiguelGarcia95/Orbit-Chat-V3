@@ -129,6 +129,8 @@ body {position: absolute; top: 0;}
 .chat_comment_container {
   padding-top: 50px !important;
   padding-bottom: 150px !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
   margin-top: 0px !important;
   margin-bottom: 0px !important;
   width: 100% !important;

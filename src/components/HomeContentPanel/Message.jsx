@@ -1,5 +1,6 @@
 import React from 'react';
-import {Comment, Dropdown, Modal, Input, Segment, Button} from 'semantic-ui-react';
+// import {Comment, Dropdown, Modal, Input, Segment, Button} from 'semantic-ui-react';
+import {Comment, Dropdown} from 'semantic-ui-react';
 import moment from 'moment';
 import {connect} from 'react-redux';
 import {createDirectMessage, deleteDirectMessage, addFriend} from '../../actions/homeActions';
