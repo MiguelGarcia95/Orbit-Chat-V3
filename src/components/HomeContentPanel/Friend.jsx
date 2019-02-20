@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {List, Button, Image, Icon} from 'semantic-ui-react';
-import {rejectFriend, acceptFriend, deleteFriend} from '../../actions/homeActions';
+import {rejectFriend, acceptFriend, deleteFriend, setHomeView} from '../../actions/homeActions';
 
 class Friend extends React.Component {
 
@@ -85,6 +85,8 @@ class Friend extends React.Component {
     return friend.senderId === user.uid ? true : false;
   }
 
+  onUsernameClick = () => console.log('clicked')
+
   render() {
     const {friend, user} = this.props
 
@@ -94,7 +96,13 @@ class Friend extends React.Component {
           {this.displayButtons(friend, user)}
         </List.Content>
         <Image avatar src={friend.avatar} />
-        <List.Content className={`comment_body`}>{friend.username}</List.Content>
+        <List.Content 
+          className={`comment_body`} 
+          as='a' style={{color: 'black'}}
+          onClick={this.onUsernameClick} 
+        >
+          {friend.username}
+        </List.Content>
       </List.Item>
     )
   }
@@ -104,7 +112,8 @@ const mapDispatchToProps = dispatch => {
   return {
     rejectFriend: (user, friend) => dispatch(rejectFriend(user, friend)),
     acceptFriend: (user, friend) => dispatch(acceptFriend(user, friend)),
-    deleteFriend: (user, friend) => dispatch(deleteFriend(user, friend))
+    deleteFriend: (user, friend) => dispatch(deleteFriend(user, friend)),
+    setHomeView: view => dispatch(setHomeView(view))
   }
 }
 
