@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Container, Header, Image} from 'semantic-ui-react';
+import {Grid, Comment} from 'semantic-ui-react';
 import Friend from './Friend';
 
 const displayFriends = friends => {
@@ -10,9 +10,9 @@ const displayFriends = friends => {
 
 const FriendList = ({friends}) => {
   return (
-    <Grid className=''>
+    <Comment.Group className='chat_comment_container'>
       {displayFriends(friends)}
-    </Grid>
+    </Comment.Group>
   )
 }
 
