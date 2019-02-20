@@ -219,3 +219,18 @@ export const removeDeletedFriends = (friends, friendToDelete) => {
     return newArray;
   }, []);
 }
+
+export const replaceUpdateFriends = (friends, friendsToUpdate) => {
+  return friends.reduce((newArray, friend) => {
+    if (friendsToUpdate.length > 0) {
+      if (friendsToUpdate[0].id !== friend.id) {
+        newArray.push(friend)
+      } else {
+        newArray.push(friendsToUpdate[0])
+      }
+    } else {
+      newArray.push(friend)
+    }
+    return newArray;
+  }, []);
+}
