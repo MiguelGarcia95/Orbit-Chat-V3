@@ -1,5 +1,7 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {List, Button, Image} from 'semantic-ui-react';
+import {rejectFriend, acceptFriend} from '../../actions/homeActions';
 
 const displayButtons = (friend, user) => {
   if (friend.status === 'accepted') {
@@ -23,8 +25,8 @@ const displayButtons = (friend, user) => {
   } else {
     return (
       <React.Fragment>
-        <Button content='Accept' color='green' icon='check' labelPosition='right' />
-        <Button content='Reject' color='orange' icon='user cancel' labelPosition='right' />
+        <Button content='Accept' colr='green' icon='check' labelPosition='right' />
+        <Button content='Reject' coloro='orange' icon='user cancel' labelPosition='right' />
       </React.Fragment>
     )
   }
@@ -35,7 +37,6 @@ const isUserSender = (friend, user) => {
 }
 
 const Friend = ({friend, user}) => {
-  console.log(friend)
   return (
     <List.Item className='chat_comment'>
       <List.Content floated='right'>
@@ -47,4 +48,11 @@ const Friend = ({friend, user}) => {
   )
 }
 
-export default Friend;
+const mapDispatchToProps = dispatch => {
+  return {
+    rejectFriend: (user, otherUser) => dispatch(rejectFriend(user, otherUser)),
+    acceptFriend: (user, otherUser) => dispatch(acceptFriend(user, otherUser))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Friend);
