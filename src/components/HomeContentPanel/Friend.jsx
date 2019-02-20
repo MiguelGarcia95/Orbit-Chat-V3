@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {List, Button, Image} from 'semantic-ui-react';
+import {List, Button, Image, Icon} from 'semantic-ui-react';
 import {rejectFriend, acceptFriend, deleteFriend} from '../../actions/homeActions';
 
 class Friend extends React.Component {
@@ -9,31 +9,37 @@ class Friend extends React.Component {
     if (friend.status === 'accepted') {
       return (
         <React.Fragment>
-          <Button 
-            content='Delete' 
-            color='red' 
-            icon='trash alternate outline' 
-            labelPosition='right'
+          <Button circular
+            animated='fade' color='red'
+            style={{padding: '10px 20px'}} 
             onClick={() => this.props.deleteFriend(user, friend)}
-          />
+          >
+            <Button.Content hidden>Unfriend</Button.Content>
+            <Button.Content visible>
+              <Icon name='user x' />
+            </Button.Content>
+          </Button>
         </React.Fragment>
       )
     } else if (friend.status === 'rejected') {
       return (
         <React.Fragment>
-          <Button 
+          <Button
             content='Rejected' 
             color='red' 
             icon='x' 
             labelPosition='right' disabled 
           />
-          <Button 
-            content='Delete' 
-            color='red' 
-            icon='trash alternate outline' 
-            labelPosition='right'
+          <Button circular
+            animated='fade' color='red'
+            style={{padding: '10px 20px'}} 
             onClick={() => this.props.deleteFriend(user, friend)}
-          />
+          >
+            <Button.Content hidden>Delete</Button.Content>
+            <Button.Content visible>
+              <Icon name='user x' />
+            </Button.Content>
+          </Button>
         </React.Fragment>
       )
     } else if (this.isUserSender(friend, user)) {
@@ -50,20 +56,26 @@ class Friend extends React.Component {
     } else {
       return (
         <React.Fragment>
-          <Button 
-            content='Accept' 
-            color='green' 
-            icon='check' 
-            labelPosition='right'
+          <Button circular
+            animated='fade' color='green'
+            style={{padding: '10px 20px'}} 
             onClick={() => this.props.acceptFriend(user, friend)}
-          />
-          <Button 
-            content='Reject' 
-            color='orange' 
-            icon='user cancel' 
-            labelPosition='right'
+          >
+            <Button.Content hidden>Accept</Button.Content>
+            <Button.Content visible>
+              <Icon name='check' />
+            </Button.Content>
+          </Button>
+          <Button circular
+            animated='fade' color='orange'
+            style={{padding: '10px 20px'}} 
             onClick={() => this.props.rejectFriend(user, friend)}
-          />
+          >
+            <Button.Content hidden>Reject</Button.Content>
+            <Button.Content visible>
+              <Icon name='ban' />
+            </Button.Content>
+          </Button>
         </React.Fragment>
       )
     }
