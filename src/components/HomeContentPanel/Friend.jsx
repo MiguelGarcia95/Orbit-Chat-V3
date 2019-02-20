@@ -85,7 +85,7 @@ class Friend extends React.Component {
     return friend.senderId === user.uid ? true : false;
   }
 
-  onUsernameClick = () => console.log('clicked')
+  onUsernameClick = friend => this.props.setHomeView(friend.uid)
 
   render() {
     const {friend, user} = this.props
@@ -99,7 +99,7 @@ class Friend extends React.Component {
         <List.Content 
           className={`comment_body`} 
           as='a' style={{color: 'black'}}
-          onClick={this.onUsernameClick} 
+          onClick={() => this.onUsernameClick(friend)} 
         >
           {friend.username}
         </List.Content>
