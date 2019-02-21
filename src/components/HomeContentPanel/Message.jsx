@@ -19,6 +19,16 @@ class Message extends React.Component{
     this.props.addFriend(this.props.user, this.props.otherUser);
   }
 
+  friendRequestSent = (friend, friends) => {
+    let friendRequestSent = false;
+    friends.forEach(friendRequest => {
+      if (friendRequest.friend.uid === friend.uid) {
+        friendRequestSent = true;
+      }
+    })
+    return friendRequestSent;
+  }
+
   onDelete = () => {
     this.props.deleteDirectMessage(this.props.user, this.props.otherUser.uid, this.props.messageId)
   }

@@ -14,16 +14,6 @@ const isFriend = (friend, friends) => {
   return isFriend;
 }
 
-// const friendRequestSent = (friend, friends) => {
-//   let friendRequestSent = false;
-//   friends.forEach(friendRequest => {
-//     if (friendRequest.friend.uid === friend.uid) {
-//       friendRequestSent = true;
-//     }
-//   })
-//   return friendRequestSent;
-// }
-
 const FriendChatHeader = ({friend, user, deleteDirectMessageChat, messages, friends}) => {
   const isAFriend = isFriend(friend, friends);
   return (
