@@ -21,6 +21,10 @@ class MenuHeader extends React.Component {
     this.closeModal();
   }
 
+  inviteFriend = () => {
+    console.log(this.props.friendsList)
+  }
+
   render() {
     const {modal} = this.state;
     return(
@@ -37,6 +41,7 @@ class MenuHeader extends React.Component {
                 <Dropdown icon='caret down'>
                   <Dropdown.Menu direction='left' >
                     <Dropdown.Item content='New Category' onClick={this.openModal} icon='list' />
+                    <Dropdown.Item content='Invite Friend' onClick={this.inviteFriend} icon='user plus' />
                     <Dropdown.Item content='Leave Chatroom' onClick={this.openModal} icon='minus circle' />
                   </Dropdown.Menu>
                 </Dropdown>
@@ -65,6 +70,12 @@ class MenuHeader extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    friendsList: state.home.friendsList
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     createCategory: category => dispatch(createCategory(category)),
@@ -72,4 +83,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(MenuHeader);
+export default connect(mapStateToProps, mapDispatchToProps)(MenuHeader);
