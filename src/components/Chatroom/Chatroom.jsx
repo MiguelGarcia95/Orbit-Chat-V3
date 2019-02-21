@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {getFirestore} from 'redux-firestore';
 
 import {getChatroom, clearChatroom, getChatroomUsers, joinChatroom} from '../../actions/chatroomActions';
+import {setFriends} from '../../actions/homeActions';
 import {unsetChannel, setChannel, setComments} from '../../actions/channelActions';
 import Spinner from '../Layout/Spinner';
 import ChatCommentPanel from '../ChatCommentPanel/ChatCommentPanel';
@@ -24,6 +25,7 @@ class Chatroom extends React.Component {
         this.props.clearChatroom();
         this.props.getChatroom(this.props.match.params.roomId);
         this.props.getChatroomUsers(this.props.match.params.roomId);
+        this.getFriendsRT(user);
       }
     })
   }
@@ -58,6 +60,14 @@ class Chatroom extends React.Component {
       }
       return filteredChannels
     }, {}) 
+  }
+
+  getFriendsRT = (user) => {
+    const firestore = getFirestore();
+    firestore.collection(`users/${user.uid}/friends`).onSnapshot(snapshot => {
+      let changes = snapshot.docChanges();
+      this.props.setFriends(changes)
+    })
   }
 
   // isUserAMember = (user, chatroomUsers) => {
@@ -122,7 +132,8 @@ const mapDispatchToProps = dispatch => {
     setChannel: (channel) => dispatch(setChannel(channel)),
     setComments: comments => dispatch(setComments(comments)),
     getChatroomUsers: chatroomId => dispatch(getChatroomUsers(chatroomId)),
-    joinChatroom: (user, chatroom) => dispatch(joinChatroom(user, chatroom))
+    joinChatroom: (user, chatroom) => dispatch(joinChatroom(user, chatroom)),
+    setFriends: docFriends => dispatch(setFriends(docFriends))
   }
 }
 
