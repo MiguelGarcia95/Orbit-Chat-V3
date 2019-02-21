@@ -11,30 +11,6 @@ const isFriend = (friend, friends) => {
       isFriend = true;
     }
   })
-
-  // if (isFriend) {
-  //   return (
-  //     <Button 
-  //       color='green' 
-  //       circular
-  //       style={{marginBottom: '0', marginTop: '7.6px'}}
-  //       title='Already a friend'
-  //       icon='users'
-  //     />
-  //   )
-  // } else {
-  //   return (
-  //     <Button circular
-  //       animated='fade' color='green'
-  //       style={{padding: '10px 20px', marginBottom: '0', marginTop: '7.6px', cursor: 'pointer'}}
-  //     >
-  //       <Button.Content hidden>Add Friend</Button.Content>
-  //       <Button.Content visible>
-  //         <Icon name='user plus' />
-  //       </Button.Content>
-  //     </Button>
-  //   )
-  // }
   return isFriend;
 }
 
@@ -49,12 +25,24 @@ const isFriend = (friend, friends) => {
 // }
 
 const FriendChatHeader = ({friend, user, deleteDirectMessageChat, messages, friends}) => {
+  const isAFriend = isFriend(friend, friends);
   return (
     <Grid className='home_comment_header'>
       <Grid.Row columns='1' style={{padding: '0px'}}>
         <Container fluid textAlign='right' >
           <Image circular src={friend.avatar} size='mini' floated='left' verticalAlign="middle" style={{marginBottom: '0', marginTop: '7.5px'}} />
           <Header as='h5' floated='left' style={{lineHeight: '50px'}} content={friend.username} />
+          <Button circular
+            animated='fade' color='green'
+            style={{padding: '10px 20px', marginBottom: '0', marginTop: '7.6px'}}
+            disabled={isAFriend}
+            title='Already Friend'
+          >
+            <Button.Content hidden>Add Friend</Button.Content>
+            <Button.Content visible>
+              <Icon name='user plus' />
+            </Button.Content>
+          </Button>
           {/* 35 height of button */}
           <Button circular
             animated='fade' color='red'
@@ -64,16 +52,6 @@ const FriendChatHeader = ({friend, user, deleteDirectMessageChat, messages, frie
             <Button.Content hidden>Delete</Button.Content>
             <Button.Content visible>
               <Icon name='trash alternate outline' />
-            </Button.Content>
-          </Button>
-          <Button circular
-            animated='fade' color='green'
-            style={{padding: '10px 20px', marginBottom: '0', marginTop: '7.6px'}}
-            disabled title='Already Friend'
-          >
-            <Button.Content hidden>Delete</Button.Content>
-            <Button.Content visible>
-              <Icon name='user plus' />
             </Button.Content>
           </Button>
         </Container>
