@@ -7,6 +7,7 @@ class MenuHeader extends React.Component {
   state = {
     modal: false,
     inviteFriendModal: false,
+    inviteFriendModal: true,
     user: this.props.user,
     chatroom: this.props.chatroom,
     name: ''
@@ -35,15 +36,25 @@ class MenuHeader extends React.Component {
 //     image: { avatar: true, src: '/images/avatar/small/jenny.jpg' },
   }
 
-  isFriend = (friend, friends) => {
-    let isFriend = false;
-    friends.forEach(friendRequest => {
-      if (friendRequest.friend.uid === friend.uid && friendRequest.friend.status === 'accepted') {
-        isFriend = true;
+  getAllFriends = (friends) => {
+    let allFriends = false;
+    friends.forEach(friend => {
+      if (friend.friend.status === 'accepted') {
+        allFriends.push({username: friend.friend.username, avatar: friend.friend.avatar, uid: friend.id});
       }
     })
-    return isFriend;
+    return allFriends;
   }
+
+  // isFriend = (friend, friends) => {
+  //   let isFriend = false;
+  //   friends.forEach(friendRequest => {
+  //     if (friendRequest.friend.uid === friend.uid && friendRequest.friend.status === 'accepted') {
+  //       isFriend = true;
+  //     }
+  //   })
+  //   return isFriend;
+  // }
 
   render() {
     const {modal, inviteFriendModal} = this.state;
@@ -88,15 +99,14 @@ class MenuHeader extends React.Component {
         </Modal>
 
         <Modal open={inviteFriendModal} onClose={this.closeFriendModal} size='mini'>
-          <Modal.Header>Select a Photo</Modal.Header>
-          <Modal.Content image>
-            {/* <Image wrapped size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' /> */}
-            <Modal.Description>
-              <Header>Default Profile Image</Header>
-              <p>We've found the following gravatar image associated with your e-mail address.</p>
-              <p>Is it okay to use this photo?</p>
-            </Modal.Description>
+          <Modal.Header>Pick A Friend To Invite</Modal.Header>
+          <Modal.Content>
+            <p>Are you sure you want to delete your account account account account</p>
           </Modal.Content>
+          <Modal.Actions>
+            <Button negative>No</Button>
+            <Button positive icon='checkmark' labelPosition='right' content='Yes' />
+          </Modal.Actions>
         </Modal>
       </React.Fragment>
     )
