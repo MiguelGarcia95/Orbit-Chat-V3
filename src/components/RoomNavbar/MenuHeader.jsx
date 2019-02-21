@@ -39,9 +39,25 @@ class MenuHeader extends React.Component {
             <Grid.Column verticalAlign='middle' width={2} style={{position: 'absolute', right: '0px', marginRight: '10px'}}>
               <Container fluid>
                 <Dropdown icon='caret down'>
-                  <Dropdown.Menu direction='left' >
+                  <Dropdown.Menu direction='left'  >
                     <Dropdown.Item content='New Category' onClick={this.openModal} icon='list' />
-                    <Dropdown.Item content='Invite Friend' onClick={this.inviteFriend} icon='user plus' />
+                    {/* <Dropdown.Item content='Invite Friend' onClick={this.inviteFriend} icon='user plus' /> */}
+                    <Dropdown.Item direction='right'>
+                      <Dropdown text='Invite Friend' pointing='right'>
+                        <Dropdown.Menu>
+                          <Dropdown.Header>Friends</Dropdown.Header>
+                          <Dropdown.Item>Shirts</Dropdown.Item>
+                          <Dropdown.Item>Pants</Dropdown.Item>
+                          <Dropdown.Item>Jeans</Dropdown.Item>
+                          <Dropdown.Item>Shoes</Dropdown.Item>
+                          <Dropdown.Divider />
+                          <Dropdown.Header>Womens</Dropdown.Header>
+                          <Dropdown.Item>Dresses</Dropdown.Item>
+                          <Dropdown.Item>Shoes</Dropdown.Item>
+                          <Dropdown.Item>Bags</Dropdown.Item>
+                        </Dropdown.Menu>
+                      </Dropdown>
+                    </Dropdown.Item>
                     <Dropdown.Item content='Leave Chatroom' onClick={this.openModal} icon='minus circle' />
                   </Dropdown.Menu>
                 </Dropdown>
