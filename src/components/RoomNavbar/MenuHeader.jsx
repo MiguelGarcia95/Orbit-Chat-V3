@@ -9,6 +9,7 @@ class MenuHeader extends React.Component {
     inviteFriendModal: false,
     inviteFriendModal: true,
     user: this.props.user,
+    friendInviteId: '',
     chatroom: this.props.chatroom,
     name: ''
   }
@@ -49,6 +50,8 @@ class MenuHeader extends React.Component {
   //   })
   //   return isFriend;
   // }
+
+  handleFriendChange = (e, { value }) => this.setState({ friendInviteId: value })
 
   render() {
     const {modal, inviteFriendModal} = this.state;
@@ -97,11 +100,11 @@ class MenuHeader extends React.Component {
         <Modal open={inviteFriendModal} onClose={this.closeFriendModal} size='mini'>
           <Modal.Header>Pick A Friend To Invite</Modal.Header>
           <Modal.Content>
-            <Dropdown placeholder='Select Friend' fluid selection options={modalFriends} />
+            <Dropdown placeholder='Select Friend' fluid selection options={modalFriends} onChange={this.handleFriendChange} />
           </Modal.Content>
           <Modal.Actions>
-            <Button negative icon='ban' labelPosition='left' content='Cancel'   onClick={this.closeFriendModal} />
-            <Button positive icon='checkmark' labelPosition='right' content='Invite' />
+            <Button negative icon='ban' labelPosition='left' content='Cancel' onClick={this.closeFriendModal} />
+            <Button positive icon='checkmark' labelPosition='right' content='Invite' onClick={this.inviteFriend} />
           </Modal.Actions>
         </Modal>
       </React.Fragment>
