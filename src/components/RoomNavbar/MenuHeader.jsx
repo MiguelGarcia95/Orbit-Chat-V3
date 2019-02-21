@@ -35,23 +35,23 @@ class MenuHeader extends React.Component {
     let allFriends = [];
     friends.forEach(friend => {
       if (friend.friend.status === 'accepted') {
-        allFriends.push({text: friend.friend.username, image: friend.friend.avatar, value: friend.id});
+        allFriends.push({text: friend.friend.username, image: friend.friend.avatar, value: friend.id, disabled: true});
       }
     })
     return allFriends;
   }
 
-  // isFriend = (friend, friends) => {
-  //   let isFriend = false;
-  //   friends.forEach(friendRequest => {
-  //     if (friendRequest.friend.uid === friend.uid && friendRequest.friend.status === 'accepted') {
-  //       isFriend = true;
-  //     }
-  //   })
-  //   return isFriend;
-  // }
+  isFriend = (friendId, friends) => {
+    let isFriend = false;
+    friends.forEach(friendRequest => {
+      if (friendRequest.friend.uid === friendId && friendRequest.friend.status === 'accepted') {
+        isFriend = true;
+      }
+    })
+    return isFriend;
+  }
 
-  handleFriendChange = (e, { value }) => this.setState({ friendInviteId: value })
+  handleFriendChange = (e, { value }) => this.setState({ friendInviteId: value });
 
   render() {
     const {modal, inviteFriendModal} = this.state;
