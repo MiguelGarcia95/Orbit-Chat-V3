@@ -7,7 +7,7 @@ import {getIdsFromMessages} from '../../utils/functions';
 const isFriend = (friend, friends) => {
   let isFriend = false;
   friends.forEach(friendRequest => {
-    if (friendRequest.id === friend.id && friendRequest.friend.status === 'accepted') {
+    if (friendRequest.friend.uid === friend.uid && friendRequest.friend.status === 'accepted') {
       isFriend = true;
     }
   })
@@ -17,7 +17,7 @@ const isFriend = (friend, friends) => {
 const friendRequestSent = (friend, friends) => {
   let friendRequestSent = false;
   friends.forEach(friendRequest => {
-    if (friendRequest.id === friend.id) {
+    if (friendRequest.friend.uid === friend.uid) {
       friendRequestSent = true;
     }
   })
