@@ -66,6 +66,16 @@ const FriendChatHeader = ({friend, user, deleteDirectMessageChat, messages, frie
               <Icon name='trash alternate outline' />
             </Button.Content>
           </Button>
+          <Button circular
+            animated='fade' color='green'
+            style={{padding: '10px 20px', marginBottom: '0', marginTop: '7.6px'}}
+            disabled title='Already Friend'
+          >
+            <Button.Content hidden>Delete</Button.Content>
+            <Button.Content visible>
+              <Icon name='user plus' />
+            </Button.Content>
+          </Button>
         </Container>
       </Grid.Row>
     </Grid>
