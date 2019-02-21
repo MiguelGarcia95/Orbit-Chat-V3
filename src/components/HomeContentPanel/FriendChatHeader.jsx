@@ -6,15 +6,22 @@ import {getIdsFromMessages} from '../../utils/functions';
 
 const isFriend = (friend, friends) => {
   let isFriend = false;
+  friends.forEach(friendRequest => {
+    if (friendRequest.id === friend.id && friendRequest.friend.status === 'accepted') {
+      isFriend = true;
+    }
+  })
+  return isFriend;
+}
+
+const friendRequestSent = (friend, friends) => {
   let friendRequestSent = false;
   friends.forEach(friendRequest => {
     if (friendRequest.id === friend.id) {
       friendRequestSent = true;
     }
-    if (friendRequest.id === friend.id && friendRequest.friend.status === 'accepted') {
-      isFriend = true;
-    }
   })
+  return friendRequestSent;
 }
 
 const FriendChatHeader = ({friend, user, deleteDirectMessageChat, messages, friends}) => {
