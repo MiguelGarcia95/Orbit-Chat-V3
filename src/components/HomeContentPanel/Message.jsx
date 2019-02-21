@@ -5,10 +5,6 @@ import {connect} from 'react-redux';
 import {createDirectMessage, deleteDirectMessage, addFriend} from '../../actions/homeActions';
 
 class Message extends React.Component{
-  state = {
-    modal: false
-  }
-
   timeFromNow = message => {
     if (message.createdAt !== null) {
       return moment(message.createdAt.toDate()).fromNow();
@@ -18,9 +14,6 @@ class Message extends React.Component{
   isOwnMessageClass = (message, user) => {
     return message.uid === user.uid ? 'message_self' : ''
   }
-
-  // openModal = () => this.setState({modal: true});
-  // closeModal = () => this.setState({modal: false});
 
   sendFriendRequest = () => {
     this.props.addFriend(this.props.user, this.props.otherUser);
@@ -49,7 +42,6 @@ class Message extends React.Component{
 
   render() {
     const {message, user} = this.props;
-    // const {modal} = this.state;
     return (
       <React.Fragment>
         <Comment className="chat_comment">
