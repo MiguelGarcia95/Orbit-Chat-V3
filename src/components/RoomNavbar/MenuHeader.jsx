@@ -97,12 +97,11 @@ class MenuHeader extends React.Component {
         <Modal open={inviteFriendModal} onClose={this.closeFriendModal} size='mini'>
           <Modal.Header>Pick A Friend To Invite</Modal.Header>
           <Modal.Content>
-            <p>Are you sure you want to delete your account account account account</p>
             <Dropdown placeholder='Select Friend' fluid selection options={modalFriends} />
           </Modal.Content>
           <Modal.Actions>
-            <Button negative>No</Button>
-            <Button positive icon='checkmark' labelPosition='right' content='Yes' />
+            <Button negative icon='ban' labelPosition='left' content='Cancel'   onClick={this.closeFriendModal} />
+            <Button positive icon='checkmark' labelPosition='right' content='Invite' />
           </Modal.Actions>
         </Modal>
       </React.Fragment>
