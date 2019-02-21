@@ -31,7 +31,7 @@ class MenuHeader extends React.Component {
   }
 
   getAllFriends = (friends) => {
-    let allFriends = false;
+    let allFriends = [];
     friends.forEach(friend => {
       if (friend.friend.status === 'accepted') {
         allFriends.push({username: friend.friend.username, avatar: friend.friend.avatar, uid: friend.id});
@@ -52,6 +52,8 @@ class MenuHeader extends React.Component {
 
   render() {
     const {modal, inviteFriendModal} = this.state;
+    let modalFriends = this.getAllFriends(this.props.friendsList);
+    console.log(modalFriends)
     return(
       <React.Fragment>
         <Grid className='header_menu'>
