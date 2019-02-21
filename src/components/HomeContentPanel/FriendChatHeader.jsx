@@ -4,8 +4,20 @@ import {connect} from 'react-redux';
 import {deleteDirectMessageChat, addFriend} from '../../actions/homeActions';
 import {getIdsFromMessages} from '../../utils/functions';
 
+const isFriend = (friend, friends) => {
+  let isFriend = false;
+  let friendRequestSent = false;
+  friends.forEach(friendRequest => {
+    if (friendRequest.id === friend.id) {
+      friendRequestSent = true;
+    }
+    if (friendRequest.id === friend.id && friendRequest.friend.status === 'accepted') {
+      isFriend = true;
+    }
+  })
+}
+
 const FriendChatHeader = ({friend, user, deleteDirectMessageChat, messages, friends}) => {
-  console.log(friends)
   return (
     <Grid className='home_comment_header'>
       <Grid.Row columns='1' style={{padding: '0px'}}>
