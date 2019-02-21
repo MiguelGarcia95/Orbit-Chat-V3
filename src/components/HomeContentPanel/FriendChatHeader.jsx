@@ -11,18 +11,42 @@ const isFriend = (friend, friends) => {
       isFriend = true;
     }
   })
+
+  // if (isFriend) {
+  //   return (
+  //     <Button 
+  //       color='green' 
+  //       circular
+  //       style={{marginBottom: '0', marginTop: '7.6px'}}
+  //       title='Already a friend'
+  //       icon='users'
+  //     />
+  //   )
+  // } else {
+  //   return (
+  //     <Button circular
+  //       animated='fade' color='green'
+  //       style={{padding: '10px 20px', marginBottom: '0', marginTop: '7.6px', cursor: 'pointer'}}
+  //     >
+  //       <Button.Content hidden>Add Friend</Button.Content>
+  //       <Button.Content visible>
+  //         <Icon name='user plus' />
+  //       </Button.Content>
+  //     </Button>
+  //   )
+  // }
   return isFriend;
 }
 
-const friendRequestSent = (friend, friends) => {
-  let friendRequestSent = false;
-  friends.forEach(friendRequest => {
-    if (friendRequest.friend.uid === friend.uid) {
-      friendRequestSent = true;
-    }
-  })
-  return friendRequestSent;
-}
+// const friendRequestSent = (friend, friends) => {
+//   let friendRequestSent = false;
+//   friends.forEach(friendRequest => {
+//     if (friendRequest.friend.uid === friend.uid) {
+//       friendRequestSent = true;
+//     }
+//   })
+//   return friendRequestSent;
+// }
 
 const FriendChatHeader = ({friend, user, deleteDirectMessageChat, messages, friends}) => {
   return (
@@ -30,12 +54,11 @@ const FriendChatHeader = ({friend, user, deleteDirectMessageChat, messages, frie
       <Grid.Row columns='1' style={{padding: '0px'}}>
         <Container fluid textAlign='right' >
           <Image circular src={friend.avatar} size='mini' floated='left' verticalAlign="middle" style={{marginBottom: '0', marginTop: '7.5px'}} />
-          <Header as='h5' floated='left' style={{lineHeight: '50px'}} >{friend.username}</Header>
+          <Header as='h5' floated='left' style={{lineHeight: '50px'}} content={friend.username} />
           {/* 35 height of button */}
           <Button circular
             animated='fade' color='red'
-            style={{padding: '10px 20px'}} 
-            style={{marginBottom: '0', marginTop: '7.6px', cursor: 'pointer'}}
+            style={{padding: '10px 20px', marginBottom: '0', marginTop: '7.6px'}}
             onClick={() => deleteDirectMessageChat(user, friend, getIdsFromMessages(messages))}
           >
             <Button.Content hidden>Delete</Button.Content>
