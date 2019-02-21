@@ -4,7 +4,8 @@ import {connect} from 'react-redux';
 import {deleteDirectMessageChat, addFriend} from '../../actions/homeActions';
 import {getIdsFromMessages} from '../../utils/functions';
 
-const FriendChatHeader = ({friend, user, deleteDirectMessageChat, messages}) => {
+const FriendChatHeader = ({friend, user, deleteDirectMessageChat, messages, friends}) => {
+  console.log(friends)
   return (
     <Grid className='home_comment_header'>
       <Grid.Row columns='1' style={{padding: '0px'}}>

@@ -137,7 +137,8 @@ body {position: absolute; top: 0;}
   height: 100%; 
   top: 0;
   max-width: none !important;
-  position: relative;
+  position: relataive !important;
+  overflow-y: scroll;
 }
 
 .home_comment_header {
