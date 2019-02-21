@@ -33,7 +33,7 @@ class Message extends React.Component{
     this.props.deleteDirectMessage(this.props.user, this.props.otherUser.uid, this.props.messageId)
   }
   
-  isOwnMessageOptions = (message, user) => {
+  isOwnMessageOptions = (message, user, friends) => {
     if (message.uid === user.uid ) {
       return (
         <React.Fragment>
@@ -44,14 +44,16 @@ class Message extends React.Component{
       return (
         <React.Fragment>
           <Dropdown.Item content='Delete' icon='x' onClick={this.onDelete} />
-          <Dropdown.Item content={`Send Friend Request`} icon='user plus' onClick={this.sendFriendRequest} />
+          {!this.friendRequestSent(message, friends) && (
+            <Dropdown.Item content={`Send Friend Request`} icon='user plus' onClick={this.sendFriendRequest} />
+          )}
         </React.Fragment>
       )
     }
   }
 
   render() {
-    const {message, user} = this.props;
+    const {message, user, friends} = this.props;
     return (
       <React.Fragment>
         <Comment className="chat_comment">
@@ -62,7 +64,7 @@ class Message extends React.Component{
             <Comment.Text>{message.comment}</Comment.Text>
             <Dropdown icon='ellipsis vertical' className='message_options'>
               <Dropdown.Menu direction='left' >
-                {this.isOwnMessageOptions(message, user)}
+                {this.isOwnMessageOptions(message, user, friends)}
               </Dropdown.Menu>
             </Dropdown>
           </Comment.Content>
