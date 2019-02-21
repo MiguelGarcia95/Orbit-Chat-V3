@@ -30,12 +30,6 @@ class MenuHeader extends React.Component {
     console.log(this.props.friendsList)
   }
 
-  friendOptions = (friends) => {
-//     text: 'Jenny Hess',
-//     value: 'Jenny Hess',
-//     image: { avatar: true, src: '/images/avatar/small/jenny.jpg' },
-  }
-
   getAllFriends = (friends) => {
     let allFriends = false;
     friends.forEach(friend => {
