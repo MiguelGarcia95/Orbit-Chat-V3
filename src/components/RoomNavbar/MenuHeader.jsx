@@ -25,6 +25,22 @@ class MenuHeader extends React.Component {
     console.log(this.props.friendsList)
   }
 
+  friendOptions = (friends) => {
+//     text: 'Jenny Hess',
+//     value: 'Jenny Hess',
+//     image: { avatar: true, src: '/images/avatar/small/jenny.jpg' },
+  }
+
+  isFriend = (friend, friends) => {
+    let isFriend = false;
+    friends.forEach(friendRequest => {
+      if (friendRequest.friend.uid === friend.uid && friendRequest.friend.status === 'accepted') {
+        isFriend = true;
+      }
+    })
+    return isFriend;
+  }
+
   render() {
     const {modal} = this.state;
     return(
@@ -39,26 +55,12 @@ class MenuHeader extends React.Component {
             <Grid.Column verticalAlign='middle' width={2} style={{position: 'absolute', right: '0px', marginRight: '10px'}}>
               <Container fluid>
                 <Dropdown icon='caret down'>
-                  <Dropdown.Menu direction='left'  >
+                  <Dropdown.Menu >
                     <Dropdown.Item content='New Category' onClick={this.openModal} icon='list' />
-                    {/* <Dropdown.Item content='Invite Friend' onClick={this.inviteFriend} icon='user plus' /> */}
-                    <Dropdown.Item direction='right'>
-                      <Dropdown text='Invite Friend' pointing='right'>
-                        <Dropdown.Menu>
-                          <Dropdown.Header>Friends</Dropdown.Header>
-                          <Dropdown.Item>Shirts</Dropdown.Item>
-                          <Dropdown.Item>Pants</Dropdown.Item>
-                          <Dropdown.Item>Jeans</Dropdown.Item>
-                          <Dropdown.Item>Shoes</Dropdown.Item>
-                          <Dropdown.Divider />
-                          <Dropdown.Header>Womens</Dropdown.Header>
-                          <Dropdown.Item>Dresses</Dropdown.Item>
-                          <Dropdown.Item>Shoes</Dropdown.Item>
-                          <Dropdown.Item>Bags</Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </Dropdown.Item>
-                    <Dropdown.Item content='Leave Chatroom' onClick={this.openModal} icon='minus circle' />
+                    <Dropdown.Item content='Invite Friend' onClick={this.inviteFriend} icon='user plus' />
+                    <Dropdown placeholder='Select Friend' fluid selection options={friendOptions} />
+                    <Dropdown.Divider />
+                    <Dropdown.Item content='Leave Chatroom' onClick={this.openModal} icon='minus circle'/>
                   </Dropdown.Menu>
                 </Dropdown>
               </Container>

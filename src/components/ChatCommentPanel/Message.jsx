@@ -21,6 +21,16 @@ class Message extends React.Component{
     return message.uid === user.uid ? 'message_self' : ''
   }
 
+  friendRequestSent = (friend, friends) => {
+    let friendRequestSent = false;
+    friends.forEach(friendRequest => {
+      if (friendRequest.friend.uid === friend.uid) {
+        friendRequestSent = true;
+      }
+    })
+    return friendRequestSent;
+  }
+
   onChange = e => this.setState({[e.target.name]: e.target.value});
   openModal = () => this.setState({modal: true});
   closeModal = () => this.setState({modal: false});
