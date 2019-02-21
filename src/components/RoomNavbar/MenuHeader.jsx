@@ -1,18 +1,22 @@
 import React from 'react';
-import {Grid, Container, Modal, Segment, Button, Label, Input, Dropdown} from 'semantic-ui-react';
+import {Grid, Container, Modal, Segment, Button, Label, Input, Dropdown, Image, Header} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {createCategory, leaveChatroom} from '../../actions/chatroomActions';
 
 class MenuHeader extends React.Component {
   state = {
     modal: false,
+    inviteFriendModal: false,
     user: this.props.user,
     chatroom: this.props.chatroom,
     name: ''
   }
 
   openModal = () => this.setState({modal: true});
+  openFriendModal = () => this.setState({inviteFriendModal: true});
+
   closeModal = () => this.setState({modal: false});
+  closeFriendModal = () => this.setState({inviteFriendModal: false});
 
   onChange = e => this.setState({[e.target.name]: e.target.value});
 
@@ -42,7 +46,7 @@ class MenuHeader extends React.Component {
   }
 
   render() {
-    const {modal} = this.state;
+    const {modal, inviteFriendModal} = this.state;
     return(
       <React.Fragment>
         <Grid className='header_menu'>
@@ -57,8 +61,7 @@ class MenuHeader extends React.Component {
                 <Dropdown icon='caret down'>
                   <Dropdown.Menu >
                     <Dropdown.Item content='New Category' onClick={this.openModal} icon='list' />
-                    <Dropdown.Item content='Invite Friend' onClick={this.inviteFriend} icon='user plus' />
-                    <Dropdown placeholder='Select Friend' fluid selection options={friendOptions} />
+                    <Dropdown.Item content='Invite Friend' onClick={this.openFriendModal} icon='user plus' />
                     <Dropdown.Divider />
                     <Dropdown.Item content='Leave Chatroom' onClick={this.openModal} icon='minus circle'/>
                   </Dropdown.Menu>
@@ -81,6 +84,18 @@ class MenuHeader extends React.Component {
               <Button.Or />
               <Button positive onClick={this.onSubmit} >Create</Button>
             </Button.Group>
+          </Modal.Content>
+        </Modal>
+
+        <Modal open={inviteFriendModal} onClose={this.closeFriendModal}>
+          <Modal.Header>Select a Photo</Modal.Header>
+          <Modal.Content image>
+            <Image wrapped size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' />
+            <Modal.Description>
+              <Header>Default Profile Image</Header>
+              <p>We've found the following gravatar image associated with your e-mail address.</p>
+              <p>Is it okay to use this photo?</p>
+            </Modal.Description>
           </Modal.Content>
         </Modal>
       </React.Fragment>
