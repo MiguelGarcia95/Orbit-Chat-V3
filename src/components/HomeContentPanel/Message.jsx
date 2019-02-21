@@ -66,20 +66,6 @@ class Message extends React.Component{
             </Dropdown>
           </Comment.Content>
         </Comment>
-
-        {/* <Modal open={modal} onClose={this.closeModal} >
-          <Modal.Header>DM</Modal.Header>
-          <Modal.Content>
-            <Segment>
-              <Input fluid placeholder='Message' name='comment' />
-            </Segment>
-            <Button.Group attached='bottom'>
-              <Button negative onClick={this.closeModal} > Cancel</Button>
-              <Button.Or />
-              <Button positive onClick={this.onSubmit} > Create</Button>
-            </Button.Group>
-          </Modal.Content>
-        </Modal> */}
       </React.Fragment>
     )
   }
