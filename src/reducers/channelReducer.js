@@ -1,5 +1,8 @@
 import * as actionTypes from '../actions/types';
-import {removeDuplicateComments, sortCommentsByDate, removeDeletedComments, sortChannelsByDate, removeCommentsFromOtherChannels, removeDuplicateChannels} from '../utils/functions';
+import {
+  removeDuplicateComments, sortCommentsByDate, removeDeletedComments, sortChannelsByDate, 
+  removeCommentsFromOtherChannels, removeDuplicateChannels
+} from '../utils/functions';
 
 const initialState = {
   currentChannel: null,
