@@ -27,6 +27,8 @@ class HomeContentPanel extends React.Component {
       this.props.getReference(nextProps.user.uid, nextProps.currentView)
     } else if (this.props.currentView !== nextProps.currentView && nextProps.currentView === 'friends') {
       this.getFriendsRT(nextProps.user);
+    } else if (this.props.currentView !== nextProps.currentView && nextProps.currentView === 'chatroom-invites') {
+      console.log('chatroom-invites')
     }
   }
 
@@ -58,11 +60,19 @@ class HomeContentPanel extends React.Component {
     }
   }
 
-  getFriendsRT = (user) => {
+  getFriendsRT = user => {
     const firestore = getFirestore();
     firestore.collection(`users/${user.uid}/friends`).onSnapshot(snapshot => {
       let changes = snapshot.docChanges();
       this.props.setFriends(changes)
+    })
+  }
+
+  getChatroomInvitesRt = user => {
+    const firestore = getFirestore();
+    firestore.collection(`users/${user.uid}/chatroom-invides`).onSnapshot(snapshot => {
+      let changes = snapshot.docChanges();
+      // this.props.setChatroomInvites(changes)
     })
   }
 
