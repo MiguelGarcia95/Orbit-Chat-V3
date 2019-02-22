@@ -35,16 +35,31 @@ class MenuHeader extends React.Component {
     let allFriends = [];
     friends.forEach(friend => {
       if (friend.friend.status === 'accepted') {
-        allFriends.push({text: friend.friend.username, image: friend.friend.avatar, value: friend.id, disabled: true});
+        allFriends.push({
+          text: friend.friend.username, 
+          image: friend.friend.avatar, 
+          value: friend.id, 
+          disabled: this.hasFriendJoined(friend.id)
+        });
       }
     })
     return allFriends;
   }
 
-  isFriend = (friendId, friends) => {
+  // isFriend = (friendId, friends) => {
+  //   let isFriend = false;
+  //   friends.forEach(friendRequest => {
+  //     if (friendRequest.friend.uid === friendId && friendRequest.friend.status === 'accepted') {
+  //       isFriend = true;
+  //     }
+  //   })
+  //   return isFriend;
+  // }
+
+  hasFriendJoined = (friendId) => {
     let isFriend = false;
-    friends.forEach(friendRequest => {
-      if (friendRequest.friend.uid === friendId && friendRequest.friend.status === 'accepted') {
+    this.props.chatroomUsers.forEach(friendRequest => {
+      if (friendRequest.uid === friendId && friendRequest.status === 'accepted') {
         isFriend = true;
       }
     })
@@ -55,7 +70,8 @@ class MenuHeader extends React.Component {
 
   render() {
     const {modal, inviteFriendModal} = this.state;
-    let modalFriends = this.getAllFriends(this.props.friendsList);
+    const {friendsList} = this.props;
+    let modalFriends = this.getAllFriends(friendsList);
     // console.log(modalFriends)
     return(
       <React.Fragment>
@@ -114,7 +130,8 @@ class MenuHeader extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    friendsList: state.home.friendsList
+    friendsList: state.home.friendsList,
+    chatroomUsers: state.chat.chatroomUsers
   }
 }
 
