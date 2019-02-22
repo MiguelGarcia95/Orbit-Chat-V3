@@ -253,10 +253,28 @@ export const deleteFriend = (user, otherUser) => {
 
 export const setChatroomInvites = docChatrooms => {
   return (dispatch) => {
-    // SET_CHATROOM_INVITES
     let chatrooms = [];
     let chatroomToDelete = [];
     let chatroomToUpdate = [];
+    docChatrooms.forEach(docChatroom => {
+      if (docChatroom.type === 'added') {
+        chatrooms.push({id: docChatroom.doc.id, chatroom: docChatroom.doc.data()});
+      } else if (docChatroom.type === 'modified') {
+        chatroomToUpdate.push({id: docChatroom.doc.id, chatroom: docChatroom.doc.data()});
+      } else if (docChatroom.type === 'removed') {
+        chatroomToDelete.push({id: docChatroom.doc.id, chatroom: docChatroom.doc.data()});
+      }
+    });
+
+    dispatch({
+      type: actionTypes.SET_CHATROOM_INVITES,
+      payload: {
+        chatroomInvites: chatrooms,
+        chatroomToDelete: chatroomToDelete,
+        chatroomToUpdate: chatroomToUpdate,
+        homeError: null,
+      }
+    })
   }
 }
 
