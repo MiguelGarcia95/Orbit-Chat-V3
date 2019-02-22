@@ -68,9 +68,11 @@ const homeReducer = (state = initialState, action) => {
         currentView: action.payload.currentView
       }
     case actionTypes.SET_CHATROOM_INVITES: 
+      let allChatroomInvites = [...state.chatroomInvites, ...action.payload.chatroomInvites]
       return {
         ...state,
-        chatroomInvites: action.payload.chatroomInvites
+        chatroomInvites: allChatroomInvites,
+        homeroomError: action.payload.homeError
       }
     case actionTypes.SET_FRIENDS:
       let allFriends = [...state.friendsList, ...action.payload.friendsList];
