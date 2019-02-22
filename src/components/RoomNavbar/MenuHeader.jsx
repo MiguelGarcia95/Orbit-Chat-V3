@@ -61,11 +61,14 @@ class MenuHeader extends React.Component {
     return isFriend;
   }
 
+  isFriendInviteEmpty = () => this.state.friendInviteId === '' ? true : false;
+
   handleFriendChange = (e, { value }) => this.setState({ friendInviteId: value });
 
   render() {
     const {modal, inviteFriendModal} = this.state;
     const {friendsList} = this.props;
+    let isFriendIdEmpty = this.isFriendInviteEmpty();
     let modalFriends = this.getAllFriends(friendsList);
     return(
       <React.Fragment>
@@ -112,8 +115,19 @@ class MenuHeader extends React.Component {
             <Dropdown placeholder='Select Friend' fluid selection options={modalFriends} onChange={this.handleFriendChange} />
           </Modal.Content>
           <Modal.Actions>
-            <Button negative icon='ban' labelPosition='left' content='Cancel' onClick={this.closeFriendModal} />
-            <Button positive icon='checkmark' labelPosition='right' content='Invite' onClick={this.inviteFriend} />
+            <Button
+              negative icon='ban' 
+              labelPosition='left' 
+              content='Cancel' 
+              onClick={this.closeFriendModal}
+            />
+            <Button 
+              positive icon='checkmark' 
+              labelPosition='right' 
+              content='Invite' 
+              onClick={this.inviteFriend} 
+              disabled={isFriendIdEmpty} 
+            />
           </Modal.Actions>
         </Modal>
       </React.Fragment>
