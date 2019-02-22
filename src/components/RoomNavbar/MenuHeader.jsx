@@ -28,7 +28,7 @@ class MenuHeader extends React.Component {
   }
 
   inviteFriend = () => {
-    console.log(this.props.friendsList)
+    console.log(this.state.friendInviteId)
   }
 
   getAllFriends = (friends) => {
@@ -45,16 +45,6 @@ class MenuHeader extends React.Component {
     })
     return allFriends;
   }
-
-  // isFriend = (friendId, friends) => {
-  //   let isFriend = false;
-  //   friends.forEach(friendRequest => {
-  //     if (friendRequest.friend.uid === friendId && friendRequest.friend.status === 'accepted') {
-  //       isFriend = true;
-  //     }
-  //   })
-  //   return isFriend;
-  // }
 
   hasFriendJoined = (friendId) => {
     let isFriend = false;
