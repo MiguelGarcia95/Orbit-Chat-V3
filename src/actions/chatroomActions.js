@@ -88,7 +88,8 @@ export const setCategories = docCategories => {
 
 export const inviteChatroom = (friendId, chatroom) => {
   return (dispatch, getState, {getFirestore}) => {
-    
+    let addUserInviteToChatroom = firestore.collection(`chatrooms/${chatroom.id}/invites`).doc(friendId);
+    let addChatroomInviteToUser = firestore.collection(`users/${friendId}/chatroom-invides`).doc(chatroom.id);
   }
 }
 
