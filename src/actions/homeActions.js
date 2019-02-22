@@ -251,6 +251,12 @@ export const deleteFriend = (user, otherUser) => {
   }
 };
 
+export const setChatroomInvites = docChatrooms => {
+  return (dispatch) => {
+    // SET_CHATROOM_INVITES
+  }
+}
+
 export const setFriends = docFriends => {
   return (dispatch) => {
     let friends = [];
