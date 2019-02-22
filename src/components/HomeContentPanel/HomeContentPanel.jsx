@@ -4,8 +4,10 @@ import {getFirestore} from 'redux-firestore';
 
 import {getReference, setFriends} from '../../actions/homeActions';
 import FriendList from './FriendList';
+import ChatroomInviteList from './ChatroomInviteList';
 import FriendListHeader from './FriendListHeader';
 import FriendChatHeader from './FriendChatHeader';
+import ChatInviteHeader from './ChatInviteHeader';
 import Messages from './Messages';
 import MessageForm from './MessageForm';
 
@@ -29,8 +31,8 @@ class HomeContentPanel extends React.Component {
   }
 
   displayHomeContent = view => {
+    const {otherUser, user, directMessages, friendsList} = this.props;
     if (view === 'friends') {
-      const {friendsList, user} = this.props;
       const {friendsToShow} = this.state;
       return (
         <React.Fragment>
@@ -38,8 +40,14 @@ class HomeContentPanel extends React.Component {
           {friendsList && <FriendList friendsToShow={friendsToShow} friends={friendsList} user={user} />}
         </React.Fragment>
       )
+    } else if (view === 'chatroom-invites') {
+      return (
+        <React.Fragment>
+          <ChatInviteHeader />
+          <ChatroomInviteList user={user} />
+        </React.Fragment>
+      )
     } else {
-      const {otherUser, user, directMessages, friendsList} = this.props;
       return (
         <React.Fragment>
           {otherUser && <FriendChatHeader friend={otherUser} user={user} messages={directMessages} friends={friendsList} />}
