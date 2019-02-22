@@ -9,7 +9,11 @@ class MenuHome extends React.Component {
   }
 
   isDMOnDisplay = () => {
-    return this.props.currentView !== 'friends' ? 'active' : '';
+    if (this.props.currentView !== 'friends' && this.props.currentView !== 'chatroom-invites') {
+      return 'active'
+    } else {
+      return ''
+    }
   }
 
   onClick = view => {
@@ -50,6 +54,17 @@ class MenuHome extends React.Component {
               <Icon name='users'  size='large'/>
             </Container>
           </Grid.Row>
+          <Grid.Row
+            onClick={() => this.onClick('chatroom-invites')} 
+            className={`home_option ${this.isOptionActive('chatroom-invites')}`} 
+            verticalAlign="middle" textAlign='center'
+          >
+            <Container fluid textAlign='right'>
+              <Header as='h3' style={{margin: '0'}} floated='left'>Chatroom Invites</Header>
+              <Icon name='users'  size='large'/>
+            </Container>
+          </Grid.Row>
+          
         </Grid>
 
         <Grid className='home_optiopns_container home_DM' style={{marginTop: '0'}}>
