@@ -51,7 +51,7 @@ class MenuHome extends React.Component {
           >
             <Container fluid textAlign='right'>
               <Header as='h3' style={{margin: '0'}} floated='left'>Friends</Header>
-              <Icon name='users'  size='large'/>
+              <Icon name='users' size='large'/>
             </Container>
           </Grid.Row>
           <Grid.Row
@@ -61,7 +61,7 @@ class MenuHome extends React.Component {
           >
             <Container fluid textAlign='right'>
               <Header as='h3' style={{margin: '0'}} floated='left'>Chatroom Invites</Header>
-              <Icon name='users'  size='large'/>
+              <Icon name='chat' size='large'/>
             </Container>
           </Grid.Row>
           
@@ -71,11 +71,11 @@ class MenuHome extends React.Component {
           <Grid.Row className={`home_option ${this.isDMOnDisplay()}`} verticalAlign="middle" textAlign='center' >
             <Container fluid textAlign='right' >
               <Header as='h3' style={{margin: '0'}} floated='left'>Direct Messages</Header>
-              <Icon name='mail'  size='large'/>
+              <Icon name='mail' size='large'/>
             </Container>
           </Grid.Row>
           <section className='home_options_ref_container'>
-            {references &&  this.displayReferences(references)}
+            {references && this.displayReferences(references)}
           </section>
         </Grid>
       </React.Fragment>
