@@ -1,7 +1,7 @@
 import React from 'react';
-import {Grid, Container, Modal, Segment, Button, Label, Input, Dropdown, Image, Header} from 'semantic-ui-react';
+import {Grid, Container, Modal, Segment, Button, Label, Input, Dropdown} from 'semantic-ui-react';
 import {connect} from 'react-redux';
-import {createCategory, leaveChatroom} from '../../actions/chatroomActions';
+import {createCategory, leaveChatroom, inviteChatroom} from '../../actions/chatroomActions';
 
 class MenuHeader extends React.Component {
   state = {
@@ -28,8 +28,9 @@ class MenuHeader extends React.Component {
   }
 
   inviteFriend = () => {
-    console.log(this.state.friendInviteId)
-  }
+    this.props.inviteChatroom(this.state.friendInviteId, this.props.chatroom);
+    this.closeFriendModal();
+  };
 
   getAllFriends = (friends) => {
     let allFriends = [];
@@ -128,7 +129,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     createCategory: category => dispatch(createCategory(category)),
-    leaveChatroom: (user, chatroom) => dispatch(leaveChatroom(user, chatroom))
+    leaveChatroom: (user, chatroom) => dispatch(leaveChatroom(user, chatroom)),
+    inviteChatroom: (friendId, chatroom) => dispatch(inviteChatroom(friendId, chatroom))
   }
 }
 
