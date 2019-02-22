@@ -21,6 +21,7 @@ class MenuHeader extends React.Component {
   closeFriendModal = () => this.setState({inviteFriendModal: false});
 
   onChange = e => this.setState({[e.target.name]: e.target.value});
+  clearFriendId = () => this.setState({friendInviteId: ''});
 
   onSubmit = () => {
     this.props.createCategory(this.state);
@@ -28,8 +29,11 @@ class MenuHeader extends React.Component {
   }
 
   inviteFriend = () => {
-    this.props.inviteChatroom(this.state.friendInviteId, this.props.chatroom);
-    this.closeFriendModal();
+    if (this.props.friendInviteId !== '') {
+      this.props.inviteChatroom(this.state.friendInviteId, this.props.chatroom);
+      this.clearFriendId();
+      this.closeFriendModal();
+    }
   };
 
   getAllFriends = (friends) => {
@@ -63,7 +67,6 @@ class MenuHeader extends React.Component {
     const {modal, inviteFriendModal} = this.state;
     const {friendsList} = this.props;
     let modalFriends = this.getAllFriends(friendsList);
-    // console.log(modalFriends)
     return(
       <React.Fragment>
         <Grid className='header_menu'>
@@ -87,7 +90,6 @@ class MenuHeader extends React.Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-
         {/* Modal for New Category */}
         <Modal open={modal} onClose={this.closeModal} >
           <Modal.Header>Create A New Category</Modal.Header>
@@ -103,7 +105,7 @@ class MenuHeader extends React.Component {
             </Button.Group>
           </Modal.Content>
         </Modal>
-
+        {/* Modal for Friend Invite */}
         <Modal open={inviteFriendModal} onClose={this.closeFriendModal} size='mini'>
           <Modal.Header>Pick A Friend To Invite</Modal.Header>
           <Modal.Content>
