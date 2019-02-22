@@ -110,13 +110,28 @@ export const inviteChatroom = (friendId, chatroom) => {
           avatar: chatroom.chatroom.avatar,
           uid: chatroom.chatroom.uid,
           createdAt: firestore.FieldValue.serverTimestamp()
-        }).then({
-
+        }).then(() => {
+          dispatch({
+            type: actionTypes.INVITE_CHATROOM,
+            payload: {
+              chatroomError: null        
+            }
+          })
         }).catch(err => {
-
+          dispatch({
+            type: actionTypes.INVITE_CHATROOM,
+            payload: {
+              chatroomError: err.message        
+            }
+          })
         })
       } else {
-        
+        dispatch({
+          type: actionTypes.INVITE_CHATROOM,
+          payload: {
+            chatroomError: 'Already Invited'        
+          }
+        })
       }
     })
 
