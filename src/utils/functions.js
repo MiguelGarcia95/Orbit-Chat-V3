@@ -188,6 +188,25 @@ export const sortChannelsByDate = channels => {
   return sortedChannels;
 }
 
+export const removeDuplicateChannels = channels => {
+  return channels.reduce((newArray, channel) => {
+    if (newArray.length > 0) {
+      let isInArray = false;
+      newArray.forEach(arrayChannel => {
+        if (channel.id === arrayChannel.id) {
+          isInArray = true;
+        }
+      });
+      if (!isInArray) {
+        newArray.push(channel);
+      }
+    } else {
+      newArray.push(channel);
+    }
+    return newArray;
+  }, [])
+}
+
 export const removeDuplicateFriends = friends => {
   return friends.reduce((newArray, friend) => {
     if (newArray.length > 0) {
@@ -198,12 +217,12 @@ export const removeDuplicateFriends = friends => {
         }
       });
       if (!isInArray) {
-        newArray.push(friend)
+        newArray.push(friend);
       }
     } else {
-      newArray.push(friend)
+      newArray.push(friend);
     }
-    return newArray
+    return newArray;
   }, []);
 }
 

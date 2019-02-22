@@ -7,7 +7,6 @@ class MenuHeader extends React.Component {
   state = {
     modal: false,
     inviteFriendModal: false,
-    inviteFriendModal: true,
     user: this.props.user,
     friendInviteId: '',
     chatroom: this.props.chatroom,
