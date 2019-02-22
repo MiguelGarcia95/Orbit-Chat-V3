@@ -86,6 +86,12 @@ export const setCategories = docCategories => {
   }
 }
 
+export const inviteChatroom = (friendId, chatroom) => {
+  return (dispatch, getState, {getFirestore}) => {
+    
+  }
+}
+
 export const joinChatroom = (user, chatroom) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();

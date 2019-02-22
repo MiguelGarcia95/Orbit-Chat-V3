@@ -265,7 +265,6 @@ export const setFriends = docFriends => {
         friendToDelete.push({id: docFriend.doc.id, friend: docFriend.doc.data()});
       }
     });
-    // console.log(friendToUpdate)
 
     dispatch({
       type: actionTypes.SET_FRIENDS,

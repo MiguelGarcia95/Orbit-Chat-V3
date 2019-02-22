@@ -38,7 +38,7 @@ class MenuHeader extends React.Component {
         allFriends.push({
           text: friend.friend.username, 
           image: friend.friend.avatar, 
-          value: friend.id, 
+          value: friend.id,
           disabled: this.hasFriendJoined(friend.id)
         });
       }
