@@ -10,6 +10,7 @@ const initialState = {
   currentView: 'friends',
   directMessages: [],
   friendsList: [],
+  chatroomInvites: [],
   currentReference: null,
   referenceId: null
 }
@@ -65,6 +66,11 @@ const homeReducer = (state = initialState, action) => {
         ...state,
         homeroomError: action.payload.homeError,
         currentView: action.payload.currentView
+      }
+    case actionTypes.SET_CHATROOM_INVITES: 
+      return {
+        ...state,
+        chatroomInvites: action.payload.chatroomInvites
       }
     case actionTypes.SET_FRIENDS:
       let allFriends = [...state.friendsList, ...action.payload.friendsList];
