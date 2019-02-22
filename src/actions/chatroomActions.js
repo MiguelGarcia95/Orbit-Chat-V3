@@ -88,8 +88,39 @@ export const setCategories = docCategories => {
 
 export const inviteChatroom = (friendId, chatroom) => {
   return (dispatch, getState, {getFirestore}) => {
-    let addUserInviteToChatroom = firestore.collection(`chatrooms/${chatroom.id}/invites`).doc(friendId);
-    let addChatroomInviteToUser = firestore.collection(`users/${friendId}/chatroom-invides`).doc(chatroom.id);
+    const firestore = getFirestore();
+
+    let addUserInviteToChatroomRef = firestore.collection(`chatrooms/${chatroom.id}/invites`).doc(friendId);
+    let addChatroomInviteToUserRef = firestore.collection(`users/${friendId}/chatroom-invides`).doc(chatroom.id);
+
+    addUserInviteToChatroomRef.get().then(doc => {
+      if (!doc.exists) {
+        addUserInviteToChatroomRef.set({
+          uid: friendId,
+          chatroomId: chatroom.id
+        });
+      }
+    })
+
+    addChatroomInviteToUserRef.get().then(doc => {
+      if (!doc.exists) {
+        addChatroomInviteToUserRef.set({
+          name:  chatroom.chatroom.name,
+          description:  chatroom.chatroom.description,
+          avatar: chatroom.chatroom.avatar,
+          uid: chatroom.chatroom.uid,
+          createdAt: firestore.FieldValue.serverTimestamp()
+        }).then({
+
+        }).catch(err => {
+
+        })
+      } else {
+        
+      }
+    })
+
+
   }
 }
 
