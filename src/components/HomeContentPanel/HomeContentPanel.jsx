@@ -33,7 +33,7 @@ class HomeContentPanel extends React.Component {
   }
 
   displayHomeContent = view => {
-    const {otherUser, user, directMessages, friendsList} = this.props;
+    const {otherUser, user, directMessages, friendsList, chatroomInvites} = this.props;
     if (view === 'friends') {
       const {friendsToShow} = this.state;
       return (
@@ -46,7 +46,7 @@ class HomeContentPanel extends React.Component {
       return (
         <React.Fragment>
           <ChatInviteHeader />
-          <ChatroomInviteList user={user} />
+          <ChatroomInviteList user={user} chatroomInvites={chatroomInvites} />
         </React.Fragment>
       )
     } else {
