@@ -208,7 +208,7 @@ export const removeDuplicateChannels = channels => {
 }
 
 export const removeDuplicateInvites = chatroomInvites => {
-  return chatroomInvites.reducer((newArray, chatroomInvite) => {
+  return chatroomInvites.reduce((newArray, chatroomInvite) => {
     if (newArray.length > 0) {
       let isInArray = false;
       newArray.foreach(arrayInvite => {
