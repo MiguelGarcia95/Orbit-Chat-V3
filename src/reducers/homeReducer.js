@@ -1,7 +1,8 @@
 import * as actionTypes from '../actions/types';
 import {
   removeDuplicateComments, sortCommentsByDate, removeDeletedComments, removeUnrelatedComments, 
-  removeDuplicateReferences, removeDeletedReferences, removeDeletedFriends, removeDuplicateFriends, replaceUpdateFriends
+  removeDuplicateReferences, removeDeletedReferences, removeDeletedFriends, removeDuplicateFriends, replaceUpdateFriends,
+  removeDuplicateInvites, removeDeletedInvites
 } from '../utils/functions';
 
 const initialState = {
@@ -68,10 +69,12 @@ const homeReducer = (state = initialState, action) => {
         currentView: action.payload.currentView
       }
     case actionTypes.SET_CHATROOM_INVITES: 
-      let allChatroomInvites = [...state.chatroomInvites, ...action.payload.chatroomInvites]
+      let allChatroomInvites = [...state.chatroomInvites, ...action.payload.chatroomInvites];
+      let filteredChatroomInvites = removeDuplicateInvites(allChatroomInvites);
+      let chatroomInvites = removeDeletedInvites(filteredChatroomInvites);
       return {
         ...state,
-        chatroomInvites: allChatroomInvites,
+        chatroomInvites: chatroomInvites,
         homeroomError: action.payload.homeError
       }
     case actionTypes.SET_FRIENDS:
