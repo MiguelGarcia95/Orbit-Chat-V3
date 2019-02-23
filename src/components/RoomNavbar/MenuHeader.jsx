@@ -66,7 +66,7 @@ class MenuHeader extends React.Component {
 
   render() {
     const {modal, inviteFriendModal} = this.state;
-    const {friendsList} = this.props;
+    const {friendsList, chatroom, user} = this.props;
     let isFriendIdEmpty = this.isFriendInviteEmpty();
     let modalFriends = this.getAllFriends(friendsList);
     return(
@@ -75,14 +75,16 @@ class MenuHeader extends React.Component {
           <Grid.Row columns='2' style={{paddingBottom: 0}}>
             <Grid.Column verticalAlign='middle' width={12}>
               <Container fluid>
-              {this.props.chatroom.chatroom.name}
+              {chatroom.chatroom.name}
               </Container>
             </Grid.Column>
             <Grid.Column verticalAlign='middle' width={2} style={{position: 'absolute', right: '0px', marginRight: '10px'}}>
               <Container fluid>
                 <Dropdown icon='caret down'>
                   <Dropdown.Menu >
-                    <Dropdown.Item content='New Category' onClick={this.openModal} icon='list' />
+                    {chatroom.chatroom.uid === user.uid && (
+                      <Dropdown.Item content='New Category' onClick={this.openModal} icon='list' />
+                    )}
                     <Dropdown.Item content='Invite Friend' onClick={this.openFriendModal} icon='user plus' />
                     <Dropdown.Divider />
                     <Dropdown.Item content='Leave Chatroom' onClick={this.openModal} icon='minus circle'/>
