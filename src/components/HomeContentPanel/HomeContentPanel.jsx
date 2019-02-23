@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {getFirestore} from 'redux-firestore';
 
-import {getReference, setFriends} from '../../actions/homeActions';
+import {getReference, setFriends, setChatroomInvites} from '../../actions/homeActions';
 import FriendList from './FriendList';
 import ChatroomInviteList from './ChatroomInviteList';
 import FriendListHeader from './FriendListHeader';
@@ -72,7 +72,7 @@ class HomeContentPanel extends React.Component {
     const firestore = getFirestore();
     firestore.collection(`users/${user.uid}/chatroom-invides`).onSnapshot(snapshot => {
       let changes = snapshot.docChanges();
-      // this.props.setChatroomInvites(changes)
+      this.props.setChatroomInvites(changes)
     })
   }
 
@@ -96,7 +96,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getReference: (userId, referenceId) => dispatch(getReference(userId, referenceId)),
-    setFriends: docFriends => dispatch(setFriends(docFriends))
+    setFriends: docFriends => dispatch(setFriends(docFriends)),
+    setChatroomInvites: docChatrooms => dispatch(setChatroomInvites(docChatrooms))
   }
 }
 
