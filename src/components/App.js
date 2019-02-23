@@ -36,7 +36,6 @@ class App extends React.Component {
       if (this.props.currentView !== nextProps.currentView && nextProps.currentView !== 'friends') {
       this.getChannelCommentsRT(nextProps.user, nextProps.currentView)
     } else if (this.props.currentView !== nextProps.currentView && nextProps.currentView !== 'chatroom-invites') {
-      console.log('chatroom-invites');
     }
   }
 

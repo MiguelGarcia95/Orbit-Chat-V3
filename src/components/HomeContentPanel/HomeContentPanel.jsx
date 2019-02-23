@@ -23,7 +23,7 @@ class HomeContentPanel extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.currentView !== nextProps.currentView && nextProps.currentView !== 'friends') {
+    if (this.props.currentView !== nextProps.currentView && nextProps.currentView !== 'friends' && nextProps.currentView !== 'chatroom-invites') {
       this.props.getReference(nextProps.user.uid, nextProps.currentView)
     } else if (this.props.currentView !== nextProps.currentView && nextProps.currentView === 'friends') {
       this.getFriendsRT(nextProps.user);
