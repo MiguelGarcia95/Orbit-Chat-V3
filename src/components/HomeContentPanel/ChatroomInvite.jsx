@@ -85,23 +85,23 @@ class ChatroomInvite extends React.Component {
     return friend.senderId === user.uid ? true : false;
   }
 
-  onUsernameClick = friend => this.props.setHomeView(friend.uid)
+  // onUsernameClick = friend => this.props.setHomeView(friend.uid)
 
   render() {
-    const {friend, user} = this.props
+    const {chatroomInvite, user} = this.props
 
     return (
       <List.Item className='chat_comment'>
         <List.Content floated='right'>
           {/* {this.displayButtons(friend, user)} */}
         </List.Content>
-        <Image avatar src={friend.avatar} />
+        <Image avatar src={chatroomInvite.avatar} />
         <List.Content 
           className={`comment_body`} 
           as='a' style={{color: 'black'}}
-          onClick={() => this.onUsernameClick(friend)} 
+          // onClick={() => this.onUsernameClick(chatroomInvite)} 
         >
-          {/* {friend.username} */}
+          {chatroomInvite.name}
         </List.Content>
       </List.Item>
     )
