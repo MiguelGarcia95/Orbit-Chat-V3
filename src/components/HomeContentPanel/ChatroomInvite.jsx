@@ -8,7 +8,7 @@ class ChatroomInvite extends React.Component {
 
   render() {
     const {chatroomInvite, user} = this.props
-
+    // console.log(chatroomId)
     return (
       <List.Item className='chat_comment'>
         <List.Content floated='right'>
@@ -25,7 +25,7 @@ class ChatroomInvite extends React.Component {
           <Button circular
             animated='fade' color='orange'
             style={{padding: '10px 20px'}} 
-            // onClick={() => this.props.rejectFriend(user, friend)}
+            onClick={() => this.props.rejectChatroomInvitation(user.id, chatroomInvite.id)}
           >
             <Button.Content hidden>Reject</Button.Content>
             <Button.Content visible>
@@ -33,13 +33,12 @@ class ChatroomInvite extends React.Component {
             </Button.Content>
           </Button>
         </List.Content>
-        <Image avatar src={chatroomInvite.avatar} />
+        <Image avatar src={chatroomInvite.chatroom.avatar} />
         <List.Content 
           className={`comment_body`} 
-          as='a' style={{color: 'black'}}
-          // onClick={() => this.onUsernameClick(chatroomInvite)} 
+          as='p'
         >
-          {chatroomInvite.name}
+          {chatroomInvite.chatroom.name}
         </List.Content>
       </List.Item>
     )

@@ -5,7 +5,7 @@ import ChatroomInvite from './ChatroomInvite';
 const displayChatrooms = (chatrooms, user) => {
   if (chatrooms.length > 0) {
     return chatrooms.map(chatroomInvite => {
-      return <ChatroomInvite key={chatroomInvite.id} chatroomInvite={chatroomInvite.chatroom} />
+      return <ChatroomInvite key={chatroomInvite.id} chatroomInvite={chatroomInvite} />
     })
   } else {
     return <section><h1>No Chatrooms</h1></section>
