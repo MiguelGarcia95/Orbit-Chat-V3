@@ -1,10 +1,11 @@
 import React from 'react';
 import {List} from 'semantic-ui-react';
+import ChatroomInvite from './ChatroomInvite';
 
 const displayChatrooms = (chatrooms, user) => {
   if (chatrooms.length > 0) {
-    return chatrooms.map(friend => {
-      return <section><h1>Chatroom Here</h1></section>
+    return chatrooms.map(chatroomInvite => {
+      return <ChatroomInvite key={chatroomInvite.id} chatroomInvite={chatroomInvite.chatroom} />
     })
   } else {
     return <section><h1>No Chatrooms</h1></section>
