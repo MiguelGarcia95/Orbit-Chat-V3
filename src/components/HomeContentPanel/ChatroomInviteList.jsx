@@ -12,10 +12,10 @@ const displayChatrooms = (chatrooms, user) => {
   
 }
 
-const ChatroomInviteList = ({user}) => {
+const ChatroomInviteList = ({user, chatroomInvites}) => {
   return (
     <List divided verticalAlign='middle' className='chat_comment_container'>
-      {displayChatrooms([1,2,3], user)}
+      {displayChatrooms(chatroomInvites, user)}
     </List>
   )
 }
