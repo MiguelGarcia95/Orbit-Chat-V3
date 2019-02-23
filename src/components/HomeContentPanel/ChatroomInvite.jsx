@@ -94,6 +94,26 @@ class ChatroomInvite extends React.Component {
       <List.Item className='chat_comment'>
         <List.Content floated='right'>
           {/* {this.displayButtons(friend, user)} */}
+          <Button circular
+            animated='fade' color='green'
+            style={{padding: '10px 20px'}} 
+            // onClick={() => this.props.acceptFriend(user, friend)}
+          >
+            <Button.Content hidden>Join</Button.Content>
+            <Button.Content visible>
+              <Icon name='check' />
+            </Button.Content>
+          </Button>
+          <Button circular
+            animated='fade' color='orange'
+            style={{padding: '10px 20px'}} 
+            // onClick={() => this.props.rejectFriend(user, friend)}
+          >
+            <Button.Content hidden>Reject</Button.Content>
+            <Button.Content visible>
+              <Icon name='ban' />
+            </Button.Content>
+          </Button>
         </List.Content>
         <Image avatar src={chatroomInvite.avatar} />
         <List.Content 
