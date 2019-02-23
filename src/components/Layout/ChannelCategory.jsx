@@ -59,14 +59,16 @@ class ChannelCategory extends React.Component {
   }
 
   render() {
-    const {modal, category} = this.state;
+    const {modal, category, chatroom, user} = this.state;
     const {channels, currentChannel} = this.props;
     return (
       <React.Fragment>
         <Grid >
           <Container fluid textAlign='right'  >
             <Header as='h4' className='category_header' floated='left' >{this.props.category.category.name}</Header>
-            <Icon name='plus' style={{cursor: 'pointer'}}  onClick={this.openModal} />
+            {chatroom.chatroom.uid === user.uid && (
+              <Icon name='plus' style={{cursor: 'pointer'}}  onClick={this.openModal} />
+            )}
           </Container>
           <Container fluid textAlign='right'>
             {currentChannel && this.displayChannels(channels, category)}
