@@ -86,6 +86,18 @@ export const setCategories = docCategories => {
   }
 }
 
+export const rejectChatroomInvitation = (userId, chatroomId) => {
+   return (dispatch, getState, {getFirestore}) => {
+     const firestore = getFirestore();
+
+     let 
+   }
+}
+
+export const getChatroomInvivations = (chatroomId) => {
+  
+}
+
 export const inviteChatroom = (friendId, chatroom) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
@@ -134,8 +146,6 @@ export const inviteChatroom = (friendId, chatroom) => {
         })
       }
     })
-
-
   }
 }
 
