@@ -95,9 +95,19 @@ export const rejectChatroomInvitation = (userId, chatroomId) => {
 
     removeUserInviteToChatroomRef.delete();
     removeChatroomInviteToUserRef.delete().then(() => {
-
+      dispatch({
+        type: actionTypes.REJECT_CHATROOM,
+        payload: {
+          chatroomError: null        
+        }
+      })
     }).catch(err => {
-      
+      dispatch({
+        type: actionTypes.REJECT_CHATROOM,
+        payload: {
+          chatroomError: err.message        
+        }
+      })
     })
 
   }
