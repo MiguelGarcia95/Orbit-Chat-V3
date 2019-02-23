@@ -28,7 +28,7 @@ class HomeContentPanel extends React.Component {
     } else if (this.props.currentView !== nextProps.currentView && nextProps.currentView === 'friends') {
       this.getFriendsRT(nextProps.user);
     } else if (this.props.currentView !== nextProps.currentView && nextProps.currentView === 'chatroom-invites') {
-      console.log('chatroom-invites')
+      this.getChatroomInvitesRT(nextProps.user);
     }
   }
 
@@ -68,7 +68,7 @@ class HomeContentPanel extends React.Component {
     })
   }
 
-  getChatroomInvitesRt = user => {
+  getChatroomInvitesRT = user => {
     const firestore = getFirestore();
     firestore.collection(`users/${user.uid}/chatroom-invides`).onSnapshot(snapshot => {
       let changes = snapshot.docChanges();
@@ -89,7 +89,8 @@ class HomeContentPanel extends React.Component {
 const mapStateToProps = state => {
   return {
     directMessages: state.home.directMessages,
-    friendsList: state.home.friendsList
+    friendsList: state.home.friendsList,
+    chatroomInvites: state.home.chatroomInvites
   }
 }
 
