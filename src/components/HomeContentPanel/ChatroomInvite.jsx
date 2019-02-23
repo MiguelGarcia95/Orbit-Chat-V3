@@ -48,7 +48,7 @@ class ChatroomInvite extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    rejectChatroomInvitation: () => dispatch(rejectChatroomInvitation(userId, chatroomId)),
+    rejectChatroomInvitation: (userId, chatroomId) => dispatch(rejectChatroomInvitation(userId, chatroomId)),
     joinChatroom: (user, chatroom) => dispatch(joinChatroom(user, chatroom))
   }
 }
