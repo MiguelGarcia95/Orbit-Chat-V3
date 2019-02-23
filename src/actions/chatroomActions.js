@@ -172,8 +172,23 @@ export const joinChatroom = (user, chatroom) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
 
+    let removeUserInviteToChatroomRef = firestore.collection(`chatrooms/${chatroom.id}/invites`).doc(user.uid);
+    let removeChatroomInviteToUserRef = firestore.collection(`users/${user.uid}/chatroom-invides`).doc(chatroom.id);
+
     let addUserToChatroomRef = firestore.collection(`chatrooms/${chatroom.id}/users`).doc(user.uid);
     let addChatroomRefToUserRef = firestore.collection(`users/${user.uid}/chatrooms`).doc(chatroom.id);
+
+    removeUserInviteToChatroomRef.get().then(doc => {
+      if (doc.exists) {
+        removeUserInviteToChatroomRef.delete();
+      }
+    });
+
+    removeChatroomInviteToUserRef.get().then(doc => {
+      if (doc.exists) {
+        removeChatroomInviteToUserRef.delete();
+      }
+    });
 
     addUserToChatroomRef.get().then(doc => {
       if (!doc.exists) {
