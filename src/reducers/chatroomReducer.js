@@ -71,7 +71,13 @@ const chatroomReducer = (state = initialState, action) => {
     case actionTypes.INVITE_CHATROOM:
       return {
         ...state,
-        chatroomError: action.payload.chatroomError
+        chatroomError: action.payload.chatroomError,
+      }
+    case actionTypes.GET_CHATROOM_INVITES:
+      return {
+        ...state,
+        chatroomError: action.payload.chatroomError,
+        chatroomInvites: action.payload.chatroomInvites
       }
     case actionTypes.JOIN_CHATROOM:
       let currentChatroom = !action.payload.currentChatroom ? state.currentChatroom : action.payload.currentChatroom;
