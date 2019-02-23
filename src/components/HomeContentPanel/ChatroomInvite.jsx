@@ -8,14 +8,14 @@ class ChatroomInvite extends React.Component {
 
   render() {
     const {chatroomInvite, user} = this.props
-    // console.log(chatroomId)
+    console.log(chatroomInvite)
     return (
       <List.Item className='chat_comment'>
         <List.Content floated='right'>
           <Button circular
             animated='fade' color='green'
             style={{padding: '10px 20px'}} 
-            // onClick={() => this.props.acceptFriend(user, friend)}
+            onClick={() => this.props.joinChatroom(user, chatroomInvite)}
           >
             <Button.Content hidden>Join</Button.Content>
             <Button.Content visible>
