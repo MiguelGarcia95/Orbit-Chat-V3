@@ -227,7 +227,16 @@ export const removeDuplicateInvites = chatroomInvites => {
 }
 
 export const removeDeletedInvites = (chatroomInvites, inviteToDelete) => {
-
+  return chatroomInvites.reduce((newArray, chatroomInvite) => {
+    if (inviteToDelete.length > 0) {
+      if (inviteToDelete[0].id !== chatroomInvite.id) {
+        newArray.push(chatroomInvite);
+      }
+    } else {
+      newArray.push(chatroomInvite);
+    }
+    return newArray;
+  }, []);
 }
 
 export const removeDuplicateFriends = friends => {
