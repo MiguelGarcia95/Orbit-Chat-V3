@@ -138,7 +138,7 @@ const mapStateToProps = state => {
   return {
     friendsList: state.home.friendsList,
     chatroomUsers: state.chat.chatroomUsers,
-    chatroomUsers: state.chat.chatroomUsers
+    chatroomInvites: state.chat.chatroomInvites
   }
 }
 

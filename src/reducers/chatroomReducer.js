@@ -8,7 +8,6 @@ const initialState = {
   inChatroom: false,
   chatroomRedirect: false,
   chatroomUsers: [],
-  userChatrooms: [],
   chatroomInvites: [],
   chatrooms: [],
   categories: []
