@@ -9,6 +9,7 @@ const initialState = {
   chatroomRedirect: false,
   chatroomUsers: [],
   userChatrooms: [],
+  chatroomInvites: [],
   chatrooms: [],
   categories: []
 }
