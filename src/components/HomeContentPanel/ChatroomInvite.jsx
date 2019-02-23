@@ -4,7 +4,6 @@ import {List, Button, Image, Icon} from 'semantic-ui-react';
 import {joinChatroom, rejectChatroomInvitation} from '../../actions/chatroomActions';
 
 class ChatroomInvite extends React.Component {
-  // onUsernameClick = friend => this.props.setHomeView(friend.uid);
 
   render() {
     const {chatroomInvite, user} = this.props
