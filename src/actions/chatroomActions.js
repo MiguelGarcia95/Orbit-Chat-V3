@@ -87,15 +87,24 @@ export const setCategories = docCategories => {
 }
 
 export const rejectChatroomInvitation = (userId, chatroomId) => {
-   return (dispatch, getState, {getFirestore}) => {
-     const firestore = getFirestore();
+  return (dispatch, getState, {getFirestore}) => {
+    const firestore = getFirestore();
 
-     let 
-   }
+    let removeUserInviteToChatroomRef = firestore.collection(`chatrooms/${chatroomId}/invites`).doc(userId);
+    let removeChatroomInviteToUserRef = firestore.collection(`users/${userId}/chatroom-invides`).doc(chatroomId);
+
+    removeUserInviteToChatroomRef.delete();
+    removeChatroomInviteToUserRef.delete().then(() => {
+
+    }).catch(err => {
+      
+    })
+
+  }
 }
 
 export const getChatroomInvivations = (chatroomId) => {
-  
+
 }
 
 export const inviteChatroom = (friendId, chatroom) => {
