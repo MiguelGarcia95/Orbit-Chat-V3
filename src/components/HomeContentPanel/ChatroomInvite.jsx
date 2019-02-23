@@ -3,14 +3,14 @@ import {connect} from 'react-redux';
 import {List, Button, Image, Icon} from 'semantic-ui-react';
 import {joinChatroom, rejectChatroomInvitation} from '../../actions/chatroomActions';
 
-const ChatroomInvite = ({chatroomInvite, user}) => {
+const ChatroomInvite = ({chatroomInvite, user, joinChatroom, rejectChatroomInvitation}) => {
   return (
     <List.Item className='chat_comment'>
       <List.Content floated='right'>
         <Button circular
           animated='fade' color='green'
           style={{padding: '10px 20px'}} 
-          onClick={() => this.props.joinChatroom(user, chatroomInvite)}
+          onClick={() => joinChatroom(user, chatroomInvite)}
         >
           <Button.Content hidden>Join</Button.Content>
           <Button.Content visible>
@@ -20,7 +20,7 @@ const ChatroomInvite = ({chatroomInvite, user}) => {
         <Button circular
           animated='fade' color='orange'
           style={{padding: '10px 20px'}} 
-          onClick={() => this.props.rejectChatroomInvitation(user.id, chatroomInvite.id)}
+          onClick={() => rejectChatroomInvitation(user.id, chatroomInvite.id)}
         >
           <Button.Content hidden>Reject</Button.Content>
           <Button.Content visible>
