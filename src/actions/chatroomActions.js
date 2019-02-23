@@ -172,63 +172,61 @@ export const joinChatroom = (user, chatroom) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
 
-    console.log(user, chatroom)
+    let removeUserInviteToChatroomRef = firestore.collection(`chatrooms/${chatroom.id}/invites`).doc(user.uid);
+    let removeChatroomInviteToUserRef = firestore.collection(`users/${user.uid}/chatroom-invides`).doc(chatroom.id);
 
-    // let removeUserInviteToChatroomRef = firestore.collection(`chatrooms/${chatroom.id}/invites`).doc(user.uid);
-    // let removeChatroomInviteToUserRef = firestore.collection(`users/${user.uid}/chatroom-invides`).doc(chatroom.id);
+    let addUserToChatroomRef = firestore.collection(`chatrooms/${chatroom.id}/users`).doc(user.uid);
+    let addChatroomRefToUserRef = firestore.collection(`users/${user.uid}/chatrooms`).doc(chatroom.id);
 
-    // let addUserToChatroomRef = firestore.collection(`chatrooms/${chatroom.id}/users`).doc(user.uid);
-    // let addChatroomRefToUserRef = firestore.collection(`users/${user.uid}/chatrooms`).doc(chatroom.id);
+    removeUserInviteToChatroomRef.get().then(doc => {
+      if (doc.exists) {
+        removeUserInviteToChatroomRef.delete();
+      }
+    });
 
-    // removeUserInviteToChatroomRef.get().then(doc => {
-    //   if (doc.exists) {
-    //     removeUserInviteToChatroomRef.delete();
-    //   }
-    // });
+    removeChatroomInviteToUserRef.get().then(doc => {
+      if (doc.exists) {
+        removeChatroomInviteToUserRef.delete();
+      }
+    });
 
-    // removeChatroomInviteToUserRef.get().then(doc => {
-    //   if (doc.exists) {
-    //     removeChatroomInviteToUserRef.delete();
-    //   }
-    // });
-
-    // addUserToChatroomRef.get().then(doc => {
-    //   if (!doc.exists) {
-    //     addUserToChatroomRef.set({
-    //       uid: user.uid,
-    //       avatar: user.photoURL,
-    //       username: user.displayName
-    //     })
-    //   }
-    // })
+    addUserToChatroomRef.get().then(doc => {
+      if (!doc.exists) {
+        addUserToChatroomRef.set({
+          uid: user.uid,
+          avatar: user.photoURL,
+          username: user.displayName
+        })
+      }
+    })
     
-    // addChatroomRefToUserRef.get().then(doc => {
-    //   if (!doc.exists) {
-    //     addChatroomRefToUserRef.set({
-    //       name:  chatroom.chatroom.name,
-    //       description:  chatroom.chatroom.description,
-    //       avatar: chatroom.chatroom.avatar,
-    //       uid: chatroom.chatroom.uid,
-    //       createdAt: firestore.FieldValue.serverTimestamp()
-    //     }).then(() => {
-    //       dispatch({
-    //         type: actionTypes.JOIN_CHATROOM,
-    //         payload: {
-    //           chatroomError: null,
-    //           currentChatroom: chatroom
-    //         }
-    //       })
-    //     })
-    //   } else {
-    //     dispatch({
-    //       type: actionTypes.JOIN_CHATROOM,
-    //       payload: {
-    //         chatroomError: 'Already In Chatroom',
-    //         currentChatroom: chatroom
-    //       }
-    //     })
-    //   }
-    // })
+    addChatroomRefToUserRef.get().then(doc => {
+      if (!doc.exists) {
+        addChatroomRefToUserRef.set({
+          name:  chatroom.chatroom.name,
+          description:  chatroom.chatroom.description,
+          avatar: chatroom.chatroom.avatar,
+          uid: chatroom.chatroom.uid,
+          createdAt: firestore.FieldValue.serverTimestamp()
+        }).then(() => {
+          dispatch({
+            type: actionTypes.JOIN_CHATROOM,
+            payload: {
+              chatroomError: null,
+              currentChatroom: chatroom
+            }
+          })
+        })
+      } else {
+        dispatch({
+          type: actionTypes.JOIN_CHATROOM,
+          payload: {
+            chatroomError: 'Already In Chatroom',
+            currentChatroom: chatroom
+          }
+        })
+      }
+    })
   }
 };
 
