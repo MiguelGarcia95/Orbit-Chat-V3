@@ -122,15 +122,22 @@ export const getChatroomInvivations = chatroomId => {
         chatroomInvites.push({id: chatroomInvite.id, invite: chatroomInvite.data()})
       })
 
-      console.log(chatroomInvites);
+      dispatch({
+        type: actionTypes.GET_CHATROOM_INVITES,
+        payload:{
+          chatroomError: null,
+          chatroomInvites: chatroomInvites   
+        }
+      })
+    }).catch(err => {
+      dispatch({
+        type: actionTypes.GET_CHATROOM_INVITES,
+        payload:{
+          chatroomError: err.message,
+          chatroomInvites: []   
+        }
+      })
     });
-
-    dispatch({
-      type: actionTypes.GET_CHATROOM_INVITES,
-      payload:{
-        chatroomError: null          
-      }
-    })
   }
 }
 
