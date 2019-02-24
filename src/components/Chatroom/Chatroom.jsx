@@ -105,9 +105,9 @@ class Chatroom extends React.Component {
         <Grid.Column style={{marginLeft: 312, height: '100%'}} >
             {currentChannel && <ChatCommentPanel  channel={currentChannel} user={user} getChannelComemntrsRT={this.getChannelComemntrsRT} />}
         </Grid.Column>
-        <Grid.Column width={2}>
+        {/* <Grid.Column width={2}>
           <React.Fragment> </React.Fragment>
-        </Grid.Column>
+        </Grid.Column> */}
       </Grid>
     );
   }
