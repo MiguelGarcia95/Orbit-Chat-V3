@@ -35,6 +35,11 @@ const chatroomReducer = (state = initialState, action) => {
         chatroomUsers: action.payload.chatroomUsers,
         chatroomError: action.payload.chatroomError
       }
+    case actionTypes.CHATROOM_REDIRECT:
+      return {
+        ...state,
+        chatroomRedirect: action.payload.chatroomRedirect
+      }
     case actionTypes.SET_CHATROOM_CATEGORIES:
       let categories = [...state.categories, ...action.payload.categories];
       let sortedCategories = sortCategoriesByDate(categories);

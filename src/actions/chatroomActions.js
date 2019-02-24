@@ -254,6 +254,18 @@ export const joinChatroom = (user, chatroom) => {
   }
 };
 
+export const chatroomRedirect = () => {
+  return (dispatch) => {
+    dispatch({
+      type: actionTypes.CHATROOM_REDIRECT,
+      payload: {
+        chatroomError: null,
+        chatroomRedirect: true
+      }
+    })
+  }
+}
+
 export const leaveChatroom = (user, chatroom) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
