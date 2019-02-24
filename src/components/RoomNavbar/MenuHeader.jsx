@@ -62,7 +62,7 @@ class MenuHeader extends React.Component {
         isFriend = true;
       }
     })
-    
+
     return isFriend;
   }
 
@@ -93,7 +93,9 @@ class MenuHeader extends React.Component {
                     )}
                     <Dropdown.Item content='Invite Friend' onClick={this.openFriendModal} icon='user plus' />
                     <Dropdown.Divider />
-                    <Dropdown.Item content='Leave Chatroom' onClick={this.openModal} icon='minus circle'/>
+                    {chatroom.chatroom.uid !== user.uid && (
+                      <Dropdown.Item content='Leave Chatroom' onClick={this.openModal} icon='minus circle'/>
+                    )}
                   </Dropdown.Menu>
                 </Dropdown>
               </Container>
