@@ -113,7 +113,7 @@ export const rejectChatroomInvitation = (userId, chatroomId) => {
   }
 }
 
-export const getChatroomInvivations = (chatroomId) => {
+export const getChatroomInvivations = chatroomId => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
     firestore.collection(`chatrooms/${chatroomId}/invites`).get().then(data => {
