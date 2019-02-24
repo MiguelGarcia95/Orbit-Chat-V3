@@ -4,7 +4,7 @@ import {Grid} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {getFirestore} from 'redux-firestore';
 
-import {getChatroom, clearChatroom, getChatroomUsers, joinChatroom, getChatroomInvivations} from '../../actions/chatroomActions';
+import {getChatroom, clearChatroom, getChatroomUsers, joinChatroom, getChatroomInvivations, chatroomRedirect} from '../../actions/chatroomActions';
 import {setFriends} from '../../actions/homeActions';
 import {unsetChannel, setChannel, setComments} from '../../actions/channelActions';
 import Spinner from '../Layout/Spinner';
@@ -33,6 +33,8 @@ class Chatroom extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (!this.state.firstLoad && nextProps.chatroomRedirect) {
+      this.props.unsetChannel();
+      this.props.clearChatroom();
       this.props.history.push('/app');
     } else if (!this.state.firstLoad && this.props.match.params.roomId !== nextProps.match.params.roomId) {
       this.props.unsetChannel();
@@ -47,7 +49,12 @@ class Chatroom extends React.Component {
       }
       this.props.getChatroomUsers(nextProps.currentChatroom.id);
     } else if (nextProps.chatroomUsers.length > 0 && !this.isUserAMember(nextProps.user, nextProps.chatroomUsers)) {
-      this.props.history.push('/app');
+      this.props.chatroomRedirect();
+      console.log('ran')
+    }
+
+    if (!nextProps.chatroomRedirect) {
+
     }
 
     this.setCurrentChannel(nextProps.currentChannel, nextProps.channels, nextProps.categories, true);
@@ -131,7 +138,8 @@ const mapDispatchToProps = dispatch => {
     getChatroomUsers: chatroomId => dispatch(getChatroomUsers(chatroomId)),
     joinChatroom: (user, chatroom) => dispatch(joinChatroom(user, chatroom)),
     setFriends: docFriends => dispatch(setFriends(docFriends)),
-    getChatroomInvivations: chatroomId => dispatch(getChatroomInvivations(chatroomId))
+    getChatroomInvivations: chatroomId => dispatch(getChatroomInvivations(chatroomId)),
+    chatroomRedirect: () => dispatch(chatroomRedirect())
   }
 }
 
