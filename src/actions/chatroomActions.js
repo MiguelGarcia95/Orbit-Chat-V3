@@ -254,7 +254,7 @@ export const joinChatroom = (user, chatroom) => {
   }
 };
 
-export const chatroomRedirect = () => {
+export const triggerChatroomRedirect = () => {
   return (dispatch) => {
     dispatch({
       type: actionTypes.CHATROOM_REDIRECT,
