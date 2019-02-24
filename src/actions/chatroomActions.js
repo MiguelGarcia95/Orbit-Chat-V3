@@ -257,6 +257,13 @@ export const joinChatroom = (user, chatroom) => {
 export const leaveChatroom = (user, chatroom) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
+    let addUserToChatroomRef = firestore.collection(`chatrooms/${chatroom.id}/users`).doc(user.uid);
+    addUserToChatroomRef.get().then(doc => {
+      if (doc.exists) {
+        addUserToChatroomRef.delete();
+      }
+    })
+
     let chatroomRef = firestore.collection(`users/${user.uid}/chatrooms`).doc(chatroom.id);
     chatroomRef.get().then(doc => {
       if (doc.exists) {
