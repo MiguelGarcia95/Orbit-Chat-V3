@@ -70,6 +70,10 @@ class MenuHeader extends React.Component {
 
   handleFriendChange = (e, { value }) => this.setState({ friendInviteId: value });
 
+  onChatroomLeave = () => {
+    this.props.leaveChatroom(this.props.user, this.props.chatroom);
+  }
+
   render() {
     const {modal, inviteFriendModal} = this.state;
     const {friendsList, chatroom, user} = this.props;
@@ -95,7 +99,7 @@ class MenuHeader extends React.Component {
                     {chatroom.chatroom.uid !== user.uid && (
                       <React.Fragment>
                         <Dropdown.Divider />
-                        <Dropdown.Item content='Leave Chatroom' onClick={this.openModal} icon='minus circle'/>
+                        <Dropdown.Item content='Leave Chatroom' onClick={this.onChatroomLeave} icon='minus circle'/>
                       </React.Fragment>
                     )}
                   </Dropdown.Menu>
