@@ -272,7 +272,8 @@ export const leaveChatroom = (user, chatroom) => {
             type: actionTypes.LEAVE_CHATROOM,
             payload: {
               chatroomError: null,
-              currentChatroom: null
+              currentChatroom: null,
+              chatroomRedirect: true
             }
           })
         }).catch(err => {
@@ -280,7 +281,8 @@ export const leaveChatroom = (user, chatroom) => {
             type: actionTypes.LEAVE_CHATROOM,
             payload: {
               chatroomError: err.message,
-              currentChatroom: null
+              currentChatroom: chatroom,
+              chatroomRedirect: false
             }
           })
         })
@@ -289,7 +291,8 @@ export const leaveChatroom = (user, chatroom) => {
           type: actionTypes.LEAVE_CHATROOM,
           payload: {
             chatroomError: 'You are not a member of this chatroom...',
-            currentChatroom: null
+            currentChatroom: null,
+            chatroomRedirect: false
           }
         })
       }
