@@ -92,9 +92,11 @@ class MenuHeader extends React.Component {
                       <Dropdown.Item content='New Category' onClick={this.openModal} icon='list' />
                     )}
                     <Dropdown.Item content='Invite Friend' onClick={this.openFriendModal} icon='user plus' />
-                    <Dropdown.Divider />
                     {chatroom.chatroom.uid !== user.uid && (
-                      <Dropdown.Item content='Leave Chatroom' onClick={this.openModal} icon='minus circle'/>
+                      <React.Fragment>
+                        <Dropdown.Divider />
+                        <Dropdown.Item content='Leave Chatroom' onClick={this.openModal} icon='minus circle'/>
+                      </React.Fragment>
                     )}
                   </Dropdown.Menu>
                 </Dropdown>
