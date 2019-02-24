@@ -10,7 +10,7 @@ const ChatCommentPanel = (props) => {
     return (
       <section className='chat_comment_panel'>
         <ChatCommentHeader channel={channel} />
-        {comments && <Messages messages={comments} user={user} chatroomUsers={chatroomUsers} chatroomInvites={chatroomInvites}  />}
+        {comments && <Messages messages={comments} user={user} chatroomUsers={chatroomUsers} chatroomInvites={chatroomInvites} />}
         <MessageForm channel={channel} user={user}  />
       </section>
     )
