@@ -46,8 +46,8 @@ class Chatroom extends React.Component {
         this.props.joinChatroom(nextProps.user, nextProps.currentChatroom);
       }
       this.props.getChatroomUsers(nextProps.currentChatroom.id);
-    } else if (nextProps.chatroomUsers.length > 0) {
-      // console.log(this.isUserAMember(nextProps.user, nextProps.chatroomUsers))
+    } else if (nextProps.chatroomUsers.length > 0 && !this.isUserAMember(nextProps.user, nextProps.chatroomUsers)) {
+      this.props.history.push('/app');
     }
 
     this.setCurrentChannel(nextProps.currentChannel, nextProps.channels, nextProps.categories, true);
