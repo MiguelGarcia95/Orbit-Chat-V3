@@ -57,7 +57,12 @@ class MenuHeader extends React.Component {
         isFriend = true;
       }
     })
-    // console.log(this.props.chatroomInvites)
+    this.props.chatroomInvites.forEach(chatroomInvite => {
+      if (chatroomInvite.id === friendId) {
+        isFriend = true;
+      }
+    })
+    
     return isFriend;
   }
 
