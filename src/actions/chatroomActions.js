@@ -114,7 +114,24 @@ export const rejectChatroomInvitation = (userId, chatroomId) => {
 }
 
 export const getChatroomInvivations = (chatroomId) => {
+  return (dispatch, getState, {getFirestore}) => {
+    const firestore = getFirestore();
+    firestore.collection(`chatrooms/${chatroomId}/invites`).get().then(data => {
+      let chatroomInvites = [];
+      data.forEach(chatroomInvite => {
+        chatroomInvites.push({id: chatroomInvite.id, invite: chatroomInvite.data()})
+      })
 
+      console.log(chatroomInvites);
+    });
+
+    dispatch({
+      type: actionTypes.GET_CHATROOM_INVITES,
+      payload:{
+        chatroomError: null          
+      }
+    })
+  }
 }
 
 export const inviteChatroom = (friendId, chatroom) => {

@@ -53,10 +53,11 @@ class MenuHeader extends React.Component {
   hasFriendJoined = (friendId) => {
     let isFriend = false;
     this.props.chatroomUsers.forEach(friendRequest => {
-      if (friendRequest.uid === friendId && friendRequest.status === 'accepted') {
+      if (friendRequest.user.uid === friendId) {
         isFriend = true;
       }
     })
+    // console.log(this.props.chatroomInvites)
     return isFriend;
   }
 
