@@ -49,10 +49,25 @@ class Message extends React.Component{
     this.props.addFriend(this.props.user, this.props.message);
   }
 
-  isFriend = (friendId, friends) => {
+  // isFriend = (friendId, friends) => {
+  //   let isFriend = false;
+  //   friends.forEach(friendRequest => {
+  //     if (friendRequest.friend.uid === friendId && friendRequest.friend.status === 'accepted') {
+  //       isFriend = true;
+  //     }
+  //   })
+  //   return isFriend;
+  // }
+
+  hasFriendRequestBeenSent = (friendId) => {
     let isFriend = false;
-    friends.forEach(friendRequest => {
-      if (friendRequest.friend.uid === friendId && friendRequest.friend.status === 'accepted') {
+    this.props.chatroomUsers.forEach(friendRequest => {
+      if (friendRequest.user.uid === friendId) {
+        isFriend = true;
+      }
+    })
+    this.props.chatroomInvites.forEach(chatroomInvite => {
+      if (chatroomInvite.id === friendId) {
         isFriend = true;
       }
     })
@@ -64,6 +79,8 @@ class Message extends React.Component{
       return (
         <Dropdown.Item content='Delete' icon='x' onClick={this.onDelete} />
       )
+    } else if (false) {
+
     } else {
       return (
         <React.Fragment>
@@ -75,7 +92,7 @@ class Message extends React.Component{
   }
 
   render() {
-    const {message, user, chatroomUsers, chatroomInvites} = this.props;
+    const {message, user} = this.props;
     const {modal, comment} = this.state;
     return (
       <React.Fragment>

@@ -2,7 +2,7 @@ import React from 'react';
 import Message from './Message';
 import {Comment} from 'semantic-ui-react';
 
-const displayMessages = (messages, user, chatroomUsers, chatroomInvites) => {
+const displayMessages = (messages, user) => {
   return messages.map(message => {
     return (
       <Message 
@@ -10,17 +10,15 @@ const displayMessages = (messages, user, chatroomUsers, chatroomInvites) => {
         key={message.id} 
         messageId={message.id} 
         message={message.message} 
-        chatroomUsers={chatroomUsers} 
-        chatroomInvites={chatroomInvites}
       />
     )
   })
 }
 
-const Messages = ({messages, user, chatroomUsers, chatroomInvites}) => {
+const Messages = ({messages, user}) => {
   return (
     <Comment.Group className='chat_comment_container'>
-      {displayMessages(messages, user, chatroomUsers, chatroomInvites)}
+      {displayMessages(messages, user)}
     </Comment.Group>
   )
 }

@@ -62,7 +62,6 @@ class MenuHeader extends React.Component {
         isFriend = true;
       }
     })
-
     return isFriend;
   }
 
