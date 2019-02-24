@@ -61,13 +61,8 @@ class Message extends React.Component{
 
   hasFriendRequestBeenSent = (friendId) => {
     let isFriend = false;
-    this.props.chatroomUsers.forEach(friendRequest => {
-      if (friendRequest.user.uid === friendId) {
-        isFriend = true;
-      }
-    })
-    this.props.chatroomInvites.forEach(chatroomInvite => {
-      if (chatroomInvite.id === friendId) {
+    this.props.friendsList.forEach(friendRequest => {
+      if (friendRequest.id === friendId) {
         isFriend = true;
       }
     })
@@ -79,13 +74,11 @@ class Message extends React.Component{
       return (
         <Dropdown.Item content='Delete' icon='x' onClick={this.onDelete} />
       )
-    } else if (false) {
-
     } else {
       return (
         <React.Fragment>
           <Dropdown.Item content={`Send ${message.username} DM`} icon='at' onClick={this.openModal} />
-          <Dropdown.Item content={`Send Friend Request`} icon='user plus' onClick={this.sendFriendRequest} />
+          <Dropdown.Item content={`Send Friend Request`} icon='user plus' onClick={this.sendFriendRequest} disabled={this.hasFriendRequestBeenSent(message.uid)} />
         </React.Fragment>
       )
     }
