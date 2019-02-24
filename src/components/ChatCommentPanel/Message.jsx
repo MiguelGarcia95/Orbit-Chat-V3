@@ -75,7 +75,7 @@ class Message extends React.Component{
   }
 
   render() {
-    const {message, user} = this.props;
+    const {message, user, chatroomUsers, chatroomInvites} = this.props;
     const {modal, comment} = this.state;
     return (
       <React.Fragment>
