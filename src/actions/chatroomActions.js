@@ -408,6 +408,12 @@ export const clearChatroom = () => {
   }
 }
 
+export const setChatroomUsers = docUsers => {
+  return (dispatch) => {
+    console.log(docUsers);
+  }
+}
+
 export const setChatrooms = (docChatrooms) => {
   return (dispatch) => {
     let chatrooms = [];

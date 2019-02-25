@@ -62,12 +62,12 @@ class Chatroom extends React.Component {
     })
   }
 
-  getChatroomUsersRT = chatroomId => {
+  getCthatroomUsersRT = chatroomId => {
 
   }
 
   getChatroomInvivations = chatroomId => {
-    
+
   }
   
   getMatchingChannels = (category, channels) => {
