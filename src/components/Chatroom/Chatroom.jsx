@@ -64,7 +64,7 @@ class Chatroom extends React.Component {
 
   getChatroomUsersRT = chatroomId => {
     const firestore = getFirestore();
-    firestore.collection(`chatrooms/${chatroomId}/invites`).onSnapshot(snapshot => {
+    firestore.collection(`chatrooms/${chatroomId}/users`).onSnapshot(snapshot => {
       let changes = snapshot.docChanges();
       this.props.setChatroomUsers(changes);
     });
@@ -72,7 +72,11 @@ class Chatroom extends React.Component {
   }
 
   getChatroomInvitationsRT = chatroomId => {
-
+    const firestore = getFirestore();
+    firestore.collection(`chatrooms/${chatroomId}/invites`).onSnapshot(snapshot => {
+      let changes = snapshot.docChanges();
+      this.props.setChatroomInvitations(changes);
+    });
   }
   
   getMatchingChannels = (category, channels) => {
