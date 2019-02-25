@@ -1,5 +1,5 @@
 import React from 'react';
-import {List} from 'semantic-ui-react';
+import {List, Header} from 'semantic-ui-react';
 import ChatroomInvite from './ChatroomInvite';
 
 const displayChatrooms = (chatrooms, user) => {
@@ -8,7 +8,9 @@ const displayChatrooms = (chatrooms, user) => {
       return <ChatroomInvite key={chatroomInvite.id} chatroomInvite={chatroomInvite} user={user} />
     })
   } else {
-    return <section><h1>No Chatrooms</h1></section>
+    return (
+      <Header as='h4' color='red' content='No Chatroom Invitations' size='large' textAlign='center' style={{marginTop: '20px'}}/>
+    )
   }
   
 }
