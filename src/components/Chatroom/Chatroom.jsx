@@ -53,6 +53,22 @@ class Chatroom extends React.Component {
     this.setCurrentChannel(nextProps.currentChannel, nextProps.channels, nextProps.categories, true);
     this.setState({firstLoad: false});
   }
+
+  getChannelComemntrsRT = (chatroomId, channelId) => {
+    const firestore = getFirestore();
+    firestore.collection(`comments/${channelId}/comments`).onSnapshot(snapshot => {
+      let changes = snapshot.docChanges();
+      this.props.setComments(changes);
+    })
+  }
+
+  getChatroomUsersRT = chatroomId => {
+
+  }
+
+  getChatroomInvivations = chatroomId => {
+    
+  }
   
   getMatchingChannels = (category, channels) => {
     return channels.reduce((filteredChannels, channel) => {
@@ -87,14 +103,6 @@ class Chatroom extends React.Component {
     } else if (currentChannel && isNewChannel) {
       this.getChannelComemntrsRT(currentChannel.channel.chatroomId, currentChannel.id);
     }
-  }
-
-  getChannelComemntrsRT = (chatroomId, channelId) => {
-    const firestore = getFirestore();
-    firestore.collection(`comments/${channelId}/comments`).onSnapshot(snapshot => {
-      let changes = snapshot.docChanges();
-      this.props.setComments(changes);
-    })
   }
 
   render() {
