@@ -1,7 +1,6 @@
 import React from 'react';
 import Message from './Message';
 import {Comment} from 'semantic-ui-react';
-import { comment } from 'postcss-selector-parser';
 
 class Messages extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {

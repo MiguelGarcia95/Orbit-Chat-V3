@@ -135,7 +135,6 @@ body {position: absolute; top: 0;}
   position: relataive !important;
   overflow-y: scroll;
   overflow-x: hidden;
-  overflow-y: auto;
 }
 
 .chat_comment_container:after {
