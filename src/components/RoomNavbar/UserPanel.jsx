@@ -21,7 +21,8 @@ class UserPanel extends React.Component {
   // onSettingsSubmit = () => {}
 
   render() {
-    const {modal, user} = this.state;
+    // const {modal, user} = this.state;
+    const {user} = this.state;
     return(
       <React.Fragment>
         <Grid className='footer_menu'>
