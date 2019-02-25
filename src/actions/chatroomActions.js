@@ -437,6 +437,27 @@ export const setChatroomUsers = docUsers => {
 export const setChatroomInvitations = docInvitations => {
   return (dispatch) => {
     console.log(docInvitations);
+    let invitations = [];
+    // let invitationsToUpdate = [];
+    let invitationsToDelete = [];
+    docInvitations.forEach(docInvitation => {
+      if (docInvitation.type === 'added') {
+        invitations.push({id: docInvitation.doc.id, chatroom: docInvitation.doc.data()})
+      } else if (docInvitation.type === 'modified') {
+        invitations.push({id: docInvitation.doc.id, chatroom: docInvitation.doc.data()})
+      } else if (docInvitation.type === 'removed') {
+        invitationsToDelete.push({id: docInvitation.doc.id, chatroom: docInvitation.doc.data()})
+      }
+    })
+
+    dispatch({
+      type: actionTypes.SET_CHATROOM_USERS,
+      payload: {
+        chatroomError: null,
+        chatroomInvitations: invitations,
+        invitationsToDelete: invitationsToDelete
+      }
+    })
   }
 }
 
