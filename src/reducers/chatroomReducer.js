@@ -35,6 +35,13 @@ const chatroomReducer = (state = initialState, action) => {
         chatroomUsers: action.payload.chatroomUsers,
         chatroomError: action.payload.chatroomError
       }
+    case actionTypes.SET_CHATROOM_USERS:
+      return {
+        ...state,
+        chatroomError: action.payload.chatroomError
+        // chatroomUsers: users,
+        // usersToDelete: usersToDelete
+      }
     case actionTypes.CHATROOM_REDIRECT:
       return {
         ...state,
@@ -83,6 +90,11 @@ const chatroomReducer = (state = initialState, action) => {
         ...state,
         chatroomError: action.payload.chatroomError,
         chatroomInvites: action.payload.chatroomInvites
+      }
+    case actionTypes.SET_CHATROOM_INVITES: 
+      return {
+        ...state,
+        chatroomError: action.payload.chatroomError
       }
     case actionTypes.JOIN_CHATROOM:
       let currentChatroom = !action.payload.currentChatroom ? state.currentChatroom : action.payload.currentChatroom;
