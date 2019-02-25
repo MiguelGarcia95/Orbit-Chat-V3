@@ -260,7 +260,8 @@ export const triggerChatroomRedirect = () => {
       type: actionTypes.CHATROOM_REDIRECT,
       payload: {
         chatroomError: null,
-        chatroomRedirect: true
+        chatroomRedirect: true,
+        inChatroom: false
       }
     })
   }
@@ -272,7 +273,8 @@ export const clearChatroomRedirect = () => {
       type: actionTypes.CHATROOM_REDIRECT,
       payload: {
         chatroomError: null,
-        chatroomRedirect: false
+        chatroomRedirect: false,
+        inChatroom: true
       }
     })
   }

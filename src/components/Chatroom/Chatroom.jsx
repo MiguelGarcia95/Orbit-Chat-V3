@@ -35,7 +35,7 @@ class Chatroom extends React.Component {
     if (!this.state.firstLoad && nextProps.chatroomRedirect) {
       this.props.unsetChannel();
       this.props.clearChatroom();
-      // this.props.clearChatroomRedirect();
+      this.props.clearChatroomRedirect();
       this.props.history.push('/app');
     } else if (!this.state.firstLoad && this.props.match.params.roomId !== nextProps.match.params.roomId) {
       this.props.unsetChannel();
