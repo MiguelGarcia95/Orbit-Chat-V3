@@ -36,6 +36,8 @@ const chatroomReducer = (state = initialState, action) => {
         chatroomError: action.payload.chatroomError
       }
     case actionTypes.SET_CHATROOM_USERS:
+      let chatroomUsers = [...state.chatroomUsers, ...action.payload.chatroomUsers];
+      console.log(chatroomUsers);
       return {
         ...state,
         chatroomError: action.payload.chatroomError
@@ -92,6 +94,8 @@ const chatroomReducer = (state = initialState, action) => {
         chatroomInvites: action.payload.chatroomInvites
       }
     case actionTypes.SET_CHATROOM_INVITES: 
+      let chatroomInvites = [...state.chatroomInvites, ...action.payload.chatroomInvites];
+      console.log(chatroomInvites)
       return {
         ...state,
         chatroomError: action.payload.chatroomError
