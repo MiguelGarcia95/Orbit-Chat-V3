@@ -11,7 +11,7 @@ class Messages extends React.Component {
   scrollToBottom = () => {
     this.messagesEnd.scrollIntoView({behavior: 'smooth'});
   }
-  
+
   displayMessages = (messages, user, friendsList) => {
     return messages.map(message => {
       return (
@@ -31,6 +31,7 @@ class Messages extends React.Component {
     return (
       <Comment.Group className='chat_comment_container'>
         {this.displayMessages(messages, user, friendsList)}
+        <div ref={node => this.messagesEnd = node}></div>
       </Comment.Group>
     )
   }
