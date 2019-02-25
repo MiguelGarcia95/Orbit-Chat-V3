@@ -24,6 +24,7 @@ const displayMessages = (messages, user, friendsList) => {
 }
 
 const Messages = ({messages, user, friendsList}) => {
+  scrollToBottom();
   return (
     <Comment.Group className='chat_comment_container'>
       {displayMessages(messages, user, friendsList)}
