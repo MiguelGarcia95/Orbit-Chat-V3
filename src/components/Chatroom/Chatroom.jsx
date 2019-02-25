@@ -54,7 +54,7 @@ class Chatroom extends React.Component {
     this.setState({firstLoad: false});
   }
 
-  getChannelComemntrsRT = (chatroomId, channelId) => {
+  getChannelCommentsRT = (chatroomId, channelId) => {
     const firestore = getFirestore();
     firestore.collection(`comments/${channelId}/comments`).onSnapshot(snapshot => {
       let changes = snapshot.docChanges();
@@ -110,7 +110,7 @@ class Chatroom extends React.Component {
     if (!currentChannel && channels.length > 0 && categories.length > 0) {
       this.props.setChannel(this.getMatchingChannels(categories[0], channels));
     } else if (currentChannel && isNewChannel) {
-      this.getChannelComemntrsRT(currentChannel.channel.chatroomId, currentChannel.id);
+      this.getChannelCommentsRT(currentChannel.channel.chatroomId, currentChannel.id);
     }
   }
 
@@ -119,7 +119,7 @@ class Chatroom extends React.Component {
     return !user || !currentChatroom ? <Spinner /> : (
       <Grid columns='equal' className='app' style={{marginTop: '0px'}}>
         <Grid.Column style={{marginLeft: 312, height: '100%'}} >
-            {currentChannel && <ChatCommentPanel  channel={currentChannel} user={user} getChannelComemntrsRT={this.getChannelComemntrsRT} />}
+            {currentChannel && <ChatCommentPanel  channel={currentChannel} user={user} />}
         </Grid.Column>
       </Grid>
     );
