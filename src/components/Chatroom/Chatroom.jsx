@@ -25,6 +25,7 @@ class Chatroom extends React.Component {
         this.props.clearChatroom();
         this.props.getChatroom(this.props.match.params.roomId);
         this.props.getChatroomUsers(this.props.match.params.roomId);
+        this.getChatroomUsersRT(this.props.match.params.roomId);
         this.props.getChatroomInvitations(this.props.match.params.roomId);
         this.getFriendsRT(user);
       }
@@ -38,7 +39,8 @@ class Chatroom extends React.Component {
       this.props.unsetChannel();
       this.props.clearChatroom();
       this.props.getChatroom(nextProps.match.params.roomId);
-      this.props.getChatroomUsers(this.props.match.params.roomId);
+      this.props.getChatroomUsers(nextProps.match.params.roomId);
+      this.getChatroomUsersRT(nextProps.match.params.roomId);      
     }
 
     if (nextProps.chatroomUsers.length === 0 && nextProps.currentChatroom && !this.state.firstLoad) {
@@ -46,6 +48,7 @@ class Chatroom extends React.Component {
         this.props.joinChatroom(nextProps.user, nextProps.currentChatroom);
       }
       this.props.getChatroomUsers(nextProps.currentChatroom.id);
+      this.getChatroomUsersRT(nextProps.currentChatroom.id);
     } else if (nextProps.chatroomUsers.length > 0 && !this.isUserAMember(nextProps.user, nextProps.chatroomUsers)) {
       this.props.triggerChatroomRedirect();
     }
