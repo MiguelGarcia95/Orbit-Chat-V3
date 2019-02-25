@@ -137,25 +137,6 @@ export const removeDeletedChatrooms = (chatrooms, chatroomToDelete) => {
   }, []);
 }
 
-export const getUserChatrooms = (chatrooms, userChatrooms) => {
-  return chatrooms.reduce((newArray, chatroom) => {
-    if (userChatrooms.length > 0) {
-      let isUserInChatroom = false;
-      userChatrooms.forEach(userChatroom => {
-        console.log(chatroom)
-        console.log(userChatroom)
-        if (chatroom.id === userChatroom.id) {
-          isUserInChatroom = true;
-        }
-      })
-      if (isUserInChatroom) {
-        newArray.push(chatroom);
-      }
-    }
-    return newArray;
-  }, []);
-}
-
 export const sortCategoriesByDate = categories => {
   let sortedCategories = [];
 

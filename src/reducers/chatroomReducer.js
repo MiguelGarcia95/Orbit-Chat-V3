@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/types';
-import {removeDuplicateChatrooms, removeDeletedChatrooms, sortCategoriesByDate, getUserChatrooms} from '../utils/functions';
+import {removeDuplicateChatrooms, removeDeletedChatrooms, sortCategoriesByDate} from '../utils/functions';
 
 const initialState = {
   currentChatroom: null,
