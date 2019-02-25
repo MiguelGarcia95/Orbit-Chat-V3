@@ -1,6 +1,13 @@
 import React from 'react';
 import Message from './Message';
 import {Comment} from 'semantic-ui-react';
+import { comment } from 'postcss-selector-parser';
+
+const scrollToBottom = () => {
+  let commentBox = document.getElementsByClassName('chat_comment_container');
+  // commentBox.scrollTop = commentBox.scrollHeight;
+  console.log(commentBox);
+}
 
 const displayMessages = (messages, user, friendsList) => {
   return messages.map(message => {
