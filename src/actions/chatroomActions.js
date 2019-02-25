@@ -415,11 +415,11 @@ export const setChatroomUsers = docUsers => {
     let usersToDelete = [];
     docUsers.forEach(docUser => {
       if (docUser.type === 'added') {
-        users.push({id: docUser.doc.id, chatroom: docUser.doc.data()})
+        users.push({id: docUser.doc.id, user: docUser.doc.data()})
       } else if (docUser.type === 'modified') {
-        users.push({id: docUser.doc.id, chatroom: docUser.doc.data()})
+        users.push({id: docUser.doc.id, user: docUser.doc.data()})
       } else if (docUser.type === 'removed') {
-        usersToDelete.push({id: docUser.doc.id, chatroom: docUser.doc.data()})
+        usersToDelete.push({id: docUser.doc.id, user: docUser.doc.data()})
       }
     })
 
@@ -437,16 +437,16 @@ export const setChatroomUsers = docUsers => {
 export const setChatroomInvitations = docInvitations => {
   return (dispatch) => {
     console.log(docInvitations);
-    let invitations = [];
+    let chatroomInvites = [];
     // let invitationsToUpdate = [];
-    let invitationsToDelete = [];
+    let inviteToDelete = [];
     docInvitations.forEach(docInvitation => {
       if (docInvitation.type === 'added') {
-        invitations.push({id: docInvitation.doc.id, chatroom: docInvitation.doc.data()})
+        chatroomInvites.push({id: docInvitation.doc.id, invite: docInvitation.doc.data()})
       } else if (docInvitation.type === 'modified') {
-        invitations.push({id: docInvitation.doc.id, chatroom: docInvitation.doc.data()})
+        chatroomInvites.push({id: docInvitation.doc.id, invite: docInvitation.doc.data()})
       } else if (docInvitation.type === 'removed') {
-        invitationsToDelete.push({id: docInvitation.doc.id, chatroom: docInvitation.doc.data()})
+        inviteToDelete.push({id: docInvitation.doc.id, invite: docInvitation.doc.data()})
       }
     })
 
@@ -454,8 +454,8 @@ export const setChatroomInvitations = docInvitations => {
       type: actionTypes.SET_CHATROOM_INVITES,
       payload: {
         chatroomError: null,
-        chatroomInvitations: invitations,
-        invitationsToDelete: invitationsToDelete
+        chatroomInvites: chatroomInvites,
+        inviteToDelete: inviteToDelete
       }
     })
   }
