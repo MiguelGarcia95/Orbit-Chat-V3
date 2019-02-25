@@ -410,7 +410,27 @@ export const clearChatroom = () => {
 
 export const setChatroomUsers = docUsers => {
   return (dispatch) => {
-    console.log(docUsers);
+    let users = [];
+    // let usersToUpdate = [];
+    let usersToDelete = [];
+    docUsers.forEach(docUser => {
+      if (docUser.type === 'added') {
+        users.push({id: docUser.doc.id, chatroom: docUser.doc.data()})
+      } else if (docUser.type === 'modified') {
+        users.push({id: docUser.doc.id, chatroom: docUser.doc.data()})
+      } else if (docUser.type === 'removed') {
+        usersToDelete.push({id: docUser.doc.id, chatroom: docUser.doc.data()})
+      }
+    })
+
+    dispatch({
+      type: actionTypes.SET_CHATROOM_USERS,
+      payload: {
+        chatroomError: null,
+        chatroomUsers: users,
+        usersToDelete: usersToDelete
+      }
+    })
   }
 }
 
