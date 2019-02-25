@@ -113,7 +113,7 @@ export const rejectChatroomInvitation = (userId, chatroomId) => {
   }
 }
 
-export const getChatroomInvivations = chatroomId => {
+export const getChatroomInvitations = chatroomId => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
     firestore.collection(`chatrooms/${chatroomId}/invites`).get().then(data => {
@@ -411,6 +411,12 @@ export const clearChatroom = () => {
 export const setChatroomUsers = docUsers => {
   return (dispatch) => {
     console.log(docUsers);
+  }
+}
+
+export const setChatroomInvitations = docInvitations => {
+  return (dispatch) => {
+    console.log(docInvitations);
   }
 }
 

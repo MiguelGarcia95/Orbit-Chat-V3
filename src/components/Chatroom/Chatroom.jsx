@@ -4,7 +4,7 @@ import {Grid} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {getFirestore} from 'redux-firestore';
 
-import {getChatroom, clearChatroom, getChatroomUsers, joinChatroom, getChatroomInvivations, triggerChatroomRedirect} from '../../actions/chatroomActions';
+import {getChatroom, clearChatroom, getChatroomUsers, joinChatroom, getChatroomInvitations, triggerChatroomRedirect} from '../../actions/chatroomActions';
 import {setFriends} from '../../actions/homeActions';
 import {unsetChannel, setChannel, setComments} from '../../actions/channelActions';
 import Spinner from '../Layout/Spinner';
@@ -25,7 +25,7 @@ class Chatroom extends React.Component {
         this.props.clearChatroom();
         this.props.getChatroom(this.props.match.params.roomId);
         this.props.getChatroomUsers(this.props.match.params.roomId);
-        this.props.getChatroomInvivations(this.props.match.params.roomId);
+        this.props.getChatroomInvitations(this.props.match.params.roomId);
         this.getFriendsRT(user);
       }
     })
@@ -62,11 +62,16 @@ class Chatroom extends React.Component {
     })
   }
 
-  getCthatroomUsersRT = chatroomId => {
+  getChatroomUsersRT = chatroomId => {
+    const firestore = getFirestore();
+    firestore.collection(`chatrooms/${chatroomId}/invites`).onSnapshot(snapshot => {
+      let changes = snapshot.docChanges();
+      this.props.setChatroomUsers(changes);
+    });
 
   }
 
-  getChatroomInvivations = chatroomId => {
+  getChatroomInvitationsRT = chatroomId => {
 
   }
   
@@ -139,7 +144,7 @@ const mapDispatchToProps = dispatch => {
     getChatroomUsers: chatroomId => dispatch(getChatroomUsers(chatroomId)),
     joinChatroom: (user, chatroom) => dispatch(joinChatroom(user, chatroom)),
     setFriends: docFriends => dispatch(setFriends(docFriends)),
-    getChatroomInvivations: chatroomId => dispatch(getChatroomInvivations(chatroomId)),
+    getChatroomInvitations: chatroomId => dispatch(getChatroomInvitations(chatroomId)),
     triggerChatroomRedirect: () => dispatch(triggerChatroomRedirect())
   }
 }
