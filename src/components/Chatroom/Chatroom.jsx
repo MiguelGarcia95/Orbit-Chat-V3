@@ -4,7 +4,7 @@ import {Grid} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {getFirestore} from 'redux-firestore';
 
-import {getChatroom, clearChatroom, getChatroomUsers, joinChatroom, getChatroomInvitations, triggerChatroomRedirect} from '../../actions/chatroomActions';
+import {getChatroom, clearChatroom, getChatroomUsers, setChatroomUsers, joinChatroom, getChatroomInvitations, setChatroomInvitations, triggerChatroomRedirect} from '../../actions/chatroomActions';
 import {setFriends} from '../../actions/homeActions';
 import {unsetChannel, setChannel, setComments} from '../../actions/channelActions';
 import Spinner from '../Layout/Spinner';
@@ -145,7 +145,9 @@ const mapDispatchToProps = dispatch => {
     joinChatroom: (user, chatroom) => dispatch(joinChatroom(user, chatroom)),
     setFriends: docFriends => dispatch(setFriends(docFriends)),
     getChatroomInvitations: chatroomId => dispatch(getChatroomInvitations(chatroomId)),
-    triggerChatroomRedirect: () => dispatch(triggerChatroomRedirect())
+    triggerChatroomRedirect: () => dispatch(triggerChatroomRedirect()),
+    setChatroomUsers: docUsers => dispatch(setChatroomUsers(docUsers)),
+    setChatroomInvitations: docInvitations => dispatch(setChatroomInvitations(docInvitations))
   }
 }
 
