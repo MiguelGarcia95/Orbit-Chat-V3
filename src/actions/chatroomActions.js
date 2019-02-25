@@ -451,7 +451,7 @@ export const setChatroomInvitations = docInvitations => {
     })
 
     dispatch({
-      type: actionTypes.SET_CHATROOM_USERS,
+      type: actionTypes.SET_CHATROOM_INVITES,
       payload: {
         chatroomError: null,
         chatroomInvitations: invitations,
