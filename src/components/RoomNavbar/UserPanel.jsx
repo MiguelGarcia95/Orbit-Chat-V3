@@ -1,5 +1,6 @@
 import React from 'react';
-import {Grid, Image, Container, Modal, Segment, Button, Label, Input, Icon, Dropdown} from 'semantic-ui-react';
+// import {Grid, Image, Container, Modal, Segment, Button, Label, Input, Icon, Dropdown} from 'semantic-ui-react';
+import {Grid, Image, Container, Dropdown} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {signOut} from '../../actions/authActions';
 
@@ -15,13 +16,9 @@ class UserPanel extends React.Component {
 
   closeModal = () => this.setState({modal: false});
 
-  onLogout = () => {
-    this.props.signOut();
-  }
+  onLogout = () => this.props.signOut();
 
-  onSubmit = () => {
-
-  }
+  // onSettingsSubmit = () => {}
 
   render() {
     const {modal, user} = this.state;
@@ -40,7 +37,7 @@ class UserPanel extends React.Component {
                 <Dropdown icon='cog' className='grid-icon'>
                   <Dropdown.Menu direction='left' >
                     <Dropdown.Item content='Logout' icon='power off' onClick={this.onLogout} />
-                    <Dropdown.Item content='Settings' icon='cog' onClick={this.openModal} />
+                    {/* <Dropdown.Item content='Settings' icon='cog' onClick={this.openModal} /> */}
                   </Dropdown.Menu>
                 </Dropdown>
               </Container>
@@ -48,7 +45,7 @@ class UserPanel extends React.Component {
           </Grid.Row>
         </Grid>
 
-        <Modal open={modal} onClose={this.closeModal} >
+        {/* <Modal open={modal} onClose={this.closeModal} >
           <Modal.Header>Create A New Chatroom</Modal.Header>
           <Modal.Content>
             <Segment>
@@ -62,10 +59,10 @@ class UserPanel extends React.Component {
             <Button.Group attached='bottom'>
               <Button negative onClick={this.closeModal} > Cancel</Button>
               <Button.Or />
-              <Button positive onClick={this.onSubmit} > Create</Button>
+              <Button positive onClick={this.onSettingsSubmit} > Create</Button>
             </Button.Group>
           </Modal.Content>
-        </Modal>
+        </Modal> */}
       </React.Fragment>
     )
   }
