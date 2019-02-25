@@ -27,6 +27,7 @@ class Chatroom extends React.Component {
         // this.props.getChatroomUsers(this.props.match.params.roomId);
         this.getChatroomUsersRT(this.props.match.params.roomId);
         // this.props.getChatroomInvitations(this.props.match.params.roomId);
+        this.getChatroomInvitationsRT(this.props.match.params.roomId)
         this.getFriendsRT(user);
       }
     })
