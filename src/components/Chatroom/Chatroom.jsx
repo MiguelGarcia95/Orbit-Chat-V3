@@ -33,9 +33,6 @@ class Chatroom extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (!this.state.firstLoad && nextProps.chatroomRedirect) {
-      this.props.unsetChannel();
-      this.props.clearChatroom();
-      this.props.clearChatroomRedirect();
       this.props.history.push('/app');
     } else if (!this.state.firstLoad && this.props.match.params.roomId !== nextProps.match.params.roomId) {
       this.props.unsetChannel();
@@ -136,7 +133,7 @@ const mapDispatchToProps = dispatch => {
     setFriends: docFriends => dispatch(setFriends(docFriends)),
     getChatroomInvivations: chatroomId => dispatch(getChatroomInvivations(chatroomId)),
     triggerChatroomRedirect: () => dispatch(triggerChatroomRedirect()),
-    clearChatroomRedirect: () => dispatch(clearChatroomRedirect())
+    // clearChatroomRedirect: () => dispatch(clearChatroomRedirect())
   }
 }
 
