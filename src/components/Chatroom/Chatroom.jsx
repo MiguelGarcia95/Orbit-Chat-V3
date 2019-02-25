@@ -33,8 +33,8 @@ class Chatroom extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (!this.state.firstLoad && nextProps.chatroomRedirect) {
-      // this.props.unsetChannel();
-      // this.props.clearChatroom();
+      this.props.unsetChannel();
+      this.props.clearChatroom();
       // this.props.clearChatroomRedirect();
       this.props.history.push('/app');
     } else if (!this.state.firstLoad && this.props.match.params.roomId !== nextProps.match.params.roomId) {
@@ -50,7 +50,7 @@ class Chatroom extends React.Component {
       }
       this.props.getChatroomUsers(nextProps.currentChatroom.id);
     } else if (nextProps.chatroomUsers.length > 0 && !this.isUserAMember(nextProps.user, nextProps.chatroomUsers)) {
-      // this.props.triggerChatroomRedirect();
+      this.props.triggerChatroomRedirect();
     }
 
     this.setCurrentChannel(nextProps.currentChannel, nextProps.channels, nextProps.categories, true);
