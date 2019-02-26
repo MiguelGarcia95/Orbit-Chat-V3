@@ -66,6 +66,18 @@ class MenuHeader extends React.Component {
     return allFriends;
   }
 
+  getAllCategories = (categories) => {
+    let allCategories = [];
+    categories.forEach(category => {
+      allCategories.push({
+        text: category.category.username, 
+        // image: category.category.avatar, 
+        value: category.id,
+      });
+    })
+    return allCategories;
+  }
+
   hasFriendJoined = (friendId) => {
     let isFriend = false;
     this.props.chatroomUsers.forEach(friendRequest => {
@@ -91,9 +103,11 @@ class MenuHeader extends React.Component {
 
   render() {
     const {modal, inviteFriendModal, deleteChannelModal, deleteCategoryModal} = this.state;
-    const {friendsList, chatroom, user} = this.props;
+    const {friendsList, chatroom, user, categories, channels} = this.props;
     let isFriendIdEmpty = this.isFriendInviteEmpty();
     let modalFriends = this.getAllFriends(friendsList);
+    let modalCategories = this.getAllCategories(categories)
+    console.log(modalCategories)
     return(
       <React.Fragment>
         <Grid className='header_menu'>
@@ -190,7 +204,7 @@ class MenuHeader extends React.Component {
         <Modal open={deleteCategoryModal} onClose={this.closeCategoryDeleteModal} size='mini'>
           <Modal.Header>Pick A Category To Delete</Modal.Header>
           <Modal.Content>
-            <Dropdown placeholder='Select Category' fluid selection options={modalFriends} onChange={this.handleFriendChange} />
+            <Dropdown placeholder='Select Category' fluid selection options={modalCategories} onChange={this.handleFriendChange} />
           </Modal.Content>
           <Modal.Actions>
             <Button
@@ -217,7 +231,9 @@ const mapStateToProps = state => {
   return {
     friendsList: state.home.friendsList,
     chatroomUsers: state.chat.chatroomUsers,
-    chatroomInvites: state.chat.chatroomInvites
+    chatroomInvites: state.chat.chatroomInvites,
+    categories: state.chat.categories,
+    channels: state.channel.channels
   }
 }
 
