@@ -434,7 +434,7 @@ export const setChatroomUsers = docUsers => {
   }
 }
 
-export const setChatroomInvitations = docInvitations => {
+export const setSentChatroomInvitations = docInvitations => {
   return (dispatch) => {
     console.log(docInvitations);
     let chatroomInvites = [];
@@ -451,7 +451,7 @@ export const setChatroomInvitations = docInvitations => {
     })
 
     dispatch({
-      type: actionTypes.SET_CHATROOM_INVITES,
+      type: actionTypes.SET_SENT_CHATROOM_INVITES,
       payload: {
         chatroomError: null,
         chatroomInvites: chatroomInvites,

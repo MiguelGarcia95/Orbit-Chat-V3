@@ -93,7 +93,7 @@ const chatroomReducer = (state = initialState, action) => {
         chatroomError: action.payload.chatroomError,
         chatroomInvites: action.payload.chatroomInvites
       }
-    case actionTypes.SET_CHATROOM_INVITES: 
+    case actionTypes.SET_SENT_CHATROOM_INVITES: 
       let chatroomInvites = [...state.chatroomInvites, ...action.payload.chatroomInvites];
       console.log(chatroomInvites)
       return {

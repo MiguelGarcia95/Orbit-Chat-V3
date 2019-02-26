@@ -4,7 +4,7 @@ import {Grid} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {getFirestore} from 'redux-firestore';
 
-import {getChatroom, clearChatroom, getChatroomUsers, setChatroomUsers, joinChatroom, getChatroomInvitations, setChatroomInvitations, triggerChatroomRedirect} from '../../actions/chatroomActions';
+import {getChatroom, clearChatroom, getChatroomUsers, setChatroomUsers, joinChatroom, getChatroomInvitations, setSentChatroomInvitations, triggerChatroomRedirect} from '../../actions/chatroomActions';
 import {setFriends} from '../../actions/homeActions';
 import {unsetChannel, setChannel, setComments} from '../../actions/channelActions';
 import Spinner from '../Layout/Spinner';
@@ -79,7 +79,7 @@ class Chatroom extends React.Component {
     const firestore = getFirestore();
     firestore.collection(`chatrooms/${chatroomId}/invites`).onSnapshot(snapshot => {
       let changes = snapshot.docChanges();
-      this.props.setChatroomInvitations(changes);
+      this.props.setSentChatroomInvitations(changes);
     });
   }
   
@@ -155,7 +155,7 @@ const mapDispatchToProps = dispatch => {
     // getChatroomInvitations: chatroomId => dispatch(getChatroomInvitations(chatroomId)),
     triggerChatroomRedirect: () => dispatch(triggerChatroomRedirect()),
     setChatroomUsers: docUsers => dispatch(setChatroomUsers(docUsers)),
-    setChatroomInvitations: docInvitations => dispatch(setChatroomInvitations(docInvitations))
+    setSentChatroomInvitations: docInvitations => dispatch(setSentChatroomInvitations(docInvitations))
   }
 }
 
