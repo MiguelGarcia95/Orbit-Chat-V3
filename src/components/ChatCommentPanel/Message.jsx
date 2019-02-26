@@ -94,7 +94,7 @@ class Message extends React.Component{
         </Comment>
 
         <Modal open={modal} onClose={this.closeModal} >
-          <Modal.Header>DM</Modal.Header>
+          <Modal.Header>DM @{message.username}</Modal.Header>
           <Modal.Content>
             <Segment>
               <Input fluid placeholder='Message' name='comment' value={comment} onChange={this.onChange} />
