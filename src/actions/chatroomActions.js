@@ -35,6 +35,12 @@ export const deleteChatroom = chatroom => {
   }
 }
 
+export const deleteCategory = chatroom => {
+  return (dispatch, getState, {getFirestore}) => {
+    console.log(chatroom)
+  }
+}
+
 export const createCategory = category => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();

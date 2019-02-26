@@ -17,7 +17,7 @@ export const CLEAR_CHATROOM = 'CLEAR_CHATROOM';
 
 // Category
 export const CREATE_CATEGORY = 'CREATE_CATEGORY';
-// export const DELETE_CATEGORY = 'DELETE_CATEGORY';
+export const DELETE_CATEGORY = 'DELETE_CATEGORY';
 export const SET_CHATROOM_CATEGORIES = 'SET_CHATROOM_CATEGORIES';
 
 // Channels 
