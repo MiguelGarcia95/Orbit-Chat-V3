@@ -112,6 +112,9 @@ class MenuHeader extends React.Component {
   isChannelEmpty = () => this.state.channelToDelete === '' ? true : false;
 
   handleFriendChange = (e, { value }) => this.setState({ friendInviteId: value });
+  handleCategoryChange = (e, { value }) => this.setState({ categoryToDelete: value });
+  handleChannelCategoryChange = (e, { value }) => this.setState({ channelCategory: value });
+  handleChannelChange = (e, { value }) => this.setState({ channelToDelete: value });
 
   onChatroomLeave = () => {
     this.props.leaveChatroom(this.props.user, this.props.chatroom);
