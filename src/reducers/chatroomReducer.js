@@ -29,12 +29,12 @@ const chatroomReducer = (state = initialState, action) => {
         inChatroom: action.payload.inChatroom,
         chatroomRedirect: action.payload.chatroomRedirect
       }
-    case actionTypes.GET_CHATROOM_USERS:
-      return {
-        ...state,
-        chatroomUsers: action.payload.chatroomUsers,
-        chatroomError: action.payload.chatroomError
-      }
+    // case actionTypes.GET_CHATROOM_USERS:
+    //   return {
+    //     ...state,
+    //     chatroomUsers: action.payload.chatroomUsers,
+    //     chatroomError: action.payload.chatroomError
+    //   }
     case actionTypes.SET_CHATROOM_USERS:
       let chatroomUsers = [...state.chatroomUsers, ...action.payload.chatroomUsers];
       let uniqueChatroomUsers = removeDuplicateChatrooms(chatroomUsers);
@@ -87,17 +87,16 @@ const chatroomReducer = (state = initialState, action) => {
         ...state,
         chatroomError: action.payload.chatroomError,
       }
-    case actionTypes.GET_CHATROOM_INVITES:
-      return {
-        ...state,
-        chatroomError: action.payload.chatroomError,
-        chatroomInvites: action.payload.chatroomInvites
-      }
+    // case actionTypes.GET_CHATROOM_INVITES:
+    //   return {
+    //     ...state,
+    //     chatroomError: action.payload.chatroomError,
+    //     chatroomInvites: action.payload.chatroomInvites
+    //   }
     case actionTypes.SET_SENT_CHATROOM_INVITES: 
       let allChatroomInvites = [...state.chatroomInvites, ...action.payload.chatroomInvites];
       let filteredChatroomInvites = removeDuplicateInvites(allChatroomInvites);
       let chatroomInvites = removeDeletedInvites(filteredChatroomInvites, action.payload.inviteToDelete);
-      // console.log(chatroomInvites)
       return {
         ...state,
         chatroomError: action.payload.chatroomError,
