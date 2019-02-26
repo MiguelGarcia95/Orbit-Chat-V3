@@ -266,7 +266,9 @@ const mapDispatchToProps = dispatch => {
   return {
     createCategory: category => dispatch(createCategory(category)),
     leaveChatroom: (user, chatroom) => dispatch(leaveChatroom(user, chatroom)),
-    inviteChatroom: (friendId, chatroom) => dispatch(inviteChatroom(friendId, chatroom))
+    inviteChatroom: (friendId, chatroom) => dispatch(inviteChatroom(friendId, chatroom)),
+    deleteCategory: categoryId => dispatch(deleteCategory(categoryId)),
+    deleteChannel: channelId => dispatch(deleteCategory(channelId))
   }
 }
 
