@@ -107,9 +107,9 @@ class MenuHeader extends React.Component {
   }
 
   isFriendInviteEmpty = () => this.state.friendInviteId === '' ? true : false;
-  isCategoryEmpty = () => this.state.categoryToDelete === '' ? true : false;
+  isCategoryValueEmpty = () => this.state.categoryToDelete === '' ? true : false;
   // isChannelCategoryEmpty = () => this.state.channelCategory === '' ? true : false;
-  isChannelEmpty = () => this.state.channelToDelete === '' ? true : false;
+  isChannelValueEmpty = () => this.state.channelToDelete === '' ? true : false;
 
   handleFriendChange = (e, { value }) => this.setState({ friendInviteId: value });
   handleCategoryChange = (e, { value }) => this.setState({ categoryToDelete: value });
@@ -124,6 +124,8 @@ class MenuHeader extends React.Component {
     const {modal, inviteFriendModal, deleteChannelModal, deleteCategoryModal} = this.state;
     const {friendsList, chatroom, user, categories, channels} = this.props;
     let isFriendIdEmpty = this.isFriendInviteEmpty();
+    let isCategoryEmpty = this.isCategoryValueEmpty();
+    let isChannelEmpty = this.isChannelValueEmpty();
     let modalFriends = this.getAllFriends(friendsList);
     let modalCategories = this.getAllCategories(categories)
     let modalChannels = this.getAllChannels(channels)
