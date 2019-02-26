@@ -20,7 +20,7 @@ const ChatroomInvite = ({chatroomInvite, user, joinChatroom, rejectChatroomInvit
         <Button circular
           animated='fade' color='orange'
           style={{padding: '10px 20px'}} 
-          onClick={() => rejectChatroomInvitation(user.id, chatroomInvite.id)}
+          onClick={() => rejectChatroomInvitation(user.uid, chatroomInvite.id)}
         >
           <Button.Content hidden>Reject</Button.Content>
           <Button.Content visible>
