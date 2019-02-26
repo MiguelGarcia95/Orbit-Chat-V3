@@ -9,11 +9,11 @@ class MenuHome extends React.Component {
   }
 
   isDMOnDisplay = () => {
+    let classValue = '';
     if (this.props.currentView !== 'friends' && this.props.currentView !== 'chatroom-invites') {
-      return 'active'
-    } else {
-      return ''
+      classValue = 'active';
     }
+    return classValue;
   }
 
   onClick = view => {

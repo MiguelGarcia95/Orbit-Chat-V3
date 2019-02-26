@@ -49,16 +49,6 @@ class Message extends React.Component{
     this.props.addFriend(this.props.user, this.props.message);
   }
 
-  // isFriend = (friendId, friends) => {
-  //   let isFriend = false;
-  //   friends.forEach(friendRequest => {
-  //     if (friendRequest.friend.uid === friendId && friendRequest.friend.status === 'accepted') {
-  //       isFriend = true;
-  //     }
-  //   })
-  //   return isFriend;
-  // }
-
   hasFriendRequestBeenSent = (friendId) => {
     let isFriend = false;
     this.props.friendsList.forEach(friendRequest => {
