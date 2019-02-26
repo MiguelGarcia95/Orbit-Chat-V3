@@ -32,7 +32,15 @@ class MenuHeader extends React.Component {
   closeCategoryDeleteModal = () => this.setState({deleteCategoryModal: false});
   
   onChange = e => this.setState({[e.target.name]: e.target.value});
-  clearFriendId = () => this.setState({friendInviteId: ''});
+
+  clearFields = () => {
+    this.setState({
+      friendInviteId: '',
+      channelToDelete: '',
+      categoryToDelete: '',
+      channelCategory: '',
+    });
+  }
 
   onSubmit = () => {
     this.props.createCategory(this.state);
@@ -42,17 +50,21 @@ class MenuHeader extends React.Component {
   inviteFriend = () => {
     if (this.props.friendInviteId !== '') {
       this.props.inviteChatroom(this.state.friendInviteId, this.props.chatroom);
-      this.clearFriendId();
+      this.clearFields();
       this.closeFriendModal();
     }
   };
 
   deleteChannel = () => {
-    console.log('delete channel')
+    this.props.deleteChannel(this.state.channelToDelete);
+    this.clearFields();
+    this.closeChannelDeleteModal();
   };
 
   deleteCategory = () => {
-    console.log('delete category')
+    this.props.deleteCategory(this.state.categoryToDelete);
+    this.clearFields();
+    this.closeCategoryDeleteModal();
   };
 
   getAllFriends = (friends) => {
