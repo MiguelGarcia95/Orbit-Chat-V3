@@ -108,7 +108,7 @@ class MenuHeader extends React.Component {
 
   isFriendInviteEmpty = () => this.state.friendInviteId === '' ? true : false;
   isCategoryEmpty = () => this.state.categoryToDelete === '' ? true : false;
-  isChannelCategoryEmpty = () => this.state.channelCategory === '' ? true : false;
+  // isChannelCategoryEmpty = () => this.state.channelCategory === '' ? true : false;
   isChannelEmpty = () => this.state.channelToDelete === '' ? true : false;
 
   handleFriendChange = (e, { value }) => this.setState({ friendInviteId: value });
@@ -201,9 +201,9 @@ class MenuHeader extends React.Component {
         <Modal open={deleteChannelModal} onClose={this.closeChannelDeleteModal} size='mini'>
           <Modal.Header>Pick A Channel To Delete</Modal.Header>
           <Modal.Content>
-            <Dropdown placeholder='Select Channel Category' fluid selection options={modalCategories} onChange={this.handleFriendChange} />
+            <Dropdown placeholder='Select Channel Category' fluid selection options={modalCategories} onChange={this.handleChannelCategoryChange} />
             <Divider />
-            <Dropdown placeholder='Select Channel' fluid selection options={modalChannels} onChange={this.handleFriendChange} />
+            <Dropdown placeholder='Select Channel' fluid selection options={modalChannels} onChange={this.handleChannelChange} />
           </Modal.Content>
           <Modal.Actions>
             <Button
@@ -217,7 +217,7 @@ class MenuHeader extends React.Component {
               labelPosition='right' 
               content='Delete Channel' 
               onClick={this.deleteChannel} 
-              // disabled={isFriendIdEmpty} 
+              disabled={isChannelEmpty} 
             />
           </Modal.Actions>
         </Modal>
@@ -225,7 +225,7 @@ class MenuHeader extends React.Component {
         <Modal open={deleteCategoryModal} onClose={this.closeCategoryDeleteModal} size='mini'>
           <Modal.Header>Pick A Category To Delete</Modal.Header>
           <Modal.Content>
-            <Dropdown placeholder='Select Category' fluid selection options={modalCategories} onChange={this.handleFriendChange} />
+            <Dropdown placeholder='Select Category' fluid selection options={modalCategories} onChange={this.handleCategoryChange} />
           </Modal.Content>
           <Modal.Actions>
             <Button
@@ -239,7 +239,7 @@ class MenuHeader extends React.Component {
               labelPosition='right' 
               content='Delete Category' 
               onClick={this.deleteCategory} 
-              // disabled={isFriendIdEmpty} 
+              disabled={isCategoryEmpty} 
             />
           </Modal.Actions>
         </Modal>
