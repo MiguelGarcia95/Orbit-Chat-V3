@@ -80,13 +80,15 @@ class MenuHeader extends React.Component {
     return allCategories;
   }
 
-  getAllChannels = (channels) => {
+  getAllChannels = (channels, channelCategoryId) => {
     let allChannels = [];
     channels.forEach(channel => {
-      allChannels.push({
-        text: channel.channel.name, 
-        value: channel.id,
-      });
+      if (channel.channel.categoryId === channelCategoryId) {
+        allChannels.push({
+          text: channel.channel.name, 
+          value: channel.id,
+        });
+      }
     })
     return allChannels;
   }
@@ -120,14 +122,14 @@ class MenuHeader extends React.Component {
   }
 
   render() {
-    const {modal, inviteFriendModal, deleteChannelModal, deleteCategoryModal} = this.state;
+    const {modal, inviteFriendModal, deleteChannelModal, deleteCategoryModal, channelCategory} = this.state;
     const {friendsList, chatroom, user, categories, channels} = this.props;
     let isFriendIdEmpty = this.isFriendInviteEmpty();
     let isCategoryEmpty = this.isCategoryValueEmpty();
     let isChannelEmpty = this.isChannelValueEmpty();
     let modalFriends = this.getAllFriends(friendsList);
     let modalCategories = this.getAllCategories(categories)
-    let modalChannels = this.getAllChannels(channels)
+    let modalChannels = this.getAllChannels(channels, channelCategory)
     return(
       <React.Fragment>
         <Grid className='header_menu'>
