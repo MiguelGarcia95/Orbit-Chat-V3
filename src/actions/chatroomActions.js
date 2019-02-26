@@ -436,7 +436,6 @@ export const setChatroomUsers = docUsers => {
 
 export const setSentChatroomInvitations = docInvitations => {
   return (dispatch) => {
-    console.log(docInvitations);
     let chatroomInvites = [];
     // let invitationsToUpdate = [];
     let inviteToDelete = [];

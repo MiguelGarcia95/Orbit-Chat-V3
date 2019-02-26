@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/types';
-import {removeDuplicateChatrooms, removeDeletedChatrooms, sortCategoriesByDate} from '../utils/functions';
+import {removeDuplicateChatrooms, removeDeletedChatrooms, sortCategoriesByDate, removeDeletedInvites, removeDuplicateInvites} from '../utils/functions';
 
 const initialState = {
   currentChatroom: null,
@@ -94,11 +94,14 @@ const chatroomReducer = (state = initialState, action) => {
         chatroomInvites: action.payload.chatroomInvites
       }
     case actionTypes.SET_SENT_CHATROOM_INVITES: 
-      let chatroomInvites = [...state.chatroomInvites, ...action.payload.chatroomInvites];
-      console.log(chatroomInvites)
+      let allChatroomInvites = [...state.chatroomInvites, ...action.payload.chatroomInvites];
+      let filteredChatroomInvites = removeDuplicateInvites(allChatroomInvites);
+      let chatroomInvites = removeDeletedInvites(filteredChatroomInvites, action.payload.inviteToDelete);
+      // console.log(chatroomInvites)
       return {
         ...state,
-        chatroomError: action.payload.chatroomError
+        chatroomError: action.payload.chatroomError,
+        chatroomInvites: chatroomInvites
       }
     case actionTypes.JOIN_CHATROOM:
       let currentChatroom = !action.payload.currentChatroom ? state.currentChatroom : action.payload.currentChatroom;
