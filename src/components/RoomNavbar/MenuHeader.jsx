@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Container, Modal, Segment, Button, Label, Input, Dropdown} from 'semantic-ui-react';
+import {Grid, Container, Modal, Segment, Button, Label, Input, Dropdown, Divider} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {createCategory, leaveChatroom, inviteChatroom} from '../../actions/chatroomActions';
 
@@ -192,7 +192,8 @@ class MenuHeader extends React.Component {
         <Modal open={deleteChannelModal} onClose={this.closeChannelDeleteModal} size='mini'>
           <Modal.Header>Pick A Channel To Delete</Modal.Header>
           <Modal.Content>
-            <Dropdown placeholder='Select Category' fluid selection options={modalCategories} onChange={this.handleFriendChange} />
+            <Dropdown placeholder='Select Channel Category' fluid selection options={modalCategories} onChange={this.handleFriendChange} />
+            <Divider />
             <Dropdown placeholder='Select Channel' fluid selection options={modalChannels} onChange={this.handleFriendChange} />
           </Modal.Content>
           <Modal.Actions>
@@ -207,7 +208,7 @@ class MenuHeader extends React.Component {
               labelPosition='right' 
               content='Delete Channel' 
               onClick={this.deleteChannel} 
-              disabled={isFriendIdEmpty} 
+              // disabled={isFriendIdEmpty} 
             />
           </Modal.Actions>
         </Modal>
@@ -229,7 +230,7 @@ class MenuHeader extends React.Component {
               labelPosition='right' 
               content='Delete Category' 
               onClick={this.deleteCategory} 
-              disabled={isFriendIdEmpty} 
+              // disabled={isFriendIdEmpty} 
             />
           </Modal.Actions>
         </Modal>
