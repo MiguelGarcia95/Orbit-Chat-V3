@@ -113,34 +113,6 @@ export const rejectChatroomInvitation = (userId, chatroomId) => {
   }
 }
 
-// export const getChatroomInvitations = chatroomId => {
-//   return (dispatch, getState, {getFirestore}) => {
-//     const firestore = getFirestore();
-//     firestore.collection(`chatrooms/${chatroomId}/invites`).get().then(data => {
-//       let chatroomInvites = [];
-//       data.forEach(chatroomInvite => {
-//         chatroomInvites.push({id: chatroomInvite.id, invite: chatroomInvite.data()})
-//       })
-
-//       dispatch({
-//         type: actionTypes.GET_CHATROOM_INVITES,
-//         payload:{
-//           chatroomError: null,
-//           chatroomInvites: chatroomInvites   
-//         }
-//       })
-//     }).catch(err => {
-//       dispatch({
-//         type: actionTypes.GET_CHATROOM_INVITES,
-//         payload:{
-//           chatroomError: err.message,
-//           chatroomInvites: []   
-//         }
-//       })
-//     });
-//   }
-// }
-
 export const inviteChatroom = (friendId, chatroom) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
@@ -325,33 +297,6 @@ export const leaveChatroom = (user, chatroom) => {
     })
   }
 };
-
-// export const getChatroomUsers = chatroomId => {
-//   return (dispatch, getState, {getFirestore}) => {
-//     const firestore = getFirestore();
-//     firestore.collection(`chatrooms/${chatroomId}/users`).get().then(data => {
-//       let users = [];
-//       data.forEach(doc => {
-//         users.push({id: doc.id, user: doc.data()})
-//       });
-//       dispatch({
-//         type: actionTypes.GET_CHATROOM_USERS,
-//         payload: {
-//           chatroomError: null,
-//           chatroomUsers: users
-//         }
-//       })
-//     }).catch(err => {
-//       dispatch({
-//         type: actionTypes.GET_CHATROOM_USERS,
-//         payload: {
-//           chatroomError: err.message,
-//           chatroomUsers: []
-//         }
-//       })
-//     })
-//   }
-// }
 
 export const getChatroom = chatroomId => {
   return (dispatch, getState, {getFirestore}) => {
