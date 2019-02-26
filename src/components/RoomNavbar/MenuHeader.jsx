@@ -108,7 +108,6 @@ class MenuHeader extends React.Component {
 
   isFriendInviteEmpty = () => this.state.friendInviteId === '' ? true : false;
   isCategoryValueEmpty = () => this.state.categoryToDelete === '' ? true : false;
-  // isChannelCategoryEmpty = () => this.state.channelCategory === '' ? true : false;
   isChannelValueEmpty = () => this.state.channelToDelete === '' ? true : false;
 
   handleFriendChange = (e, { value }) => this.setState({ friendInviteId: value });
