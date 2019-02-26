@@ -43,6 +43,14 @@ class MenuHeader extends React.Component {
     }
   };
 
+  deleteChannel = () => {
+    console.log('delete channel')
+  };
+
+  deleteCategory = () => {
+    console.log('delete category')
+  };
+
   getAllFriends = (friends) => {
     let allFriends = [];
     friends.forEach(friend => {
@@ -82,7 +90,7 @@ class MenuHeader extends React.Component {
   }
 
   render() {
-    const {modal, inviteFriendModal} = this.state;
+    const {modal, inviteFriendModal, deleteChannelModal, deleteCategoryModal} = this.state;
     const {friendsList, chatroom, user} = this.props;
     let isFriendIdEmpty = this.isFriendInviteEmpty();
     let modalFriends = this.getAllFriends(friendsList);
@@ -151,6 +159,28 @@ class MenuHeader extends React.Component {
               labelPosition='right' 
               content='Invite' 
               onClick={this.inviteFriend} 
+              disabled={isFriendIdEmpty} 
+            />
+          </Modal.Actions>
+        </Modal>
+        {/* Modal for Channel Delete */}
+        <Modal open={deleteChannelModal} onClose={this.closeChannelDeleteModal} size='mini'>
+          <Modal.Header>Pick A Channel To Delete</Modal.Header>
+          <Modal.Content>
+            <Dropdown placeholder='Select Channel' fluid selection options={modalFriends} onChange={this.handleFriendChange} />
+          </Modal.Content>
+          <Modal.Actions>
+            <Button
+              negative icon='ban' 
+              labelPosition='left' 
+              content='Cancel' 
+              onClick={this.closeChannelDeleteModal}
+            />
+            <Button 
+              positive icon='checkmark' 
+              labelPosition='right' 
+              content='Invite' 
+              onClick={this.deleteChannel} 
               disabled={isFriendIdEmpty} 
             />
           </Modal.Actions>
