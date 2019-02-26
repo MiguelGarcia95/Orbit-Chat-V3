@@ -1,7 +1,8 @@
 import React from 'react';
 import {Grid, Container, Modal, Segment, Button, Label, Input, Dropdown, Divider} from 'semantic-ui-react';
 import {connect} from 'react-redux';
-import {createCategory, leaveChatroom, inviteChatroom} from '../../actions/chatroomActions';
+import {createCategory, leaveChatroom, inviteChatroom, deleteCategory} from '../../actions/chatroomActions';
+import {deleteChannel} from '../../actions/channelActions';
 
 class MenuHeader extends React.Component {
   state = {

@@ -28,9 +28,9 @@ export const createChannel = channel => {
   }
 }
 
-export const deleteChannel = channel => {
+export const deleteChannel = channelId => {
   return (dispatch, getState, {getFirestore}) => {
-    console.log(channel);
+    console.log(channelId);
   }
 }
 
