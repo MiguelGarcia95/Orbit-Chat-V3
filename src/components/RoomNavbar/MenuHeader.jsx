@@ -185,6 +185,28 @@ class MenuHeader extends React.Component {
             />
           </Modal.Actions>
         </Modal>
+        {/* Modal for Category Delete */}
+        <Modal open={deleteCategoryModal} onClose={this.closeCategoryDeleteModal} size='mini'>
+          <Modal.Header>Pick A Category To Delete</Modal.Header>
+          <Modal.Content>
+            <Dropdown placeholder='Select Category' fluid selection options={modalFriends} onChange={this.handleFriendChange} />
+          </Modal.Content>
+          <Modal.Actions>
+            <Button
+              negative icon='ban' 
+              labelPosition='left' 
+              content='Cancel' 
+              onClick={this.closeCategoryDeleteModal}
+            />
+            <Button 
+              positive icon='checkmark' 
+              labelPosition='right' 
+              content='Invite' 
+              onClick={this.deleteCategory} 
+              disabled={isFriendIdEmpty} 
+            />
+          </Modal.Actions>
+        </Modal>
       </React.Fragment>
     )
   }
