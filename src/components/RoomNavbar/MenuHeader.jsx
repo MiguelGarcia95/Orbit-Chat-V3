@@ -192,6 +192,7 @@ class MenuHeader extends React.Component {
         <Modal open={deleteChannelModal} onClose={this.closeChannelDeleteModal} size='mini'>
           <Modal.Header>Pick A Channel To Delete</Modal.Header>
           <Modal.Content>
+            <Dropdown placeholder='Select Category' fluid selection options={modalCategories} onChange={this.handleFriendChange} />
             <Dropdown placeholder='Select Channel' fluid selection options={modalChannels} onChange={this.handleFriendChange} />
           </Modal.Content>
           <Modal.Actions>
