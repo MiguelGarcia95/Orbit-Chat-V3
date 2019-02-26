@@ -179,7 +179,7 @@ class MenuHeader extends React.Component {
             <Button 
               positive icon='checkmark' 
               labelPosition='right' 
-              content='Invite' 
+              content='Delete Channel' 
               onClick={this.deleteChannel} 
               disabled={isFriendIdEmpty} 
             />
@@ -201,7 +201,7 @@ class MenuHeader extends React.Component {
             <Button 
               positive icon='checkmark' 
               labelPosition='right' 
-              content='Invite' 
+              content='Delete Category' 
               onClick={this.deleteCategory} 
               disabled={isFriendIdEmpty} 
             />
