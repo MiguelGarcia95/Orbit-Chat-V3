@@ -7,6 +7,8 @@ class MenuHeader extends React.Component {
   state = {
     modal: false,
     inviteFriendModal: false,
+    deleteChannelModal: false,
+    deleteCategoryModal: false,
     user: this.props.user,
     friendInviteId: '',
     chatroom: this.props.chatroom,
@@ -14,11 +16,17 @@ class MenuHeader extends React.Component {
   }
 
   openModal = () => this.setState({modal: true});
-  openFriendModal = () => this.setState({inviteFriendModal: true});
-
   closeModal = () => this.setState({modal: false});
+  
+  openFriendModal = () => this.setState({inviteFriendModal: true});
   closeFriendModal = () => this.setState({inviteFriendModal: false});
 
+  openChannelDeleteModal = () => this.setState({deleteChannelModal: true});
+  closeChannelDeleteModal = () => this.setState({deleteChannelModal: false});
+
+  openCategoryDeleteModal = () => this.setState({deleteCategoryModal: true});
+  closeCategoryDeleteModal = () => this.setState({deleteCategoryModal: false});
+  
   onChange = e => this.setState({[e.target.name]: e.target.value});
   clearFriendId = () => this.setState({friendInviteId: ''});
 
@@ -92,7 +100,10 @@ class MenuHeader extends React.Component {
                 <Dropdown icon='caret down'>
                   <Dropdown.Menu >
                     {chatroom.chatroom.uid === user.uid && (
-                      <Dropdown.Item content='New Category' onClick={this.openModal} icon='list' />
+                      <React.Fragment>
+                        <Dropdown.Item content='New Category' onClick={this.openModal} icon='list' />
+                        <Dropdown.Item content='Delete Category' onClick={this.openModal} icon='list' />
+                      </React.Fragment>
                     )}
                     <Dropdown.Item content='Invite Friend' onClick={this.openFriendModal} icon='user plus' />
                     {chatroom.chatroom.uid !== user.uid && (
