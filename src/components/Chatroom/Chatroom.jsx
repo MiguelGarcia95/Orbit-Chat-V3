@@ -4,7 +4,7 @@ import {Grid} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {getFirestore} from 'redux-firestore';
 
-import {getChatroom, clearChatroom, getChatroomUsers, setChatroomUsers, joinChatroom, getChatroomInvitations, setSentChatroomInvitations, triggerChatroomRedirect} from '../../actions/chatroomActions';
+import {getChatroom, clearChatroom, setChatroomUsers, joinChatroom, setSentChatroomInvitations, triggerChatroomRedirect} from '../../actions/chatroomActions';
 import {setFriends} from '../../actions/homeActions';
 import {unsetChannel, setChannel, setComments} from '../../actions/channelActions';
 import Spinner from '../Layout/Spinner';
@@ -24,9 +24,7 @@ class Chatroom extends React.Component {
         this.props.unsetChannel();
         this.props.clearChatroom();
         this.props.getChatroom(this.props.match.params.roomId);
-        // this.props.getChatroomUsers(this.props.match.params.roomId);
         this.getChatroomUsersRT(this.props.match.params.roomId);
-        // this.props.getChatroomInvitations(this.props.match.params.roomId);
         this.getChatroomInvitationsRT(this.props.match.params.roomId)
         this.getFriendsRT(user);
       }
@@ -40,7 +38,6 @@ class Chatroom extends React.Component {
       this.props.unsetChannel();
       this.props.clearChatroom();
       this.props.getChatroom(nextProps.match.params.roomId);
-      // this.props.getChatroomUsers(nextProps.match.params.roomId);
       this.getChatroomUsersRT(nextProps.match.params.roomId);      
     }
 
@@ -48,7 +45,6 @@ class Chatroom extends React.Component {
       if (nextProps.currentChatroom.chatroom.uid === nextProps.user.uid) {
         this.props.joinChatroom(nextProps.user, nextProps.currentChatroom);
       }
-      // this.props.getChatroomUsers(nextProps.currentChatroom.id);
       this.getChatroomUsersRT(nextProps.currentChatroom.id);
     } else if (nextProps.chatroomUsers.length > 0 && !this.isUserAMember(nextProps.user, nextProps.chatroomUsers)) {
       this.props.triggerChatroomRedirect();
@@ -149,10 +145,8 @@ const mapDispatchToProps = dispatch => {
     clearChatroom: () => dispatch(clearChatroom()),
     setChannel: (channel) => dispatch(setChannel(channel)),
     setComments: comments => dispatch(setComments(comments)),
-    // getChatroomUsers: chatroomId => dispatch(getChatroomUsers(chatroomId)),
     joinChatroom: (user, chatroom) => dispatch(joinChatroom(user, chatroom)),
     setFriends: docFriends => dispatch(setFriends(docFriends)),
-    // getChatroomInvitations: chatroomId => dispatch(getChatroomInvitations(chatroomId)),
     triggerChatroomRedirect: () => dispatch(triggerChatroomRedirect()),
     setChatroomUsers: docUsers => dispatch(setChatroomUsers(docUsers)),
     setSentChatroomInvitations: docInvitations => dispatch(setSentChatroomInvitations(docInvitations))
