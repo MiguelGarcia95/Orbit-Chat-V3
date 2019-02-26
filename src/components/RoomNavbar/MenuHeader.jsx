@@ -9,10 +9,13 @@ class MenuHeader extends React.Component {
     inviteFriendModal: false,
     deleteChannelModal: false,
     deleteCategoryModal: false,
-    user: this.props.user,
     friendInviteId: '',
-    chatroom: this.props.chatroom,
-    name: ''
+    channelToDelete: '',
+    categoryToDelete: '',
+    channelCategory: '',
+    name: '',
+    user: this.props.user,
+    chatroom: this.props.chatroom
   }
 
   openModal = () => this.setState({modal: true});
@@ -104,6 +107,9 @@ class MenuHeader extends React.Component {
   }
 
   isFriendInviteEmpty = () => this.state.friendInviteId === '' ? true : false;
+  isCategoryEmpty = () => this.state.categoryToDelete === '' ? true : false;
+  isChannelCategoryEmpty = () => this.state.channelCategory === '' ? true : false;
+  isChannelEmpty = () => this.state.channelToDelete === '' ? true : false;
 
   handleFriendChange = (e, { value }) => this.setState({ friendInviteId: value });
 
