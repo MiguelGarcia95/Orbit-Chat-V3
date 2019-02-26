@@ -70,12 +70,22 @@ class MenuHeader extends React.Component {
     let allCategories = [];
     categories.forEach(category => {
       allCategories.push({
-        text: category.category.username, 
-        // image: category.category.avatar, 
+        text: category.category.name, 
         value: category.id,
       });
     })
     return allCategories;
+  }
+
+  getAllChannels = (channels) => {
+    let allChannels = [];
+    channels.forEach(channel => {
+      allChannels.push({
+        text: channel.channel.name, 
+        value: channel.id,
+      });
+    })
+    return allChannels;
   }
 
   hasFriendJoined = (friendId) => {
@@ -107,7 +117,7 @@ class MenuHeader extends React.Component {
     let isFriendIdEmpty = this.isFriendInviteEmpty();
     let modalFriends = this.getAllFriends(friendsList);
     let modalCategories = this.getAllCategories(categories)
-    console.log(modalCategories)
+    let modalChannels = this.getAllChannels(channels)
     return(
       <React.Fragment>
         <Grid className='header_menu'>
@@ -182,7 +192,7 @@ class MenuHeader extends React.Component {
         <Modal open={deleteChannelModal} onClose={this.closeChannelDeleteModal} size='mini'>
           <Modal.Header>Pick A Channel To Delete</Modal.Header>
           <Modal.Content>
-            <Dropdown placeholder='Select Channel' fluid selection options={modalFriends} onChange={this.handleFriendChange} />
+            <Dropdown placeholder='Select Channel' fluid selection options={modalChannels} onChange={this.handleFriendChange} />
           </Modal.Content>
           <Modal.Actions>
             <Button
