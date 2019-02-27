@@ -28,11 +28,36 @@ export const createChannel = channel => {
   }
 }
 
-export const deleteChannel = channelId => {
+export const deleteChannel = (channelId, allMessageIds) => {
   return (dispatch, getState, {getFirestore}) => {
     console.log(channelId);
+    console.log(allMessageIds);
   }
 }
+
+// export const deleteDirectMessageChat = (user, otherUser, allMessageIds) => {
+//   return (dispatch, getstate, {getFirestore}) => {
+//     const firestore = getFirestore();
+
+//     allMessageIds.forEach(messageId => {
+//       firestore
+//         .collection(`users/${user.uid}/messages/${otherUser.uid}/messages`)
+//         .doc(messageId)
+//         .delete()
+//     })
+
+//     firestore.collection(`users/${user.uid}/dmList`).doc(otherUser.uid)
+//       .delete().then(() => {
+//         dispatch({
+//           type: actionTypes.DELETE_DIRECT_MESSAGE_CHAT,
+//           payload: {
+//             homeError: null,
+//             currentView: 'friends'
+//           }
+//         })
+//       })
+//   }
+// }
 
 export const setChannels = docChannels => {
   return (dispatch) => {
