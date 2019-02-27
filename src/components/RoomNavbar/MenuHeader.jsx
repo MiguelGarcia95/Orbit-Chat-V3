@@ -12,7 +12,6 @@ class MenuHeader extends React.Component {
     deleteCategoryModal: false,
     friendInviteId: '',
     channelToDelete: '',
-    categoryToDelete: '',
     channelCategory: '',
     name: '',
     user: this.props.user,
@@ -49,7 +48,7 @@ class MenuHeader extends React.Component {
 
   inviteFriend = () => {
     if (this.props.friendInviteId !== '') {
-      this.props.inviteChatroom(this.state.friendInviteId, this.props.chatroom);
+      this.props.inviteChatroom(this.state.friendInviteId, this.state.chatroom.id);
       this.clearFields();
       this.closeFriendModal();
     }
@@ -280,7 +279,7 @@ const mapDispatchToProps = dispatch => {
     leaveChatroom: (user, chatroom) => dispatch(leaveChatroom(user, chatroom)),
     inviteChatroom: (friendId, chatroom) => dispatch(inviteChatroom(friendId, chatroom)),
     deleteCategory: categoryId => dispatch(deleteCategory(categoryId)),
-    deleteChannel: channelId => dispatch(deleteChannel(channelId))
+    deleteChannel: (channelId, chatroomId) => dispatch(deleteChannel(channelId, chatroomId))
   }
 }
 
