@@ -142,7 +142,7 @@ class MenuHeader extends React.Component {
   }
 
   render() {
-    const {modal, inviteFriendModal, deleteChannelModal, deleteCategoryModal, channelCategory} = this.state;
+    const {modal, inviteFriendModal, deleteChannelModal, deleteCategoryModal, deleteChatroomModal, channelCategory} = this.state;
     const {friendsList, chatroom, user, categories, channels} = this.props;
     let isFriendIdEmpty = this.isFriendInviteEmpty();
     let isCategoryEmpty = this.isCategoryValueEmpty();
@@ -264,6 +264,24 @@ class MenuHeader extends React.Component {
               content='Delete Category' 
               onClick={this.deleteCategory} 
               disabled={isCategoryEmpty} 
+            />
+          </Modal.Actions>
+        </Modal>
+        {/* Modal for Category Delete */}
+        <Modal open={deleteChatroomModal} onClose={this.closeChatroomDeleteModal} size='mini'>
+          <Modal.Header>Are you sure you want to delete {chatroom.chatroom.name} chatroom?</Modal.Header>
+          <Modal.Actions>
+            <Button
+              negative icon='ban' 
+              labelPosition='left' 
+              content='Cancel' 
+              onClick={this.closeChatroomDeleteModal}
+            />
+            <Button 
+              positive icon='checkmark' 
+              labelPosition='right' 
+              content='Delete Chatroom' 
+              onClick={this.deleteChatroom} 
             />
           </Modal.Actions>
         </Modal>
