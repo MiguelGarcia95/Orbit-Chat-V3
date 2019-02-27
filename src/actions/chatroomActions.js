@@ -37,33 +37,27 @@ export const deleteChatroom = chatroom => {
 
 export const deleteCategory = (categoryId, chatroomId) => {
   return (dispatch, getState, {getFirestore}) => {
-    // get all channels,
-    // get all comments for each channel and delete them.
-    // delete all channels,
-    // delete category
     const firestore = getFirestore();
     firestore.collection(`channels/${chatroomId}/channels`).get().then(data => {
       let channelIds = [];
       data.forEach(doc => {
         if (doc.data().categoryId === categoryId) {channelIds.push(doc.id)}
       });
-      console.log(channelIds)
       channelIds.forEach(channelId => {
         firestore.collection(`comments/${channelId}/comments`).get().then(data => {
           let commentIds = [];
           data.forEach(doc => commentIds.push(doc.id));
-          console.log(commentIds);
-          // commentIds.forEach(messageId => {
-          //   firestore.collection(`comments/${channelId}/comments`).doc(messageId).delete()
-          // });
+          commentIds.forEach(messageId => {
+            firestore.collection(`comments/${channelId}/comments`).doc(messageId).delete()
+          });
         })
       })
-      // data.forEach(doc => doc.data() channels.push(doc.id));
-    //   let commentIds = [];
-    //   data.forEach(doc => commentIds.push(doc.id));
-    //   commentIds.forEach(messageId => {
-    //     firestore.collection(`comments/${channelId}/comments`).doc(messageId).delete()
-    //   });
+      //delete channels
+      channelIds.forEach(channelId => {
+        firestore.collection(`channels/${chatroomId}/channels`).doc(channelId).delete()
+      })
+      // delete category
+      firestore.collection(`categories/${chatroomId}/categories`).doc(categoryId).delete();
     })
   }
 }
