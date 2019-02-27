@@ -48,6 +48,16 @@ export const deleteCategory = (categoryId, chatroomId) => {
         if (doc.data().categoryId === categoryId) {channelIds.push(doc.id)}
       });
       console.log(channelIds)
+      channelIds.forEach(channelId => {
+        firestore.collection(`comments/${channelId}/comments`).get().then(data => {
+          let commentIds = [];
+          data.forEach(doc => commentIds.push(doc.id));
+          console.log(commentIds);
+          // commentIds.forEach(messageId => {
+          //   firestore.collection(`comments/${channelId}/comments`).doc(messageId).delete()
+          // });
+        })
+      })
       // data.forEach(doc => doc.data() channels.push(doc.id));
     //   let commentIds = [];
     //   data.forEach(doc => commentIds.push(doc.id));
