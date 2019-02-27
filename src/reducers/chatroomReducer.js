@@ -24,6 +24,11 @@ const chatroomReducer = (state = initialState, action) => {
         chatroomError: action.payload.chatroomError,
         newChatroomId: action.payload.newChatroomId,
       }
+    case actionTypes.DELETE_CATEGORY:
+      return {
+        ...state,
+        chatroomError: action.payload.chatroomError
+      }
     case actionTypes.GET_CHATROOM:
       return {
         ...state,
@@ -48,7 +53,6 @@ const chatroomReducer = (state = initialState, action) => {
         inChatroom: action.payload.inChatroom
       }
     case actionTypes.SET_CHATROOM_CATEGORIES:
-      // sort categories based on uniqueness and delete
       let allCategories = [...state.categories, ...action.payload.categories];
       let uniqueCategories = removeDuplicateCategories(allCategories);
       let sortedCategories = sortCategoriesByDate(uniqueCategories);

@@ -57,7 +57,21 @@ export const deleteCategory = (categoryId, chatroomId) => {
         firestore.collection(`channels/${chatroomId}/channels`).doc(channelId).delete()
       })
       // delete category
-      firestore.collection(`categories/${chatroomId}/categories`).doc(categoryId).delete();
+      firestore.collection(`categories/${chatroomId}/categories`).doc(categoryId).delete().then(() => {
+        dispatch({
+          type: actionTypes.DELETE_CATEGORY,
+          payload: {
+            chatroomError: null
+          }
+        })
+      }).catch(err => {
+        dispatch({
+          type: actionTypes.DELETE_CATEGORY,
+          payload: {
+            chatroomError: err.message
+          }
+        })
+      });
     })
   }
 }
