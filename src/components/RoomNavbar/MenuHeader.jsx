@@ -48,14 +48,14 @@ class MenuHeader extends React.Component {
 
   inviteFriend = () => {
     if (this.props.friendInviteId !== '') {
-      this.props.inviteChatroom(this.state.friendInviteId, this.state.chatroom.id);
+      this.props.inviteChatroom(this.state.friendInviteId);
       this.clearFields();
       this.closeFriendModal();
     }
   };
 
   deleteChannel = () => {
-    this.props.deleteChannel(this.state.channelToDelete);
+    this.props.deleteChannel(this.state.channelToDelete, this.state.chatroom.id);
     this.clearFields();
     this.closeChannelDeleteModal();
   };

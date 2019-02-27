@@ -28,14 +28,14 @@ export const createChannel = channel => {
   }
 }
 
-export const deleteChannel = (channelId, allMessageIds) => {
+export const deleteChannel = (channelId, chatroomId) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
     console.log(channelId);
     // firestore.collection(`comments/${channelId}`).get().then(doc => {
     //   console.log(doc);
     // })
-    console.log(allMessageIds);
+    console.log(chatroomId);
   }
 }
 
