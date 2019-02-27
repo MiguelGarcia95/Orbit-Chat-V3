@@ -280,7 +280,7 @@ const mapDispatchToProps = dispatch => {
     leaveChatroom: (user, chatroom) => dispatch(leaveChatroom(user, chatroom)),
     inviteChatroom: (friendId, chatroom) => dispatch(inviteChatroom(friendId, chatroom)),
     deleteCategory: categoryId => dispatch(deleteCategory(categoryId)),
-    deleteChannel: (channelId, allMessageIds) => dispatch(deleteChannel(channelId, allMessageIds))
+    deleteChannel: channelId => dispatch(deleteChannel(channelId))
   }
 }
 
