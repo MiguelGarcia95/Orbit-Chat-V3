@@ -36,34 +36,23 @@ export const deleteChannel = (channelId, chatroomId) => {
       data.forEach(doc => commentIds.push(doc.id));
       commentIds.forEach(messageId => {
         firestore.collection(`comments/${channelId}/comments`).doc(messageId).delete()
+      });
+    })
+    firestore.collection(`channels/${chatroomId}/channels`).doc(channelId).delete().then(() => {
+      dispatch({
+        type: actionTypes.DELETE_CHANNEL,
+        channelError: null,
+        currentChannel: null
+      })
+    }).catch(err => {
+      dispatch({
+        type: actionTypes.DELETE_CHANNEL,
+        channelError: err.message,
+        currentChannel: null
       })
     })
   }
 }
-
-// export const deleteDirectMessageChat = (user, otherUser, allMessageIds) => {
-//   return (dispatch, getstate, {getFirestore}) => {
-//     const firestore = getFirestore();
-
-//     allMessageIds.forEach(messageId => {
-//       firestore
-//         .collection(`users/${user.uid}/messages/${otherUser.uid}/messages`)
-//         .doc(messageId)
-//         .delete()
-//     })
-
-//     firestore.collection(`users/${user.uid}/dmList`).doc(otherUser.uid)
-//       .delete().then(() => {
-//         dispatch({
-//           type: actionTypes.DELETE_DIRECT_MESSAGE_CHAT,
-//           payload: {
-//             homeError: null,
-//             currentView: 'friends'
-//           }
-//         })
-//       })
-//   }
-// }
 
 export const setChannels = docChannels => {
   return (dispatch) => {
