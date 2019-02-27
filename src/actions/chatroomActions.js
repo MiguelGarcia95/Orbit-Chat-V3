@@ -37,8 +37,24 @@ export const deleteChatroom = chatroom => {
 
 export const deleteCategory = (categoryId, chatroomId) => {
   return (dispatch, getState, {getFirestore}) => {
-    console.log(categoryId)
-    console.log(chatroomId)
+    // get all channels,
+    // get all comments for each channel and delete them.
+    // delete all channels,
+    // delete category
+    const firestore = getFirestore();
+    firestore.collection(`channels/${chatroomId}/channels`).get().then(data => {
+      let channelIds = [];
+      data.forEach(doc => {
+        if (doc.data().categoryId === categoryId) {channelIds.push(doc.id)}
+      });
+      console.log(channelIds)
+      // data.forEach(doc => doc.data() channels.push(doc.id));
+    //   let commentIds = [];
+    //   data.forEach(doc => commentIds.push(doc.id));
+    //   commentIds.forEach(messageId => {
+    //     firestore.collection(`comments/${channelId}/comments`).doc(messageId).delete()
+    //   });
+    })
   }
 }
 
