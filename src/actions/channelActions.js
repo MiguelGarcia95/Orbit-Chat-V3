@@ -31,11 +31,13 @@ export const createChannel = channel => {
 export const deleteChannel = (channelId, chatroomId) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
-    console.log(channelId);
-    // firestore.collection(`comments/${channelId}`).get().then(doc => {
-    //   console.log(doc);
-    // })
-    console.log(chatroomId);
+    firestore.collection(`comments/${channelId}/comments`).get().then(data => {
+      let commentIds = [];
+      data.forEach(doc => commentIds.push(doc.id));
+      commentIds.forEach(messageId => {
+        firestore.collection(`comments/${channelId}/comments`).doc(messageId).delete()
+      })
+    })
   }
 }
 
