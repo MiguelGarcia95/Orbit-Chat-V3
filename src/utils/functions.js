@@ -207,6 +207,19 @@ export const removeDuplicateInvites = chatroomInvites => {
   }, []);
 }
 
+export const removeDeletedChannels = (channels, channelToDelete) => {
+  return channels.reduce((newArray, channel) => {
+    if (channelToDelete.length > 0) {
+      if (channelToDelete[0].id !== channel.id) {
+        newArray.push(channel);
+      }
+    } else {
+      newArray.push(channel);
+    }
+    return newArray;
+  }, []);
+}
+
 export const removeDeletedInvites = (chatroomInvites, inviteToDelete) => {
   return chatroomInvites.reduce((newArray, chatroomInvite) => {
     if (inviteToDelete.length > 0) {
