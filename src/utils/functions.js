@@ -233,6 +233,37 @@ export const removeDeletedInvites = (chatroomInvites, inviteToDelete) => {
   }, []);
 }
 
+export const removeDuplicateCategories = categories => {
+  return categories.reduce((newArray, category) => {
+    if (newArray.length > 0) {
+      let isInArray = false;
+      newArray.forEach(arrayCategory => {
+        if (category.id === arrayCategory.id) {
+          isInArray = true;
+        }
+      });
+      if (!isInArray) {
+        newArray.push(category);
+      }
+    } else {
+      newArray.push(category);
+    }
+    return newArray;
+  }, []);
+}
+export const removeDeletedCategories = (categories, categoryToDelete) => {
+  return categories.reduce((newArray, category) => {
+    if (categoryToDelete.length > 0) {
+      if (categoryToDelete[0].id !== category.id) {
+        newArray.push(category)
+      }
+    } else {
+      newArray.push(category)
+    }
+    return newArray;
+  }, []);
+}
+
 export const removeDuplicateFriends = friends => {
   return friends.reduce((newArray, friend) => {
     if (newArray.length > 0) {
