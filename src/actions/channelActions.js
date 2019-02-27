@@ -69,8 +69,6 @@ export const setChannels = docChannels => {
       }
     })
 
-    console.log(channelToDelete);
-
     dispatch({
       type: actionTypes.SET_CHANNELS,
       payload: {
