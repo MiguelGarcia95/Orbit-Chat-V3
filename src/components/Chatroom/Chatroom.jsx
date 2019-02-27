@@ -50,6 +50,10 @@ class Chatroom extends React.Component {
       this.props.triggerChatroomRedirect();
     }
 
+    if (this.props.channels.length > nextProps.channels.length && !this.state.firstLoad) {
+      this.props.setChannel(this.getMatchingChannels(nextProps.categories[0], nextProps.channels));
+    }
+
     this.setCurrentChannel(nextProps.currentChannel, nextProps.channels, nextProps.categories, true);
     this.setState({firstLoad: false});
   }

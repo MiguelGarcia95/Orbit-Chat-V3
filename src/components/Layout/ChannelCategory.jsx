@@ -21,7 +21,6 @@ class ChannelCategory extends React.Component {
   onChange = e => this.setState({[e.target.name]: e.target.value});
 
   openModal = () => this.setState({modal: true});
-
   closeModal = () => this.setState({modal: false});
 
   sortChannels = (channels, category) => {

@@ -10,11 +10,10 @@ import ChannelCategory from '../Layout/ChannelCategory';
 class MenuCategories extends React.Component {
   componentDidMount() {
     this.getChatroomCategoriesRT(this.props.chatroom.id);
-    // this.props.getChannels(this.props.chatroom.id);
     this.getChannelsRT(this.props.chatroom.id);
   }
 
-  getChatroomCategoriesRT = (chatroomId) => {
+  getChatroomCategoriesRT = chatroomId => {
     const firestore = getFirestore();
     firestore.collection(`categories/${chatroomId}/categories`).onSnapshot(snapshot => {
       let changes = snapshot.docChanges();
@@ -22,7 +21,7 @@ class MenuCategories extends React.Component {
     })
   }
 
-  getChannelsRT = (chatroomId) => {
+  getChannelsRT = chatroomId => {
     const firestore = getFirestore();
     firestore.collection(`channels/${chatroomId}/channels`).onSnapshot(snapshot => {
       let changes = snapshot.docChanges();
