@@ -61,7 +61,7 @@ class MenuHeader extends React.Component {
   };
 
   deleteCategory = () => {
-    this.props.deleteCategory(this.state.categoryToDelete);
+    this.props.deleteCategory(this.state.categoryToDelete, this.state.chatroom.id);
     this.clearFields();
     this.closeCategoryDeleteModal();
   };
@@ -278,7 +278,7 @@ const mapDispatchToProps = dispatch => {
     createCategory: category => dispatch(createCategory(category)),
     leaveChatroom: (user, chatroom) => dispatch(leaveChatroom(user, chatroom)),
     inviteChatroom: (friendId, chatroom) => dispatch(inviteChatroom(friendId, chatroom)),
-    deleteCategory: categoryId => dispatch(deleteCategory(categoryId)),
+    deleteCategory: (categoryId, chatroomId) => dispatch(deleteCategory(categoryId, chatroomId)),
     deleteChannel: (channelId, chatroomId) => dispatch(deleteChannel(channelId, chatroomId))
   }
 }
