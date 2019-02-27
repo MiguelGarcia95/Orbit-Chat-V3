@@ -113,17 +113,23 @@ class Chatroom extends React.Component {
   setCurrentChannel = (currentChannel, channels, categories, isNewChannel) => {
     if (!currentChannel && channels.length > 0 && categories.length > 0) {
       this.props.setChannel(this.getMatchingChannels(categories[0], channels));
-    } else if (currentChannel && isNewChannel) {
+    } else if (currentChannel && isNewChannel & channels.length > 0) {
       this.getChannelCommentsRT(currentChannel.channel.chatroomId, currentChannel.id);
     }
   }
 
+  displayCommentPanel = (currentChannel, channels, user) => {
+    if (currentChannel && channels.length > 0) {
+      return <ChatCommentPanel  channel={currentChannel} user={user} />
+    }
+  }
+
   render() {
-    const {user, currentChatroom, currentChannel} = this.props;
+    const {user, currentChatroom, currentChannel, channels} = this.props;
     return !user || !currentChatroom ? <Spinner /> : (
       <Grid columns='equal' className='app' style={{marginTop: '0px'}}>
         <Grid.Column style={{marginLeft: 312, height: '100%'}} >
-            {currentChannel && <ChatCommentPanel  channel={currentChannel} user={user} />}
+            {this.displayCommentPanel(currentChannel, channels, user)}
         </Grid.Column>
       </Grid>
     );
