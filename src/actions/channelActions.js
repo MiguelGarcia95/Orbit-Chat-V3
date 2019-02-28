@@ -22,8 +22,7 @@ export const createChannel = channel => {
       dispatch({
         type: actionTypes.CREATE_CHANNEL,
         payload: {
-          channelError: err.message,
-          newChannel: false
+          channelError: err.message
         }
       })
     })
