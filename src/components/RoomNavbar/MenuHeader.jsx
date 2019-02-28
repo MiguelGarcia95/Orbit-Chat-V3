@@ -273,18 +273,6 @@ class MenuHeader extends React.Component {
         <Modal open={deleteChatroomModal} onClose={this.closeChatroomDeleteModal} size='mini'>
           <Modal.Header>Are you sure you want to delete {chatroom.chatroom.name} chatroom?</Modal.Header>
           <Modal.Actions>
-            {/* <Button
-              negative icon='ban' 
-              labelPosition='left' 
-              content='Cancel' 
-              onClick={this.closeChatroomDeleteModal}
-            />
-            <Button 
-              positive icon='checkmark' 
-              labelPosition='right' 
-              content='Delete Chatroom' 
-              onClick={this.deleteChatroom} 
-            /> */}
             <Button.Group attached='bottom'>
               <Button negative onClick={this.closeChatroomDeleteModal} >Cancel</Button>
               <Button.Or />
