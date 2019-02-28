@@ -34,7 +34,7 @@ export const deleteChatroom = (chatroomId) => {
     const firestore = getFirestore();
 
     // delete channels + comments
-    firestore.collection(`channels/${chatroomId}/channels`).then(data => {
+    firestore.collection(`channels/${chatroomId}/channels`).get().then(data => {
       let channelIds = [];
       data.forEach(doc => channelIds.push(doc.id));
       channelIds.forEach(channelId => {
@@ -82,7 +82,7 @@ export const deleteChatroom = (chatroomId) => {
         payload: {
           chatroomError: null,
           currentChatroom: null,
-          chatroomRedirect: false
+          chatroomRedirect: true
         }
       })
     }).catch(err => {

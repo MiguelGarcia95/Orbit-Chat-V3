@@ -81,6 +81,12 @@ const chatroomReducer = (state = initialState, action) => {
         chatrooms: allChatrooms,
         chatroomError: action.payload.chatroomError
       }
+    case actionTypes.DELETE_CHATROOM:
+      return {
+        chatroomError: action.payload.chatroomError,
+        currentChatroom: action.payload.currentChatroom,
+        chatroomRedirect: action.payload.chatroomRedirect
+      }
     case actionTypes.CREATE_CATEGORY:
       return {
         ...state,
