@@ -32,11 +32,32 @@ export const createChatroom = chatroom => {
 export const deleteChatroom = (chatroomId) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
+
+    // delete channels + comments
+    firestore.collection(`channels/${chatroomId}/channels`).then(data => {
+      let channelIds = [];
+      data.forEach(doc => channelIds.push(doc.id));
+      channelIds.forEach(channelId => {
+        firestore.collection(`comments/${channelId}/comments`).get().then(data => {
+          let commentIds = [];
+          data.forEach(doc => commentIds.push(doc.id));
+          commentIds.forEach(messageId => {
+            firestore.collection(`comments/${channelId}/comments`).doc(messageId).delete()
+          });
+        })
+      })
+    });
+
+    // delete categories
     firestore.collection(`categories/${chatroomId}/categories`).get().then(data => {
       let categoryIds = [];
       data.forEach(doc => categoryIds.push(doc.id));
-      console.log(categoryIds);
-    })
+      categoryIds.forEach(categoryId => {
+        firestore.collection(`categories/${chatroomId}/categories`).doc(categoryId).delete()
+      })
+    });
+
+    //delete chatroom
   }
 }
 

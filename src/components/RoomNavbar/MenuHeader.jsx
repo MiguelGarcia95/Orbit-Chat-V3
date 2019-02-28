@@ -71,6 +71,7 @@ class MenuHeader extends React.Component {
   };
 
   deleteChatroom = () => {
+    this.props.deleteChatroom(this.state.chatroom.id);
     this.closeChatroomDeleteModal();
   }
 
