@@ -90,27 +90,25 @@ class MenuHeader extends React.Component {
   }
 
   getAllCategories = (categories) => {
-    let allCategories = [];
-    categories.forEach(category => {
+    return categories.reduce((allCategories, category) => {
       allCategories.push({
         text: category.category.name, 
         value: category.id,
       });
-    })
-    return allCategories;
+      return allCategories;
+    }, []);
   }
 
   getAllChannels = (channels, channelCategoryId) => {
-    let allChannels = [];
-    channels.forEach(channel => {
+    return channels.reduce((allChannels, channel) => {
       if (channel.channel.categoryId === channelCategoryId) {
         allChannels.push({
           text: channel.channel.name, 
           value: channel.id,
         });
       }
-    })
-    return allChannels;
+      return allChannels;
+    }, []);
   }
 
   hasFriendJoined = (friendId) => {
