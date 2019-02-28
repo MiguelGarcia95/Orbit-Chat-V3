@@ -52,11 +52,9 @@ class MenuHeader extends React.Component {
   }
 
   inviteFriend = () => {
-    if (this.props.friendInviteId !== '') {
-      this.props.inviteChatroom(this.state.friendInviteId, this.state.chatroom);
-      this.clearFields();
-      this.closeFriendModal();
-    }
+    this.props.inviteChatroom(this.state.friendInviteId, this.state.chatroom);
+    this.clearFields();
+    this.closeFriendModal();
   };
 
   deleteChannel = () => {
@@ -78,8 +76,7 @@ class MenuHeader extends React.Component {
   }
 
   getAllFriends = (friends) => {
-    let allFriends = [];
-    friends.forEach(friend => {
+    return friends.reduce((allFriends, friend) => {
       if (friend.friend.status === 'accepted') {
         allFriends.push({
           text: friend.friend.username, 
@@ -88,8 +85,8 @@ class MenuHeader extends React.Component {
           disabled: this.hasFriendJoined(friend.id)
         });
       }
-    })
-    return allFriends;
+      return allFriends;
+    }, []);
   }
 
   getAllCategories = (categories) => {
@@ -228,7 +225,7 @@ class MenuHeader extends React.Component {
             <Button.Group attached='bottom'>
               <Button negative onClick={this.closeChannelDeleteModal} >Cancel</Button>
               <Button.Or />
-              <Button positive onClick={this.deleteChannel} disabled={isChannelEmpty}  >Delete Channel</Button>
+              <Button positive onClick={this.deleteChannel} disabled={isChannelEmpty}>Delete Channel</Button>
             </Button.Group>
           </Modal.Actions>
         </Modal>
