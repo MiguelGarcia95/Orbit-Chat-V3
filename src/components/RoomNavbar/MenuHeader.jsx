@@ -46,7 +46,7 @@ class MenuHeader extends React.Component {
     });
   }
 
-  onSubmit = () => {
+  onCreateCategory = () => {
     this.props.createCategory(this.state);
     this.closeModal();
   }
@@ -193,7 +193,7 @@ class MenuHeader extends React.Component {
             <Button.Group attached='bottom'>
               <Button negative onClick={this.closeModal} >Cancel</Button>
               <Button.Or />
-              <Button positive onClick={this.onSubmit} >Create</Button>
+              <Button positive onClick={this.onCreateCategory} >Create</Button>
             </Button.Group>
           </Modal.Content>
         </Modal>
