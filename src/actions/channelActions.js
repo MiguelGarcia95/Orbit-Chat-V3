@@ -14,14 +14,16 @@ export const createChannel = channel => {
       dispatch({
         type: actionTypes.CREATE_CHANNEL,
         payload: {
-          channelError: null
+          channelError: null,
+          newChannel: true
         }
       })
     }).catch(err => {
       dispatch({
         type: actionTypes.CREATE_CHANNEL,
         payload: {
-          channelError: err.message
+          channelError: err.message,
+          newChannel: false
         }
       })
     })

@@ -7,6 +7,7 @@ import {
 const initialState = {
   currentChannel: null,
   channelError: null,
+  newChannel: false,
   channels: [],
   comments: []
 }
@@ -16,7 +17,8 @@ const chatroomReducer = (state = initialState, action) => {
     case actionTypes.CREATE_CHANNEL: 
       return {
         ...state,
-        channelError: action.payload.channelError
+        channelError: action.payload.channelError,
+        newChannel: action.payload.newChannel
       }
     case actionTypes.SET_CHANNELS:
       let allChannels = [...state.channels, ...action.payload.channels];

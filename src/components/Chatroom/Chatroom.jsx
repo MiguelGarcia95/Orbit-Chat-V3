@@ -32,6 +32,9 @@ class Chatroom extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
+    if (!nextProps.chatroomDelete) {
+      
+    }
     if (!this.state.firstLoad && nextProps.chatroomRedirect) {
       this.props.history.push('/app');
     } else if (!this.state.firstLoad && this.props.match.params.roomId !== nextProps.match.params.roomId) {
@@ -54,7 +57,7 @@ class Chatroom extends React.Component {
       this.props.setChannel(this.getMatchingChannels(nextProps.categories[0], nextProps.channels));
     }
 
-    this.setCurrentChannel(nextProps.currentChannel, nextProps.channels, nextProps.categories, true);
+    this.setCurrentChannel(nextProps.currentChannel, nextProps.channels, nextProps.categories);
     this.setState({firstLoad: false});
   }
 
@@ -110,10 +113,10 @@ class Chatroom extends React.Component {
     return hasUserJoined;
   }
 
-  setCurrentChannel = (currentChannel, channels, categories, isNewChannel) => {
+  setCurrentChannel = (currentChannel, channels, categories) => {
     if (!currentChannel && channels.length > 0 && categories.length > 0) {
       this.props.setChannel(this.getMatchingChannels(categories[0], channels));
-    } else if (currentChannel && isNewChannel & channels.length > 0) {
+    } else if (currentChannel && channels.length > 0 && ('channel' in currentChannel) ) {
       this.getChannelCommentsRT(currentChannel.channel.chatroomId, currentChannel.id);
     }
   }
@@ -144,7 +147,8 @@ const mapStateToProps = state => {
     currentChannel: state.channel.currentChannel,
     channels: state.channel.channels,
     categories: state.chat.categories,
-    chatroomUsers: state.chat.chatroomUsers
+    chatroomUsers: state.chat.chatroomUsers,
+    chatroomDelete: state.chat.chatroomDelete
   }
 }
 
