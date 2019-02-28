@@ -88,6 +88,11 @@ const chatroomReducer = (state = initialState, action) => {
         ...state,
         isDeleting: action.payload.isDeleting
       }
+    case actionTypes.IS_DELETING_CHATROOM_RESET:
+      return {
+        ...state,
+        isDeleting: action.payload.isDeleting
+      }
     case actionTypes.DELETE_CHATROOM:
       return {
         ...state,

@@ -32,7 +32,6 @@ class Chatroom extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    console.log(nextProps.isDeleting);
     if (!nextProps.isDeleting) {
       if (!this.state.firstLoad && nextProps.chatroomRedirect) {
         this.props.history.push('/app');

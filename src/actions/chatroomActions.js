@@ -40,6 +40,17 @@ export const isDeleting = () => {
   }
 }
 
+export const isDeletingReset = () => {
+  return (dispatch) => {
+    dispatch({
+      type: actionTypes.IS_DELETING_CHATROOM_RESET,
+      payload: {
+        isDeleting: false
+      }
+    })
+  }
+}
+
 export const deleteChatroom = (chatroomId) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
