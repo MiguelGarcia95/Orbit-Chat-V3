@@ -76,7 +76,25 @@ export const deleteChatroom = (chatroomId) => {
       })
     })
     //delete chatroom
-    // firestore.collection(`chatrooms`).doc(chatroomId).delete()
+    firestore.collection(`chatrooms`).doc(chatroomId).delete().then(() => {
+      dispatch({
+        type: actionTypes.DELETE_CHATROOM,
+        payload: {
+          chatroomError: null,
+          currentChatroom: null,
+          chatroomRedirect: false
+        }
+      })
+    }).catch(err => {
+      dispatch({
+        type: actionTypes.DELETE_CHATROOM,
+        payload: {
+          chatroomError: err.message,
+          currentChatroom: null,
+          chatroomRedirect: false
+        }
+      })
+    })
   }
 }
 
