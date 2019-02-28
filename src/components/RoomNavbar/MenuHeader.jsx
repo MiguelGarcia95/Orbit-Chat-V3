@@ -209,19 +209,11 @@ class MenuHeader extends React.Component {
             <Dropdown placeholder='Select Friend' fluid selection options={modalFriends} onChange={this.handleFriendChange} />
           </Modal.Content>
           <Modal.Actions>
-            <Button
-              negative icon='ban' 
-              labelPosition='left' 
-              content='Cancel' 
-              onClick={this.closeFriendModal}
-            />
-            <Button 
-              positive icon='checkmark' 
-              labelPosition='right' 
-              content='Invite' 
-              onClick={this.inviteFriend} 
-              disabled={isFriendIdEmpty} 
-            />
+            <Button.Group attached='bottom'>
+              <Button negative onClick={this.closeFriendModal} >Cancel</Button>
+              <Button.Or />
+              <Button positive onClick={this.inviteFriend} disabled={isFriendIdEmpty}  >Invite</Button>
+            </Button.Group>
           </Modal.Actions>
         </Modal>
         {/* Modal for Channel Delete */}
