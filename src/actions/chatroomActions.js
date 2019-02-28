@@ -34,30 +34,37 @@ export const deleteChatroom = (chatroomId) => {
     const firestore = getFirestore();
 
     // delete channels + comments
-    firestore.collection(`channels/${chatroomId}/channels`).then(data => {
-      let channelIds = [];
-      data.forEach(doc => channelIds.push(doc.id));
-      channelIds.forEach(channelId => {
-        firestore.collection(`comments/${channelId}/comments`).get().then(data => {
-          let commentIds = [];
-          data.forEach(doc => commentIds.push(doc.id));
-          commentIds.forEach(messageId => {
-            firestore.collection(`comments/${channelId}/comments`).doc(messageId).delete()
-          });
-        })
-      })
-    });
+    // firestore.collection(`channels/${chatroomId}/channels`).then(data => {
+    //   let channelIds = [];
+    //   data.forEach(doc => channelIds.push(doc.id));
+    //   channelIds.forEach(channelId => {
+    //     firestore.collection(`comments/${channelId}/comments`).get().then(data => {
+    //       let commentIds = [];
+    //       data.forEach(doc => commentIds.push(doc.id));
+    //       commentIds.forEach(messageId => {
+    //         firestore.collection(`comments/${channelId}/comments`).doc(messageId).delete()
+    //       });
+    //     })
+    //   })
+    // });
 
     // delete categories
-    firestore.collection(`categories/${chatroomId}/categories`).get().then(data => {
-      let categoryIds = [];
-      data.forEach(doc => categoryIds.push(doc.id));
-      categoryIds.forEach(categoryId => {
-        firestore.collection(`categories/${chatroomId}/categories`).doc(categoryId).delete()
-      })
-    });
+    // firestore.collection(`categories/${chatroomId}/categories`).get().then(data => {
+    //   let categoryIds = [];
+    //   data.forEach(doc => categoryIds.push(doc.id));
+    //   categoryIds.forEach(categoryId => {
+    //     firestore.collection(`categories/${chatroomId}/categories`).doc(categoryId).delete()
+    //   })
+    // });
 
+    //delete chatroom users
+    firestore.collection(`chatrooms/${chatroomId}/users`).get().then(data => {
+      let chatroomUserIds = [];
+      data.forEach(doc => chatroomUserIds.push(doc.id));
+      console.log(chatroomUserIds);
+    })
     //delete chatroom
+    // firestore.collection(`chatrooms`).doc(chatroomId).delete()
   }
 }
 
