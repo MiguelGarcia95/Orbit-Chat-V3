@@ -29,6 +29,17 @@ export const createChatroom = chatroom => {
   }
 }
 
+export const isDeleting = () => {
+  return (dispatch) => {
+    dispatch({
+      type: actionTypes.IS_DELETING_CHATROOM,
+      payload: {
+        isDeleting: true
+      }
+    })
+  }
+}
+
 export const deleteChatroom = (chatroomId) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();

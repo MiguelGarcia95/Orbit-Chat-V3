@@ -11,6 +11,7 @@ const initialState = {
   inChatroom: false,
   chatroomRedirect: false,
   chatroomDelete: false,
+  isDeleting: false,
   chatroomUsers: [],
   chatroomInvites: [],
   chatrooms: [],
@@ -82,8 +83,14 @@ const chatroomReducer = (state = initialState, action) => {
         chatrooms: allChatrooms,
         chatroomError: action.payload.chatroomError
       }
+    case actionTypes.IS_DELETING_CHATROOM: 
+      return {
+        ...state,
+        isDeleting: action.payload.isDeleting
+      }
     case actionTypes.DELETE_CHATROOM:
       return {
+        ...state,
         chatroomError: action.payload.chatroomError,
         currentChatroom: action.payload.currentChatroom,
         chatroomDelete: action.payload.chatroomDelete

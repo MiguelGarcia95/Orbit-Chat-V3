@@ -32,33 +32,39 @@ class Chatroom extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (!nextProps.chatroomDelete) {
-      
-    }
-    if (!this.state.firstLoad && nextProps.chatroomRedirect) {
-      this.props.history.push('/app');
-    } else if (!this.state.firstLoad && this.props.match.params.roomId !== nextProps.match.params.roomId) {
+    console.log(nextProps.isDeleting);
+    if (!nextProps.isDeleting) {
+      if (!this.state.firstLoad && nextProps.chatroomRedirect) {
+        this.props.history.push('/app');
+      } else if (this.state.firstLoad) {
+        this.getChatroomUsersRT(nextProps.match.params.roomId);      
+      }else if (!this.state.firstLoad && this.props.match.params.roomId !== nextProps.match.params.roomId) {
+        this.props.unsetChannel();
+        this.props.clearChatroom();
+        this.props.getChatroom(nextProps.match.params.roomId);
+        this.getChatroomUsersRT(nextProps.match.params.roomId);      
+      }
+  
+      if (nextProps.chatroomUsers.length === 0 && nextProps.currentChatroom && !this.state.firstLoad) {
+        if (nextProps.currentChatroom.chatroom.uid === nextProps.user.uid) {
+          this.props.joinChatroom(nextProps.user, nextProps.currentChatroom);
+        }
+        this.getChatroomUsersRT(nextProps.currentChatroom.id);
+      } else if (nextProps.chatroomUsers.length > 0 && !this.isUserAMember(nextProps.user, nextProps.chatroomUsers)) {
+        this.props.triggerChatroomRedirect();
+      }
+  
+      if (this.props.channels.length > nextProps.channels.length && !this.state.firstLoad) {
+        this.props.setChannel(this.getMatchingChannels(nextProps.categories[0], nextProps.channels));
+      }
+  
+      this.setCurrentChannel(nextProps.currentChannel, nextProps.channels, nextProps.categories);
+      this.setState({firstLoad: false}); 
+    } else {
       this.props.unsetChannel();
       this.props.clearChatroom();
-      this.props.getChatroom(nextProps.match.params.roomId);
-      this.getChatroomUsersRT(nextProps.match.params.roomId);      
+      this.props.history.push('/app');
     }
-
-    if (nextProps.chatroomUsers.length === 0 && nextProps.currentChatroom && !this.state.firstLoad) {
-      if (nextProps.currentChatroom.chatroom.uid === nextProps.user.uid) {
-        this.props.joinChatroom(nextProps.user, nextProps.currentChatroom);
-      }
-      this.getChatroomUsersRT(nextProps.currentChatroom.id);
-    } else if (nextProps.chatroomUsers.length > 0 && !this.isUserAMember(nextProps.user, nextProps.chatroomUsers)) {
-      this.props.triggerChatroomRedirect();
-    }
-
-    if (this.props.channels.length > nextProps.channels.length && !this.state.firstLoad) {
-      this.props.setChannel(this.getMatchingChannels(nextProps.categories[0], nextProps.channels));
-    }
-
-    this.setCurrentChannel(nextProps.currentChannel, nextProps.channels, nextProps.categories);
-    this.setState({firstLoad: false});
   }
 
   getChannelCommentsRT = (chatroomId, channelId) => {
@@ -75,7 +81,6 @@ class Chatroom extends React.Component {
       let changes = snapshot.docChanges();
       this.props.setChatroomUsers(changes);
     });
-
   }
 
   getChatroomInvitationsRT = chatroomId => {
@@ -122,7 +127,7 @@ class Chatroom extends React.Component {
   }
 
   displayCommentPanel = (currentChannel, channels, user) => {
-    if (currentChannel && channels.length > 0) {
+    if ('channel' in currentChannel && channels.length > 0) {
       return <ChatCommentPanel  channel={currentChannel} user={user} />
     }
   }
@@ -132,7 +137,7 @@ class Chatroom extends React.Component {
     return !user || !currentChatroom ? <Spinner /> : (
       <Grid columns='equal' className='app' style={{marginTop: '0px'}}>
         <Grid.Column style={{marginLeft: 312, height: '100%'}} >
-            {this.displayCommentPanel(currentChannel, channels, user)}
+            {currentChannel && this.displayCommentPanel(currentChannel, channels, user)}
         </Grid.Column>
       </Grid>
     );
@@ -148,7 +153,8 @@ const mapStateToProps = state => {
     channels: state.channel.channels,
     categories: state.chat.categories,
     chatroomUsers: state.chat.chatroomUsers,
-    chatroomDelete: state.chat.chatroomDelete
+    chatroomDelete: state.chat.chatroomDelete,
+    isDeleting: state.chat.isDeleting
   }
 }
 

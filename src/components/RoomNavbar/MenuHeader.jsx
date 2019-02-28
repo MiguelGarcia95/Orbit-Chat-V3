@@ -1,7 +1,7 @@
 import React from 'react';
 import {Grid, Container, Modal, Segment, Button, Label, Input, Dropdown, Divider} from 'semantic-ui-react';
 import {connect} from 'react-redux';
-import {createCategory, leaveChatroom, inviteChatroom, deleteCategory, deleteChatroom} from '../../actions/chatroomActions';
+import {createCategory, leaveChatroom, inviteChatroom, deleteCategory, deleteChatroom, isDeleting} from '../../actions/chatroomActions';
 import {deleteChannel} from '../../actions/channelActions';
 
 class MenuHeader extends React.Component {
@@ -71,6 +71,7 @@ class MenuHeader extends React.Component {
   };
 
   deleteChatroom = () => {
+    this.props.isDeleting();
     this.props.deleteChatroom(this.state.chatroom.id);
     this.closeChatroomDeleteModal();
   }
@@ -313,7 +314,8 @@ const mapDispatchToProps = dispatch => {
     inviteChatroom: (friendId, chatroom) => dispatch(inviteChatroom(friendId, chatroom)),
     deleteCategory: (categoryId, chatroomId) => dispatch(deleteCategory(categoryId, chatroomId)),
     deleteChannel: (channelId, chatroomId) => dispatch(deleteChannel(channelId, chatroomId)),
-    deleteChatroom: chatroomId => dispatch(deleteChatroom(chatroomId))
+    deleteChatroom: chatroomId => dispatch(deleteChatroom(chatroomId)),
+    isDeleting: () => dispatch(isDeleting())
   }
 }
 
