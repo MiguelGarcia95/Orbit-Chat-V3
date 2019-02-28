@@ -82,7 +82,8 @@ export const deleteChatroom = (chatroomId) => {
         payload: {
           chatroomError: null,
           currentChatroom: null,
-          chatroomRedirect: true
+          chatroomDelete: true
+          // chatroomRedirect: true
         }
       })
     }).catch(err => {

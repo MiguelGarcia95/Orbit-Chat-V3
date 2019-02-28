@@ -10,6 +10,7 @@ const initialState = {
   newChatroomId: null,
   inChatroom: false,
   chatroomRedirect: false,
+  chatroomDelete: false,
   chatroomUsers: [],
   chatroomInvites: [],
   chatrooms: [],
@@ -85,7 +86,8 @@ const chatroomReducer = (state = initialState, action) => {
       return {
         chatroomError: action.payload.chatroomError,
         currentChatroom: action.payload.currentChatroom,
-        chatroomRedirect: action.payload.chatroomRedirect
+        chatroomDelete: action.payload.chatroomDelete
+        // chatroomRedirect: action.payload.chatroomRedirect
       }
     case actionTypes.CREATE_CATEGORY:
       return {
