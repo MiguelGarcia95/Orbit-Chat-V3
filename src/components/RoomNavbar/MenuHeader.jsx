@@ -13,6 +13,7 @@ class MenuHeader extends React.Component {
     deleteChatroomModal: false,
     friendInviteId: '',
     channelToDelete: '',
+    categoryToDelete: '',
     channelCategory: '',
     name: '',
     user: this.props.user,
@@ -254,19 +255,11 @@ class MenuHeader extends React.Component {
             <Dropdown placeholder='Select Category' fluid selection options={modalCategories} onChange={this.handleCategoryChange} />
           </Modal.Content>
           <Modal.Actions>
-            <Button
-              negative icon='ban' 
-              labelPosition='left' 
-              content='Cancel' 
-              onClick={this.closeCategoryDeleteModal}
-            />
-            <Button 
-              positive icon='checkmark' 
-              labelPosition='right' 
-              content='Delete Category' 
-              onClick={this.deleteCategory} 
-              disabled={isCategoryEmpty} 
-            />
+            <Button.Group attached='bottom'>
+              <Button negative onClick={this.closeCategoryDeleteModal} >Cancel</Button>
+              <Button.Or />
+              <Button positive onClick={this.deleteCategory} disabled={isCategoryEmpty}  >Delete Category</Button>
+            </Button.Group>
           </Modal.Actions>
         </Modal>
         {/* Modal for Category Delete */}
