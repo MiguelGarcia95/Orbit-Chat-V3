@@ -57,11 +57,20 @@ export const deleteChatroom = (chatroomId) => {
     //   })
     // });
 
+    //delete chatroom invites
+    firestore.collection(`chatrooms/${chatroomId}/invites`).get().then(data => {
+      let chatroomInviteIds = [];
+      data.forEach(doc => chatroomInviteIds.push(doc.id));
+      console.log(chatroomInviteIds);
+    })
     //delete chatroom users
     firestore.collection(`chatrooms/${chatroomId}/users`).get().then(data => {
       let chatroomUserIds = [];
       data.forEach(doc => chatroomUserIds.push(doc.id));
       console.log(chatroomUserIds);
+      chatroomUserIds.forEach(chatroomUserId => {
+        // firestore.collection(`users/${chatroomUserId}/chatrooms`).doc(chatroomId).delete();
+      })
     })
     //delete chatroom
     // firestore.collection(`chatrooms`).doc(chatroomId).delete()

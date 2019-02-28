@@ -52,7 +52,7 @@ class MenuHeader extends React.Component {
 
   inviteFriend = () => {
     if (this.props.friendInviteId !== '') {
-      this.props.inviteChatroom(this.state.friendInviteId);
+      this.props.inviteChatroom(this.state.friendInviteId, this.state.chatroom);
       this.clearFields();
       this.closeFriendModal();
     }
