@@ -233,19 +233,11 @@ class MenuHeader extends React.Component {
             <Dropdown placeholder='Select Channel' fluid selection options={modalChannels} onChange={this.handleChannelChange} />
           </Modal.Content>
           <Modal.Actions>
-            <Button
-              negative icon='ban' 
-              labelPosition='left' 
-              content='Cancel' 
-              onClick={this.closeChannelDeleteModal}
-            />
-            <Button 
-              positive icon='checkmark' 
-              labelPosition='right' 
-              content='Delete Channel' 
-              onClick={this.deleteChannel} 
-              disabled={isChannelEmpty} 
-            />
+            <Button.Group attached='bottom'>
+              <Button negative onClick={this.closeChannelDeleteModal} >Cancel</Button>
+              <Button.Or />
+              <Button positive onClick={this.deleteChannel} disabled={isChannelEmpty}  >Delete Channel</Button>
+            </Button.Group>
           </Modal.Actions>
         </Modal>
         {/* Modal for Category Delete */}
