@@ -32,6 +32,8 @@ class HomeContentPanel extends React.Component {
     }
   }
 
+  setFriendDisplay = display => this.setState({friendsToShow: display});
+
   displayHomeContent = view => {
     const {otherUser, user, directMessages, friendsList, chatroomInvites} = this.props;
     if (view === 'friends') {
