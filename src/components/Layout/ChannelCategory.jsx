@@ -13,7 +13,15 @@ class ChannelCategory extends React.Component {
     category: this.props.category
   }
 
-  onSubmit = () => {
+  isChannelFormEmpty = () => {
+    if (this.state.name && this.state.description) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  onChannelCreateSubmit = () => {
     this.closeModal();
     this.props.createChannel(this.state);
   }
@@ -60,6 +68,7 @@ class ChannelCategory extends React.Component {
   render() {
     const {modal, category, chatroom, user} = this.state;
     const {channels, currentChannel} = this.props;
+    const isChannelBtnDisabled = this.isChannelFormEmpty();
     return (
       <React.Fragment>
         <Grid >
@@ -88,11 +97,10 @@ class ChannelCategory extends React.Component {
             <Button.Group attached='bottom'>
               <Button negative onClick={this.closeModal}>Cancel</Button>
               <Button.Or />
-              <Button positive onClick={this.onSubmit}>Create</Button>
+              <Button positive onClick={this.onChannelCreateSubmit} disabled={isChannelBtnDisabled}>Create</Button>
             </Button.Group>
           </Modal.Content>
         </Modal>
-
       </React.Fragment>
     )
   }
