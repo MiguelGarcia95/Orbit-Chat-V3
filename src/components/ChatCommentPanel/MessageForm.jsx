@@ -18,10 +18,13 @@ class MessageForm extends React.Component {
     }
   }
 
+  isFormEmpty = () => this.state.comment ? false : true;
+
   clearForm = () => this.setState({comment: ''});
 
   render() {
     const {comment} = this.state;
+    const isMessageEmpty = this.isFormEmpty()
     return (
       <Segment className='message_form'>
         <Input
@@ -40,6 +43,7 @@ class MessageForm extends React.Component {
             content='Add Comment'
             labelPosition='left'
             icon='comment'
+            disabled={isMessageEmpty}
           />
         </Button.Group>
       </Segment>
