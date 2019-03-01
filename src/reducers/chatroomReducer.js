@@ -113,7 +113,7 @@ const chatroomReducer = (state = initialState, action) => {
       }
     case actionTypes.SET_SENT_CHATROOM_INVITES: 
       let allChatroomInvites = [...state.chatroomInvites, ...action.payload.chatroomInvites];
-      let filteredChatroomInvites = removeDuplicateInvites(allChatroomInvites);
+      let filteredChatroomInvites = removeDuplicates(allChatroomInvites);
       let chatroomInvites = removeDeletedInvites(filteredChatroomInvites, action.payload.inviteToDelete);
       return {
         ...state,
