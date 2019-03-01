@@ -7,19 +7,22 @@ import firebase from '../../firebase';
 
 class SignIn extends React.Component {
   state = {
+    email: '',
+    password: ''
   }
 
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        //if logged in, set up the user
         this.props.history.push('/app');
       }
     })
   }
 
   handleSubmit = () => {
-    this.props.signIn(this.state);
+    if (this.state.email && this.state.password) {
+      this.props.signIn(this.state);
+    }
   }
 
   onChange = e => this.setState({[e.target.name]: e.target.value});
