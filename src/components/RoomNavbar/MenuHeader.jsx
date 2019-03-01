@@ -55,8 +55,10 @@ class MenuHeader extends React.Component {
   }
 
   onCreateCategory = () => {
-    this.props.createCategory(this.state);
-    this.closeModal();
+    if (!this.isCategoryFormEmpty()) {
+      this.props.createCategory(this.state);
+      this.closeModal();
+    }
   }
 
   inviteFriend = () => {

@@ -22,8 +22,10 @@ class ChannelCategory extends React.Component {
   }
 
   onChannelCreateSubmit = () => {
-    this.closeModal();
-    this.props.createChannel(this.state);
+    if (!this.isChannelFormEmpty()) {
+      this.closeModal();
+      this.props.createChannel(this.state);
+    }
   }
 
   onChange = e => this.setState({[e.target.name]: e.target.value});
