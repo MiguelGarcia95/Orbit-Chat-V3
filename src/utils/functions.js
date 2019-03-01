@@ -132,7 +132,22 @@ export const removeDuplicateCategories = categories => {
 }
 
 export const removeDuplicates = items => {
-
+  return items.reduce((newArray, item) => {
+    if (newArray.length > 0) {
+      let isInArray = false;
+      newArray.forEach(arrayItem => {
+        if (item.id === arrayItem.id) {
+          isInArray = true;
+        }
+      });
+      if (!isInArray) {
+        newArray.push(item);
+      }
+    } else {
+      newArray.push(item);
+    }
+    return newArray;
+  })
 }
 
 export const sortCommentsByDate = (comments) => {
