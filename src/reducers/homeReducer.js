@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/types';
 import {
   removeDuplicateComments, sortCommentsByDate, removeDeletedComments, removeUnrelatedComments, 
   removeDuplicateReferences, removeDeletedReferences, removeDeletedFriends, removeDuplicateFriends, replaceUpdateFriends,
-  removeDuplicateInvites, removeDeletedInvites
+  removeDuplicateInvites, removeDeletedInvites, removeDuplicates
 } from '../utils/functions';
 
 const initialState = {
@@ -52,7 +52,7 @@ const homeReducer = (state = initialState, action) => {
       }
     case actionTypes.SET_COMMENTS_HOME:
       let newComments = [...state.directMessages, ...action.payload.userMessages];
-      let filteredComments = removeDuplicateComments(newComments);
+      let filteredComments = removeDuplicates(newComments);
       let sortedComments = sortCommentsByDate(filteredComments);
       let comments = removeDeletedComments(sortedComments, action.payload.commentToDelete);
       let referencedComments = removeUnrelatedComments(comments, action.payload.referenceId);
@@ -70,7 +70,7 @@ const homeReducer = (state = initialState, action) => {
       }
     case actionTypes.SET_CHATROOM_INVITES: 
       let allChatroomInvites = [...state.chatroomInvites, ...action.payload.chatroomInvites];
-      let filteredChatroomInvites = removeDuplicateInvites(allChatroomInvites);
+      let filteredChatroomInvites = removeDuplicates(allChatroomInvites);
       let chatroomInvites = removeDeletedInvites(filteredChatroomInvites, action.payload.chatroomToDelete);
       return {
         ...state,
@@ -79,7 +79,7 @@ const homeReducer = (state = initialState, action) => {
       }
     case actionTypes.SET_FRIENDS:
       let allFriends = [...state.friendsList, ...action.payload.friendsList];
-      let filteredFriends = removeDuplicateFriends(allFriends);
+      let filteredFriends = removeDuplicates(allFriends);
       let updatedFriends = replaceUpdateFriends(filteredFriends, action.payload.friendToUpdate)
       let friends = removeDeletedFriends(updatedFriends, action.payload.friendToDelete);
       return {

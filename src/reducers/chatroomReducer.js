@@ -1,7 +1,7 @@
 import * as actionTypes from '../actions/types';
 import {
-  removeDuplicateChatrooms, removeDeletedChatrooms, sortCategoriesByDate, removeDeletedInvites, 
-  removeDuplicateInvites, removeDeletedCategories, removeDuplicateCategories, removeDuplicates
+  removeDeletedChatrooms, sortCategoriesByDate, removeDeletedInvites, 
+  removeDeletedCategories, removeDuplicates
 } from '../utils/functions';
 
 const initialState = {
