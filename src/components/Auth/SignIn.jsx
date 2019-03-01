@@ -20,7 +20,7 @@ class SignIn extends React.Component {
   }
 
   handleSubmit = () => {
-    if (isFormValid()) {
+    if (this.isFormValid()) {
       this.props.signIn(this.state);
     }
   }

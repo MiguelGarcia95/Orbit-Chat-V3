@@ -11,14 +11,19 @@ class MessageForm extends React.Component {
   onChange = e => this.setState({[e.target.name]: e.target.value});
   
   onSubmit = () => {
-    this.props.createDirectMessage(this.props.user, this.props.otherUser, this.state.comment);
-    this.clearForm();
+    if (this.state.comment) {
+      this.props.createDirectMessage(this.props.user, this.props.otherUser, this.state.comment);
+      this.clearForm();
+    }
   }
+
+  isFormEmpty = () => this.state.comment ? false : true;
 
   clearForm = () => this.setState({comment: ''});
 
   render() {
     const {comment} = this.state;
+    const isMessageEmpty = this.isFormEmpty()
     return (
       <Segment className='message_form'>
         <Input
@@ -37,6 +42,7 @@ class MessageForm extends React.Component {
             content='Add Comment'
             labelPosition='left'
             icon='comment'
+            disabled={isMessageEmpty}
           />
         </Button.Group>
       </Segment>
