@@ -163,7 +163,6 @@ export const sortCategoriesByDate = categories => {
   } else {
     sortedCategories = [...categories];
   }
-
   return sortedCategories;
 }
 
@@ -179,7 +178,6 @@ export const sortChannelsByDate = channels => {
   } else {
     sortedChannels = [...channels];
   }
-
   return sortedChannels;
 }
 
@@ -209,8 +207,6 @@ export const removeDeletedReferences = (references, referenceToDelete) => {
   }, []);
 }
 
-
-
 export const removeDeletedChatrooms = (chatrooms, chatroomToDelete) => {
   return chatrooms.reduce((newArray, chatroom) => {
     if (chatroomToDelete.length > 0) {
@@ -223,10 +219,6 @@ export const removeDeletedChatrooms = (chatrooms, chatroomToDelete) => {
     return newArray;
   }, []);
 }
-
-
-
-
 
 export const removeDeletedChannels = (channels, channelToDelete) => {
   return channels.reduce((newArray, channel) => {
@@ -254,7 +246,6 @@ export const removeDeletedInvites = (chatroomInvites, inviteToDelete) => {
   }, []);
 }
 
-
 export const removeDeletedCategories = (categories, categoryToDelete) => {
   return categories.reduce((newArray, category) => {
     if (categoryToDelete.length > 0) {
@@ -267,8 +258,6 @@ export const removeDeletedCategories = (categories, categoryToDelete) => {
     return newArray;
   }, []);
 }
-
-
 
 export const removeDeletedFriends = (friends, friendToDelete) => {
   return friends.reduce((newArray, friend) => {
@@ -307,8 +296,6 @@ export const removeCommentsFromOtherChannels = (comments, channelId) => {
   })
   return channelComments;
 }
-
-
 
 export const removeUnrelatedComments = (comments, referenceId) => {
   return comments.reduce((newArray, comment) => {
