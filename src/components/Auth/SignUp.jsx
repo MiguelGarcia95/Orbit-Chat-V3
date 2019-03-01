@@ -16,15 +16,28 @@ class SignUp extends React.Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        //if logged in, set up the user
         this.props.history.push('/app');
       }
     })
   }
 
   handleSubmit = () => {
-    this.props.signUp(this.state);
+    if (this.isFormValid()) {
+      this.props.signUp(this.state);
+    } else {
+      console.log('form not valid')
+    }
   }
+
+  isFormValid = () => {
+    if (this.isPasswordValid() && this.state.email && this.state.username) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  isPasswordValid = () => this.state.password === this.state.confirmed_password ? true : false;
 
   onChange = e => this.setState({[e.target.name]: e.target.value});
 
