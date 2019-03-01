@@ -44,12 +44,14 @@ class RoomNavbar extends React.Component {
   }
 
   onChatroomSubmit = () => {
-    this.props.createChatroom({
-      ...this.state,
-      user: this.props.user
-    });
-    this.setState({createdNewChatroom: true});
-    this.closeModal();
+    if (!this.isChatroomFormEmpty()) {
+      this.props.createChatroom({
+        ...this.state,
+        user: this.props.user
+      });
+      this.setState({createdNewChatroom: true});
+      this.closeModal();
+    }
   }
 
   isChatroomFormEmpty = () => {
