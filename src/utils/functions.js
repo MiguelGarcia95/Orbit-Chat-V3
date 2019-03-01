@@ -147,7 +147,7 @@ export const removeDuplicates = items => {
       newArray.push(item);
     }
     return newArray;
-  })
+  }, [])
 }
 
 export const sortCommentsByDate = (comments) => {

@@ -1,7 +1,7 @@
 import * as actionTypes from '../actions/types';
 import {
   removeDuplicateComments, sortCommentsByDate, removeDeletedComments, sortChannelsByDate, 
-  removeCommentsFromOtherChannels, removeDuplicateChannels, removeDeletedChannels
+  removeCommentsFromOtherChannels, removeDuplicateChannels, removeDeletedChannels, removeDuplicates
 } from '../utils/functions';
 
 const initialState = {
@@ -21,7 +21,7 @@ const chatroomReducer = (state = initialState, action) => {
     case actionTypes.SET_CHANNELS:
       let allChannels = [...state.channels, ...action.payload.channels];
       let sortedChannels = sortChannelsByDate(allChannels);
-      let uniqueChannels = removeDuplicateChannels(sortedChannels);
+      let uniqueChannels = removeDuplicates(sortedChannels);
       let channels = removeDeletedChannels(uniqueChannels, action.payload.channelToDelete);
       return {
         ...state,
