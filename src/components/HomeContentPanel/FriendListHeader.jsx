@@ -20,7 +20,6 @@ const FriendListHeader = ({setFriendDisplay, friendsToShow}) => {
           </Header>
           <Header 
             className={`home_header_option ${isOptionActive('friends', friendsToShow)}`} 
-
             as='h4' 
             floated='left' 
             onClick={() => setFriendDisplay('friends')} 

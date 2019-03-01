@@ -14,7 +14,7 @@ const isFriend = (friend, friends) => {
   return isFriend;
 }
 
-const FriendChatHeader = ({friend, user, deleteDirectMessageChat, messages, friends}) => {
+const FriendChatHeader = ({friend, user, deleteDirectMessageChat, addFriend, messages, friends}) => {
   const isAFriend = isFriend(friend, friends);
   return (
     <Grid className='home_comment_header'>
@@ -27,6 +27,7 @@ const FriendChatHeader = ({friend, user, deleteDirectMessageChat, messages, frie
             style={{padding: '10px 20px', marginBottom: '0', marginTop: '7.6px'}}
             disabled={isAFriend}
             title='Already Friend'
+            onClick={() => addFriend(user, friend)}
           >
             <Button.Content hidden>Add Friend</Button.Content>
             <Button.Content visible>
