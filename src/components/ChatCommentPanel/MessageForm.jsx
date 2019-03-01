@@ -12,8 +12,10 @@ class MessageForm extends React.Component {
   onChange = e => this.setState({[e.target.name]: e.target.value});
   
   onSubmit = () => {
-    this.props.createChannelComment({...this.state, channel: this.props.channel});
-    this.clearForm();
+    if (this.state.comment) {
+      this.props.createChannelComment({...this.state, channel: this.props.channel});
+      this.clearForm();
+    }
   }
 
   clearForm = () => this.setState({comment: ''});
