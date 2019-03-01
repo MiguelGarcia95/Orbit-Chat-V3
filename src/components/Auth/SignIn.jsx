@@ -20,14 +20,24 @@ class SignIn extends React.Component {
   }
 
   handleSubmit = () => {
-    if (this.state.email && this.state.password) {
+    if (isFormValid()) {
       this.props.signIn(this.state);
+    }
+  }
+
+  isFormValid = () => {
+    if (this.state.email && this.state.password) {
+      return true;
+    } else {
+      return false;
     }
   }
 
   onChange = e => this.setState({[e.target.name]: e.target.value});
 
   render() {
+    const isSubmitDisabled = !this.isFormValid();
+
     return (
       <Grid textAlign='center' verticalAlign='middle' className='app'>
         <Grid.Column width={4}>
@@ -61,7 +71,7 @@ class SignIn extends React.Component {
                 onChange={this.onChange}
                 />
               </Form.Field>
-              <Button color='violet' fluid size='large' onClick={this.handleSubmit}>Submit</Button>
+              <Button color='violet' fluid size='large' onClick={this.handleSubmit} disabled={isSubmitDisabled}>Submit</Button>
             </Segment>
           </Form>
           <Message>Not a user? <Link to='/signup'>Sign Up</Link></Message> 

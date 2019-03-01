@@ -42,6 +42,7 @@ class SignUp extends React.Component {
   onChange = e => this.setState({[e.target.name]: e.target.value});
 
   render() {
+    const isSubmitDisabled = !this.isFormValid();
     return (
       <Grid textAlign='center' verticalAlign='middle' className='app'>
         <Grid.Column width={4}>
@@ -97,7 +98,7 @@ class SignUp extends React.Component {
                   onChange={this.onChange}
                 />
               </Form.Field>
-              <Button color='violet' fluid size='large' onClick={this.handleSubmit}>Submit</Button>
+              <Button color='violet' fluid size='large' onClick={this.handleSubmit} disabled={isSubmitDisabled} >Submit</Button>
             </Segment>
           </Form>
           <Message>Already a user? <Link to='/signin'>Sign In</Link></Message> 
