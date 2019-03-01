@@ -131,6 +131,10 @@ export const removeDuplicateCategories = categories => {
   }, []);
 }
 
+export const removeDuplicates = items => {
+
+}
+
 export const sortCommentsByDate = (comments) => {
   let sortedComments = [];
 
@@ -145,76 +149,6 @@ export const sortCommentsByDate = (comments) => {
   }
 
   return sortedComments;
-}
-
-export const removeCommentsFromOtherChannels = (comments, channelId) => {
-  let channelComments = [];
-  comments.forEach(comment => {
-    if (comment.message.channelId === channelId) {
-      channelComments.push(comment)
-    }
-  })
-  return channelComments;
-}
-
-export const removeDeletedComments = (comments, commentToDelete) => {
-  return comments.reduce((newArray, comment) => {
-    if (commentToDelete.length > 0) {
-      if (commentToDelete[0].id !== comment.id) {
-        newArray.push(comment)
-      }
-    } else {
-      newArray.push(comment)
-    }
-    return newArray;
-  }, []);
-}
-
-export const removeUnrelatedComments = (comments, referenceId) => {
-  return comments.reduce((newArray, comment) => {
-    if (referenceId === comment.reference) {
-      newArray.push(comment)
-    }
-    return newArray;
-  }, [])
-}
-
-export const getIdsFromMessages = messages => {
-  let messageIds = [];
-  messages.forEach(message => {
-    messageIds.push(message.id);
-  });
-  return messageIds;
-}
-
-
-
-export const removeDeletedReferences = (references, referenceToDelete) => {
-  return references.reduce((newArray, reference) => {
-    if (referenceToDelete.length > 0) {
-      if (referenceToDelete[0].uid !== reference.uid) {
-        newArray.push(reference)
-      }
-    } else {
-      newArray.push(reference)
-    }
-    return newArray;
-  }, []);
-}
-
-
-
-export const removeDeletedChatrooms = (chatrooms, chatroomToDelete) => {
-  return chatrooms.reduce((newArray, chatroom) => {
-    if (chatroomToDelete.length > 0) {
-      if (chatroomToDelete[0].id !== chatroom.id) {
-        newArray.push(chatroom)
-      }
-    } else {
-      newArray.push(chatroom)
-    }
-    return newArray;
-  }, []);
 }
 
 export const sortCategoriesByDate = categories => {
@@ -248,6 +182,49 @@ export const sortChannelsByDate = channels => {
 
   return sortedChannels;
 }
+
+export const removeDeletedComments = (comments, commentToDelete) => {
+  return comments.reduce((newArray, comment) => {
+    if (commentToDelete.length > 0) {
+      if (commentToDelete[0].id !== comment.id) {
+        newArray.push(comment)
+      }
+    } else {
+      newArray.push(comment)
+    }
+    return newArray;
+  }, []);
+}
+
+export const removeDeletedReferences = (references, referenceToDelete) => {
+  return references.reduce((newArray, reference) => {
+    if (referenceToDelete.length > 0) {
+      if (referenceToDelete[0].uid !== reference.uid) {
+        newArray.push(reference)
+      }
+    } else {
+      newArray.push(reference)
+    }
+    return newArray;
+  }, []);
+}
+
+
+
+export const removeDeletedChatrooms = (chatrooms, chatroomToDelete) => {
+  return chatrooms.reduce((newArray, chatroom) => {
+    if (chatroomToDelete.length > 0) {
+      if (chatroomToDelete[0].id !== chatroom.id) {
+        newArray.push(chatroom)
+      }
+    } else {
+      newArray.push(chatroom)
+    }
+    return newArray;
+  }, []);
+}
+
+
 
 
 
@@ -319,4 +296,33 @@ export const replaceUpdateFriends = (friends, friendsToUpdate) => {
     }
     return newArray;
   }, []);
+}
+
+export const removeCommentsFromOtherChannels = (comments, channelId) => {
+  let channelComments = [];
+  comments.forEach(comment => {
+    if (comment.message.channelId === channelId) {
+      channelComments.push(comment)
+    }
+  })
+  return channelComments;
+}
+
+
+
+export const removeUnrelatedComments = (comments, referenceId) => {
+  return comments.reduce((newArray, comment) => {
+    if (referenceId === comment.reference) {
+      newArray.push(comment)
+    }
+    return newArray;
+  }, [])
+}
+
+export const getIdsFromMessages = messages => {
+  let messageIds = [];
+  messages.forEach(message => {
+    messageIds.push(message.id);
+  });
+  return messageIds;
 }
