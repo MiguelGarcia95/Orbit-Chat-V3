@@ -17,6 +17,63 @@ export const removeDuplicateComments = (comments) => {
   }, []);
 }
 
+export const removeDuplicateReferences = (references) => {
+  return references.reduce((newArray, reference) => {
+    if (newArray.length > 0) {
+      let isInArray = false;
+      newArray.forEach(arrayReference => {
+        if (reference.uid === arrayReference.uid) {
+          isInArray = true;
+        }
+      });
+      if (!isInArray) {
+        newArray.push(reference)
+      }
+    } else {
+      newArray.push(reference)
+    }
+    return newArray
+  }, []);
+}
+
+export const removeDuplicateChatrooms = (chatrooms) => {
+  return chatrooms.reduce((newArray, chatroom) => {
+    if (newArray.length > 0) {
+      let isInArray = false;
+      newArray.forEach(arrayChatroom => {
+        if (chatroom.id === arrayChatroom.id) {
+          isInArray = true;
+        }
+      });
+      if (!isInArray) {
+        newArray.push(chatroom)
+      }
+    } else {
+      newArray.push(chatroom)
+    }
+    return newArray
+  }, []);
+}
+
+export const removeDuplicateFriends = friends => {
+  return friends.reduce((newArray, friend) => {
+    if (newArray.length > 0) {
+      let isInArray = false;
+      newArray.forEach(arrayFriend => {
+        if (friend.id === arrayFriend.id) {
+          isInArray = true;
+        }
+      });
+      if (!isInArray) {
+        newArray.push(friend);
+      }
+    } else {
+      newArray.push(friend);
+    }
+    return newArray;
+  }, []);
+}
+
 export const sortCommentsByDate = (comments) => {
   let sortedComments = [];
 
@@ -73,24 +130,7 @@ export const getIdsFromMessages = messages => {
   return messageIds;
 }
 
-export const removeDuplicateReferences = (references) => {
-  return references.reduce((newArray, reference) => {
-    if (newArray.length > 0) {
-      let isInArray = false;
-      newArray.forEach(arrayReference => {
-        if (reference.uid === arrayReference.uid) {
-          isInArray = true;
-        }
-      });
-      if (!isInArray) {
-        newArray.push(reference)
-      }
-    } else {
-      newArray.push(reference)
-    }
-    return newArray
-  }, []);
-}
+
 
 export const removeDeletedReferences = (references, referenceToDelete) => {
   return references.reduce((newArray, reference) => {
@@ -105,24 +145,7 @@ export const removeDeletedReferences = (references, referenceToDelete) => {
   }, []);
 }
 
-export const removeDuplicateChatrooms = (chatrooms) => {
-  return chatrooms.reduce((newArray, chatroom) => {
-    if (newArray.length > 0) {
-      let isInArray = false;
-      newArray.forEach(arrayChatroom => {
-        if (chatroom.id === arrayChatroom.id) {
-          isInArray = true;
-        }
-      });
-      if (!isInArray) {
-        newArray.push(chatroom)
-      }
-    } else {
-      newArray.push(chatroom)
-    }
-    return newArray
-  }, []);
-}
+
 
 export const removeDeletedChatrooms = (chatrooms, chatroomToDelete) => {
   return chatrooms.reduce((newArray, chatroom) => {
@@ -264,24 +287,7 @@ export const removeDeletedCategories = (categories, categoryToDelete) => {
   }, []);
 }
 
-export const removeDuplicateFriends = friends => {
-  return friends.reduce((newArray, friend) => {
-    if (newArray.length > 0) {
-      let isInArray = false;
-      newArray.forEach(arrayFriend => {
-        if (friend.id === arrayFriend.id) {
-          isInArray = true;
-        }
-      });
-      if (!isInArray) {
-        newArray.push(friend);
-      }
-    } else {
-      newArray.push(friend);
-    }
-    return newArray;
-  }, []);
-}
+
 
 export const removeDeletedFriends = (friends, friendToDelete) => {
   return friends.reduce((newArray, friend) => {
