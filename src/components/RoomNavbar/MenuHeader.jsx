@@ -46,6 +46,14 @@ class MenuHeader extends React.Component {
     });
   }
 
+  isCategoryFormEmpty = () => {
+    if (this.state.user && this.state.chatroom && this.state.name) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   onCreateCategory = () => {
     this.props.createCategory(this.state);
     this.closeModal();
@@ -142,6 +150,7 @@ class MenuHeader extends React.Component {
   render() {
     const {modal, inviteFriendModal, deleteChannelModal, deleteCategoryModal, deleteChatroomModal, channelCategory} = this.state;
     const {friendsList, chatroom, user, categories, channels} = this.props;
+    let isCategoryDisabled = this.isCategoryFormEmpty();
     let isFriendIdEmpty = this.isFriendInviteEmpty();
     let isCategoryEmpty = this.isCategoryValueEmpty();
     let isChannelEmpty = this.isChannelValueEmpty();
@@ -193,7 +202,7 @@ class MenuHeader extends React.Component {
             <Button.Group attached='bottom'>
               <Button negative onClick={this.closeModal} >Cancel</Button>
               <Button.Or />
-              <Button positive onClick={this.onCreateCategory} >Create</Button>
+              <Button positive onClick={this.onCreateCategory} disabled={isCategoryDisabled}>Create</Button>
             </Button.Group>
           </Modal.Content>
         </Modal>
