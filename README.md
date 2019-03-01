@@ -10,3 +10,9 @@ Use
 email: email@email.com
 
 Password: password
+
+## Things that need to be added
+
+Display errors
+
+Display message when an action is made, ie: invited friend, create a channel, ect...
