@@ -74,6 +74,63 @@ export const removeDuplicateFriends = friends => {
   }, []);
 }
 
+export const removeDuplicateChannels = channels => {
+  return channels.reduce((newArray, channel) => {
+    if (newArray.length > 0) {
+      let isInArray = false;
+      newArray.forEach(arrayChannel => {
+        if (channel.id === arrayChannel.id) {
+          isInArray = true;
+        }
+      });
+      if (!isInArray) {
+        newArray.push(channel);
+      }
+    } else {
+      newArray.push(channel);
+    }
+    return newArray;
+  }, [])
+}
+
+export const removeDuplicateInvites = chatroomInvites => {
+  return chatroomInvites.reduce((newArray, chatroomInvite) => {
+    if (newArray.length > 0) {
+      let isInArray = false;
+      newArray.forEach(arrayInvite => {
+        if (chatroomInvite.id === arrayInvite.id) {
+          isInArray = true;
+        }
+      });
+      if (!isInArray) {
+        newArray.push(chatroomInvite);
+      }
+    } else {
+      newArray.push(chatroomInvite);
+    }
+    return newArray;
+  }, []);
+}
+
+export const removeDuplicateCategories = categories => {
+  return categories.reduce((newArray, category) => {
+    if (newArray.length > 0) {
+      let isInArray = false;
+      newArray.forEach(arrayCategory => {
+        if (category.id === arrayCategory.id) {
+          isInArray = true;
+        }
+      });
+      if (!isInArray) {
+        newArray.push(category);
+      }
+    } else {
+      newArray.push(category);
+    }
+    return newArray;
+  }, []);
+}
+
 export const sortCommentsByDate = (comments) => {
   let sortedComments = [];
 
@@ -192,43 +249,7 @@ export const sortChannelsByDate = channels => {
   return sortedChannels;
 }
 
-export const removeDuplicateChannels = channels => {
-  return channels.reduce((newArray, channel) => {
-    if (newArray.length > 0) {
-      let isInArray = false;
-      newArray.forEach(arrayChannel => {
-        if (channel.id === arrayChannel.id) {
-          isInArray = true;
-        }
-      });
-      if (!isInArray) {
-        newArray.push(channel);
-      }
-    } else {
-      newArray.push(channel);
-    }
-    return newArray;
-  }, [])
-}
 
-export const removeDuplicateInvites = chatroomInvites => {
-  return chatroomInvites.reduce((newArray, chatroomInvite) => {
-    if (newArray.length > 0) {
-      let isInArray = false;
-      newArray.forEach(arrayInvite => {
-        if (chatroomInvite.id === arrayInvite.id) {
-          isInArray = true;
-        }
-      });
-      if (!isInArray) {
-        newArray.push(chatroomInvite);
-      }
-    } else {
-      newArray.push(chatroomInvite);
-    }
-    return newArray;
-  }, []);
-}
 
 export const removeDeletedChannels = (channels, channelToDelete) => {
   return channels.reduce((newArray, channel) => {
@@ -256,24 +277,7 @@ export const removeDeletedInvites = (chatroomInvites, inviteToDelete) => {
   }, []);
 }
 
-export const removeDuplicateCategories = categories => {
-  return categories.reduce((newArray, category) => {
-    if (newArray.length > 0) {
-      let isInArray = false;
-      newArray.forEach(arrayCategory => {
-        if (category.id === arrayCategory.id) {
-          isInArray = true;
-        }
-      });
-      if (!isInArray) {
-        newArray.push(category);
-      }
-    } else {
-      newArray.push(category);
-    }
-    return newArray;
-  }, []);
-}
+
 export const removeDeletedCategories = (categories, categoryToDelete) => {
   return categories.reduce((newArray, category) => {
     if (categoryToDelete.length > 0) {
