@@ -2,7 +2,6 @@ import React from 'react';
 import {Grid, Sidebar, Menu, Button, Divider, Image, Modal, Input, Label, Segment} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-// import {getFirestore} from 'redux-firestore';
 import {createChatroom, setChatrooms} from '../../actions/chatroomActions';
 import RoomMenu from './RoomMenu';
 
@@ -44,7 +43,7 @@ class RoomNavbar extends React.Component {
     )
   }
 
-  onSubmit = () => {
+  onChatroomSubmit = () => {
     this.props.createChatroom({
       ...this.state,
       user: this.props.user
@@ -53,9 +52,18 @@ class RoomNavbar extends React.Component {
     this.closeModal();
   }
 
+  isChatroomFormEmpty = () => {
+    if (this.state.name && this.state.description && this.props.user) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   render() {
     const {modal} = this.state;
     const {user, chatrooms, currentChatroom, inChatroom} = this.props;
+    const isChatroomEmpty = this.isChatroomFormEmpty();
     return !user ? null : (
       <Grid columns='equal' >
         <Sidebar 
@@ -90,7 +98,7 @@ class RoomNavbar extends React.Component {
               <Button.Group attached='bottom'>
                 <Button negative onClick={this.closeModal} > Cancel</Button>
                 <Button.Or />
-                <Button positive onClick={this.onSubmit} > Create</Button>
+                <Button positive onClick={this.onChatroomSubmit} disabled={isChatroomEmpty} >Create</Button>
               </Button.Group>
             </Modal.Content>
           </Modal>
