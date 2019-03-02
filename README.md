@@ -9,7 +9,7 @@ Use
 
 email: email@email.com
 
-Password: password
+Password: password1234
 
 ## Things that need to be added
 
