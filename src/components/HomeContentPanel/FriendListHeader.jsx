@@ -14,6 +14,11 @@ class FriendListHeader extends React.Component {
   closeFriendModal = () => this.setState({friendRequestModal: false});
 
   isEmailFormEmpty = () => this.state.email ? false : true;
+
+  isEmailValid = () => {
+    let re = /\S+@\S+\.\S+/;
+    return re.test(this.state.email);
+  }
   
   onEmailChange = e => this.setState({email: e.target.value});
   
@@ -24,14 +29,16 @@ class FriendListHeader extends React.Component {
   }
   
   onFriendRequestSent = () => {
-    // this.props.addFriendWithEmail(this.props.user, this.state.email);
-    this.clearForm();
+    if (this.isEmailValid()) {
+      this.props.addFriendWithEmail(this.props.user, this.state.email);
+      this.clearForm();
+    }
   }
 
   render() {
     const {setFriendDisplay, friendsToShow} = this.props;
     const {friendRequestModal, email} = this.state;
-    const isEmailEmpty = this.isEmailFormEmpty();
+    const isEmailEmpty = !this.isEmailValid();
     return (
       <React.Fragment>
         <Grid className='home_comment_header'>
