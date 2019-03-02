@@ -209,6 +209,19 @@ export const sortByDate = (items, type) => {
 //   return sortedChannels;
 // }
 
+export const removeDeleted = (items, itemToDelete) => {
+  return items.reduce((newArray, item) => {
+    if (itemToDelete.length > 0) {
+      if (itemToDelete[0].id !== item.id) {
+        newArray.push(item);
+      }
+    } else {
+      newArray.push(item);
+    }
+    return newArray;
+  }, [])
+}
+
 export const removeDeletedComments = (comments, commentToDelete) => {
   return comments.reduce((newArray, comment) => {
     if (commentToDelete.length > 0) {
