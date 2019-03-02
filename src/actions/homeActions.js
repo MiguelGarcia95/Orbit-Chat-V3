@@ -130,8 +130,15 @@ export const addFriendWithEmail = (user, email) => {
     const firestore = getFirestore();
     firestore.collection('users').get().then(data => {
       let users = [];
-      data.forEach(doc => users.push(doc.data()));
+      let friend = null;
+      data.forEach(doc => {
+        if (doc.data().email === email && doc.data().email !== user.email) {
+          users.push(doc.data())
+          friend = doc.data()
+        }
+      });
       console.log(users)
+      console.log(friend)
     })
     // check if a user with that email exists, if so send friend request
     //// if friend request doesn't exist, send it
