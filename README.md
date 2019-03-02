@@ -3,7 +3,7 @@
 
 This project is a Discord clone, with similar functionality. It was made using React, Redux, and Firebase.
 
-## Try out -> [Orbit Chat - Coming Soon](#).
+## Try out -> [Orbit Chat](https://orbit-chat-v2.firebaseapp.com/app).
 
 Use
 
