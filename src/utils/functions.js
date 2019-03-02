@@ -151,17 +151,11 @@ export const removeDuplicates = items => {
 }
 
 export const sortByDate = (items, type) => {
-  let sortedComments = [];
-  if (items.length !== 0) {
-    sortedComments = items.sort((a, b) => {
-      if (b[type].createdAt !== null && a[type].createdAt !== null) {
-        return new Date(a[type].createdAt.toDate()) - new Date(b[type].createdAt.toDate());
-      }
-    });
-  } else {
-    sortedComments = [...items];
-  }
-  return sortedComments;
+  return items.sort((a, b) => {
+    if (b[type].createdAt !== null && a[type].createdAt !== null) {
+      return new Date(a[type].createdAt.toDate()) - new Date(b[type].createdAt.toDate());
+    }
+  });
 }
 
 // export const sortCommentsByDate = (comments) => {
