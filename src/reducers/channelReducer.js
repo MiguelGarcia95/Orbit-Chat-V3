@@ -1,7 +1,6 @@
 import * as actionTypes from '../actions/types';
 import {
-  sortCommentsByDate, removeDeletedComments, sortChannelsByDate, 
-  removeCommentsFromOtherChannels, removeDeletedChannels, removeDuplicates, sortByDate
+  removeCommentsFromOtherChannels, removeDuplicates, sortByDate, removeDeleted
 } from '../utils/functions';
 
 const initialState = {
@@ -22,7 +21,7 @@ const chatroomReducer = (state = initialState, action) => {
       let allChannels = [...state.channels, ...action.payload.channels];
       let sortedChannels = sortByDate(allChannels, 'channel');
       let uniqueChannels = removeDuplicates(sortedChannels);
-      let channels = removeDeletedChannels(uniqueChannels, action.payload.channelToDelete);
+      let channels = removeDeleted(uniqueChannels, action.payload.channelToDelete);
       return {
         ...state,
         channels: channels,
@@ -57,7 +56,7 @@ const chatroomReducer = (state = initialState, action) => {
         let channelComemnts = removeCommentsFromOtherChannels(newComments, state.currentChannel.id);
         let filteredComments = removeDuplicates(channelComemnts);
         let sortedComments = sortByDate(filteredComments, 'message');
-        comments = removeDeletedComments(sortedComments, action.payload.commentToDelete);
+        comments = removeDeleted(sortedComments, action.payload.commentToDelete);
       }
 
       return {
