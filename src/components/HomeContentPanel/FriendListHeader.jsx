@@ -1,21 +1,37 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {Grid, Container, Header, Input, Modal, Button, Icon} from 'semantic-ui-react';
+
+import {addFriendWithEmail} from '../../actions/homeActions';
 
 class FriendListHeader extends React.Component {
   state = {
-    friendRequestModal: false
+    friendRequestModal: false,
+    email: ''
   }
 
   openFriendModal = () => this.setState({friendRequestModal: true});
   closeFriendModal = () => this.setState({friendRequestModal: false});
 
+  isEmailFormEmpty = () => this.state.email ? false : true;
+  
+  onEmailChange = e => this.setState({email: e.target.value});
+  
+  clearForm = () => this.setState({email: ''});
+  
   isOptionActive = (option, friendsToShow) => {
     return option === friendsToShow ? 'active' : ''
+  }
+  
+  onFriendRequestSent = () => {
+    this.clearForm();
+    this.props.addFriendWithEmail()
   }
 
   render() {
     const {setFriendDisplay, friendsToShow} = this.props;
-    const {friendRequestModal} = this.state;
+    const {friendRequestModal, email} = this.state;
+    const isEmailEmpty = this.isEmailFormEmpty();
     return (
       <React.Fragment>
         <Grid className='home_comment_header'>
@@ -45,7 +61,6 @@ class FriendListHeader extends React.Component {
               >
                 Pending
               </Header>
-              {/* addFriendWithEmail */}
               
               <Header 
                 className={`home_header_option active`} 
@@ -58,19 +73,30 @@ class FriendListHeader extends React.Component {
             </Container>
           </Grid.Row>
         </Grid>
+
         <Modal size='mini' open={friendRequestModal} onClose={this.closeFriendModal}>
-          <Modal.Header>Delete Your Account</Modal.Header>
+          <Modal.Header>Enter Friend's Email</Modal.Header>
           <Modal.Content>
-            <p>Are you sure you want to delete your account</p>
+            <Input placeholder="email" type='email' icon='mail' onChange={this.onEmailChange} value={email} fluid/>
           </Modal.Content>
           <Modal.Actions>
-            <Button negative onClick={this.closeFriendModal}>Cancel</Button>
-            <Button positive icon='checkmark' labelPosition='right' content='Yes' />
+            <Button.Group attached='bottom'>
+              <Button negative onClick={this.closeFriendModal}> Cancel</Button>
+              <Button.Or />
+              <Button positive disabled={isEmailEmpty}>Create</Button>
+            </Button.Group>
           </Modal.Actions>
         </Modal>
+
       </React.Fragment>
     )
   }
 }
 
-export default FriendListHeader;
+const mapDispatchToProps = dispatch => {
+  return {
+    addFriendWithEmail: (user, email) => dispatch(addFriendWithEmail(user, email))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(FriendListHeader);
