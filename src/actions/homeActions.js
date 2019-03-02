@@ -125,6 +125,15 @@ export const deleteDirectMessageChat = (user, otherUser, allMessageIds) => {
   }
 }
 
+export const addFriendWithEmail = (user, email) => {
+  return (dispatch, getState, {getFirestore}) => {
+    const firestore = getFirestore();
+    // check if a user with that email exists, if so send friend request
+    //// if friend request doesn't exist, send it
+    // else sendback
+  }
+}
+
 export const addFriend = (user, otherUser) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
