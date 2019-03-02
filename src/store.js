@@ -18,7 +18,7 @@ const store = createStore(
     applyMiddleware(...middleware),
     reduxFirestore(firebase),
     reactReduxFirebase(firebase),
-    composeWithDevTools()
+    // composeWithDevTools()
   )
 )
 
