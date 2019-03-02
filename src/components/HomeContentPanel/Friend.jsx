@@ -108,6 +108,12 @@ class Friend extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    references: state.home.references
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     rejectFriend: (user, friend) => dispatch(rejectFriend(user, friend)),
@@ -118,4 +124,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Friend);
+export default connect(mapStateToProps, mapDispatchToProps)(Friend);
