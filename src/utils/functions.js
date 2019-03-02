@@ -222,18 +222,18 @@ export const removeDeleted = (items, itemToDelete) => {
   }, [])
 }
 
-export const removeDeletedComments = (comments, commentToDelete) => {
-  return comments.reduce((newArray, comment) => {
-    if (commentToDelete.length > 0) {
-      if (commentToDelete[0].id !== comment.id) {
-        newArray.push(comment)
-      }
-    } else {
-      newArray.push(comment)
-    }
-    return newArray;
-  }, []);
-}
+// export const removeDeletedComments = (comments, commentToDelete) => {
+//   return comments.reduce((newArray, comment) => {
+//     if (commentToDelete.length > 0) {
+//       if (commentToDelete[0].id !== comment.id) {
+//         newArray.push(comment)
+//       }
+//     } else {
+//       newArray.push(comment)
+//     }
+//     return newArray;
+//   }, []);
+// }
 
 export const removeDeletedReferences = (references, referenceToDelete) => {
   return references.reduce((newArray, reference) => {
@@ -248,72 +248,72 @@ export const removeDeletedReferences = (references, referenceToDelete) => {
   }, []);
 }
 
-export const removeDeletedChatrooms = (chatrooms, chatroomToDelete) => {
-  return chatrooms.reduce((newArray, chatroom) => {
-    if (chatroomToDelete.length > 0) {
-      if (chatroomToDelete[0].id !== chatroom.id) {
-        newArray.push(chatroom)
-      }
-    } else {
-      newArray.push(chatroom)
-    }
-    return newArray;
-  }, []);
-}
+// export const removeDeletedChatrooms = (chatrooms, chatroomToDelete) => {
+//   return chatrooms.reduce((newArray, chatroom) => {
+//     if (chatroomToDelete.length > 0) {
+//       if (chatroomToDelete[0].id !== chatroom.id) {
+//         newArray.push(chatroom)
+//       }
+//     } else {
+//       newArray.push(chatroom)
+//     }
+//     return newArray;
+//   }, []);
+// }
 
-export const removeDeletedChannels = (channels, channelToDelete) => {
-  return channels.reduce((newArray, channel) => {
-    if (channelToDelete.length > 0) {
-      if (channelToDelete[0].id !== channel.id) {
-        newArray.push(channel);
-      }
-    } else {
-      newArray.push(channel);
-    }
-    return newArray;
-  }, []);
-}
+// export const removeDeletedChannels = (channels, channelToDelete) => {
+//   return channels.reduce((newArray, channel) => {
+//     if (channelToDelete.length > 0) {
+//       if (channelToDelete[0].id !== channel.id) {
+//         newArray.push(channel);
+//       }
+//     } else {
+//       newArray.push(channel);
+//     }
+//     return newArray;
+//   }, []);
+// }
 
-export const removeDeletedInvites = (chatroomInvites, inviteToDelete) => {
-  return chatroomInvites.reduce((newArray, chatroomInvite) => {
-    if (inviteToDelete.length > 0) {
-      if (inviteToDelete[0].id !== chatroomInvite.id) {
-        newArray.push(chatroomInvite);
-      }
-    } else {
-      newArray.push(chatroomInvite);
-    }
-    return newArray;
-  }, []);
-}
+// export const removeDeletedInvites = (chatroomInvites, inviteToDelete) => {
+//   return chatroomInvites.reduce((newArray, chatroomInvite) => {
+//     if (inviteToDelete.length > 0) {
+//       if (inviteToDelete[0].id !== chatroomInvite.id) {
+//         newArray.push(chatroomInvite);
+//       }
+//     } else {
+//       newArray.push(chatroomInvite);
+//     }
+//     return newArray;
+//   }, []);
+// }
 
-export const removeDeletedCategories = (categories, categoryToDelete) => {
-  return categories.reduce((newArray, category) => {
-    if (categoryToDelete.length > 0) {
-      if (categoryToDelete[0].id !== category.id) {
-        newArray.push(category)
-      }
-    } else {
-      newArray.push(category)
-    }
-    return newArray;
-  }, []);
-}
+// export const removeDeletedCategories = (categories, categoryToDelete) => {
+//   return categories.reduce((newArray, category) => {
+//     if (categoryToDelete.length > 0) {
+//       if (categoryToDelete[0].id !== category.id) {
+//         newArray.push(category)
+//       }
+//     } else {
+//       newArray.push(category)
+//     }
+//     return newArray;
+//   }, []);
+// }
 
-export const removeDeletedFriends = (friends, friendToDelete) => {
-  return friends.reduce((newArray, friend) => {
-    if (friendToDelete.length > 0) {
-      if (friendToDelete[0].id !== friend.id) {
-        newArray.push(friend)
-      }
-    } else {
-      newArray.push(friend)
-    }
-    return newArray;
-  }, []);
-}
+// export const removeDeletedFriends = (friends, friendToDelete) => {
+//   return friends.reduce((newArray, friend) => {
+//     if (friendToDelete.length > 0) {
+//       if (friendToDelete[0].id !== friend.id) {
+//         newArray.push(friend)
+//       }
+//     } else {
+//       newArray.push(friend)
+//     }
+//     return newArray;
+//   }, []);
+// }
 
-export const replaceUpdateFriends = (friends, friendsToUpdate) => {
+export const updateFriends = (friends, friendsToUpdate) => {
   return friends.reduce((newArray, friend) => {
     if (friendsToUpdate.length > 0) {
       if (friendsToUpdate[0].id !== friend.id) {

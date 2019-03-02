@@ -1,6 +1,6 @@
 import * as actionTypes from '../actions/types';
 import {
-  removeUnrelatedComments, removeDuplicateReferences, removeDeletedReferences, replaceUpdateFriends,
+  removeUnrelatedComments, removeDuplicateReferences, removeDeletedReferences, updateFriends,
   removeDuplicates, sortByDate, removeDeleted
 } from '../utils/functions';
 
@@ -79,7 +79,7 @@ const homeReducer = (state = initialState, action) => {
     case actionTypes.SET_FRIENDS:
       let allFriends = [...state.friendsList, ...action.payload.friendsList];
       let filteredFriends = removeDuplicates(allFriends);
-      let updatedFriends = replaceUpdateFriends(filteredFriends, action.payload.friendToUpdate)
+      let updatedFriends = updateFriends(filteredFriends, action.payload.friendToUpdate)
       let friends = removeDeleted(updatedFriends, action.payload.friendToDelete);
       return {
         ...state,
