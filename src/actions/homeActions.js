@@ -128,6 +128,11 @@ export const deleteDirectMessageChat = (user, otherUser, allMessageIds) => {
 export const addFriendWithEmail = (user, email) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
+    firestore.collection('users').get().then(data => {
+      let users = [];
+      data.forEach(doc => users.push(doc.data()));
+      console.log(users)
+    })
     // check if a user with that email exists, if so send friend request
     //// if friend request doesn't exist, send it
     // else sendback
