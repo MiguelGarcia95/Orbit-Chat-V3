@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {List, Button, Image, Icon} from 'semantic-ui-react';
-import {rejectFriend, acceptFriend, deleteFriend, setHomeView} from '../../actions/homeActions';
+import {rejectFriend, acceptFriend, deleteFriend, setHomeView, createDirectMessageRef} from '../../actions/homeActions';
 
 class Friend extends React.Component {
 
@@ -113,7 +113,8 @@ const mapDispatchToProps = dispatch => {
     rejectFriend: (user, friend) => dispatch(rejectFriend(user, friend)),
     acceptFriend: (user, friend) => dispatch(acceptFriend(user, friend)),
     deleteFriend: (user, friend) => dispatch(deleteFriend(user, friend)),
-    setHomeView: view => dispatch(setHomeView(view))
+    setHomeView: view => dispatch(setHomeView(view)),
+    createDirectMessageRef: (user, friend) => dispatch(createDirectMessageRef(user, friend))
   }
 }
 

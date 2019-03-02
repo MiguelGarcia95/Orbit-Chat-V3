@@ -66,30 +66,33 @@ export const createDirectMessage = (user, otherUser, comment) => {
 }
 
 export const createDirectMessageRef = (user, otherUser) => {
-  let listRef = firestore.collection(`users/${user.uid}/dmList`).doc(otherUser.uid);
-  listRef.get().then(doc => {
-    if (!doc.exists) {
-      listRef.set({
-        uid: otherUser.uid,
-        avatar: otherUser.avatar,
-        username: otherUser.username
-      }).then(() => {
+  return (dispatch, getstate, {getFirestore}) => {
+    const firestore = getFirestore();
+    let listRef = firestore.collection(`users/${user.uid}/dmList`).doc(otherUser.uid);
+    listRef.get().then(doc => {
+      if (!doc.exists) {
+        listRef.set({
+          uid: otherUser.uid,
+          avatar: otherUser.avatar,
+          username: otherUser.username
+        }).then(() => {
+          dispatch({
+            type: actionTypes.CREATE_DIRECT_MESSAGE_REF,
+            payload: {
+              homeError: null
+            }
+          })
+        })
+      } else {
         dispatch({
           type: actionTypes.CREATE_DIRECT_MESSAGE_REF,
           payload: {
-            homeError: null
+            homeError: 'Ref already exists... but this should never run'
           }
         })
-      })
-    } else {
-      dispatch({
-        type: actionTypes.CREATE_DIRECT_MESSAGE_REF,
-        payload: {
-          homeError: 'Ref already exists... but this should never run'
-        }
-      })
-    }
-  })
+      }
+    })
+  }
 }
 
 export const getReference = (userId, referenceId) => {
