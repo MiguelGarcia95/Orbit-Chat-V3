@@ -164,50 +164,50 @@ export const sortByDate = (items, type) => {
   return sortedComments;
 }
 
-export const sortCommentsByDate = (comments) => {
-  let sortedComments = [];
-  if (comments.length !== 0) {
-    sortedComments = comments.sort((a, b) => {
-      if (b.message.createdAt !== null && a.message.createdAt !== null) {
-        return new Date(a.message.createdAt.toDate()) - new Date(b.message.createdAt.toDate());
-      }
-    });
-  } else {
-    sortedComments = [...comments];
-  }
+// export const sortCommentsByDate = (comments) => {
+//   let sortedComments = [];
+//   if (comments.length !== 0) {
+//     sortedComments = comments.sort((a, b) => {
+//       if (b.message.createdAt !== null && a.message.createdAt !== null) {
+//         return new Date(a.message.createdAt.toDate()) - new Date(b.message.createdAt.toDate());
+//       }
+//     });
+//   } else {
+//     sortedComments = [...comments];
+//   }
 
-  return sortedComments;
-}
+//   return sortedComments;
+// }
 
-export const sortCategoriesByDate = categories => {
-  let sortedCategories = [];
+// export const sortCategoriesByDate = categories => {
+//   let sortedCategories = [];
 
-  if (categories.length !== 0) {
-    sortedCategories = categories.sort((a, b) => {
-      if (b.category.createdAt !== null && a.category.createdAt !== null ) {
-        return new Date(a.category.createdAt.toDate()) - new Date(b.category.createdAt.toDate());
-      }
-    })
-  } else {
-    sortedCategories = [...categories];
-  }
-  return sortedCategories;
-}
+//   if (categories.length !== 0) {
+//     sortedCategories = categories.sort((a, b) => {
+//       if (b.category.createdAt !== null && a.category.createdAt !== null ) {
+//         return new Date(a.category.createdAt.toDate()) - new Date(b.category.createdAt.toDate());
+//       }
+//     })
+//   } else {
+//     sortedCategories = [...categories];
+//   }
+//   return sortedCategories;
+// }
 
-export const sortChannelsByDate = channels => {
-  let sortedChannels = [];
+// export const sortChannelsByDate = channels => {
+//   let sortedChannels = [];
 
-  if (channels.length !== 0) {
-    sortedChannels = channels.sort((a, b) => {
-      if (b.channel.createdAt !== null && a.channel.createdAt !== null ) {
-        return new Date(a.channel.createdAt.toDate()) - new Date(b.channel.createdAt.toDate());
-      }
-    })
-  } else {
-    sortedChannels = [...channels];
-  }
-  return sortedChannels;
-}
+//   if (channels.length !== 0) {
+//     sortedChannels = channels.sort((a, b) => {
+//       if (b.channel.createdAt !== null && a.channel.createdAt !== null ) {
+//         return new Date(a.channel.createdAt.toDate()) - new Date(b.channel.createdAt.toDate());
+//       }
+//     })
+//   } else {
+//     sortedChannels = [...channels];
+//   }
+//   return sortedChannels;
+// }
 
 export const removeDeletedComments = (comments, commentToDelete) => {
   return comments.reduce((newArray, comment) => {
