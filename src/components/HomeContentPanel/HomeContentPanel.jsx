@@ -40,7 +40,7 @@ class HomeContentPanel extends React.Component {
       const {friendsToShow} = this.state;
       return (
         <React.Fragment>
-          <FriendListHeader setFriendDisplay={this.setFriendDisplay} friendsToShow={friendsToShow}  />
+          <FriendListHeader setFriendDisplay={this.setFriendDisplay} friendsToShow={friendsToShow} user={user} />
           {friendsList && <FriendList friendsToShow={friendsToShow} friends={friendsList} user={user} />}
         </React.Fragment>
       )

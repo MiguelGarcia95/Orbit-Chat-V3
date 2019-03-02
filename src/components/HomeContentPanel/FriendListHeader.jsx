@@ -24,8 +24,8 @@ class FriendListHeader extends React.Component {
   }
   
   onFriendRequestSent = () => {
+    // this.props.addFriendWithEmail(this.props.user, this.state.email);
     this.clearForm();
-    this.props.addFriendWithEmail()
   }
 
   render() {
@@ -77,13 +77,13 @@ class FriendListHeader extends React.Component {
         <Modal size='mini' open={friendRequestModal} onClose={this.closeFriendModal}>
           <Modal.Header>Enter Friend's Email</Modal.Header>
           <Modal.Content>
-            <Input placeholder="email" type='email' icon='mail' onChange={this.onEmailChange} value={email} fluid/>
+            <Input placeholder="Friend Email ..." type='email' icon='mail' onChange={this.onEmailChange} value={email} fluid/>
           </Modal.Content>
           <Modal.Actions>
             <Button.Group attached='bottom'>
               <Button negative onClick={this.closeFriendModal}> Cancel</Button>
               <Button.Or />
-              <Button positive disabled={isEmailEmpty}>Create</Button>
+              <Button positive disabled={isEmailEmpty} onClick={() => this.onFriendRequestSent()} >Create</Button>
             </Button.Group>
           </Modal.Actions>
         </Modal>
