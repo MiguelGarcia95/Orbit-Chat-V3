@@ -84,11 +84,28 @@ class Friend extends React.Component {
   isUserSender = (friend, user) => {
     return friend.senderId === user.uid ? true : false;
   }
-
-  onUsernameClick = friend => this.props.setHomeView(friend.uid)
+  
+  onUsernameClick = (friend, user, references) => {
+    if (references.length > 0) {
+      let doesRefExist = false;
+      references.forEach(ref => {
+        if (ref.uid === friend.uid) {
+          doesRefExist = true;
+        }
+      })
+      if (!doesRefExist) {
+        this.props.createDirectMessageRef(user, friend);
+      }
+    } else {
+      this.props.createDirectMessageRef(user, friend);
+    }
+    setTimeout(() => {
+      this.props.setHomeView(friend.uid)
+    }, 500)
+  }
 
   render() {
-    const {friend, user} = this.props
+    const {friend, user, references} = this.props
 
     return (
       <List.Item className='chat_comment'>
@@ -99,7 +116,7 @@ class Friend extends React.Component {
         <List.Content 
           className={`comment_body`} 
           as='a' style={{color: 'black'}}
-          onClick={() => this.onUsernameClick(friend)} 
+          onClick={() => this.onUsernameClick(friend, user, references)} 
         >
           {friend.username}
         </List.Content>
