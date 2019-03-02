@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Container, Header, Input, Modal, Button} from 'semantic-ui-react';
+import {Grid, Container, Header, Input, Modal, Button, Icon} from 'semantic-ui-react';
 
 class FriendListHeader extends React.Component {
   state = {
@@ -20,7 +20,7 @@ class FriendListHeader extends React.Component {
       <React.Fragment>
         <Grid className='home_comment_header'>
           <Grid.Row columns='1' style={{padding: '0px'}}>
-            <Container fluid textAlign='right' >
+            <Container fluid textAlign='right'>
               <Header 
                 className={`home_header_option ${this.isOptionActive('all', friendsToShow)}`} 
                 as='h4' 
@@ -46,13 +46,15 @@ class FriendListHeader extends React.Component {
                 Pending
               </Header>
               {/* addFriendWithEmail */}
-              <Input 
-                action={{content: 'Send Friend Request'}} 
-                icon='user plus'
-                iconPosition='left'
-                onClick={() => console.log('clicked')} 
-                placeholder='Friend Email' 
-              /> 
+              
+              <Header 
+                className={`home_header_option active`} 
+                as='h4' 
+                floated='right'
+                onClick={this.openFriendModal}
+              >
+                Send Friend Request
+              </Header>
             </Container>
           </Grid.Row>
         </Grid>
@@ -62,7 +64,7 @@ class FriendListHeader extends React.Component {
             <p>Are you sure you want to delete your account</p>
           </Modal.Content>
           <Modal.Actions>
-            <Button negative onClick={() => this.closeFriendModal}>Cancel</Button>
+            <Button negative onClick={this.closeFriendModal}>Cancel</Button>
             <Button positive icon='checkmark' labelPosition='right' content='Yes' />
           </Modal.Actions>
         </Modal>
