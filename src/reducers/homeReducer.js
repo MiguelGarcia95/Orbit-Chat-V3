@@ -1,8 +1,7 @@
 import * as actionTypes from '../actions/types';
 import {
-  removeDuplicateComments, sortCommentsByDate, removeDeletedComments, removeUnrelatedComments, 
-  removeDuplicateReferences, removeDeletedReferences, removeDeletedFriends, removeDuplicateFriends, replaceUpdateFriends,
-  removeDuplicateInvites, removeDeletedInvites, removeDuplicates, sortByDate
+  removeUnrelatedComments, removeDuplicateReferences, removeDeletedReferences, replaceUpdateFriends,
+  removeDuplicates, sortByDate, removeDeleted
 } from '../utils/functions';
 
 const initialState = {
@@ -54,7 +53,7 @@ const homeReducer = (state = initialState, action) => {
       let newComments = [...state.directMessages, ...action.payload.userMessages];
       let filteredComments = removeDuplicates(newComments);
       let sortedComments = sortByDate(filteredComments, 'message');
-      let comments = removeDeletedComments(sortedComments, action.payload.commentToDelete);
+      let comments = removeDeleted(sortedComments, action.payload.commentToDelete);
       let referencedComments = removeUnrelatedComments(comments, action.payload.referenceId);
 
       return {
@@ -71,7 +70,7 @@ const homeReducer = (state = initialState, action) => {
     case actionTypes.SET_CHATROOM_INVITES: 
       let allChatroomInvites = [...state.chatroomInvites, ...action.payload.chatroomInvites];
       let filteredChatroomInvites = removeDuplicates(allChatroomInvites);
-      let chatroomInvites = removeDeletedInvites(filteredChatroomInvites, action.payload.chatroomToDelete);
+      let chatroomInvites = removeDeleted(filteredChatroomInvites, action.payload.chatroomToDelete);
       return {
         ...state,
         chatroomInvites: chatroomInvites,
@@ -81,7 +80,7 @@ const homeReducer = (state = initialState, action) => {
       let allFriends = [...state.friendsList, ...action.payload.friendsList];
       let filteredFriends = removeDuplicates(allFriends);
       let updatedFriends = replaceUpdateFriends(filteredFriends, action.payload.friendToUpdate)
-      let friends = removeDeletedFriends(updatedFriends, action.payload.friendToDelete);
+      let friends = removeDeleted(updatedFriends, action.payload.friendToDelete);
       return {
         ...state,
         friendsList: friends,
