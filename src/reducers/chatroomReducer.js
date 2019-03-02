@@ -1,8 +1,5 @@
 import * as actionTypes from '../actions/types';
-import {
-  removeDeletedChatrooms, sortCategoriesByDate, removeDeletedInvites, 
-  removeDeletedCategories, removeDuplicates, sortByDate
-} from '../utils/functions';
+import { removeDuplicates, sortByDate, removeDeleted } from '../utils/functions';
 
 const initialState = {
   currentChatroom: null,
@@ -42,7 +39,7 @@ const chatroomReducer = (state = initialState, action) => {
     case actionTypes.SET_CHATROOM_USERS:
       let chatroomUsers = [...state.chatroomUsers, ...action.payload.chatroomUsers];
       let uniqueChatroomUsers = removeDuplicates(chatroomUsers);
-      let allChatroomUsers = removeDeletedChatrooms(uniqueChatroomUsers, action.payload.usersToDelete);
+      let allChatroomUsers = removeDeleted(uniqueChatroomUsers, action.payload.usersToDelete);
       return {
         ...state,
         chatroomUsers: allChatroomUsers,
@@ -58,7 +55,7 @@ const chatroomReducer = (state = initialState, action) => {
       let allCategories = [...state.categories, ...action.payload.categories];
       let uniqueCategories = removeDuplicates(allCategories);
       let sortedCategories = sortByDate(uniqueCategories, 'category');
-      let categories = removeDeletedCategories(sortedCategories, action.payload.categoryToDelete);
+      let categories = removeDeleted(sortedCategories, action.payload.categoryToDelete);
       return {
         ...state,
         categories: categories,
@@ -77,7 +74,7 @@ const chatroomReducer = (state = initialState, action) => {
     case actionTypes.SET_CHATROOMS:
       let chatrooms = [...state.chatrooms, ...action.payload.chatrooms];
       let uniqueChatrooms = removeDuplicates(chatrooms);
-      let allChatrooms = removeDeletedChatrooms(uniqueChatrooms, action.payload.chatroomToDelete);
+      let allChatrooms = removeDeleted(uniqueChatrooms, action.payload.chatroomToDelete);
       return {
         ...state,
         chatrooms: allChatrooms,
@@ -114,7 +111,7 @@ const chatroomReducer = (state = initialState, action) => {
     case actionTypes.SET_SENT_CHATROOM_INVITES: 
       let allChatroomInvites = [...state.chatroomInvites, ...action.payload.chatroomInvites];
       let filteredChatroomInvites = removeDuplicates(allChatroomInvites);
-      let chatroomInvites = removeDeletedInvites(filteredChatroomInvites, action.payload.inviteToDelete);
+      let chatroomInvites = removeDeleted(filteredChatroomInvites, action.payload.inviteToDelete);
       return {
         ...state,
         chatroomError: action.payload.chatroomError,
