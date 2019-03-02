@@ -129,20 +129,62 @@ export const addFriendWithEmail = (user, email) => {
   return (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
     firestore.collection('users').get().then(data => {
-      let users = [];
       let friend = null;
       data.forEach(doc => {
         if (doc.data().email === email && doc.data().email !== user.email) {
-          users.push(doc.data())
           friend = doc.data()
         }
       });
-      console.log(users)
+      if (friend) {
+        let addFriendRef = firestore.collection(`users/${user.uid}/friends`).doc(friend.uid);
+        let addFriendRef2 = firestore.collection(`users/${friend.uid}/friends`).doc(user.uid);
+        addFriendRef.get().then(doc => {
+          if (!doc.exists) {
+            addFriendRef.set({
+                uid: friend.uid,
+                username: friend.username,
+                avatar: friend.avatar,
+                status: 'pending',
+                senderId: user.uid
+            })
+            addFriendRef2.set({
+              uid: user.uid,
+              username: user.displayName,
+              avatar: user.photoURL,
+              status: 'pending',
+              senderId: user.uid
+          }).then(() => {
+              dispatch({
+                type: actionTypes.ADD_FRIEND,
+                payload: {
+                  homeError: null
+                }
+              })
+            }).catch(err => {
+              dispatch({
+                type: actionTypes.ADD_FRIEND,
+                payload: {
+                  homeError: err.message
+                }
+              })
+            })
+          } else {
+            dispatch({
+              type: actionTypes.ADD_FRIEND,
+              payload: {
+                homeError: 'Friend Request Already Sent.'
+              }
+            })
+          }
+        })
+      } else {
+        dispatch({
+          type: actionTypes.ADD_FRIEND,
+          homeError: 'No user has such email.'
+        })
+      }
       console.log(friend)
     })
-    // check if a user with that email exists, if so send friend request
-    //// if friend request doesn't exist, send it
-    // else sendback
   }
 }
 
