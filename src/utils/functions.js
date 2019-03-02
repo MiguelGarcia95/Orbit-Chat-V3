@@ -1,21 +1,21 @@
-export const removeDuplicateComments = (comments) => {
-  return comments.reduce((newArray, comment) => {
-    if (newArray.length > 0) {
-      let isInArray = false;
-      newArray.forEach(arrayComment => {
-        if (comment.id === arrayComment.id) {
-          isInArray = true;
-        }
-      });
-      if (!isInArray) {
-        newArray.push(comment)
-      }
-    } else {
-      newArray.push(comment)
-    }
-    return newArray
-  }, []);
-}
+// export const removeDuplicateComments = (comments) => {
+//   return comments.reduce((newArray, comment) => {
+//     if (newArray.length > 0) {
+//       let isInArray = false;
+//       newArray.forEach(arrayComment => {
+//         if (comment.id === arrayComment.id) {
+//           isInArray = true;
+//         }
+//       });
+//       if (!isInArray) {
+//         newArray.push(comment)
+//       }
+//     } else {
+//       newArray.push(comment)
+//     }
+//     return newArray
+//   }, []);
+// }
 
 export const removeDuplicateReferences = (references) => {
   return references.reduce((newArray, reference) => {
@@ -36,100 +36,100 @@ export const removeDuplicateReferences = (references) => {
   }, []);
 }
 
-export const removeDuplicateChatrooms = (chatrooms) => {
-  return chatrooms.reduce((newArray, chatroom) => {
-    if (newArray.length > 0) {
-      let isInArray = false;
-      newArray.forEach(arrayChatroom => {
-        if (chatroom.id === arrayChatroom.id) {
-          isInArray = true;
-        }
-      });
-      if (!isInArray) {
-        newArray.push(chatroom)
-      }
-    } else {
-      newArray.push(chatroom)
-    }
-    return newArray
-  }, []);
-}
+// export const removeDuplicateChatrooms = (chatrooms) => {
+//   return chatrooms.reduce((newArray, chatroom) => {
+//     if (newArray.length > 0) {
+//       let isInArray = false;
+//       newArray.forEach(arrayChatroom => {
+//         if (chatroom.id === arrayChatroom.id) {
+//           isInArray = true;
+//         }
+//       });
+//       if (!isInArray) {
+//         newArray.push(chatroom)
+//       }
+//     } else {
+//       newArray.push(chatroom)
+//     }
+//     return newArray
+//   }, []);
+// }
 
-export const removeDuplicateFriends = friends => {
-  return friends.reduce((newArray, friend) => {
-    if (newArray.length > 0) {
-      let isInArray = false;
-      newArray.forEach(arrayFriend => {
-        if (friend.id === arrayFriend.id) {
-          isInArray = true;
-        }
-      });
-      if (!isInArray) {
-        newArray.push(friend);
-      }
-    } else {
-      newArray.push(friend);
-    }
-    return newArray;
-  }, []);
-}
+// export const removeDuplicateFriends = friends => {
+//   return friends.reduce((newArray, friend) => {
+//     if (newArray.length > 0) {
+//       let isInArray = false;
+//       newArray.forEach(arrayFriend => {
+//         if (friend.id === arrayFriend.id) {
+//           isInArray = true;
+//         }
+//       });
+//       if (!isInArray) {
+//         newArray.push(friend);
+//       }
+//     } else {
+//       newArray.push(friend);
+//     }
+//     return newArray;
+//   }, []);
+// }
 
-export const removeDuplicateChannels = channels => {
-  return channels.reduce((newArray, channel) => {
-    if (newArray.length > 0) {
-      let isInArray = false;
-      newArray.forEach(arrayChannel => {
-        if (channel.id === arrayChannel.id) {
-          isInArray = true;
-        }
-      });
-      if (!isInArray) {
-        newArray.push(channel);
-      }
-    } else {
-      newArray.push(channel);
-    }
-    return newArray;
-  }, [])
-}
+// export const removeDuplicateChannels = channels => {
+//   return channels.reduce((newArray, channel) => {
+//     if (newArray.length > 0) {
+//       let isInArray = false;
+//       newArray.forEach(arrayChannel => {
+//         if (channel.id === arrayChannel.id) {
+//           isInArray = true;
+//         }
+//       });
+//       if (!isInArray) {
+//         newArray.push(channel);
+//       }
+//     } else {
+//       newArray.push(channel);
+//     }
+//     return newArray;
+//   }, [])
+// }
 
-export const removeDuplicateInvites = chatroomInvites => {
-  return chatroomInvites.reduce((newArray, chatroomInvite) => {
-    if (newArray.length > 0) {
-      let isInArray = false;
-      newArray.forEach(arrayInvite => {
-        if (chatroomInvite.id === arrayInvite.id) {
-          isInArray = true;
-        }
-      });
-      if (!isInArray) {
-        newArray.push(chatroomInvite);
-      }
-    } else {
-      newArray.push(chatroomInvite);
-    }
-    return newArray;
-  }, []);
-}
+// export const removeDuplicateInvites = chatroomInvites => {
+//   return chatroomInvites.reduce((newArray, chatroomInvite) => {
+//     if (newArray.length > 0) {
+//       let isInArray = false;
+//       newArray.forEach(arrayInvite => {
+//         if (chatroomInvite.id === arrayInvite.id) {
+//           isInArray = true;
+//         }
+//       });
+//       if (!isInArray) {
+//         newArray.push(chatroomInvite);
+//       }
+//     } else {
+//       newArray.push(chatroomInvite);
+//     }
+//     return newArray;
+//   }, []);
+// }
 
-export const removeDuplicateCategories = categories => {
-  return categories.reduce((newArray, category) => {
-    if (newArray.length > 0) {
-      let isInArray = false;
-      newArray.forEach(arrayCategory => {
-        if (category.id === arrayCategory.id) {
-          isInArray = true;
-        }
-      });
-      if (!isInArray) {
-        newArray.push(category);
-      }
-    } else {
-      newArray.push(category);
-    }
-    return newArray;
-  }, []);
-}
+// export const removeDuplicateCategories = categories => {
+//   return categories.reduce((newArray, category) => {
+//     if (newArray.length > 0) {
+//       let isInArray = false;
+//       newArray.forEach(arrayCategory => {
+//         if (category.id === arrayCategory.id) {
+//           isInArray = true;
+//         }
+//       });
+//       if (!isInArray) {
+//         newArray.push(category);
+//       }
+//     } else {
+//       newArray.push(category);
+//     }
+//     return newArray;
+//   }, []);
+// }
 
 export const removeDuplicates = items => {
   return items.reduce((newArray, item) => {
@@ -150,9 +150,22 @@ export const removeDuplicates = items => {
   }, [])
 }
 
+export const sortByDate = (items, type) => {
+  let sortedComments = [];
+  if (items.length !== 0) {
+    sortedComments = items.sort((a, b) => {
+      if (b[type].createdAt !== null && a[type].createdAt !== null) {
+        return new Date(a[type].createdAt.toDate()) - new Date(b[type].createdAt.toDate());
+      }
+    });
+  } else {
+    sortedComments = [...items];
+  }
+  return sortedComments;
+}
+
 export const sortCommentsByDate = (comments) => {
   let sortedComments = [];
-
   if (comments.length !== 0) {
     sortedComments = comments.sort((a, b) => {
       if (b.message.createdAt !== null && a.message.createdAt !== null) {

@@ -1,7 +1,7 @@
 import * as actionTypes from '../actions/types';
 import {
   removeDeletedChatrooms, sortCategoriesByDate, removeDeletedInvites, 
-  removeDeletedCategories, removeDuplicates
+  removeDeletedCategories, removeDuplicates, sortByDate
 } from '../utils/functions';
 
 const initialState = {
@@ -57,7 +57,7 @@ const chatroomReducer = (state = initialState, action) => {
     case actionTypes.SET_CHATROOM_CATEGORIES:
       let allCategories = [...state.categories, ...action.payload.categories];
       let uniqueCategories = removeDuplicates(allCategories);
-      let sortedCategories = sortCategoriesByDate(uniqueCategories);
+      let sortedCategories = sortByDate(uniqueCategories, 'category');
       let categories = removeDeletedCategories(sortedCategories, action.payload.categoryToDelete);
       return {
         ...state,

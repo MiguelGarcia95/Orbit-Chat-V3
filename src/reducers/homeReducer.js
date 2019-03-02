@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/types';
 import {
   removeDuplicateComments, sortCommentsByDate, removeDeletedComments, removeUnrelatedComments, 
   removeDuplicateReferences, removeDeletedReferences, removeDeletedFriends, removeDuplicateFriends, replaceUpdateFriends,
-  removeDuplicateInvites, removeDeletedInvites, removeDuplicates
+  removeDuplicateInvites, removeDeletedInvites, removeDuplicates, sortByDate
 } from '../utils/functions';
 
 const initialState = {
@@ -53,7 +53,7 @@ const homeReducer = (state = initialState, action) => {
     case actionTypes.SET_COMMENTS_HOME:
       let newComments = [...state.directMessages, ...action.payload.userMessages];
       let filteredComments = removeDuplicates(newComments);
-      let sortedComments = sortCommentsByDate(filteredComments);
+      let sortedComments = sortByDate(filteredComments, 'message');
       let comments = removeDeletedComments(sortedComments, action.payload.commentToDelete);
       let referencedComments = removeUnrelatedComments(comments, action.payload.referenceId);
 
