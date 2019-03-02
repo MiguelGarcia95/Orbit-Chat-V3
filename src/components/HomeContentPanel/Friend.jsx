@@ -86,22 +86,23 @@ class Friend extends React.Component {
   }
   
   onUsernameClick = (friend, user, references) => {
+    let doesRefExist = false;
     if (references.length > 0) {
-      let doesRefExist = false;
       references.forEach(ref => {
         if (ref.uid === friend.uid) {
           doesRefExist = true;
         }
       })
-      if (!doesRefExist) {
-        this.props.createDirectMessageRef(user, friend);
-      }
+    }
+
+    if (doesRefExist) {
+      this.props.setHomeView(friend.uid)
     } else {
       this.props.createDirectMessageRef(user, friend);
+      setTimeout(() => {
+        this.props.setHomeView(friend.uid)
+      }, 500)
     }
-    setTimeout(() => {
-      this.props.setHomeView(friend.uid)
-    }, 500)
   }
 
   render() {
