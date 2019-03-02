@@ -51,6 +51,8 @@ export const sortByDate = (items, type) => {
   return items.sort((a, b) => {
     if (b[type].createdAt !== null && a[type].createdAt !== null) {
       return new Date(a[type].createdAt.toDate()) - new Date(b[type].createdAt.toDate());
+    } else {
+      return null;
     }
   });
 }
