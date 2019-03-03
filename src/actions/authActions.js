@@ -28,13 +28,13 @@ export const signUp = credentials => {
         //update user
         createdUser.user.updateProfile({
           displayName: credentials.username,
-          photoURL: `http://gravatar.com/avatar/${md5(credentials.email)}?d=identicon`
+          photoURL: `https://gravatar.com/avatar/${md5(credentials.email)}?d=identicon`
         })
 
         //Create firestore user and set custom Id
         firestore.collection('users').doc(createdUser.user.uid).set({
           username: credentials.username,
-          avatar: `http://gravatar.com/avatar/${md5(credentials.email)}?d=identicon`,
+          avatar: `https://gravatar.com/avatar/${md5(credentials.email)}?d=identicon`,
           uid: createdUser.user.uid,
           email: credentials.email,
           createdAt: firestore.FieldValue.serverTimestamp()
