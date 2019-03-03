@@ -16,3 +16,5 @@ Password: password1234
 Display errors
 
 Display message when an action is made, ie: invited friend, create a channel, ect...
+
+No Mobile/Responsive available. Mobile App/React Native Version Coming Soon.
