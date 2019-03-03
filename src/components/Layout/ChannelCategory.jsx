@@ -73,7 +73,7 @@ class ChannelCategory extends React.Component {
     const isChannelBtnDisabled = this.isChannelFormEmpty();
     return (
       <React.Fragment>
-        <Grid >
+        <Grid style={{marginBottom: '20px'}}  >
           <Container fluid textAlign='right'  >
             <Header as='h4' className='category_header' floated='left' >{this.props.category.category.name}</Header>
             {chatroom.chatroom.uid === user.uid && (
