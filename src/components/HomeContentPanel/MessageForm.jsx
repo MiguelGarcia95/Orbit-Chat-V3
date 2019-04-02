@@ -17,6 +17,12 @@ class MessageForm extends React.Component {
     }
   }
 
+  onFormKeyDown = e => {
+    if (e.keyCode === 13 && e.target.value) {
+      this.onSubmit();
+    }
+  }
+
   isFormEmpty = () => this.state.comment ? false : true;
 
   clearForm = () => this.setState({comment: ''});
@@ -30,6 +36,7 @@ class MessageForm extends React.Component {
           fluid
           name='comment'
           onChange={this.onChange}
+          onKeyDown={this.onFormKeyDown}
           style={{marginBottom: '0.7em'}}
           labelPosition='left'
           value={comment}
